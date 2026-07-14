@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الرياضيات - الأستاذ محمد بن دريس</title>
+    
+    <!-- تضمين مكتبة MathJax لعرض الرموز الرياضية والـ LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #3498db;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        header p {
+            margin: 10px 0 0;
+            font-size: 1.2em;
+            color: #bdc3c7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        .math-card {
+            background-color: #f8fafc;
+            padding: 20px;
+            border-right: 6px solid #3498db;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 1.15em;
+            direction: ltr; /* لعرض المعادلات الرياضية من اليسار إلى اليمين بشكل صحيح */
+            text-align: center;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 50px;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>موقع الرياضيات والأبحاث العلمية</h1>
+    <p>فضاء تعليمي مخصص لمشاركة دروس وتمارين التحليل الرياضي والطوبولوجيا</p>
+</header>
+
+<div class="container">
+    <h2>مرحباً بكم</h2>
+    <p>مرحباً بكم في موقعي المتخصص في الرياضيات. ستجدون هنا سلاسل تمارين، امتحانات تجريبية، وموارد علمية مخصصة لمساعدتكم في فهم أعمق للمفاهيم الرياضية المعقدة.</p>
+
+    <h2>مثال لكتابة الصيغ الرياضية (بإستخدام LaTeX)</h2>
+    <p>يمكننا كتابة معادلات داخل النصوص كتعريف نهاية الدالة عند اللانهائية: \(\lim_{x \to \infty} f(x) = L\)، أو كتابة الفضاءات الطوبولوجية والمترية بدقة عالية.</p>
+    
+    <p>وهذا مثال لعرض مبرهنة أو معادلة هامة في سطر مستقل وبحجم كامل ومثالي للقراءة الأكاديمية:</p>
+    
+    <div class="math-card">
+        $$ \int_{a}^{b} f(x) \, dx = F(b) - F(a) $$
+    </div>
+
+    <div class="math-card">
+        $$ d(x, y) \le d(x, z) + d(z, y) $$
+    </div>
+
+    <h2>الموارد الدراسية وسلاسل التمارين</h2>
+    <p>قريباً، سأقوم برفع سلاسل التمارين والامتحانات بصيغة PDF لتتمكنوا من تحميلها مباشرة من هذا القسم.</p>
+    <a href="#" class="btn">تصفح مكتبة التمارين قريباً</a>
+</div>
+
+<footer>
+    <p>جميع الحقوق محفوظة © الأستاذ محمد بن دريس</p>
+</footer>
+
+</body>
+</html>
