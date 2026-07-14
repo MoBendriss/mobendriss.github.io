@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>موقع الرياضيات - الأستاذ محمد بن دريس</title>
     
-    <!-- تضمين مكتبة MathJax لعرض الرموز الرياضية والـ LaTeX -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- إعداد مكتبة MathJax الحديثة والآمنة لتشغيل الـ LaTeX بامتياز -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
     
     <style>
         body {
@@ -53,8 +65,8 @@
             border-right: 6px solid #3498db;
             margin: 20px 0;
             border-radius: 4px;
-            font-size: 1.15em;
-            direction: ltr; /* لعرض المعادلات الرياضية من اليسار إلى اليمين بشكل صحيح */
+            font-size: 1.25em;
+            direction: ltr;
             text-align: center;
         }
         .btn {
@@ -92,7 +104,7 @@
     <p>مرحباً بكم في موقعي المتخصص في الرياضيات. ستجدون هنا سلاسل تمارين، امتحانات تجريبية، وموارد علمية مخصصة لمساعدتكم في فهم أعمق للمفاهيم الرياضية المعقدة.</p>
 
     <h2>مثال لكتابة الصيغ الرياضية (بإستخدام LaTeX)</h2>
-    <p>يمكننا كتابة معادلات داخل النصوص كتعريف نهاية الدالة عند اللانهائية: \(\lim_{x \to \infty} f(x) = L\)، أو كتابة الفضاءات الطوبولوجية والمترية بدقة عالية.</p>
+    <p>يمكننا كتابة معادلات داخل النصوص كتعريف نهاية الدالة عند اللانهائية: $\lim_{x \to \infty} f(x) = L$، أو كتابة الفضاءات الطوبولوجية والمترية بدقة عالية.</p>
     
     <p>وهذا مثال لعرض مبرهنة أو معادلة هامة في سطر مستقل وبحجم كامل ومثالي للقراءة الأكاديمية:</p>
     
