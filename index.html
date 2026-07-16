@@ -62,8 +62,8 @@
             font-style: italic;
         }
 
-        /* تنسيق بطاقات الدروس والتمارين */
-        .resource-card {
+        /* تنسيق بطاقات الدروس والتمارين والمدونة */
+        .resource-card, .blog-card {
             border-left: 4px solid #0f1c2e;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             background-color: var(--card-background-color);
@@ -72,18 +72,18 @@
             justify-content: space-between;
             height: 100%; /* تضمن تساوي ارتفاع البطاقات في الشبكة */
         }
-        .resource-card:hover {
+        .resource-card:hover, .blog-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
         /* تعديل حجم زر التحميل ليملأ البطاقة بالكامل ويكون متناسقاً */
-        .resource-card footer {
+        .resource-card footer, .blog-card footer {
             padding-top: 1rem;
             margin-top: auto; /* يدفع الزر دائماً ليكون في أسفل البطاقة بالتساوي */
         }
 
-        .resource-card footer a[role="button"] {
+        .resource-card footer a[role="button"], .blog-card footer a[role="button"] {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
@@ -97,7 +97,7 @@
             margin-bottom: 0 !important; /* إزالة أي هوامش سفلية افتراضية */
         }
 
-        .resource-card footer a[role="button"] i {
+        .resource-card footer a[role="button"] i, .blog-card footer a[role="button"] i {
             font-size: 1.15rem !important; /* ضبط حجم الأيقونة لتتناسب مع النص */
         }
 
@@ -113,6 +113,15 @@
         .badge-exercice {
             background-color: #319795;
             color: white;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .badge-article {
+            background-color: #e2e8f0;
+            color: #1e293b;
             padding: 0.25rem 0.6rem;
             border-radius: 4px;
             font-size: 0.75rem;
@@ -147,6 +156,7 @@
             <ul>
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#resources">Cours & Exercices</a></li>
+                <li><a href="#blog">Blog</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li>
@@ -198,7 +208,6 @@
                     </header>
                     <p>Espaces de Hilbert, de Banach, théorèmes fondamentaux et opérateurs linéaires continus.</p>
                     <footer>
-                        <!-- مسار ملف الـ PDF الخاص بك على مستودع GitHub -->
                         <a href="documents/cours/analyse_fonctionnelle.pdf" role="button" class="outline"><i class="fa-solid fa-file-pdf"></i> Télécharger (PDF)</a>
                     </footer>
                 </article>
@@ -232,6 +241,31 @@
 
         <hr>
 
+        <!-- قسم المدونة (Blog) الجديد والمميز -->
+        <section id="blog">
+            <h2><i class="fa-solid fa-pen-nib"></i> Mon Blog Scientifique</h2>
+            <p>Articles courts et vulgarisations mathématiques autour de l'analyse et des EDPs :</p>
+            
+            <div class="grid">
+
+                <!-- بطاقة المقالة الأولى -->
+                <article class="blog-card">
+                    <header style="display: flex; justify-content: space-between; align-items: center;">
+                        <strong>Introduction aux Espaces L<sup>p</sup></strong>
+                        <span class="badge-article">Mathématiques</span>
+                    </header>
+                    <p>Découvrez les bases fondamentales des espaces L<sup>p</sup>, les normes associées et l'inégalité de Hölder expliquée simplement.</p>
+                    <footer>
+                        <!-- رابط يشير لصفحة المقال الفرعية -->
+                        <a href="blog/espaces-lp.html" role="button" class="outline"><i class="fa-solid fa-book-open"></i> Lire l'article</a>
+                    </footer>
+                </article>
+
+            </div>
+        </section>
+
+        <hr>
+
         <!-- قسم المشاريع البرمجية والحوسبة العلمية -->
         <section id="projects">
             <h2><i class="fa-solid fa-laptop-code"></i> Simulations & Programmation</h2>
@@ -248,15 +282,13 @@
 
         <hr>
 
-        <!-- نموذج التواصل المطور والفعال مباشرة -->
+        <!-- نموذج التواصل المربوط ببريدك الهوتمايل مباشرة -->
         <section id="contact">
             <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
             <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
             
             <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST" style="background-color: var(--card-background-color); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                <!-- منع الكابتشا لسهولة الاستخدام للزائر -->
                 <input type="hidden" name="_captcha" value="false">
-                <!-- العودة التلقائية لصفحة موقعك بعد الإرسال -->
                 <input type="hidden" name="_next" value="https://mobendriss.github.io/">
 
                 <div class="grid">
@@ -288,7 +320,6 @@
         const htmlElement = document.documentElement;
         const icon = themeToggle.querySelector('i');
 
-        // استدعاء المظهر المفضل المخزن أو تعيين المظهر الفاتح كافتراضي
         const savedTheme = localStorage.getItem('theme') || 'light';
         htmlElement.setAttribute('data-theme', savedTheme);
         updateIcon(savedTheme);
