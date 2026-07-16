@@ -67,10 +67,38 @@
             border-left: 4px solid #0f1c2e;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             background-color: var(--card-background-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* تضمن تساوي ارتفاع البطاقات في الشبكة */
         }
         .resource-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        /* تعديل حجم زر التحميل ليملأ البطاقة بالكامل ويكون متناسقاً */
+        .resource-card footer {
+            padding-top: 1rem;
+            margin-top: auto; /* يدفع الزر دائماً ليكون في أسفل البطاقة بالتساوي */
+        }
+
+        .resource-card footer a[role="button"] {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 10px !important;
+            width: 100% !important; /* يجبر الزر على التمدد على كامل عرض البطاقة */
+            box-sizing: border-box !important;
+            padding: 0.75rem 1rem !important;
+            font-size: 0.95rem !important;
+            font-weight: 600 !important;
+            border-radius: 6px !important;
+            margin-bottom: 0 !important; /* إزالة أي هوامش سفلية افتراضية */
+        }
+
+        .resource-card footer a[role="button"] i {
+            font-size: 1.15rem !important; /* ضبط حجم الأيقونة لتتناسب مع النص */
         }
 
         .badge-cours {
