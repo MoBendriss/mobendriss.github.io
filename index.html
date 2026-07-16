@@ -29,12 +29,12 @@
 
     <style>
         :root {
-            /* نظام ألوان أكاديمي هادئ وفخم مستوحى من كود الألوان الجديد */
-            --bg-dark-header: #334155; /* الرمادي الداكن لرأس الصفحة السفلي */
-            --bg-top-header: #1e293b;  /* الكحلي الداكن لرأس الصفحة العلوي */
-            --accent-color: #0284c7;    /* اللون الأزرق المريح كبديل للبرتقالي */
-            --accent-hover: #0369a1;   /* تأثير التحويم للأزرار والتبويبات */
-            --light-blue-bg: #f0f9ff;  /* لون صندوق الترحيب البارز */
+            /* نظام ألوان أكاديمي هادئ وفخم */
+            --bg-dark-header: #334155; 
+            --bg-top-header: #1e293b;  
+            --accent-color: #0284c7;    
+            --accent-hover: #0369a1;   
+            --light-blue-bg: #f0f9ff;  
             font-family: 'Inter', sans-serif;
         }
 
@@ -42,9 +42,10 @@
             background-color: #f8fafc;
             margin: 0;
             padding: 0;
+            scroll-behavior: smooth; /* تمرير سلس عند الضغط على الروابط */
         }
 
-        /* رأس الصفحة العلوي (البانر الداكن) */
+        /* رأس الصفحة العلوي */
         .top-banner {
             background-color: var(--bg-top-header);
             color: #ffffff;
@@ -72,7 +73,7 @@
             color: #cbd5e1;
         }
 
-        /* شعار الهيدر في أقصى اليمين */
+        /* شعار الهيدر */
         .header-logo {
             width: 80px;
             height: auto;
@@ -82,12 +83,15 @@
             transform: scale(1.05);
         }
 
-        /* شريط التبويبات والملاحة الأساسي */
+        /* شريط التبويبات والملاحة */
         .navigation-bar {
             background-color: var(--bg-dark-header);
             padding: 0;
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .navigation-bar ul {
@@ -120,7 +124,6 @@
             color: #ffffff;
         }
 
-        /* التبويب النشط حالياً */
         .navigation-bar a.active {
             background-color: var(--accent-color);
             color: #ffffff;
@@ -143,7 +146,7 @@
             font-weight: 600;
         }
 
-        /* تنسيق الشبكة الجانبية (العمود الرئيسي والعمود الجانبي) */
+        /* تقسيم الشبكة الجانبية */
         .main-layout {
             display: grid;
             grid-template-columns: 2.5fr 1fr;
@@ -157,7 +160,7 @@
             }
         }
 
-        /* الصندوق الجانبي لليوتيوب والمستجدات */
+        /* الصندوق الجانبي */
         .sidebar-widget {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -168,25 +171,27 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .youtube-btn {
+        /* زر الرياضيات المطور بديل اليوتيوب بنمط متناسق وفخم */
+        .math-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background-color: #ef4444;
+            background-color: var(--accent-color);
             color: #ffffff !important;
             padding: 0.75rem 1.2rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             width: 100%;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
         }
-        .youtube-btn:hover {
-            background-color: #dc2626;
+        .math-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
         }
 
-        /* تصميم بطاقات الدروس المحدثة لتلائم النمط الجديد */
+        /* بطاقات الدروس والتمارين */
         .course-card {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -211,6 +216,34 @@
             border: 1px solid #cbd5e1;
         }
 
+        /* تصميم واجهة الاتصال الأكاديمية */
+        .contact-section {
+            margin-top: 3rem;
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+        .contact-section h2 {
+            font-size: 1.8rem;
+            color: var(--bg-top-header);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .contact-section button {
+            background-color: var(--accent-color);
+            border: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+        .contact-section button:hover {
+            background-color: var(--accent-hover);
+        }
+
         footer {
             background-color: var(--bg-top-header);
             color: #94a3b8;
@@ -228,19 +261,19 @@
 </head>
 <body>
 
-    <!-- رأس الصفحة العلوي (اسم الموقع والشعار) -->
+    <!-- رأس الصفحة العلوي -->
     <div class="top-banner">
         <div class="container top-banner-content">
             <div>
                 <h1>Mohamed Bendriss</h1>
                 <p>Cours et exercices de mathématiques</p>
             </div>
-            <!-- الشعار الأكاديمي في الجهة المقابلة -->
+            <!-- الشعار الأكاديمي -->
             <img class="header-logo" src="images/logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
         </div>
     </div>
 
-    <!-- شريط التبويبات والملاحة (محاكاة دقيقة لتقسيم Exo7) -->
+    <!-- شريط التبويبات والملاحة -->
     <div class="navigation-bar">
         <div class="container">
             <ul>
@@ -254,15 +287,15 @@
         </div>
     </div>
 
-    <!-- المحتوى الأساسي والشبكة الجانبية ثنائية الأعمدة -->
+    <!-- الشبكة الهيكلية ثنائية الأعمدة -->
     <main class="container">
         <div class="main-layout">
             
-            <!-- العمود الأيسر: المحتوى الرئيسي والدروس -->
+            <!-- العمود الأيسر: المحتوى الرئيسي والدروس والاتصال -->
             <section id="main-content">
                 
-                <!-- صندوق الترحيب البارز المطابق للصورة -->
-                <div class="welcome-box">
+                <!-- صندوق الترحيب البارز -->
+                <div class="welcome-box" id="accueil">
                     <h3>Des cours et des exercices de maths...</h3>
                 </div>
 
@@ -272,10 +305,10 @@
 
                 <hr>
 
-                <!-- قسم الدروس والتمارين المحدث -->
+                <!-- قسم الدروس والتمارين -->
                 <h2 style="margin-top: 2rem;"><i class="fa-solid fa-graduation-cap"></i> Ressources Disponibles</h2>
                 
-                <div class="course-card">
+                <div class="course-card" id="premiere-annee">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                         <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Analyse Fonctionnelle</h4>
                         <span class="badge-academic">Cours & TD</span>
@@ -293,20 +326,45 @@
                     <a href="documents/exercices/serie_edp.pdf" role="button" class="secondary outline"><i class="fa-solid fa-file-pdf"></i> Télécharger les Exercices</a>
                 </div>
 
+                <!-- واجهة الاتصال (Contact) التي تم تفعيلها وضبطها بنجاح -->
+                <section id="contact" class="contact-section">
+                    <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
+                    <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
+                    
+                    <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://mobendriss.github.io/">
+
+                        <div class="grid">
+                            <label for="name">
+                                Nom Complet
+                                <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                            </label>
+                            <label for="email">
+                                Adresse Email
+                                <input type="email" id="email" name="email" placeholder="nom@example.com" required>
+                            </label>
+                        </div>
+                        <label for="message">Votre Message</label>
+                        <textarea id="message" name="message" placeholder="Votre message détaillé..." rows="4" required></textarea>
+                        <button type="submit">Envoyer le message</button>
+                    </form>
+                </section>
+
             </section>
 
-            <!-- العمود الأيمن: الجانبي (قناة اليوتيوب والمستجدات) -->
+            <!-- العمود الأيمن الجانبي -->
             <aside id="sidebar">
                 
-                <!-- ويدجت قناة اليوتيوب المخصص -->
+                <!-- تم استبدال YouTube بـ Mathématiques مع الحفاظ على الأيقونة التفاعلية المضيئة -->
                 <div class="sidebar-widget">
-                    <a href="https://youtube.com" target="_blank" class="youtube-btn">
-                        <i class="fa-brands fa-youtube" style="font-size: 1.3rem;"></i>
-                        Chaîne YouTube
+                    <a href="#premiere-annee" class="math-btn">
+                        <i class="fa-solid fa-infinity" style="font-size: 1.3rem;"></i>
+                        Mathématiques
                     </a>
                 </div>
 
-                <!-- صندوق المستجدات (Actualités) -->
+                <!-- صندوق المستجدات -->
                 <div class="sidebar-widget" style="text-align: left;">
                     <h4 style="margin-top: 0; font-size: 1.1rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem;"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
                     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.6;">
@@ -326,12 +384,23 @@
         </div>
     </main>
 
-    <!-- تذييل الصفحة الأكاديمي الموحد -->
+    <!-- تذييل الصفحة الأكاديمي -->
     <footer>
         <div class="container">
             <p>© 2026 Mohamed Bendriss. Cours et exercices de mathématiques. Conçu avec rigueur.</p>
         </div>
     </footer>
+
+    <!-- سكربت بسيط لتبديل التبويب النشط عند النقر -->
+    <script>
+        const links = document.querySelectorAll('.navigation-bar a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
