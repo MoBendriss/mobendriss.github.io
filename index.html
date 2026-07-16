@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Bendriss | Mathématiques & Développement Web</title>
+    <title>Mohamed Bendriss | Cours et exercices de mathématiques</title>
     <meta name="description" content="Site personnel de Mohamed Bendriss - Enseignant et chercheur en mathématiques">
     
     <!-- Framework CSS moderne (Pico CSS) -->
@@ -14,7 +14,7 @@
     <!-- خطوط جوجل الاحترافية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- مكتبة MathJax لعرض المعادلات الرياضية بأعلى جودة أكاديمية -->
     <script>
@@ -29,406 +29,309 @@
 
     <style>
         :root {
-            --primary: #0f172a; 
-            --primary-hover: #1e293b;
+            /* نظام ألوان أكاديمي هادئ وفخم مستوحى من كود الألوان الجديد */
+            --bg-dark-header: #334155; /* الرمادي الداكن لرأس الصفحة السفلي */
+            --bg-top-header: #1e293b;  /* الكحلي الداكن لرأس الصفحة العلوي */
+            --accent-color: #0284c7;    /* اللون الأزرق المريح كبديل للبرتقالي */
+            --accent-hover: #0369a1;   /* تأثير التحويم للأزرار والتبويبات */
+            --light-blue-bg: #f0f9ff;  /* لون صندوق الترحيب البارز */
             font-family: 'Inter', sans-serif;
         }
 
-        /* رأس الصفحة */
-        header {
-            border-bottom: 1px solid var(--muted-border-color);
-            padding: 1rem 0;
-            background-color: var(--card-background-color);
+        body {
+            background-color: #f8fafc;
+            margin: 0;
+            padding: 0;
         }
 
-        /* واجهة الـ Hero المطورة بالخلفية الرياضية المضيئة */
-        .hero-clean {
-            padding: 7rem 1rem 6rem 1rem;
-            text-align: center;
-            position: relative;
-            
-            /* ======================================================== */
-            /* السطر 48: هنا يتم استدعاء صورتك الجديدة بعد تنظيفها وإزالة الشعار */
-            background-image: url('hero-bg.png'); 
-            /* ======================================================== */
-            
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: scroll; /* تم تعديله لضمان الاستقرار والظهور السريع على كل المتصفحات */
+        /* رأس الصفحة العلوي (البانر الداكن) */
+        .top-banner {
+            background-color: var(--bg-top-header);
             color: #ffffff;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-top: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            padding: 2rem 0;
+            border-bottom: 3px solid var(--accent-color);
         }
 
-        /* طبقة تظليل مدمجة ناعمة وخفيفة جداً لتبرز تفاصيل الخلفية المضيئة بوضوح تام */
-        .hero-clean::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            /* تم تقليل الشفافية لتبدو الخلفية ساطعة وزاهية بالمعادلات الرياضية الملونة */
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.2) 100%);
-            z-index: 1;
+        .top-banner-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* رفع العناصر فوق طبقة التظليل لتظهر بوضوح */
-        .hero-clean > * {
-            position: relative;
-            z-index: 2;
+        .top-banner h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin: 0;
+            color: #ffffff !important;
+            font-weight: 500;
         }
 
-        /* تصميم حاوية الصورة الشخصية أو الشعار */
-        .hero-avatar {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 4px solid rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+        .top-banner p {
+            margin: 0.2rem 0 0 0;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        /* شعار الهيدر في أقصى اليمين */
+        .header-logo {
+            width: 80px;
+            height: auto;
             transition: transform 0.3s ease;
         }
-        .hero-avatar:hover {
+        .header-logo:hover {
             transform: scale(1.05);
         }
 
-        /* الاسم بخط سيريف كلاسيكي فخم مع ظل ناعم وواضح للقراءة */
-        .hero-clean h1 {
-            font-family: 'Playfair Display', serif;
-            color: #ffffff !important;
-            font-size: 3.8rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 0.8rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+        /* شريط التبويبات والملاحة الأساسي */
+        .navigation-bar {
+            background-color: var(--bg-dark-header);
+            padding: 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
-        /* الوصف الفرعي الأنيق والمريح للعين بلون رمادي فاتح يتلاءم مع الخلفية */
-        .hero-clean p.subtitle {
-            color: #f1f5f9 !important;
-            font-size: 1.25rem;
-            font-weight: 400;
-            max-width: 700px;
-            margin: 0 auto 2rem auto;
-            line-height: 1.6;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-        }
-
-        /* حاوية المعادلة الرياضية بتأثير زجاجي (Glassmorphism) خلاب */
-        .hero-clean .math-formula-container {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 1rem 3rem;
-            color: #f8fafc;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        }
-
-        /* تنسيق بطاقات الدروس والتمارين والمدونة */
-        .resource-card, .blog-card {
-            border-left: 4px solid var(--primary);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            background-color: var(--card-background-color);
+        .navigation-bar ul {
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-        }
-        .resource-card:hover, .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
         }
 
-        /* تعديل حجم زر التحميل ليملأ البطاقة بالكامل ويكون متناسقاً */
-        .resource-card footer, .blog-card footer {
-            padding-top: 1rem;
-            margin-top: auto;
+        .navigation-bar li {
+            margin: 0;
+            padding: 0;
         }
 
-        .resource-card footer a[role="button"], .blog-card footer a[role="button"] {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 10px !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            padding: 0.75rem 1rem !important;
-            font-size: 0.95rem !important;
-            font-weight: 600 !important;
-            border-radius: 6px !important;
-            margin-bottom: 0 !important;
+        .navigation-bar a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
-        .resource-card footer a[role="button"] i, .blog-card footer a[role="button"] i {
-            font-size: 1.15rem !important;
+        .navigation-bar a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
         }
 
-        /* تعديل بطاقة "Cours" لتظهر بإطار شفاف ونص ملون */
-        .badge-cours {
-            background-color: transparent;
-            color: #0076b6;
-            border: 1px solid #0076b6;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
+        /* التبويب النشط حالياً */
+        .navigation-bar a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            border-bottom: 3px solid var(--accent-hover);
+        }
+
+        /* صندوق الترحيب البارز */
+        .welcome-box {
+            background-color: var(--light-blue-bg);
+            border-left: 5px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-box h3 {
+            color: var(--bg-top-header);
+            margin: 0;
+            font-size: 1.3rem;
             font-weight: 600;
+        }
+
+        /* تنسيق الشبكة الجانبية (العمود الرئيسي والعمود الجانبي) */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.5fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 800px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* الصندوق الجانبي لليوتيوب والمستجدات */
+        .sidebar-widget {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .youtube-btn {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            justify-content: center;
+            gap: 10px;
+            background-color: #ef4444;
+            color: #ffffff !important;
+            padding: 0.75rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        .youtube-btn:hover {
+            background-color: #dc2626;
         }
 
-        /* تعديل بطاقة "Exercices" */
-        .badge-exercice {
-            background-color: transparent;
+        /* تصميم بطاقات الدروس المحدثة لتلائم النمط الجديد */
+        .course-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .badge-academic {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            background-color: #f1f5f9;
             color: #475569;
-            border: 1px solid #475569;
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* تعديل بطاقة "Article" للمدونة */
-        .badge-article {
-            background-color: transparent;
-            color: var(--color);
-            padding: 0.25rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            border: 1px solid var(--muted-border-color);
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .theme-toggle-btn {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0.5rem;
-            color: var(--color);
+            border: 1px solid #cbd5e1;
         }
 
         footer {
-            margin-top: 5rem;
-            border-top: 1px solid var(--muted-border-color);
-            padding: 2.5rem 0;
+            background-color: var(--bg-top-header);
+            color: #94a3b8;
+            padding: 3rem 0;
             text-align: center;
+            margin-top: 5rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- شريط الملاحة والتنقل -->
-    <header class="container">
-        <nav>
+    <!-- رأس الصفحة العلوي (اسم الموقع والشعار) -->
+    <div class="top-banner">
+        <div class="container top-banner-content">
+            <div>
+                <h1>Mohamed Bendriss</h1>
+                <p>Cours et exercices de mathématiques</p>
+            </div>
+            <!-- الشعار الأكاديمي في الجهة المقابلة -->
+            <img class="header-logo" src="images/logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+        </div>
+    </div>
+
+    <!-- شريط التبويبات والملاحة (محاكاة دقيقة لتقسيم Exo7) -->
+    <div class="navigation-bar">
+        <div class="container">
             <ul>
-                <li><strong>Mohamed Bendriss</strong></li>
-            </ul>
-            <ul>
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#resources">Cours & Exercices</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#projects">Projets</a></li>
+                <li><a href="#accueil" class="active">Accueil</a></li>
+                <li><a href="#premiere-annee">Première année</a></li>
+                <li><a href="#deuxieme-annee">Deuxième année</a></li>
+                <li><a href="#troisieme-annee">Troisième année</a></li>
+                <li><a href="#enseignants">Pour les enseignants</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li>
-                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Theme">
-                        <i class="fa-solid fa-moon"></i>
-                    </button>
-                </li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </div>
 
-    <!-- محتوى الصفحة الرئيسي -->
+    <!-- المحتوى الأساسي والشبكة الجانبية ثنائية الأعمدة -->
     <main class="container">
-
-        <!-- الواجهة المطورة بالخلفية الرياضية الجديدة المضيئة والتأثير الزجاجي -->
-        <section class="hero-clean">
-            <!-- مساحة مخصصة لشعارك أو صورتك الشخصية -->
-            <img class="hero-avatar" src="images/logo.png" alt="Mohamed Bendriss" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+        <div class="main-layout">
             
-            <h1>Mohamed Bendriss</h1>
-            <p class="subtitle">Analyse Fonctionnelle • Équations aux Dérivées Partielles (EDP) • Didactique</p>
-            <div class="math-formula-container">
-                <span class="math-formula">
-                    $$f(x) = \int_{\Omega} K(x, t) g(t) \, dt \quad \text{et} \quad \Delta u = 0$$
-                </span>
-            </div>
-        </section>
-
-        <!-- قسم التعريف الشخصي -->
-        <section id="about">
-            <h2><i class="fa-solid fa-user-graduate"></i> À propos de mon parcours</h2>
-            <p>
-                Enseignant de mathématiques et chercheur. Mon parcours est guidé par la rigueur de la logique mathématique et l'application des méthodes analytiques aux problèmes physiques et technologiques. Mes travaux et enseignements portent principalement sur <strong>l'analyse fonctionnelle</strong> et les <strong>équations aux dérivées partielles (EDP)</strong>.
-            </p>
-            <p>
-                Passionné par la <strong>didactique des sciences</strong>, j'accorde une importance majeure à la clarté et à la précision des supports pédagogiques, souvent rédigés à l'aide de l'outil de référence scientifique : <i class="fa-solid fa-code"></i> LaTeX.
-            </p>
-        </section>
-
-        <hr>
-
-        <!-- قسم الدروس والتمارين -->
-        <section id="resources">
-            <h2><i class="fa-solid fa-book-bookmark"></i> Ressources Pédagogiques (Cours & Exercices)</h2>
-            <p>Accédez ci-dessous à mes documents et fiches d'exercices rédigés sous LaTeX :</p>
-            
-            <div class="grid">
-
-                <!-- بطاقة درس أول -->
-                <article class="resource-card">
-                    <header style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong>Analyse Fonctionnelle</strong>
-                        <span class="badge-cours"><i class="fa-solid fa-book"></i> Cours</span>
-                    </header>
-                    <p>Espaces de Hilbert, de Banach, théorèmes fondamentaux et opérateurs linéaires continus.</p>
-                    <footer>
-                        <a href="documents/cours/analyse_fonctionnelle.pdf" role="button" class="outline"><i class="fa-solid fa-file-pdf"></i> Télécharger (PDF)</a>
-                    </footer>
-                </article>
-
-                <!-- بطاقة تمارين أولى -->
-                <article class="resource-card">
-                    <header style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong>TD : Équations aux Dérivées Partielles</strong>
-                        <span class="badge-exercice"><i class="fa-solid fa-pen-to-square"></i> Exercices</span>
-                    </header>
-                    <p>Série d'exercices dirigés portant sur la résolution et l'analyse théorique des EDPs elliptiques.</p>
-                    <footer>
-                        <a href="documents/exercices/serie_edp.pdf" role="button" class="outline secondary"><i class="fa-solid fa-file-pdf"></i> Télécharger (PDF)</a>
-                    </footer>
-                </article>
-
-                <!-- بطاقة درس ثانٍ -->
-                <article class="resource-card">
-                    <header style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong>Topologie Générale</strong>
-                        <span class="badge-cours"><i class="fa-solid fa-book"></i> Cours</span>
-                    </header>
-                    <p>Espaces métriques, compacité, connexité et applications fondamentales en analyse.</p>
-                    <footer>
-                        <a href="documents/cours/topologie.pdf" role="button" class="outline"><i class="fa-solid fa-file-pdf"></i> Télécharger (PDF)</a>
-                    </footer>
-                </article>
-
-            </div>
-        </section>
-
-        <hr>
-
-        <!-- قسم المدونة -->
-        <section id="blog">
-            <h2><i class="fa-solid fa-pen-nib"></i> Mon Blog Scientifique</h2>
-            <p>Articles cours et vulgarisations mathématiques autour de l'analyse et des EDPs :</p>
-            
-            <div class="grid">
-
-                <!-- بطاقة المقالة الأولى -->
-                <article class="blog-card">
-                    <header style="display: flex; justify-content: space-between; align-items: center;">
-                        <strong>Introduction aux Espaces L<sup>p</sup></strong>
-                        <span class="badge-article"><i class="fa-solid fa-graduation-cap"></i> Mathématiques</span>
-                    </header>
-                    <p>Découvrez les bases fondamentales des espaces L<sup>p</sup>, les normes associées et l'inégalité de Hölder expliquée simplement.</p>
-                    <footer>
-                        <a href="documents/articles/espaces_lp.pdf" target="_blank" role="button" class="outline"><i class="fa-solid fa-file-pdf"></i> Lire l'article (PDF)</a>
-                    </footer>
-                </article>
-
-            </div>
-        </section>
-
-        <hr>
-
-        <!-- قسم المشاريع البرمجية -->
-        <section id="projects">
-            <h2><i class="fa-solid fa-laptop-code"></i> Simulations & Programmation</h2>
-            <div class="grid">
-                <article>
-                    <header><strong>Calcul Scientifique (MATLAB / Python)</strong></header>
-                    <p>Résolution numérique de modèles mathématiques, approximation de solutions d'EDP et modélisation de données.</p>
-                    <footer>
-                        <a href="https://github.com/mobendriss" target="_blank" role="button" class="outline">Consulter sur GitHub <i class="fa-brands fa-github"></i></a>
-                    </footer>
-                </article>
-            </div>
-        </section>
-
-        <hr>
-
-        <!-- نموذج التواصل -->
-        <section id="contact">
-            <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
-            <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
-            
-            <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST" style="background-color: var(--card-background-color); padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://mobendriss.github.io/">
-
-                <div class="grid">
-                    <label for="name">
-                        Nom Complet
-                        <input type="text" id="name" name="name" placeholder="Votre nom" required>
-                    </label>
-                    <label for="email">
-                        Adresse Email
-                        <input type="email" id="email" name="email" placeholder="nom@example.com" required>
-                    </label>
+            <!-- العمود الأيسر: المحتوى الرئيسي والدروس -->
+            <section id="main-content">
+                
+                <!-- صندوق الترحيب البارز المطابق للصورة -->
+                <div class="welcome-box">
+                    <h3>Des cours et des exercices de maths...</h3>
                 </div>
-                <label for="message">Votre Message</label>
-                <textarea id="message" name="message" placeholder="Votre message détaillé..." rows="4" required></textarea>
-                <button type="submit">Envoyer le message</button>
-            </form>
-        </section>
 
+                <p>
+                    Le projet propose aux étudiants des cours de maths, des exercices avec corrections et des ressources rédigées de manière rigoureuse sous LaTeX. Retrouvez des supports complets couvrant l'analyse, l'algèbre et la géométrie.
+                </p>
+
+                <hr>
+
+                <!-- قسم الدروس والتمارين المحدث -->
+                <h2 style="margin-top: 2rem;"><i class="fa-solid fa-graduation-cap"></i> Ressources Disponibles</h2>
+                
+                <div class="course-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Analyse Fonctionnelle</h4>
+                        <span class="badge-academic">Cours & TD</span>
+                    </div>
+                    <p>Espaces de Hilbert, théorèmes de Banach et opérateurs linéaires. Document complet intégrant démonstrations et applications.</p>
+                    <a href="documents/cours/analyse_fonctionnelle.pdf" role="button" style="background-color: var(--accent-color); border: none;"><i class="fa-solid fa-file-pdf"></i> Télécharger le PDF</a>
+                </div>
+
+                <div class="course-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Équations aux Dérivées Partielles</h4>
+                        <span class="badge-academic">Exercices corrigés</span>
+                    </div>
+                    <p>Séries d'exercices d'approfondissement portant sur l'étude des EDP elliptiques et la méthode de séparation des variables.</p>
+                    <a href="documents/exercices/serie_edp.pdf" role="button" class="secondary outline"><i class="fa-solid fa-file-pdf"></i> Télécharger les Exercices</a>
+                </div>
+
+            </section>
+
+            <!-- العمود الأيمن: الجانبي (قناة اليوتيوب والمستجدات) -->
+            <aside id="sidebar">
+                
+                <!-- ويدجت قناة اليوتيوب المخصص -->
+                <div class="sidebar-widget">
+                    <a href="https://youtube.com" target="_blank" class="youtube-btn">
+                        <i class="fa-brands fa-youtube" style="font-size: 1.3rem;"></i>
+                        Chaîne YouTube
+                    </a>
+                </div>
+
+                <!-- صندوق المستجدات (Actualités) -->
+                <div class="sidebar-widget" style="text-align: left;">
+                    <h4 style="margin-top: 0; font-size: 1.1rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem;"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.6;">
+                        <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
+                            <small style="color: var(--accent-color); font-weight: 600;">Juillet 2026</small><br>
+                            Mise en ligne du nouveau cours de Topologie Générale.
+                        </li>
+                        <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
+                            <small style="color: var(--accent-color); font-weight: 600;">Juin 2026</small><br>
+                            Ajout de fiches de révisions pour la préparation des examens de géométrie différentielle.
+                        </li>
+                    </ul>
+                </div>
+
+            </aside>
+
+        </div>
     </main>
 
-    <!-- تذييل الصفحة -->
+    <!-- تذييل الصفحة الأكاديمي الموحد -->
     <footer>
-        <p>© 2026 Mohamed Bendriss. Conçu avec rigueur et passion.</p>
+        <div class="container">
+            <p>© 2026 Mohamed Bendriss. Cours et exercices de mathématiques. Conçu avec rigueur.</p>
+        </div>
     </footer>
 
-    <!-- سكربت تفعيل التبديل التلقائي للمظهر الداكن والمضيء -->
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const htmlElement = document.documentElement;
-        const icon = themeToggle.querySelector('i');
-
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        htmlElement.setAttribute('data-theme', savedTheme);
-        updateIcon(savedTheme);
-
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            htmlElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateIcon(newTheme);
-        });
-
-        function updateIcon(theme) {
-            if (theme === 'dark') {
-                icon.className = 'fa-solid fa-sun';
-            } else {
-                icon.className = 'fa-solid fa-moon';
-            }
-        }
-    </script>
 </body>
 </html>
