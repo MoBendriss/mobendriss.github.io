@@ -42,25 +42,25 @@
             background-color: var(--card-background-color);
         }
 
-        /* واجهة الـ Hero المطورة بالخلفية الرياضية المضيئة */
+        /* واجهة الـ Hero المطورة بالخلفية الرياضية المضيئة المصلحة */
         .hero-clean {
             padding: 7rem 1rem 6rem 1rem;
             text-align: center;
             position: relative;
-            /* استدعاء الصورة الجديدة كخلفية */
+            /* استدعاء الصورة الجديدة كخلفية مع ضبط مسارها */
             background-image: url('images/hero-bg.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-attachment: fixed; /* تأثير حركي راقٍ عند التمرير (Parallax) */
+            background-attachment: scroll; /* تم تعديله لضمان الاستقرار والظهور السريع على كل المتصفحات */
             color: #ffffff;
             border-radius: 16px; /* زوايا دائرية ناعمة للوحة البانر */
             overflow: hidden;
             margin-top: 1.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
 
-        /* طبقة تظليل مدمجة لضمان قراءة النصوص بوضوح ممتاز فوق تفاصيل الصورة */
+        /* طبقة تظليل مدمجة ناعمة وخفيفة جداً لتبرز تفاصيل الخلفية المضيئة بوضوح تام */
         .hero-clean::before {
             content: '';
             position: absolute;
@@ -68,7 +68,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.65) 100%);
+            /* تم تقليل الشفافية لتبدو الخلفية ساطعة وزاهية بالمعادلات الرياضية الملونة */
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.2) 100%);
             z-index: 1;
         }
 
@@ -85,15 +86,15 @@
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 1.5rem;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
             transition: transform 0.3s ease;
         }
         .hero-avatar:hover {
             transform: scale(1.05);
         }
 
-        /* الاسم بخط سيريف كلاسيكي فخم مع ظل ناعم */
+        /* الاسم بخط سيريف كلاسيكي فخم مع ظل ناعم وواضح للقراءة */
         .hero-clean h1 {
             font-family: 'Playfair Display', serif;
             color: #ffffff !important;
@@ -101,31 +102,31 @@
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 0.8rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
         }
 
         /* الوصف الفرعي الأنيق والمريح للعين بلون رمادي فاتح يتلاءم مع الخلفية */
         .hero-clean p.subtitle {
-            color: #cbd5e1 !important;
+            color: #f1f5f9 !important;
             font-size: 1.25rem;
             font-weight: 400;
             max-width: 700px;
             margin: 0 auto 2rem auto;
             line-height: 1.6;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         /* حاوية المعادلة الرياضية بتأثير زجاجي (Glassmorphism) خلاب */
         .hero-clean .math-formula-container {
             display: inline-block;
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             padding: 1rem 3rem;
             color: #f8fafc;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
 
         /* تنسيق بطاقات الدروس والتمارين والمدونة */
@@ -357,7 +358,7 @@
             <div class="grid">
                 <article>
                     <header><strong>Calcul Scientifique (MATLAB / Python)</strong></header>
-                    <p>Résolution numérique de modèles mathématiques, approximation de solutions d'EDP et modélisation de données.</p>
+                    <p>Résolution numérique de modèles mathématiques, approximation de solutions d'EDP et modélisation de بيانات.</p>
                     <footer>
                         <a href="https://github.com/mobendriss" target="_blank" role="button" class="outline">Consulter sur GitHub <i class="fa-brands fa-github"></i></a>
                     </footer>
