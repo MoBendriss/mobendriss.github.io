@@ -135,32 +135,46 @@
             font-size: 1.15rem !important; /* ضبط حجم الأيقونة لتتناسب مع النص */
         }
 
+        /* تعديل بطاقة "Cours" لتظهر بإطار شفاف ونص ملون تماماً كأيقونة التحميل */
         .badge-cours {
-            background-color: var(--primary);
-            color: var(--card-background-color);
+            background-color: transparent;
+            color: #0076b6; /* اللون الأزرق المطابق للأزرار */
+            border: 1px solid #0076b6;
             padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        /* تعديل بطاقة "Exercices" لتظهر بإطار شفاف ونص رمادي داكن هادئ */
         .badge-exercice {
-            background-color: var(--muted-color);
-            color: var(--card-background-color);
+            background-color: transparent;
+            color: #475569;
+            border: 1px solid #475569;
             padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
+        /* تعديل بطاقة "Article" للمدونة */
         .badge-article {
-            background-color: var(--code-background-color);
+            background-color: transparent;
             color: var(--color);
             padding: 0.25rem 0.6rem;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 0.75rem;
             font-weight: 600;
             border: 1px solid var(--muted-border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .theme-toggle-btn {
@@ -206,10 +220,9 @@
     <!-- محتوى الصفحة الرئيسي -->
     <main class="container">
 
-        <!-- الواجهة الجديدة والمطورة: تدمج الشعار/الصورة الشخصية مع التصميم النصي الفاخر -->
+        <!-- الواجهة المدمجة: الشعار/الصورة الشخصية مع التصميم النصي الفاخر والمعادلة الرياضية -->
         <section class="hero-clean">
-            <!-- مساحة مخصصة لشعارك أو صورتك الشخصية. قم بإنشاء مجلد باسم images وضع فيه صورتك باسم logo.png -->
-            <!-- في حال عدم وجود صورة بعد، سيظهر إطار فارغ أنيق تلقائياً وبشكل مؤقت -->
+            <!-- مساحة مخصصة لشعارك أو صورتك الشخصية -->
             <img class="hero-avatar" src="images/logo.png" alt="Mohamed Bendriss" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
             
             <h1>Mohamed Bendriss</h1>
@@ -245,7 +258,7 @@
                 <article class="resource-card">
                     <header style="display: flex; justify-content: space-between; align-items: center;">
                         <strong>Analyse Fonctionnelle</strong>
-                        <span class="badge-cours">Cours</span>
+                        <span class="badge-cours"><i class="fa-solid fa-book"></i> Cours</span>
                     </header>
                     <p>Espaces de Hilbert, de Banach, théorèmes fondamentaux et opérateurs linéaires continus.</p>
                     <footer>
@@ -257,7 +270,7 @@
                 <article class="resource-card">
                     <header style="display: flex; justify-content: space-between; align-items: center;">
                         <strong>TD : Équations aux Dérivées Partielles</strong>
-                        <span class="badge-exercice">Exercices</span>
+                        <span class="badge-exercice"><i class="fa-solid fa-pen-to-square"></i> Exercices</span>
                     </header>
                     <p>Série d'exercices dirigés portant sur la résolution et l'analyse théorique des EDPs elliptiques.</p>
                     <footer>
@@ -269,7 +282,7 @@
                 <article class="resource-card">
                     <header style="display: flex; justify-content: space-between; align-items: center;">
                         <strong>Topologie Générale</strong>
-                        <span class="badge-cours">Cours</span>
+                        <span class="badge-cours"><i class="fa-solid fa-book"></i> Cours</span>
                     </header>
                     <p>Espaces métriques, compacité, connexité et applications fondamentales en analyse.</p>
                     <footer>
@@ -282,7 +295,7 @@
 
         <hr>
 
-        <!-- قسم المدونة (Blog) الجديد والمميز -->
+        <!-- قسم المدونة (Blog) المحدث لفتح ملف الـ PDF مباشرة -->
         <section id="blog">
             <h2><i class="fa-solid fa-pen-nib"></i> Mon Blog Scientifique</h2>
             <p>Articles courts et vulgarisations mathématiques autour de l'analyse et des EDPs :</p>
@@ -293,12 +306,11 @@
                 <article class="blog-card">
                     <header style="display: flex; justify-content: space-between; align-items: center;">
                         <strong>Introduction aux Espaces L<sup>p</sup></strong>
-                        <span class="badge-article">Mathématiques</span>
+                        <span class="badge-article"><i class="fa-solid fa-graduation-cap"></i> Mathématiques</span>
                     </header>
                     <p>Découvrez les bases fondamentales des espaces L<sup>p</sup>, les normes associées et l'inégalité de Hölder expliquée simplement.</p>
                     <footer>
-                        <!-- رابط يشير لصفحة المقال الفرعية -->
-                        <a href="blog/espaces-lp.html" role="button" class="outline"><i class="fa-solid fa-book-open"></i> Lire l'article</a>
+                        <a href="documents/articles/espaces_lp.pdf" target="_blank" role="button" class="outline"><i class="fa-solid fa-file-pdf"></i> Lire l'article (PDF)</a>
                     </footer>
                 </article>
 
