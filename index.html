@@ -11,7 +11,7 @@
     <!-- مكتبة الأيقونات الجمالية -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- خطوط جوجل الاحترافية: Inter للموقع و Playfair Display للاسم الأكاديمي -->
+    <!-- خطوط جوجل الاحترافية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -28,7 +28,6 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
-        /* تخصيصات بصرية مستوحاة من التصميم الأكاديمي والمهني الراقي */
         :root {
             --primary: #0f172a; 
             --primary-hover: #1e293b;
@@ -42,19 +41,23 @@
             background-color: var(--card-background-color);
         }
 
-        /* واجهة الـ Hero المطورة بالخلفية الرياضية المضيئة المصلحة */
+        /* واجهة الـ Hero المطورة بالخلفية الرياضية المضيئة */
         .hero-clean {
             padding: 7rem 1rem 6rem 1rem;
             text-align: center;
             position: relative;
-            /* استدعاء الصورة الجديدة كخلفية مع ضبط مسارها */
-            background-image: url('images/hero-bg.png'); 
+            
+            /* ======================================================== */
+            /* السطر 48: هنا يتم استدعاء صورتك الجديدة بعد تنظيفها وإزالة الشعار */
+            background-image: url('hero-bg.png'); 
+            /* ======================================================== */
+            
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: scroll; /* تم تعديله لضمان الاستقرار والظهور السريع على كل المتصفحات */
             color: #ffffff;
-            border-radius: 16px; /* زوايا دائرية ناعمة للوحة البانر */
+            border-radius: 16px;
             overflow: hidden;
             margin-top: 1.5rem;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
@@ -79,7 +82,7 @@
             z-index: 2;
         }
 
-        /* تصميم حاوية الصورة الشخصية أو الشعار (مظهر دائري فخم) */
+        /* تصميم حاوية الصورة الشخصية أو الشعار */
         .hero-avatar {
             width: 130px;
             height: 130px;
@@ -137,7 +140,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100%; /* تضمن تساوي ارتفاع البطاقات في الشبكة */
+            height: 100%;
         }
         .resource-card:hover, .blog-card:hover {
             transform: translateY(-4px);
@@ -147,7 +150,7 @@
         /* تعديل حجم زر التحميل ليملأ البطاقة بالكامل ويكون متناسقاً */
         .resource-card footer, .blog-card footer {
             padding-top: 1rem;
-            margin-top: auto; /* يدفع الزر دائماً ليكون في أسفل البطاقة بالتساوي */
+            margin-top: auto;
         }
 
         .resource-card footer a[role="button"], .blog-card footer a[role="button"] {
@@ -155,23 +158,23 @@
             align-items: center !important;
             justify-content: center !important;
             gap: 10px !important;
-            width: 100% !important; /* يجبر الزر على التمدد على كامل عرض البطاقة */
+            width: 100% !important;
             box-sizing: border-box !important;
             padding: 0.75rem 1rem !important;
             font-size: 0.95rem !important;
             font-weight: 600 !important;
             border-radius: 6px !important;
-            margin-bottom: 0 !important; /* إزالة أي هوامش سفلية افتراضية */
+            margin-bottom: 0 !important;
         }
 
         .resource-card footer a[role="button"] i, .blog-card footer a[role="button"] i {
-            font-size: 1.15rem !important; /* ضبط حجم الأيقونة لتتناسب مع النص */
+            font-size: 1.15rem !important;
         }
 
-        /* تعديل بطاقة "Cours" لتظهر بإطار شفاف ونص ملون تماماً كأيقونة التحميل */
+        /* تعديل بطاقة "Cours" لتظهر بإطار شفاف ونص ملون */
         .badge-cours {
             background-color: transparent;
-            color: #0076b6; /* اللون الأزرق المطابق للأزرار */
+            color: #0076b6;
             border: 1px solid #0076b6;
             padding: 0.25rem 0.6rem;
             border-radius: 6px;
@@ -182,7 +185,7 @@
             gap: 5px;
         }
 
-        /* تعديل بطاقة "Exercices" لتظهر بإطار شفاف ونص رمادي داكن هادئ */
+        /* تعديل بطاقة "Exercices" */
         .badge-exercice {
             background-color: transparent;
             color: #475569;
@@ -280,7 +283,7 @@
 
         <hr>
 
-        <!-- قسم الدروس والتمارين المترجمة من LaTeX ومحفوظة كـ PDF -->
+        <!-- قسم الدروس والتمارين -->
         <section id="resources">
             <h2><i class="fa-solid fa-book-bookmark"></i> Ressources Pédagogiques (Cours & Exercices)</h2>
             <p>Accédez ci-dessous à mes documents et fiches d'exercices rédigés sous LaTeX :</p>
@@ -328,10 +331,10 @@
 
         <hr>
 
-        <!-- قسم المدونة (Blog) المحدث لفتح ملف الـ PDF مباشرة -->
+        <!-- قسم المدونة -->
         <section id="blog">
             <h2><i class="fa-solid fa-pen-nib"></i> Mon Blog Scientifique</h2>
-            <p>Articles courts et vulgarisations mathématiques autour de l'analyse et des EDPs :</p>
+            <p>Articles cours et vulgarisations mathématiques autour de l'analyse et des EDPs :</p>
             
             <div class="grid">
 
@@ -352,13 +355,13 @@
 
         <hr>
 
-        <!-- قسم المشاريع البرمجية والحوسبة العلمية -->
+        <!-- قسم المشاريع البرمجية -->
         <section id="projects">
             <h2><i class="fa-solid fa-laptop-code"></i> Simulations & Programmation</h2>
             <div class="grid">
                 <article>
                     <header><strong>Calcul Scientifique (MATLAB / Python)</strong></header>
-                    <p>Résolution numérique de modèles mathématiques, approximation de solutions d'EDP et modélisation de بيانات.</p>
+                    <p>Résolution numérique de modèles mathématiques, approximation de solutions d'EDP et modélisation de données.</p>
                     <footer>
                         <a href="https://github.com/mobendriss" target="_blank" role="button" class="outline">Consulter sur GitHub <i class="fa-brands fa-github"></i></a>
                     </footer>
@@ -368,7 +371,7 @@
 
         <hr>
 
-        <!-- نموذج التواصل المربوط ببريدك الهوتمايل مباشرة -->
+        <!-- نموذج التواصل -->
         <section id="contact">
             <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
             <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
@@ -400,7 +403,7 @@
         <p>© 2026 Mohamed Bendriss. Conçu avec rigueur et passion.</p>
     </footer>
 
-    <!-- سكربت جافا سكريبت لتفعيل ميزة التبديل التلقائي للمظهر الداكن والمضيء -->
+    <!-- سكربت تفعيل التبديل التلقائي للمظهر الداكن والمضيء -->
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const htmlElement = document.documentElement;
