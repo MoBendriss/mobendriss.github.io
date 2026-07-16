@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* تخصيصات بصرية مستوحاة من الطابع الرياضي والأكاديمي الأنيق */
+        /* تخصيصات بصرية مستوحاة من التصميم الصافي والأنيق */
         :root {
-            --primary: #1a365d; /* أزرق داكن ملوكي يرمز للمؤسسات الأكاديمية */
-            --primary-hover: #2b6cb0;
-            --background-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --primary: #1e293b; /* أزرق داكن متناسق مع الواجهة الجديدة */
+            --primary-hover: #334155;
         }
 
         /* رأس الصفحة */
@@ -26,53 +25,46 @@
             background-color: var(--card-background-color);
         }
 
-        /* قسم الواجهة المميز بخلفية رياضية ولمسة محاكاة المعادلات */
+        /* تصميم الواجهة المطابق تماماً للصورة المرفقة (Clean Dark Hero Section) */
         .hero-math {
-            background: var(--background-hero);
+            background-color: #0f1c2e; /* اللون الكحلي الداكن الصافي المطابق للصورة */
             color: #ffffff;
-            padding: 5rem 1rem;
+            padding: 4.5rem 1rem;
             text-align: center;
-            border-radius: 16px;
+            border-radius: 8px; /* حواف دائرية خفيفة وأنيقة */
             margin-bottom: 3rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
-        /* تأثير شبكة هندسية خفيفة في الخلفية لتوحي بالرسوم الرياضية */
-        .hero-math::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            opacity: 0.7;
-        }
-
+        /* عنوان الاسم العريض والمطابق للصورة */
         .hero-math h1 {
             color: #ffffff;
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-            position: relative;
-            z-index: 1;
-            font-weight: 800;
-            letter-spacing: 1px;
+            font-size: 3.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
         }
 
-        .hero-math p {
+        /* النصوص الفرعية بلونها الرمادي الفاتح الأنيق */
+        .hero-math p.subtitle {
             color: #94a3b8;
-            font-size: 1.3rem;
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
+            font-size: 1.35rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+
+        /* معادلة اللايتك المنسقة والناعمة أسفل النصوص */
+        .hero-math .math-formula {
+            font-size: 1.15rem;
+            color: #64748b;
+            font-family: "Cambria Math", "Times New Roman", serif;
+            font-style: italic;
         }
 
         /* تنسيق بطاقات الدروس والتمارين */
         .resource-card {
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #0f1c2e;
             transition: transform 0.25s ease, box-shadow 0.25s ease;
             background-color: var(--card-background-color);
         }
@@ -141,11 +133,11 @@
     <!-- محتوى الصفحة الرئيسي -->
     <main class="container">
 
-        <!-- واجهة الموقع الأنيقة (Hero Section) -->
+        <!-- واجهة الموقع المطابقة للصورة المرفقة تماماً -->
         <section class="hero-math">
             <h1>MOHAMED BENDRISS</h1>
-            <p>Analyse Fonctionnelle • Équations aux Dérivées Partielles (EDP) • Didactique</p>
-            <div style="font-size: 1.1rem; color: #64748b; margin-top: 1.5rem; font-family: serif; font-style: italic; position: relative; z-index: 1;">
+            <p class="subtitle">Analyse Fonctionnelle • Équations aux Dérivées Partielles (EDP) • Didactique</p>
+            <div class="math-formula">
                 f(x) = &int; K(x, t) g(t) dt &nbsp;|&nbsp; &Delta;u = 0
             </div>
         </section>
@@ -166,7 +158,7 @@
         <!-- قسم الدروس والتمارين المترجمة من LaTeX ومحفوظة كـ PDF -->
         <section id="resources">
             <h2><i class="fa-solid fa-book-bookmark"></i> Ressources Pédagogiques (Cours & Exercices)</h2>
-            <p>Accédez ci-dessous à mes documents et fiches d'exercices méticuleusement rédigés sous LaTeX :</p>
+            <p>Accédez ci-dessous à mes documents et fiches d'exercices rédigés sous LaTeX :</p>
             
             <div class="grid">
 
