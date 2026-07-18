@@ -44,47 +44,17 @@
             scroll-behavior: smooth;
         }
 
-        /* رأس الصفحة المبتكر: خلفية هندسية برمجية فريدة وبدون صور خارجية */
+        /* رأس الصفحة المطور: دمج صورة سبورة حقيقية غنية بالمعادلات والمنحنيات الملونة */
         .top-banner {
-            background-color: var(--bg-dark-header);
-            /* تأثير الشبكة الرياضية المتقاطعة */
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 20px 20px;
+            /* طبقة داكنة شفافة متدرجة متبوعة برابط صورة سبورة حقيقية عالية الجودة لتظهر فوراً */
+            background-image: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
             color: #ffffff;
             padding: 3.8rem 0;
             border-bottom: 4px solid var(--accent-color);
             position: relative;
-            overflow: hidden;
-        }
-
-        /* إضافة لمسات هندسية دائرية خافتة في الزوايا */
-        .top-banner::before {
-            content: '∫ f(x)dx   ∑ x_n   ∇×E   π ≈ 3.14   ∞';
-            position: absolute;
-            right: 5%;
-            top: 25%;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.04);
-            letter-spacing: 15px;
-            white-space: nowrap;
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .top-banner::after {
-            content: '';
-            position: absolute;
-            bottom: -50px;
-            left: -50px;
-            width: 200px;
-            height: 200px;
-            border: 2px dashed rgba(2, 132, 199, 0.15);
-            border-radius: 50%;
-            pointer-events: none;
         }
 
         .top-banner-content {
@@ -102,19 +72,21 @@
             color: #ffffff !important;
             font-weight: 700;
             letter-spacing: -0.5px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6); /* حماية ووضوح النص فوق تفاصيل السبورة */
         }
 
         .top-banner p {
             margin: 0.5rem 0 0 0;
             font-size: 1.25rem;
-            color: #94a3b8;
+            color: #cbd5e1;
             font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
         }
 
         .header-logo {
             width: 90px;
             height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
             transition: var(--transition-smooth);
         }
         .header-logo:hover {
@@ -339,7 +311,7 @@
 </head>
 <body>
 
-    <!-- رأس الصفحة المطور بنمط الشبكة الهندسية الفريدة -->
+    <!-- رأس الصفحة المطور الذي يعرض سبورة حقيقية مليئة بالرسوم البيانية والمعادلات المعقدة -->
     <div class="top-banner">
         <div class="container top-banner-content">
             <div>
