@@ -29,11 +29,9 @@
 
     <style>
         :root {
-            --bg-dark-header: #1e293b; 
-            --bg-top-header: #0f172a;  
+            --bg-dark-header: #0f172a; 
             --accent-color: #0284c7;    
             --accent-hover: #0369a1;   
-            --light-blue-bg: #f0f9ff;  
             --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
             --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: 'Inter', sans-serif;
@@ -46,24 +44,46 @@
             scroll-behavior: smooth;
         }
 
-        /* رأس الصفحة المطور بتأثير عمق فخم */
+        /* رأس الصفحة المبتكر: خلفية هندسية برمجية فريدة وبدون صور خارجية */
         .top-banner {
-            background: linear-gradient(135deg, var(--bg-top-header) 0%, #1e293b 100%);
+            background-color: var(--bg-dark-header);
+            /* تأثير الشبكة الرياضية المتقاطعة */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
             color: #ffffff;
-            padding: 2.5rem 0;
+            padding: 3.8rem 0;
             border-bottom: 4px solid var(--accent-color);
             position: relative;
             overflow: hidden;
         }
 
+        /* إضافة لمسات هندسية دائرية خافتة في الزوايا */
         .top-banner::before {
+            content: '∫ f(x)dx   ∑ x_n   ∇×E   π ≈ 3.14   ∞';
+            position: absolute;
+            right: 5%;
+            top: 25%;
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.04);
+            letter-spacing: 15px;
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .top-banner::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -20%;
-            width: 60%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(2,132,199,0.15) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed rgba(2, 132, 199, 0.15);
+            border-radius: 50%;
             pointer-events: none;
         }
 
@@ -72,12 +92,12 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
 
         .top-banner h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             margin: 0;
             color: #ffffff !important;
             font-weight: 700;
@@ -85,16 +105,16 @@
         }
 
         .top-banner p {
-            margin: 0.4rem 0 0 0;
-            font-size: 1.2rem;
+            margin: 0.5rem 0 0 0;
+            font-size: 1.25rem;
             color: #94a3b8;
             font-weight: 400;
         }
 
         .header-logo {
-            width: 85px;
+            width: 90px;
             height: auto;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
             transition: var(--transition-smooth);
         }
         .header-logo:hover {
@@ -177,7 +197,6 @@
             }
         }
 
-        /* التبويبات التفاعلية وسلاسة ظهورها */
         .tab-content {
             display: none;
             opacity: 0;
@@ -190,7 +209,6 @@
             transform: translateY(0);
         }
 
-        /* تصميم القوائم المبتكر والفاخر */
         .resource-list {
             list-style: none;
             padding: 0;
@@ -219,7 +237,6 @@
             transition: var(--transition-smooth);
         }
 
-        /* تمييز نوع الملف بلون الشريط الجانبي التفاعلي */
         .resource-item.type-cours:hover::before { background-color: #ef4444; }
         .resource-item.type-td:hover::before { background-color: #0284c7; }
 
@@ -263,7 +280,6 @@
             transform: rotate(360deg);
         }
 
-        /* بطاقات الـ Sidebar الأنيقة */
         .sidebar-widget {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -272,9 +288,6 @@
             margin-bottom: 2rem;
             box-shadow: var(--card-shadow);
             transition: var(--transition-smooth);
-        }
-        .sidebar-widget:hover {
-            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
         }
 
         .math-btn {
@@ -292,12 +305,7 @@
             box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
             transition: var(--transition-smooth);
         }
-        .math-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.3);
-        }
 
-        /* واجهة الاتصال العصرية */
         .contact-section {
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
@@ -312,49 +320,38 @@
             transition: var(--transition-smooth);
         }
 
-        .contact-section input:focus, .contact-section textarea:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
-        }
-
         .contact-section button {
             background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             border: none;
             font-weight: 600;
             border-radius: 8px;
-            padding: 0.8rem 2rem;
-            transition: var(--transition-smooth);
         }
 
         footer {
-            background-color: var(--bg-top-header);
+            background-color: #0f172a;
             color: #64748b;
             padding: 3.5rem 0;
             text-align: center;
             margin-top: 6rem;
             border-top: 4px solid var(--accent-color);
         }
-
-        footer p {
-            margin: 0;
-            font-size: 1rem;
-        }
     </style>
 </head>
 <body>
 
-    <!-- رأس الصفحة العلوي المطور -->
+    <!-- رأس الصفحة المطور بنمط الشبكة الهندسية الفريدة -->
     <div class="top-banner">
         <div class="container top-banner-content">
             <div>
                 <h1>MoBendriss</h1>
                 <p>Cours et exercices de mathématiques</p>
             </div>
+            <!-- الأفاتار الشخصي -->
             <img class="header-logo" src="images/logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
         </div>
     </div>
 
-    <!-- شريط التبويبات والملاحة التفاعلي والزجاجي -->
+    <!-- شريط التبويبات والملاحة التفاعلي السلس -->
     <div class="navigation-bar">
         <div class="container">
             <ul>
@@ -371,7 +368,7 @@
     <main class="container">
         <div class="main-layout">
             
-            <!-- العمود الأيسر (التبويبات السلسة والذكية) -->
+            <!-- العمود الأيسر للمحتوى -->
             <section id="main-content">
                 
                 <!-- تـبـويـب: الصفحة الرئيسية (Accueil) -->
@@ -385,7 +382,7 @@
 
                 <!-- تـبـويـب: السنة الأولى (Première année) -->
                 <div id="content-premiere-annee" class="tab-content">
-                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Première Année - Ressources</h2>
+                    <h2 style="color: #0f172a; font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Première Année - Ressources</h2>
                     <p style="color: #64748b;">Cliquez directement sur le titre du document pour lancer le téléchargement instantané.</p>
                     
                     <h3 style="font-size: 1.3rem; margin-top: 2rem; color: #334155;"><i class="fa-solid fa-book" style="color: #ef4444;"></i> Cours (PDF)</h3>
@@ -411,7 +408,7 @@
 
                 <!-- تـبـويـب: السنة الثانية (Deuxième année) -->
                 <div id="content-deuxieme-annee" class="tab-content">
-                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Deuxième Année - Ressources</h2>
+                    <h2 style="color: #0f172a; font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Deuxième Année - Ressources</h2>
                     <p style="color: #64748b;">Documents et supports avancés pour le deuxième niveau universitaire.</p>
                     
                     <h3 style="font-size: 1.3rem; margin-top: 2rem; color: #334155;"><i class="fa-solid fa-book" style="color: #ef4444;"></i> Cours (PDF)</h3>
@@ -427,11 +424,11 @@
 
                 <!-- تـبـويـب: السنة الثالثة (Troisième année) -->
                 <div id="content-troisieme-annee" class="tab-content">
-                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Troisième Année - Ressources</h2>
+                    <h2 style="color: #0f172a; font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Troisième Année - Ressources</h2>
                     <p style="color: #64748b;">Espace réservé aux modules de spécialité et d'approfondissement.</p>
                 </div>
 
-                <!-- تـبـويـب: الاتصال (Contact) المطور -->
+                <!-- تـبـويـب: الاتصال (Contact) -->
                 <div id="content-contact" class="tab-content">
                     <section class="contact-section">
                         <h2 style="margin-top: 0; font-weight: 600;"><i class="fa-solid fa-paper-plane" style="color: var(--accent-color);"></i> Contact direct</h2>
@@ -452,7 +449,7 @@
 
             </section>
 
-            <!-- العمود الأيمن الجانبي الثابت والأنيق -->
+            <!-- العمود الأيمن الجانبي الثابت -->
             <aside id="sidebar">
                 <div class="sidebar-widget">
                     <a onclick="switchTab('premiere-annee')" class="math-btn" style="cursor:pointer;">
@@ -462,7 +459,7 @@
                 </div>
 
                 <div class="sidebar-widget" style="text-align: left;">
-                    <h4 style="margin-top: 0; font-size: 1.2rem; font-weight: 600; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.6rem; color: var(--bg-top-header);"><i class="fa-solid fa-bullhorn" style="color: var(--accent-color);"></i> Actualités</h4>
+                    <h4 style="margin-top: 0; font-size: 1.2rem; font-weight: 600; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.6rem; color: #0f172a;"><i class="fa-solid fa-bullhorn" style="color: var(--accent-color);"></i> Actualités</h4>
                     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
                         <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.6rem;">
                             <small style="color: var(--accent-color); font-weight: 600;">Juillet 2026</small><br>
@@ -481,18 +478,14 @@
         </div>
     </footer>
 
-    <!-- سكربت جافا سكريبت الذكي والمطور لإضافة حركية وسلاسة أثناء الانتقال -->
+    <!-- سكربت التبويبات التفاعلي السلس -->
     <script>
         function switchTab(tabId) {
-            // 1. إزالة الحالة النشطة من كل الأزرار
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-            
-            // 2. تفعيل الزر المختار
             document.getElementById('tab-' + tabId).classList.add('active');
             
-            // 3. إخفاء المحتوى السابق مع تأثير التلاشي الناعم
             const activeContent = document.querySelector('.tab-content.active-content');
             if (activeContent) {
                 activeContent.style.opacity = '0';
@@ -500,7 +493,7 @@
                 setTimeout(() => {
                     activeContent.classList.remove('active-content');
                     showNewContent(tabId);
-                }, 200); // يتوافق مع سرعة التلاشي
+                }, 200);
             } else {
                 showNewContent(tabId);
             }
@@ -509,13 +502,10 @@
         function showNewContent(tabId) {
             const newContent = document.getElementById('content-' + tabId);
             newContent.classList.add('active-content');
-            // تأخير بسيط جداً لضمان عمل الـ CSS transition بسلاسة
             setTimeout(() => {
                 newContent.style.opacity = '1';
                 newContent.style.transform = 'translateY(0)';
             }, 50);
-            
-            // تمرير الشاشة للأعلى بسلاسة
             window.scrollTo({ top: 120, behavior: 'smooth' });
         }
     </script>
