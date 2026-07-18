@@ -14,7 +14,7 @@
     <!-- خطوط جوجل الاحترافية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2=family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- مكتبة MathJax لعرض المعادلات الرياضية بأعلى جودة أكاديمية -->
     <script>
@@ -29,7 +29,6 @@
 
     <style>
         :root {
-            /* نظام ألوان أكاديمي هادئ وفخم */
             --bg-dark-header: #334155; 
             --bg-top-header: #1e293b;  
             --accent-color: #0284c7;    
@@ -45,7 +44,6 @@
             scroll-behavior: smooth;
         }
 
-        /* رأس الصفحة العلوي */
         .top-banner {
             background-color: var(--bg-top-header);
             color: #ffffff;
@@ -73,14 +71,9 @@
             color: #cbd5e1;
         }
 
-        /* شعار الهيدر */
         .header-logo {
             width: 80px;
             height: auto;
-            transition: transform 0.3s ease;
-        }
-        .header-logo:hover {
-            transform: scale(1.05);
         }
 
         /* شريط التبويبات والملاحة */
@@ -102,11 +95,6 @@
             overflow-x: auto;
         }
 
-        .navigation-bar li {
-            margin: 0;
-            padding: 0;
-        }
-
         .navigation-bar a {
             display: block;
             padding: 1rem 1.5rem;
@@ -114,9 +102,10 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
-            transition: background-color 0.2s ease, color 0.2s ease;
+            transition: background-color 0.2s ease;
             border-bottom: 3px solid transparent;
             white-space: nowrap;
+            cursor: pointer;
         }
 
         .navigation-bar a:hover {
@@ -130,7 +119,6 @@
             border-bottom: 3px solid var(--accent-hover);
         }
 
-        /* صندوق الترحيب البارز */
         .welcome-box {
             background-color: var(--light-blue-bg);
             border-left: 5px solid var(--accent-color);
@@ -139,14 +127,6 @@
             margin-bottom: 2rem;
         }
 
-        .welcome-box h3 {
-            color: var(--bg-top-header);
-            margin: 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        /* تقسيم الشبكة الجانبية */
         .main-layout {
             display: grid;
             grid-template-columns: 2.5fr 1fr;
@@ -160,7 +140,57 @@
             }
         }
 
-        /* الصندوق الجانبي */
+        /* نظام إخفاء وإظهار المحتوى المعتمد على التبويب النشط */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active-content {
+            display: block;
+        }
+
+        /* تصميم قائمة الدروس والتمارين القابلة للتحميل بالنقر */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 2rem 0;
+        }
+
+        .resource-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            margin-bottom: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .resource-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            color: #334155;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .resource-item:hover {
+            border-color: var(--accent-color);
+            background-color: #f8fafc;
+            transform: translateX(4px);
+        }
+
+        .resource-item:hover a {
+            color: var(--accent-color);
+        }
+
+        .download-icon {
+            color: #94a3b8;
+            transition: color 0.2s;
+        }
+        .resource-item:hover .download-icon {
+            color: var(--accent-color);
+        }
+
         .sidebar-widget {
             background: #ffffff;
             border: 1px solid #e2e8f0;
@@ -168,10 +198,8 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* زر الرياضيات */
         .math-btn {
             display: inline-flex;
             align-items: center;
@@ -184,64 +212,14 @@
             text-decoration: none;
             font-weight: 600;
             width: 100%;
-            transition: background-color 0.2s, transform 0.2s;
-        }
-        .math-btn:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
         }
 
-        /* بطاقات الدروس والتمارين */
-        .course-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .course-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .badge-academic {
-            font-size: 0.8rem;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            font-weight: 600;
-            background-color: #f1f5f9;
-            color: #475569;
-            border: 1px solid #cbd5e1;
-        }
-
-        /* تصميم واجهة الاتصال */
         .contact-section {
             margin-top: 3rem;
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
             padding: 2.5rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-
-        .contact-section h2 {
-            font-size: 1.8rem;
-            color: var(--bg-top-header);
-            margin-bottom: 1rem;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-        }
-
-        .contact-section button {
-            background-color: var(--accent-color);
-            border: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-        .contact-section button:hover {
-            background-color: var(--accent-hover);
         }
 
         footer {
@@ -251,11 +229,6 @@
             text-align: center;
             margin-top: 5rem;
             border-top: 4px solid var(--accent-color);
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -272,136 +245,150 @@
         </div>
     </div>
 
-    <!-- شريط التبويبات والملاحة -->
+    <!-- شريط التبويبات والملاحة التفاعلي -->
     <div class="navigation-bar">
         <div class="container">
             <ul>
-                <li><a href="#accueil" class="active">Accueil</a></li>
-                <li><a href="#premiere-annee">Première année</a></li>
-                <li><a href="#deuxieme-annee">Deuxième année</a></li>
-                <li><a href="#troisieme-annee">Troisième année</a></li>
-                <li><a href="#enseignants">Pour les enseignants</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a onclick="switchTab('accueil')" id="tab-accueil" class="nav-link active">Accueil</a></li>
+                <li><a onclick="switchTab('premiere-annee')" id="tab-premiere-annee" class="nav-link">Première année</a></li>
+                <li><a onclick="switchTab('deuxieme-annee')" id="tab-deuxieme-annee" class="nav-link">Deuxième année</a></li>
+                <li><a onclick="switchTab('troisieme-annee')" id="tab-troisieme-annee" class="nav-link">Troisième année</a></li>
+                <li><a onclick="switchTab('contact')" id="tab-contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </div>
 
-    <!-- الشبكة الهيكلية ثنائية الأعمدة -->
+    <!-- الهيكل الرئيسي للمحتوى -->
     <main class="container">
         <div class="main-layout">
             
-            <!-- العمود الأيسر -->
+            <!-- العمود الأيسر (يتغير محتواه حسب التبويب المختار) -->
             <section id="main-content">
                 
-                <!-- صندوق الترحيب البارز -->
-                <div class="welcome-box" id="accueil">
-                    <h3>Des cours et des exercices de maths...</h3>
-                </div>
-
-                <p>
-                    Le projet propose aux étudiants des cours de maths, des exercices avec corrections et des ressources rédigées de manière rigoureuse sous LaTeX. Retrouvez des supports complets couvrant l'analyse, l'algèbre et la géométrie.
-                </p>
-
-                <hr>
-
-                <!-- قسم الدروس والتمارين -->
-                <h2 style="margin-top: 2rem;"><i class="fa-solid fa-graduation-cap"></i> Ressources Disponibles</h2>
-                
-                <!-- تم هنا ربط مسار ملفك الجديد بنجاح وتحديث النصوص لتناسب درس المنطق الرياضي -->
-                <div class="course-card" id="premiere-annee">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Notions de Logique</h4>
-                        <span class="badge-academic">Cours & TD</span>
+                <!-- تـبـويـب: الصفحة الرئيسية (Accueil) -->
+                <div id="content-accueil" class="tab-content active-content">
+                    <div class="welcome-box">
+                        <h3>Des cours et des exercices de maths...</h3>
                     </div>
-                    <p>Introduction aux connecteurs logiques, quantificateurs, et types de raisonnements mathématiques (récurrence, l'absurde, contraposition).</p>
-                    <a href="documents/cours/1SC_cours1_logique.pdf" download role="button" style="background-color: var(--accent-color); border: none;">
-                        <i class="fa-solid fa-file-pdf"></i> Télécharger le PDF
-                    </a>
+                    <p>Bienvenue sur mon espace académique. Vous trouverez ici l'ensemble de mes supports de cours, fiches de travaux dirigés (TD) et exercices corrigés mis à disposition pour les étudiants.</p>
+                    <p>Cliquez sur les onglets ci-dessus pour accéder directement aux documents téléchargeables de votre niveau.</p>
                 </div>
 
-                <div class="course-card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Équations aux Dérivées Partielles</h4>
-                        <span class="badge-academic">Exercices corrigés</span>
-                    </div>
-                    <p>Séries d'exercices d'approfondissement portant sur l'étude des EDP elliptiques et la méthode de séparation des variables.</p>
-                    <a href="documents/exercices/serie_edp.pdf" role="button" class="secondary outline"><i class="fa-solid fa-file-pdf"></i> Télécharger les Exercices</a>
-                </div>
-
-                <!-- واجهة الاتصال -->
-                <section id="contact" class="contact-section">
-                    <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
-                    <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
+                <!-- تـبـويـب: السنة الأولى (Première année) -->
+                <div id="content-premiere-annee" class="tab-content">
+                    <h2><i class="fa-solid fa-folder-open"></i> Première Année - Ressources</h2>
+                    <p>Cliquez directement sur le titre du cours ou de l'exercice pour lancer le téléchargement instantané.</p>
                     
-                    <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://mobendriss.github.io/">
+                    <h3><i class="fa-solid fa-book"></i> Cours (PDF)</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 10px;"></i> Notions de Logique</span>
+                                <i class="fa-solid fa-download download-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
 
-                        <div class="grid">
-                            <label for="name">
-                                Nom Complet
-                                <input type="text" id="name" name="name" placeholder="Votre nom" required>
-                            </label>
-                            <label for="email">
-                                Adresse Email
-                                <input type="email" id="email" name="email" placeholder="nom@example.com" required>
-                            </label>
-                        </div>
-                        <label for="message">Votre Message</label>
-                        <textarea id="message" name="message" placeholder="Votre message détaillé..." rows="4" required></textarea>
-                        <button type="submit">Envoyer le message</button>
-                    </form>
-                </section>
+                    <h3><i class="fa-solid fa-file-lines"></i> Exercices & TD (PDF)</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #0284c7; margin-right: 10px;"></i> TD 1 : Logique et Raisonnements</span>
+                                <i class="fa-solid fa-download download-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- تـبـويـب: السنة الثانية (Deuxième année) -->
+                <div id="content-deuxieme-annee" class="tab-content">
+                    <h2><i class="fa-solid fa-folder-open"></i> Deuxième Année - Ressources</h2>
+                    <p>Documents et supports avancés pour le deuxième niveau universitaire.</p>
+                    
+                    <h3><i class="fa-solid fa-book"></i> Cours (PDF)</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item">
+                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 10px;"></i> Analyse Fonctionnelle الأكاديمي</span>
+                                <i class="fa-solid fa-download download-icon"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- تـبـويـب: السنة الثالثة (Troisième année) -->
+                <div id="content-troisieme-annee" class="tab-content">
+                    <h2><i class="fa-solid fa-folder-open"></i> Troisième Année - Ressources</h2>
+                    <p>Espace réservé aux modules de spécialité et d'approfondissement.</p>
+                </div>
+
+                <!-- تـبـويـب: الاتصال (Contact) -->
+                <div id="content-contact" class="tab-content">
+                    <section class="contact-section" style="margin-top:0;">
+                        <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
+                        <p>Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
+                        <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
+                            <div class="grid">
+                                <label>Nom Complet <input type="text" name="name" required></label>
+                                <label>Adresse Email <input type="email" name="email" required></label>
+                            </div>
+                            <label>Votre Message</label>
+                            <textarea name="message" rows="4" required></textarea>
+                            <button type="submit" style="background-color: var(--accent-color); border:none;">Envoyer</button>
+                        </form>
+                    </section>
+                </div>
 
             </section>
 
-            <!-- العمود الأيمن الجانبي -->
+            <!-- العمود الأيمن الجانبي الثابت -->
             <aside id="sidebar">
-                
-                <!-- زر الرياضيات -->
                 <div class="sidebar-widget">
-                    <a href="#premiere-annee" class="math-btn">
+                    <a onclick="switchTab('premiere-annee')" class="math-btn" style="cursor:pointer;">
                         <i class="fa-solid fa-infinity" style="font-size: 1.3rem;"></i>
                         Mathématiques
                     </a>
                 </div>
 
-                <!-- صندوق المستجدات -->
                 <div class="sidebar-widget" style="text-align: left;">
                     <h4 style="margin-top: 0; font-size: 1.1rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem;"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
                     <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.6;">
                         <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
                             <small style="color: var(--accent-color); font-weight: 600;">Juillet 2026</small><br>
-                            Mise en ligne du nouveau cours de Topologie Générale.
-                        </li>
-                        <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
-                            <small style="color: var(--accent-color); font-weight: 600;">Juin 2026</small><br>
-                            Ajout de fiches de révisions pour la préparation des examens de géométrie différentielle.
+                            Mise en ligne du cours de Logique pour la première année.
                         </li>
                     </ul>
                 </div>
-
             </aside>
 
         </div>
     </main>
 
-    <!-- تذييل الصفحة -->
     <footer>
         <div class="container">
             <p>Copyright © 2026 MoBendriss. Tous droits réservés. Conçu avec rigueur.</p>
         </div>
     </footer>
 
-    <!-- سكربت تبديل التبويب النشط -->
+    <!-- سكربت جافا سكريبت الذكي للتحكم بالتبويبات دون تحديث الصفحة -->
     <script>
-        const links = document.querySelectorAll('.navigation-bar a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                links.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+        function switchTab(tabId) {
+            // 1. إزالة الحالة النشطة من كل الأزرار
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
             });
-        });
+            // 2. إخفاء كل المحتويات
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active-content');
+            });
+            
+            // 3. تفعيل الزر والمحتوى المختار فقط
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('content-' + tabId).classList.add('active-content');
+            
+            // التمرير لأعلى المحتوى بسلاسة عند التغيير
+            window.scrollTo({ top: 150, behavior: 'smooth' });
+        }
     </script>
 
 </body>
