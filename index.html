@@ -1,5 +1,782 @@
 <!DOCTYPE html>
+<html lang="fr" dir="ltr" data-theme="light"><!DOCTYPE html>
 <html lang="fr" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoBendriss | Cours et exercices de mathématiques</title>
+    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
+    <meta name="theme-color" content="#132038">
+    <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
+    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23132038'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle' fill='%23E7A947' font-family='Georgia,serif'%3E∫%3C/text%3E%3C/svg%3E">
+
+    <!-- Icônes utilitaires -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Typographie : une serif d'écriture pour l'identité, une sans pour la lecture, une mono pour les repères techniques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Rendu des formules mathématiques -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: { enableMenu: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* ===== Système de tokens ===== */
+        :root {
+            --ink: #132038;           /* encre — fond du bandeau, texte principal */
+            --ink-soft: #47536B;      /* encre adoucie — texte secondaire */
+            --paper: #FBF8F2;         /* papier — fond de page */
+            --paper-line: #E4DFCF;    /* ligne de cahier / séparateurs discrets */
+            --card: #FFFFFF;
+            --chalk-blue: #2C6E8E;    /* accent principal — bleu craie */
+            --chalk-blue-deep: #1F5670;
+            --ochre: #B8791A;         /* accent secondaire — craie ocre, réservé aux TD */
+            --rust: #A23B3B;          /* accent tertiaire — réservé aux cours */
+            --focus: #E7A947;
+
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+            --shadow-1: 0 1px 2px rgba(19, 32, 56, 0.05), 0 6px 16px -8px rgba(19, 32, 56, 0.12);
+            --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, 0.28);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background: var(--paper);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        a { color: inherit; }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+        }
+
+        /* Lien d'évitement pour le clavier / lecteurs d'écran */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: var(--focus);
+            color: var(--ink);
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            z-index: 1000;
+            border-radius: 0 0 6px 0;
+        }
+        .skip-link:focus { left: 0; }
+
+        :focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+            }
+        }
+
+        /* ===== Bandeau d'en-tête ===== */
+        .top-banner {
+            position: relative;
+            background: var(--ink);
+            padding: 4.5rem 0 3.75rem;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(231, 169, 71, 0.35);
+        }
+
+        /* Papier quadrillé, en pur CSS — le motif de travail du mathématicien plutôt qu'une photo de tableau générique */
+        .top-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(231, 169, 71, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(231, 169, 71, 0.08) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 40%, transparent 90%);
+        }
+
+        /* Glyphes mathématiques en filigrane — matière visuelle tirée du sujet lui-même */
+        .banner-glyphs {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .banner-glyphs span {
+            position: absolute;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: rgba(231, 169, 71, 0.14);
+            line-height: 1;
+            user-select: none;
+        }
+        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; transform: rotate(-8deg); }
+        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; transform: rotate(6deg); }
+        .g3 { top: 2rem; right: 26%; font-size: 4rem; color: rgba(255,255,255,0.08); display: none; }
+
+        @media (min-width: 860px) { .g3 { display: block; } }
+
+        .banner-formula {
+            position: absolute;
+            right: 4%;
+            top: 1.4rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.28);
+            max-width: 320px;
+            text-align: right;
+            display: none;
+        }
+        @media (min-width: 980px) { .banner-formula { display: block; } }
+
+        .top-banner-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--focus);
+            margin: 0 0 0.9rem;
+        }
+
+        .top-banner h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.6rem, 5vw, 3.75rem);
+            font-weight: 600;
+            margin: 0;
+            color: #FBF8F2;
+            letter-spacing: -0.01em;
+        }
+
+        .top-banner p.tagline {
+            margin: 0.6rem 0 0;
+            font-size: 1.15rem;
+            color: #C9D2E0;
+            font-weight: 400;
+        }
+
+        .header-avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            border: 2px solid rgba(231, 169, 71, 0.55);
+            padding: 3px;
+            background: rgba(255,255,255,0.03);
+        }
+        .header-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ===== Navigation — onglets académiques ===== */
+        .navigation-bar {
+            background: #0F1A2E;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .navigation-bar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .navigation-bar li { flex-shrink: 0; }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 1.05rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #A9B4C7;
+            font: inherit;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+        }
+
+        .nav-code {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.08);
+            color: #C9D2E0;
+        }
+
+        .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
+
+        .nav-link[aria-selected="true"] {
+            color: #FFFFFF;
+            border-bottom-color: var(--focus);
+        }
+        .nav-link[aria-selected="true"] .nav-code {
+            background: var(--focus);
+            color: var(--ink);
+        }
+
+        /* ===== Mise en page principale ===== */
+        main { padding-top: 2.75rem; padding-bottom: 5rem; }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.4fr 1fr;
+            gap: 2.75rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active-content {
+            display: block;
+            animation: rise 0.4s var(--ease);
+        }
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Encadré « résumé » — comme le chapeau d'un article académique */
+        .abstract-box {
+            border: 1px solid var(--paper-line);
+            border-left: 4px solid var(--chalk-blue);
+            background: var(--card);
+            padding: 1.9rem 2rem;
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+            margin-bottom: 2.25rem;
+        }
+        .abstract-box h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--ink);
+            margin: 0 0 0.6rem;
+        }
+        .abstract-box p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        .page-lead p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 0 0 0.3rem;
+        }
+        .section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
+
+        .section-sub {
+            color: var(--ink-soft);
+            margin: 0 0 1.6rem;
+            font-size: 0.98rem;
+        }
+
+        .group-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin: 2.25rem 0 0.9rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--paper-line);
+        }
+
+        /* ===== Fiches ressources — effet « feuille détachée d'un bloc » ===== */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .resource-item {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+        }
+
+        .resource-item::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 9px;
+            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
+            background-size: 20px 9px;
+            background-repeat: repeat-x;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-2);
+            border-color: #D8D0BC;
+        }
+
+        .resource-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.15rem 1.35rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .resource-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.28rem 0.5rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
+        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
+
+        .resource-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .download-icon {
+            background: var(--paper);
+            color: var(--ink-soft);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.3s var(--ease);
+        }
+        .type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
+        .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
+
+        .empty-note {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            border: 1px dashed var(--paper-line);
+            border-radius: 4px;
+            padding: 1.4rem;
+            background: rgba(44, 110, 142, 0.03);
+        }
+
+        /* ===== Barre latérale ===== */
+        .sidebar-widget {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 4px;
+            padding: 1.6rem;
+            margin-bottom: 1.6rem;
+            box-shadow: var(--shadow-1);
+        }
+
+        .math-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--ink);
+            color: #fff;
+            padding: 1rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s var(--ease);
+        }
+        .math-btn:hover { background: var(--chalk-blue-deep); }
+        .math-btn i { color: var(--focus); font-size: 1.25rem; }
+
+        .widget-title {
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px dashed var(--paper-line);
+        }
+        .widget-title i { color: var(--chalk-blue); }
+
+        .news-list { list-style: none; margin: 0; padding: 0; }
+        .news-item {
+            border-bottom: 1px dashed var(--paper-line);
+            padding: 0.85rem 0;
+        }
+        .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .news-item:first-child { padding-top: 0; }
+        .news-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--chalk-blue-deep);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+
+        /* ===== Contact — style « fiche » administrative ===== */
+        .contact-section {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-1);
+        }
+        @media (min-width: 640px) { .contact-section { padding: 3rem; } }
+
+        .contact-section h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin: 0 0 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .contact-section h2 i { color: var(--chalk-blue); }
+        .contact-section > p { color: var(--ink-soft); margin: 0 0 2.25rem; }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
+
+        .field label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 0.55rem;
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 0.65rem 0.1rem;
+            border: none;
+            border-bottom: 2px solid var(--paper-line);
+            background: transparent;
+            color: var(--ink);
+            border-radius: 0;
+            transition: border-color 0.2s var(--ease);
+        }
+        .field textarea { resize: vertical; min-height: 110px; }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--chalk-blue);
+            outline: none;
+        }
+        .field input::placeholder,
+        .field textarea::placeholder { color: #A6ADBB; }
+
+        .submit-row { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
+
+        .submit-btn {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 0.98rem;
+            padding: 0.85rem 1.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
+
+        /* ===== Pied de page ===== */
+        footer {
+            background: var(--ink);
+            color: #8996AC;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(231, 169, 71, 0.3);
+        }
+        footer p {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+        }
+        footer .foot-accent { color: var(--focus); }
+    </style>
+</head>
+<body>
+
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+
+    <!-- En-tête -->
+    <header class="top-banner">
+        <div class="banner-glyphs" aria-hidden="true">
+            <span class="g1">∫</span>
+            <span class="g2">∑</span>
+            <span class="g3">π</span>
+        </div>
+        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
+        <div class="container top-banner-content">
+            <div>
+                <p class="eyebrow">Enseignant-chercheur en mathématiques</p>
+                <h1>MoBendriss</h1>
+                <p class="tagline">Cours et exercices de mathématiques</p>
+            </div>
+            <div class="header-avatar">
+                <img src="images/logo.png" alt="Portrait de MoBendriss" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navigation-bar" aria-label="Sections du site">
+        <div class="container">
+            <ul role="tablist">
+                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
+                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> Troisième année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="main-layout">
+
+            <section id="main-content">
+
+                <!-- Accueil -->
+                <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
+                    <div class="abstract-box">
+                        <h3>Des cours et des exercices de maths, classés par niveau.</h3>
+                        <p>Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
+                    </div>
+                    <div class="page-lead">
+                        <p>Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.</p>
+                    </div>
+                </div>
+
+                <!-- Première année -->
+                <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Première année — L1</h2>
+                    <p class="section-sub">Cliquez sur un document pour lancer le téléchargement.</p>
+
+                    <h3 class="group-label">Cours</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">COURS</span> Notions de logique</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label">Exercices &amp; TD</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-td">
+                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">TD 1</span> Logique et raisonnements</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Deuxième année -->
+                <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Deuxième année — L2</h2>
+                    <p class="section-sub">Documents et supports pour le deuxième niveau universitaire.</p>
+
+                    <h3 class="group-label">Cours</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">COURS</span> Analyse fonctionnelle</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Troisième année -->
+                <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
+                    <h2 class="section-heading"><i class="fa-solid fa-award"></i> Troisième année — L3</h2>
+                    <p class="section-sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
+                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                </div>
+
+                <!-- Contact -->
+                <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
+                    <section class="contact-section">
+                        <h2><i class="fa-solid fa-paper-plane"></i> Contact direct</h2>
+                        <p>Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
+                        <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label for="name">Nom complet</label>
+                                    <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                                </div>
+                                <div class="field">
+                                    <label for="email">Adresse e-mail</label>
+                                    <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="message">Votre message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required></textarea>
+                            </div>
+                            <div class="submit-row">
+                                <button type="submit" class="submit-btn">Envoyer le message <i class="fa-regular fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+            </section>
+
+            <!-- Barre latérale -->
+            <aside id="sidebar">
+                <div class="sidebar-widget">
+                    <button class="math-btn" onclick="switchTab('premiere-annee')">
+                        <i class="fa-solid fa-infinity"></i> Mathématiques
+                    </button>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <span class="news-date">JUILLET 2026</span>
+                            <p>Mise en ligne du cours de logique pour la première année.</p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 MoBendriss. Tous droits réservés. <span class="foot-accent">Conçu avec rigueur.</span></p>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.setAttribute('aria-selected', 'false');
+            });
+            document.getElementById('tab-' + tabId).setAttribute('aria-selected', 'true');
+
+            document.querySelectorAll('.tab-content').forEach(panel => {
+                panel.classList.remove('active-content');
+            });
+            document.getElementById('content-' + tabId).classList.add('active-content');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
