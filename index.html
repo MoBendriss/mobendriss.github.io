@@ -15,7 +15,7 @@
     <!-- Icônes utilitaires -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Typographie -->
+    <!-- Typographie : une serif d'écriture pour l'identité, une sans pour la lecture, une mono pour les repères techniques -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,15 +35,15 @@
     <style>
         /* ===== Système de tokens ===== */
         :root {
-            --ink: #132038;
-            --ink-soft: #47536B;
-            --paper: #FBF8F2;
-            --paper-line: #E4DFCF;
+            --ink: #132038;           /* encre — fond du bandeau, texte principal */
+            --ink-soft: #47536B;      /* encre adoucie — texte secondaire */
+            --paper: #FBF8F2;         /* papier — fond de page */
+            --paper-line: #E4DFCF;    /* ligne de cahier / séparateurs discrets */
             --card: #FFFFFF;
-            --chalk-blue: #2C6E8E;
+            --chalk-blue: #2C6E8E;    /* accent principal — bleu craie */
             --chalk-blue-deep: #1F5670;
-            --ochre: #B8791A;
-            --rust: #A23B3B;
+            --ochre: #B8791A;         /* accent secondaire — craie ocre, réservé aux TD */
+            --rust: #A23B3B;          /* accent tertiaire — réservé aux cours */
             --focus: #E7A947;
 
             --font-display: 'Fraunces', Georgia, serif;
@@ -56,17 +56,34 @@
         }
 
         * { box-sizing: border-box; }
+
         html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
+            position: relative;
             font-family: var(--font-body);
             background: var(--paper);
             color: var(--ink);
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Grain de papier très subtil — donne une texture tactile au fond */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+            opacity: 0.035;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header, nav, main, footer { position: relative; z-index: 1; }
+
         img { max-width: 100%; display: block; }
+
         a { color: inherit; }
 
         .container {
@@ -75,6 +92,7 @@
             padding: 0 1.75rem;
         }
 
+        /* Lien d'évitement pour le clavier / lecteurs d'écran */
         .skip-link {
             position: absolute;
             left: -999px;
@@ -110,6 +128,7 @@
             border-bottom: 1px solid rgba(231, 169, 71, 0.35);
         }
 
+        /* Papier quadrillé, en pur CSS — le motif de travail du mathématicien plutôt qu'une photo de tableau générique */
         .top-banner::before {
             content: '';
             position: absolute;
@@ -121,6 +140,7 @@
             mask-image: radial-gradient(ellipse 90% 100% at 50% 0%, black 40%, transparent 90%);
         }
 
+        /* Glyphes mathématiques en filigrane — matière visuelle tirée du sujet lui-même */
         .banner-glyphs {
             position: absolute;
             inset: 0;
@@ -131,15 +151,24 @@
             position: absolute;
             font-family: var(--font-display);
             font-style: italic;
-            color: rgba(231, 169, 71, 0.14);
+            color: rgba(231, 169, 71, 0.16);
             line-height: 1;
             user-select: none;
+            animation: drift 9s ease-in-out infinite;
         }
-        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; transform: rotate(-8deg); }
-        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; transform: rotate(6deg); }
-        .g3 { top: 2rem; right: 26%; font-size: 4rem; color: rgba(255,255,255,0.08); display: none; }
+        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; --r: -8deg; animation-delay: 0s; }
+        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; --r: 6deg; animation-delay: -3s; }
+        .g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.09); --r: -4deg; display: none; animation-delay: -6s; }
+        .g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231, 169, 71, 0.1); --r: 10deg; display: none; animation-delay: -1.5s; }
+        .g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.07); --r: -6deg; display: none; animation-delay: -4.5s; }
 
-        @media (min-width: 860px) { .g3 { display: block; } }
+        @media (min-width: 860px) { .g3, .g4 { display: block; } }
+        @media (min-width: 1100px) { .g5 { display: block; } }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(var(--r)); }
+            50% { transform: translateY(-10px) rotate(var(--r)); }
+        }
 
         .banner-formula {
             position: absolute;
@@ -203,7 +232,7 @@
             object-fit: cover;
         }
 
-        /* ===== Navigation ===== */
+        /* ===== Navigation — onglets académiques ===== */
         .navigation-bar {
             background: #0F1A2E;
             position: sticky;
@@ -219,7 +248,19 @@
             padding: 0;
             overflow-x: auto;
             scrollbar-width: thin;
+            position: relative;
         }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            background: var(--focus);
+            border-radius: 2px 2px 0 0;
+            transition: left 0.35s var(--ease), width 0.35s var(--ease);
+            pointer-events: none;
+        }
+        .navigation-bar li[aria-hidden="true"] { width: 0; height: 0; overflow: visible; }
 
         .navigation-bar li { flex-shrink: 0; }
 
@@ -238,7 +279,7 @@
             font-size: 0.95rem;
             white-space: nowrap;
             cursor: pointer;
-            transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+            transition: color 0.25s var(--ease), background 0.25s var(--ease);
         }
 
         .nav-code {
@@ -255,14 +296,13 @@
 
         .nav-link[aria-selected="true"] {
             color: #FFFFFF;
-            border-bottom-color: var(--focus);
         }
         .nav-link[aria-selected="true"] .nav-code {
             background: var(--focus);
             color: var(--ink);
         }
 
-        /* ===== Layout ===== */
+        /* ===== Mise en page principale ===== */
         main { padding-top: 2.75rem; padding-bottom: 5rem; }
 
         .main-layout {
@@ -275,16 +315,45 @@
             .main-layout { grid-template-columns: 1fr; }
         }
 
-        .tab-content { display: none; }
+        .tab-content { display: none; position: relative; overflow: hidden; }
         .tab-content.active-content {
             display: block;
             animation: rise 0.4s var(--ease);
         }
+        .tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
+
+        .level-watermark {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 12rem;
+            line-height: 1;
+            color: rgba(44, 110, 142, 0.05);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+        @media (max-width: 640px) { .level-watermark { font-size: 7rem; } }
+
         @keyframes rise {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Encadré « résumé » — comme le chapeau d'un article académique */
         .abstract-box {
             border: 1px solid var(--paper-line);
             border-left: 4px solid var(--chalk-blue);
@@ -342,7 +411,7 @@
             border-bottom: 1px dashed var(--paper-line);
         }
 
-        /* ===== Fiches ressources ===== */
+        /* ===== Fiches ressources — effet « feuille détachée d'un bloc » ===== */
         .resource-list {
             list-style: none;
             padding: 0;
@@ -357,7 +426,7 @@
             border: 1px solid var(--paper-line);
             border-radius: 3px;
             box-shadow: var(--shadow-1);
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.5s var(--ease);
         }
 
         .resource-item::after {
@@ -374,9 +443,10 @@
 
         .resource-item:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-2);
             border-color: #D8D0BC;
         }
+        .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
+        .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
 
         .resource-item a {
             display: flex;
@@ -495,7 +565,7 @@
         }
         .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
 
-        /* ===== Contact ===== */
+        /* ===== Contact — style « fiche » administrative ===== */
         .contact-section {
             background: var(--card);
             border: 1px solid var(--paper-line);
@@ -576,7 +646,7 @@
         }
         .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
 
-        /* ===== Footer ===== */
+        /* ===== Pied de page ===== */
         footer {
             background: var(--ink);
             color: #8996AC;
@@ -603,10 +673,10 @@
             <span class="g1">∫</span>
             <span class="g2">∑</span>
             <span class="g3">π</span>
+            <span class="g4">√</span>
+            <span class="g5">Δ</span>
         </div>
-        <div class="banner-formula" aria-hidden="true">
-            $$\forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$$
-        </div>
+        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
         <div class="container top-banner-content">
             <div>
                 <p class="eyebrow">Enseignant-chercheur en mathématiques</p>
@@ -623,6 +693,7 @@
     <nav class="navigation-bar" aria-label="Sections du site">
         <div class="container">
             <ul role="tablist">
+                <li aria-hidden="true"><span class="nav-indicator"></span></li>
                 <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
                 <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
@@ -639,6 +710,7 @@
 
                 <!-- Accueil -->
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
+                    <span class="level-watermark" aria-hidden="true">∀</span>
                     <div class="abstract-box">
                         <h3>Des cours et des exercices de maths, classés par niveau.</h3>
                         <p>Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
@@ -650,6 +722,7 @@
 
                 <!-- Première année -->
                 <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
+                    <span class="level-watermark" aria-hidden="true">L1</span>
                     <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Première année — L1</h2>
                     <p class="section-sub">Cliquez sur un document pour lancer le téléchargement.</p>
 
@@ -676,6 +749,7 @@
 
                 <!-- Deuxième année -->
                 <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
+                    <span class="level-watermark" aria-hidden="true">L2</span>
                     <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Deuxième année — L2</h2>
                     <p class="section-sub">Documents et supports pour le deuxième niveau universitaire.</p>
 
@@ -692,6 +766,7 @@
 
                 <!-- Troisième année -->
                 <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
+                    <span class="level-watermark" aria-hidden="true">L3</span>
                     <h2 class="section-heading"><i class="fa-solid fa-award"></i> Troisième année — L3</h2>
                     <p class="section-sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
                     <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
@@ -755,27 +830,77 @@
     </footer>
 
     <script>
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function positionIndicator(button) {
+            var indicator = document.querySelector('.nav-indicator');
+            var list = document.querySelector('.navigation-bar ul');
+            if (!indicator || !button || !list) return;
+            var listRect = list.getBoundingClientRect();
+            var btnRect = button.getBoundingClientRect();
+            indicator.style.left = (btnRect.left - listRect.left) + 'px';
+            indicator.style.width = btnRect.width + 'px';
+        }
+
+        function revealChildren(panel) {
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note');
+            items.forEach(function (el, i) {
+                el.classList.remove('is-visible');
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 60) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
+            });
+        }
+
         function switchTab(tabId) {
-            // تحديث حالة الأزرار في القائمة
-            document.querySelectorAll('.nav-link').forEach(link => {
+            document.querySelectorAll('.nav-link').forEach(function (link) {
                 link.setAttribute('aria-selected', 'false');
             });
-            const activeTab = document.getElementById('tab-' + tabId);
+            var activeTab = document.getElementById('tab-' + tabId);
             if (activeTab) {
                 activeTab.setAttribute('aria-selected', 'true');
+                positionIndicator(activeTab);
+                activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
             }
 
-            // تحديث عرض المحتوى المناسب
-            document.querySelectorAll('.tab-content').forEach(panel => {
+            document.querySelectorAll('.tab-content').forEach(function (panel) {
                 panel.classList.remove('active-content');
             });
-            const activePanel = document.getElementById('content-' + tabId);
+            var activePanel = document.getElementById('content-' + tabId);
             if (activePanel) {
                 activePanel.classList.add('active-content');
+                revealChildren(activePanel);
             }
 
-            // تمرير الصفحة للأعلى بسلاسة عند تغيير التبويب
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+
+        window.addEventListener('load', function () {
+            positionIndicator(document.getElementById('tab-accueil'));
+            revealChildren(document.getElementById('content-accueil'));
+
+            document.querySelectorAll('.sidebar-widget').forEach(function (el, i) {
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 90) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+        });
+
+        var navList = document.querySelector('.navigation-bar ul');
+        if (navList) {
+            navList.addEventListener('scroll', function () {
+                positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+            }, { passive: true });
         }
     </script>
 
