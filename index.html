@@ -8,13 +8,13 @@
     
     <!-- Framework CSS moderne (Pico CSS) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <!-- مكتبة الأيقونات الجمالية -->
+    <!-- مكتبة الأيقونات الجمالية الفخمة -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- خطوط جوجل الاحترافية -->
+    <!-- خطوط جوجل الاحترافية الأكاديمية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2=family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght=0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- مكتبة MathJax لعرض المعادلات الرياضية بأعلى جودة أكاديمية -->
     <script>
@@ -29,11 +29,13 @@
 
     <style>
         :root {
-            --bg-dark-header: #334155; 
-            --bg-top-header: #1e293b;  
+            --bg-dark-header: #1e293b; 
+            --bg-top-header: #0f172a;  
             --accent-color: #0284c7;    
             --accent-hover: #0369a1;   
             --light-blue-bg: #f0f9ff;  
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-family: 'Inter', sans-serif;
         }
 
@@ -44,47 +46,72 @@
             scroll-behavior: smooth;
         }
 
+        /* رأس الصفحة المطور بتأثير عمق فخم */
         .top-banner {
-            background-color: var(--bg-top-header);
+            background: linear-gradient(135deg, var(--bg-top-header) 0%, #1e293b 100%);
             color: #ffffff;
-            padding: 2rem 0;
-            border-bottom: 3px solid var(--accent-color);
+            padding: 2.5rem 0;
+            border-bottom: 4px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(2,132,199,0.15) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .top-banner-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
 
         .top-banner h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: 3.2rem;
             margin: 0;
             color: #ffffff !important;
-            font-weight: 500;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .top-banner p {
-            margin: 0.2rem 0 0 0;
-            font-size: 1.1rem;
-            color: #cbd5e1;
+            margin: 0.4rem 0 0 0;
+            font-size: 1.2rem;
+            color: #94a3b8;
+            font-weight: 400;
         }
 
         .header-logo {
-            width: 80px;
+            width: 85px;
             height: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+            transition: var(--transition-smooth);
+        }
+        .header-logo:hover {
+            transform: rotate(5deg) scale(1.05);
         }
 
-        /* شريط التبويبات والملاحة */
+        /* شريط التبويبات الزجاجي والأنيق */
         .navigation-bar {
-            background-color: var(--bg-dark-header);
+            background-color: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(8px);
             padding: 0;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .navigation-bar ul {
@@ -97,86 +124,119 @@
 
         .navigation-bar a {
             display: block;
-            padding: 1rem 1.5rem;
-            color: #f1f5f9;
+            padding: 1.2rem 1.8rem;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
             font-size: 1rem;
-            transition: background-color 0.2s ease;
+            transition: var(--transition-smooth);
             border-bottom: 3px solid transparent;
             white-space: nowrap;
             cursor: pointer;
         }
 
         .navigation-bar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
             color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .navigation-bar a.active {
             background-color: var(--accent-color);
             color: #ffffff;
-            border-bottom: 3px solid var(--accent-hover);
+            font-weight: 600;
+            box-shadow: inset 0 -4px 0px rgba(0,0,0,0.2);
         }
 
+        /* صندوق الترحيب المشرق */
         .welcome-box {
-            background-color: var(--light-blue-bg);
-            border-left: 5px solid var(--accent-color);
-            padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-left: 6px solid var(--accent-color);
+            padding: 1.75rem;
+            border-radius: 4px 12px 12px 4px;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .welcome-box h3 {
+            color: #0369a1;
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
 
         .main-layout {
             display: grid;
-            grid-template-columns: 2.5fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 2.6fr 1fr;
+            gap: 2.5rem;
             margin-top: 2rem;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
             .main-layout {
                 grid-template-columns: 1fr;
             }
         }
 
-        /* نظام إخفاء وإظهار المحتوى المعتمد على التبويب النشط */
+        /* التبويبات التفاعلية وسلاسة ظهورها */
         .tab-content {
             display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--transition-smooth);
         }
         .tab-content.active-content {
             display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* تصميم قائمة الدروس والتمارين القابلة للتحميل بالنقر */
+        /* تصميم القوائم المبتكر والفاخر */
         .resource-list {
             list-style: none;
             padding: 0;
-            margin: 1rem 0 2rem 0;
+            margin: 1.2rem 0 2.5rem 0;
         }
 
         .resource-item {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            margin-bottom: 0.75rem;
-            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin-bottom: 0.9rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
         }
+
+        .resource-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background-color: transparent;
+            transition: var(--transition-smooth);
+        }
+
+        /* تمييز نوع الملف بلون الشريط الجانبي التفاعلي */
+        .resource-item.type-cours:hover::before { background-color: #ef4444; }
+        .resource-item.type-td:hover::before { background-color: #0284c7; }
 
         .resource-item a {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.25rem;
+            padding: 1.2rem 1.5rem;
             color: #334155;
             text-decoration: none;
             font-weight: 500;
         }
 
         .resource-item:hover {
-            border-color: var(--accent-color);
-            background-color: #f8fafc;
-            transform: translateX(4px);
+            border-color: #cbd5e1;
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.1);
         }
 
         .resource-item:hover a {
@@ -184,57 +244,106 @@
         }
 
         .download-icon {
-            color: #94a3b8;
-            transition: color 0.2s;
-        }
-        .resource-item:hover .download-icon {
-            color: var(--accent-color);
+            background-color: #f1f5f9;
+            color: #64748b;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
         }
 
+        .resource-item:hover .download-icon {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: rotate(360deg);
+        }
+
+        /* بطاقات الـ Sidebar الأنيقة */
         .sidebar-widget {
             background: #ffffff;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            text-align: center;
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+        }
+        .sidebar-widget:hover {
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
         }
 
         .math-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            background-color: var(--accent-color);
+            gap: 12px;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
             color: #ffffff !important;
-            padding: 0.75rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.9rem 1.5rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             width: 100%;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.2);
+            transition: var(--transition-smooth);
+        }
+        .math-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.3);
         }
 
+        /* واجهة الاتصال العصرية */
         .contact-section {
-            margin-top: 3rem;
             background-color: #ffffff;
             border: 1px solid #e2e8f0;
-            padding: 2.5rem;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .contact-section input, .contact-section textarea {
             border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-section input:focus, .contact-section textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+        }
+
+        .contact-section button {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-hover) 100%);
+            border: none;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.8rem 2rem;
+            transition: var(--transition-smooth);
         }
 
         footer {
             background-color: var(--bg-top-header);
-            color: #94a3b8;
-            padding: 3rem 0;
+            color: #64748b;
+            padding: 3.5rem 0;
             text-align: center;
-            margin-top: 5rem;
+            margin-top: 6rem;
             border-top: 4px solid var(--accent-color);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- رأس الصفحة العلوي -->
+    <!-- رأس الصفحة العلوي المطور -->
     <div class="top-banner">
         <div class="container top-banner-content">
             <div>
@@ -245,15 +354,15 @@
         </div>
     </div>
 
-    <!-- شريط التبويبات والملاحة التفاعلي -->
+    <!-- شريط التبويبات والملاحة التفاعلي والزجاجي -->
     <div class="navigation-bar">
         <div class="container">
             <ul>
-                <li><a onclick="switchTab('accueil')" id="tab-accueil" class="nav-link active">Accueil</a></li>
-                <li><a onclick="switchTab('premiere-annee')" id="tab-premiere-annee" class="nav-link">Première année</a></li>
-                <li><a onclick="switchTab('deuxieme-annee')" id="tab-deuxieme-annee" class="nav-link">Deuxième année</a></li>
-                <li><a onclick="switchTab('troisieme-annee')" id="tab-troisieme-annee" class="nav-link">Troisième année</a></li>
-                <li><a onclick="switchTab('contact')" id="tab-contact" class="nav-link">Contact</a></li>
+                <li><a onclick="switchTab('accueil')" id="tab-accueil" class="nav-link active"><i class="fa-solid fa-house" style="margin-right: 6px;"></i> Accueil</a></li>
+                <li><a onclick="switchTab('premiere-annee')" id="tab-premiere-annee" class="nav-link"><i class="fa-solid fa-bookmark" style="margin-right: 6px;"></i> Première année</a></li>
+                <li><a onclick="switchTab('deuxieme-annee')" id="tab-deuxieme-annee" class="nav-link"><i class="fa-solid fa-graduation-cap" style="margin-right: 6px;"></i> Deuxième année</a></li>
+                <li><a onclick="switchTab('troisieme-annee')" id="tab-troisieme-annee" class="nav-link"><i class="fa-solid fa-award" style="margin-right: 6px;"></i> Troisième année</a></li>
+                <li><a onclick="switchTab('contact')" id="tab-contact" class="nav-link"><i class="fa-solid fa-envelope" style="margin-right: 6px;"></i> Contact</a></li>
             </ul>
         </div>
     </div>
@@ -262,7 +371,7 @@
     <main class="container">
         <div class="main-layout">
             
-            <!-- العمود الأيسر (يتغير محتواه حسب التبويب المختار) -->
+            <!-- العمود الأيسر (التبويبات السلسة والذكية) -->
             <section id="main-content">
                 
                 <!-- تـبـويـب: الصفحة الرئيسية (Accueil) -->
@@ -270,31 +379,31 @@
                     <div class="welcome-box">
                         <h3>Des cours et des exercices de maths...</h3>
                     </div>
-                    <p>Bienvenue sur mon espace académique. Vous trouverez ici l'ensemble de mes supports de cours, fiches de travaux dirigés (TD) et exercices corrigés mis à disposition pour les étudiants.</p>
-                    <p>Cliquez sur les onglets ci-dessus pour accéder directement aux documents téléchargeables de votre niveau.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #475569;">Bienvenue sur mon espace académique. Vous trouverez ici l'ensemble de mes supports de cours, fiches de travaux dirigés (TD) et exercices corrigés mis à disposition pour les étudiants.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.7; color: #475569;">Cliquez sur les onglets ci-dessus pour accéder directement aux documents téléchargeables de votre niveau.</p>
                 </div>
 
                 <!-- تـبـويـب: السنة الأولى (Première année) -->
                 <div id="content-premiere-annee" class="tab-content">
-                    <h2><i class="fa-solid fa-folder-open"></i> Première Année - Ressources</h2>
-                    <p>Cliquez directement sur le titre du cours ou de l'exercice pour lancer le téléchargement instantané.</p>
+                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Première Année - Ressources</h2>
+                    <p style="color: #64748b;">Cliquez directement sur le titre du document pour lancer le téléchargement instantané.</p>
                     
-                    <h3><i class="fa-solid fa-book"></i> Cours (PDF)</h3>
+                    <h3 style="font-size: 1.3rem; margin-top: 2rem; color: #334155;"><i class="fa-solid fa-book" style="color: #ef4444;"></i> Cours (PDF)</h3>
                     <ul class="resource-list">
-                        <li class="resource-item">
+                        <li class="resource-item type-cours">
                             <a href="documents/cours/1SC_cours1_logique.pdf" download>
-                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 10px;"></i> Notions de Logique</span>
-                                <i class="fa-solid fa-download download-icon"></i>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 12px; font-size: 1.2rem;"></i> Notions de Logique</span>
+                                <i class="fa-solid fa-arrow-down download-icon"></i>
                             </a>
                         </li>
                     </ul>
 
-                    <h3><i class="fa-solid fa-file-lines"></i> Exercices & TD (PDF)</h3>
+                    <h3 style="font-size: 1.3rem; color: #334155;"><i class="fa-solid fa-file-lines" style="color: #0284c7;"></i> Exercices & TD (PDF)</h3>
                     <ul class="resource-list">
-                        <li class="resource-item">
+                        <li class="resource-item type-td">
                             <a href="documents/exercices/1SC_td1_logique.pdf" download>
-                                <span><i class="fa-solid fa-file-pdf" style="color: #0284c7; margin-right: 10px;"></i> TD 1 : Logique et Raisonnements</span>
-                                <i class="fa-solid fa-download download-icon"></i>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #0284c7; margin-right: 12px; font-size: 1.2rem;"></i> TD 1 : Logique et Raisonnements</span>
+                                <i class="fa-solid fa-arrow-down download-icon"></i>
                             </a>
                         </li>
                     </ul>
@@ -302,15 +411,15 @@
 
                 <!-- تـبـويـب: السنة الثانية (Deuxième année) -->
                 <div id="content-deuxieme-annee" class="tab-content">
-                    <h2><i class="fa-solid fa-folder-open"></i> Deuxième Année - Ressources</h2>
-                    <p>Documents et supports avancés pour le deuxième niveau universitaire.</p>
+                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Deuxième Année - Ressources</h2>
+                    <p style="color: #64748b;">Documents et supports avancés pour le deuxième niveau universitaire.</p>
                     
-                    <h3><i class="fa-solid fa-book"></i> Cours (PDF)</h3>
+                    <h3 style="font-size: 1.3rem; margin-top: 2rem; color: #334155;"><i class="fa-solid fa-book" style="color: #ef4444;"></i> Cours (PDF)</h3>
                     <ul class="resource-list">
-                        <li class="resource-item">
+                        <li class="resource-item type-cours">
                             <a href="documents/cours/analyse_fonctionnelle.pdf" download>
-                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 10px;"></i> Analyse Fonctionnelle الأكاديمي</span>
-                                <i class="fa-solid fa-download download-icon"></i>
+                                <span><i class="fa-solid fa-file-pdf" style="color: #ef4444; margin-right: 12px; font-size: 1.2rem;"></i> Analyse Fonctionnelle</span>
+                                <i class="fa-solid fa-arrow-down download-icon"></i>
                             </a>
                         </li>
                     </ul>
@@ -318,42 +427,44 @@
 
                 <!-- تـبـويـب: السنة الثالثة (Troisième année) -->
                 <div id="content-troisieme-annee" class="tab-content">
-                    <h2><i class="fa-solid fa-folder-open"></i> Troisième Année - Ressources</h2>
-                    <p>Espace réservé aux modules de spécialité et d'approfondissement.</p>
+                    <h2 style="color: var(--bg-top-header); font-weight: 600;"><i class="fa-solid fa-folder-open" style="color: var(--accent-color);"></i> Troisième Année - Ressources</h2>
+                    <p style="color: #64748b;">Espace réservé aux modules de spécialité et d'approfondissement.</p>
                 </div>
 
-                <!-- تـبـويـب: الاتصال (Contact) -->
+                <!-- تـبـويـب: الاتصال (Contact) المطور -->
                 <div id="content-contact" class="tab-content">
-                    <section class="contact-section" style="margin-top:0;">
-                        <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
-                        <p>Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
+                    <section class="contact-section">
+                        <h2 style="margin-top: 0; font-weight: 600;"><i class="fa-solid fa-paper-plane" style="color: var(--accent-color);"></i> Contact direct</h2>
+                        <p style="color: #64748b; margin-bottom: 2rem;">Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
                         <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
                             <div class="grid">
-                                <label>Nom Complet <input type="text" name="name" required></label>
-                                <label>Adresse Email <input type="email" name="email" required></label>
+                                <label style="font-weight: 500; color: #334155;">Nom Complet <input type="text" name="name" placeholder="Votre nom" required></label>
+                                <label style="font-weight: 500; color: #334155;">Adresse Email <input type="email" name="email" placeholder="nom@example.com" required></label>
                             </div>
-                            <label>Votre Message</label>
-                            <textarea name="message" rows="4" required></textarea>
-                            <button type="submit" style="background-color: var(--accent-color); border:none;">Envoyer</button>
+                            <label style="font-weight: 500; color: #334155;">Votre Message</label>
+                            <textarea name="message" rows="5" placeholder="Votre message détaillé..." required></textarea>
+                            <div style="text-align: right; margin-top: 1.5rem;">
+                                <button type="submit">Envoyer le message <i class="fa-regular fa-paper-plane" style="margin-left: 8px;"></i></button>
+                            </div>
                         </form>
                     </section>
                 </div>
 
             </section>
 
-            <!-- العمود الأيمن الجانبي الثابت -->
+            <!-- العمود الأيمن الجانبي الثابت والأنيق -->
             <aside id="sidebar">
                 <div class="sidebar-widget">
                     <a onclick="switchTab('premiere-annee')" class="math-btn" style="cursor:pointer;">
-                        <i class="fa-solid fa-infinity" style="font-size: 1.3rem;"></i>
+                        <i class="fa-solid fa-infinity" style="font-size: 1.4rem;"></i>
                         Mathématiques
                     </a>
                 </div>
 
                 <div class="sidebar-widget" style="text-align: left;">
-                    <h4 style="margin-top: 0; font-size: 1.1rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem;"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
-                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.9rem; line-height: 1.6;">
-                        <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;">
+                    <h4 style="margin-top: 0; font-size: 1.2rem; font-weight: 600; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.6rem; color: var(--bg-top-header);"><i class="fa-solid fa-bullhorn" style="color: var(--accent-color);"></i> Actualités</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.95rem; line-height: 1.6;">
+                        <li style="margin-bottom: 0.8rem; border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.6rem;">
                             <small style="color: var(--accent-color); font-weight: 600;">Juillet 2026</small><br>
                             Mise en ligne du cours de Logique pour la première année.
                         </li>
@@ -366,28 +477,46 @@
 
     <footer>
         <div class="container">
-            <p>Copyright © 2026 MoBendriss. Tous droits réservés. Conçu avec rigueur.</p>
+            <p style="color: #94a3b8;">Copyright © 2026 MoBendriss. Tous droits réservés. Conçu avec rigueur et passion.</p>
         </div>
     </footer>
 
-    <!-- سكربت جافا سكريبت الذكي للتحكم بالتبويبات دون تحديث الصفحة -->
+    <!-- سكربت جافا سكريبت الذكي والمطور لإضافة حركية وسلاسة أثناء الانتقال -->
     <script>
         function switchTab(tabId) {
             // 1. إزالة الحالة النشطة من كل الأزرار
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-            // 2. إخفاء كل المحتويات
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active-content');
-            });
             
-            // 3. تفعيل الزر والمحتوى المختار فقط
+            // 2. تفعيل الزر المختار
             document.getElementById('tab-' + tabId).classList.add('active');
-            document.getElementById('content-' + tabId).classList.add('active-content');
             
-            // التمرير لأعلى المحتوى بسلاسة عند التغيير
-            window.scrollTo({ top: 150, behavior: 'smooth' });
+            // 3. إخفاء المحتوى السابق مع تأثير التلاشي الناعم
+            const activeContent = document.querySelector('.tab-content.active-content');
+            if (activeContent) {
+                activeContent.style.opacity = '0';
+                activeContent.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    activeContent.classList.remove('active-content');
+                    showNewContent(tabId);
+                }, 200); // يتوافق مع سرعة التلاشي
+            } else {
+                showNewContent(tabId);
+            }
+        }
+
+        function showNewContent(tabId) {
+            const newContent = document.getElementById('content-' + tabId);
+            newContent.classList.add('active-content');
+            // تأخير بسيط جداً لضمان عمل الـ CSS transition بسلاسة
+            setTimeout(() => {
+                newContent.style.opacity = '1';
+                newContent.style.transform = 'translateY(0)';
+            }, 50);
+            
+            // تمرير الشاشة للأعلى بسلاسة
+            window.scrollTo({ top: 120, behavior: 'smooth' });
         }
     </script>
 
