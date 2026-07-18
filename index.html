@@ -505,6 +505,90 @@
             background: rgba(44, 110, 142, 0.03);
         }
 
+        /* ===== Page « À propos » — parcours et domaines ===== */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: baseline;
+            gap: 1.1rem;
+            padding: 0.95rem 1.2rem;
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+        }
+        .info-year {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--chalk-blue-deep);
+            flex-shrink: 0;
+            min-width: 3rem;
+        }
+        .info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 0 0 0.5rem;
+        }
+        .tag-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: #E4EEF2;
+            color: var(--chalk-blue-deep);
+            border: 1px solid rgba(44, 110, 142, 0.25);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+        }
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.1rem 1.3rem;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--chalk-blue);
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; }
+        .faq-item summary:hover { color: var(--chalk-blue-deep); }
+        .faq-item p {
+            margin: 0;
+            padding: 0 1.3rem 1.2rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
         /* ===== Barre latérale ===== */
         .sidebar-widget {
             background: var(--card);
@@ -709,9 +793,11 @@
             <ul role="tablist">
                 <li aria-hidden="true"><span class="nav-indicator"></span></li>
                 <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
+                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> À propos</button></li>
                 <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> Troisième année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
             </ul>
         </div>
@@ -734,7 +820,36 @@
                     </div>
                 </div>
 
-                <!-- Première année -->
+                <!-- À propos -->
+                <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
+                    <span class="level-watermark" aria-hidden="true">Σ</span>
+                    <div class="abstract-box">
+                        <h3>À propos de MoBendriss</h3>
+                        <p>[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
+                    </div>
+
+                    <h3 class="group-label">Formation</h3>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-year">20XX</span>
+                            <p>[Doctorat en Mathématiques — Université, spécialité]</p>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-year">20XX</span>
+                            <p>[Master / Agrégation — Université, spécialité]</p>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label">Domaines d'enseignement et de recherche</h3>
+                    <div class="tag-row">
+                        <span class="tag-pill">Analyse</span>
+                        <span class="tag-pill">Logique</span>
+                        <span class="tag-pill">Analyse fonctionnelle</span>
+                        <span class="tag-pill">[Votre domaine]</span>
+                    </div>
+                </div>
+
+
                 <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
                     <span class="level-watermark" aria-hidden="true">L1</span>
                     <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Première année — L1</h2>
@@ -784,6 +899,32 @@
                     <h2 class="section-heading"><i class="fa-solid fa-award"></i> Troisième année — L3</h2>
                     <p class="section-sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
                     <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                </div>
+
+                <!-- FAQ -->
+                <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
+                    <span class="level-watermark" aria-hidden="true">?</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> Questions fréquentes</h2>
+                    <p class="section-sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary>Comment télécharger un document ?</summary>
+                            <p>Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Les documents sont-ils mis à jour régulièrement ?</summary>
+                            <p>[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Comment vous contacter en cas de question sur un exercice ?</summary>
+                            <p>Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
+                            <p>[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
+                        </details>
+                    </div>
                 </div>
 
                 <!-- Contact -->
@@ -857,7 +998,7 @@
         }
 
         function revealChildren(panel) {
-            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note');
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item');
             items.forEach(function (el, i) {
                 el.classList.remove('is-visible');
                 el.classList.add('reveal');
