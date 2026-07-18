@@ -56,7 +56,7 @@
         }
 
         * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
 
         body {
             margin: 0;
@@ -64,8 +64,9 @@
             font-family: var(--font-body);
             background: var(--paper);
             color: var(--ink);
+            font-size: 1rem;
+            line-height: 1.5;
             -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
         }
 
         body::before {
@@ -87,6 +88,7 @@
             max-width: 1120px;
             margin: 0 auto;
             padding: 0 1.75rem;
+            width: 100%;
         }
 
         .skip-link {
@@ -231,10 +233,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .navigation-bar .container {
-            position: relative;
-        }
-
         .navigation-bar ul {
             display: flex;
             list-style: none;
@@ -310,12 +308,11 @@
             .main-layout { grid-template-columns: 1fr; }
         }
 
-        .tab-content { display: none; position: relative; overflow: hidden; }
+        .tab-content { display: none; position: relative; }
         .tab-content.active-content {
             display: block;
             animation: rise 0.4s var(--ease);
         }
-        .tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
 
         .level-watermark {
             position: absolute;
@@ -424,7 +421,6 @@
         .faq-item p { margin: 0; padding: 0 1.3rem 1.2rem; color: var(--ink-soft); line-height: 1.65; }
 
         /* ===== Sidebar ===== */
-        .sidebar-wrapper { position: relative; }
         .sidebar-widget { background: var(--card); border: 1px solid var(--paper-line); border-radius: 4px; padding: 1.6rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-1); }
         .widget-title { margin: 0 0 1rem; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.55rem; padding-bottom: 0.7rem; border-bottom: 1px dashed var(--paper-line); }
         .widget-title i { color: var(--chalk-blue); }
@@ -679,13 +675,12 @@
         </div>
     </footer>
 
-    <!-- JavaScript System (Fixé & Optimisé) -->
+    <!-- JavaScript System -->
     <script>
         const tabs = document.querySelectorAll('.nav-link');
         const contents = document.querySelectorAll('.tab-content');
         const indicator = document.getElementById('indicator');
 
-        // دالة موحدة لتحديث موضع وحجم المؤشر بدقة متناهية دون تمديد الصفحة
         function positionIndicator(activeTab) {
             if(activeTab) {
                 indicator.style.left = `${activeTab.offsetLeft}px`;
@@ -695,27 +690,22 @@
 
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                // إزالة الحالة النشطة عن الجميع
                 tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
                 contents.forEach(c => c.classList.remove('active-content'));
 
-                // تفعيل التبويب المختار
                 tab.setAttribute('aria-selected', 'true');
                 const targetId = tab.getAttribute('aria-controls');
                 document.getElementById(targetId).classList.add('active-content');
 
-                // نقل الخط الأصفر بدقة
                 positionIndicator(tab);
             });
         });
 
-        // تشغيل برمجية تحديث المؤشر عند تغيير حجم الشاشة (Resize)
         window.addEventListener('resize', () => {
             const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
             positionIndicator(activeTab);
         });
 
-        // معالجة حركة القوائم عند السحب الأفقي في الشاشات الصغيرة (Scroll)
         var navList = document.querySelector('.navigation-bar ul');
         if (navList) {
             navList.addEventListener('scroll', () => {
@@ -724,7 +714,6 @@
             }, { passive: true });
         }
 
-        // تشغيل أولي عند تحميل المستند بالكامل لضمان الأبعاد الصحيحة للتبويب الافتراضي
         window.addEventListener('DOMContentLoaded', () => {
             const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
             setTimeout(() => positionIndicator(activeTab), 150);
