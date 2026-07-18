@@ -42,7 +42,7 @@
             background-color: #f8fafc;
             margin: 0;
             padding: 0;
-            scroll-behavior: smooth; /* تمرير سلس عند الضغط على الروابط */
+            scroll-behavior: smooth;
         }
 
         /* رأس الصفحة العلوي */
@@ -171,7 +171,7 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        /* زر الرياضيات المطور */
+        /* زر الرياضيات */
         .math-btn {
             display: inline-flex;
             align-items: center;
@@ -216,7 +216,7 @@
             border: 1px solid #cbd5e1;
         }
 
-        /* تصميم واجهة الاتصال الأكاديمية */
+        /* تصميم واجهة الاتصال */
         .contact-section {
             margin-top: 3rem;
             background-color: #ffffff;
@@ -261,14 +261,13 @@
 </head>
 <body>
 
-    <!-- رأس الصفحة العلوي مع الاسم الجديد MoBendriss -->
+    <!-- رأس الصفحة العلوي -->
     <div class="top-banner">
         <div class="container top-banner-content">
             <div>
                 <h1>MoBendriss</h1>
                 <p>Cours et exercices de mathématiques</p>
             </div>
-            <!-- الشعار الأكاديمي -->
             <img class="header-logo" src="images/logo.png" alt="Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png';">
         </div>
     </div>
@@ -308,13 +307,16 @@
                 <!-- قسم الدروس والتمارين -->
                 <h2 style="margin-top: 2rem;"><i class="fa-solid fa-graduation-cap"></i> Ressources Disponibles</h2>
                 
+                <!-- تم هنا ربط مسار ملفك الجديد بنجاح وتحديث النصوص لتناسب درس المنطق الرياضي -->
                 <div class="course-card" id="premiere-annee">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Analyse Fonctionnelle</h4>
+                        <h4 style="margin: 0; font-size: 1.25rem; font-weight: 600;">Notions de Logique</h4>
                         <span class="badge-academic">Cours & TD</span>
                     </div>
-                    <p>Espaces de Hilbert, théorèmes de Banach et opérateurs linéaires. Document complet intégrant démonstrations et applications.</p>
-                    <a href="documents/cours/analyse_fonctionnelle.pdf" role="button" style="background-color: var(--accent-color); border: none;"><i class="fa-solid fa-file-pdf"></i> Télécharger le PDF</a>
+                    <p>Introduction aux connecteurs logiques, quantificateurs, et types de raisonnements mathématiques (récurrence, l'absurde, contraposition).</p>
+                    <a href="documents/cours/1SC_cours1_logique.pdf" download role="button" style="background-color: var(--accent-color); border: none;">
+                        <i class="fa-solid fa-file-pdf"></i> Télécharger le PDF
+                    </a>
                 </div>
 
                 <div class="course-card">
@@ -326,7 +328,7 @@
                     <a href="documents/exercices/serie_edp.pdf" role="button" class="secondary outline"><i class="fa-solid fa-file-pdf"></i> Télécharger les Exercices</a>
                 </div>
 
-                <!-- واجهة الاتصال (Contact) مبرمجة بريدك الإلكتروني المباشر -->
+                <!-- واجهة الاتصال -->
                 <section id="contact" class="contact-section">
                     <h2><i class="fa-solid fa-paper-plane"></i> Contact</h2>
                     <p>Pour toute question académique, projet de recherche ou collaboration pédagogique, n'hésitez pas à m'écrire :</p>
@@ -356,7 +358,7 @@
             <!-- العمود الأيمن الجانبي -->
             <aside id="sidebar">
                 
-                <!-- زر الرياضيات الأنيق -->
+                <!-- زر الرياضيات -->
                 <div class="sidebar-widget">
                     <a href="#premiere-annee" class="math-btn">
                         <i class="fa-solid fa-infinity" style="font-size: 1.3rem;"></i>
@@ -384,14 +386,14 @@
         </div>
     </main>
 
-    <!-- تذييل الصفحة مع تحديث اسم حقوق النشر بالكامل إلى MoBendriss -->
+    <!-- تذييل الصفحة -->
     <footer>
         <div class="container">
             <p>Copyright © 2026 MoBendriss. Tous droits réservés. Conçu avec rigueur.</p>
         </div>
     </footer>
 
-    <!-- سكربت بسيط لتبديل التبويب النشط عند النقر -->
+    <!-- سكربت تبديل التبويب النشط -->
     <script>
         const links = document.querySelectorAll('.navigation-bar a');
         links.forEach(link => {
