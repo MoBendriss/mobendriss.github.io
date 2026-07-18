@@ -3,705 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoBendriss | Cours et exercices de mathématiques</title>
-    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
-    <meta name="theme-color" content="#132038">
-    <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
-    <meta property="og:type" content="website">
-
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
-
-    <!-- Icônes utilitaires -->
+    <title>MoBendriss | Mathématiques</title>
+    
+    <!-- الأيقونات والخطوط -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Typographie -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <!-- Rendu des formules mathématiques -->
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            options: { enableMenu: false }
-        };
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة الرياضيات -->
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
-        /* ===== Système de tokens ===== */
         :root {
-            --ink: #132038;
-            --ink-soft: #47536B;
-            --paper: #FBF8F2;
-            --paper-line: #E4DFCF;
-            --card: #FFFFFF;
-            --chalk-blue: #2C6E8E;
-            --chalk-blue-deep: #1F5670;
-            --ochre: #B8791A;
-            --rust: #A23B3B;
-            --focus: #E7A947;
-
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-
-            --shadow-1: 0 1px 2px rgba(19, 32, 56, 0.05), 0 6px 16px -8px rgba(19, 32, 56, 0.12);
-            --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, 0.28);
-            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+            --bg: #FBF8F2; --text: #132038; --card: #FFFFFF;
+            --accent: #2C6E8E; --focus: #E7A947; --border: #E4DFCF;
+        }
+        [data-theme="dark"] {
+            --bg: #0B1526; --text: #FBF8F2; --card: #132038;
+            --border: #1D2A44;
         }
 
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            margin: 0;
-            position: relative;
-            font-family: var(--font-body);
-            background: var(--paper);
-            color: var(--ink);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-            opacity: 0.05;
-            mix-blend-mode: multiply;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        header, nav, main, footer { position: relative; z-index: 1; }
-        img { max-width: 100%; display: block; }
-        a { color: inherit; }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 1.75rem;
-        }
-
-        .skip-link {
-            position: absolute;
-            left: -999px;
-            top: 0;
-            background: var(--focus);
-            color: var(--ink);
-            padding: 0.75rem 1.25rem;
-            font-weight: 600;
-            z-index: 1000;
-            border-radius: 0 0 6px 0;
-        }
-        .skip-link:focus { left: 0; }
-
-        :focus-visible {
-            outline: 3px solid var(--focus);
-            outline-offset: 2px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after {
-                transition-duration: 0.001ms !important;
-                animation-duration: 0.001ms !important;
-            }
-        }
-
-        /* ===== En-tête ===== */
-        .top-banner {
-            position: relative;
-            background:
-                radial-gradient(ellipse 60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
-                radial-gradient(ellipse 50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
-                linear-gradient(160deg, #16233F 0%, #101C33 55%, #0B1526 100%);
-            padding: 4.5rem 0 3.75rem;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(231, 169, 71, 0.4);
-        }
-
-        .top-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
-            background-size: 34px 34px;
-            mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 55%, transparent 95%);
-        }
-
-        .banner-glyphs {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .banner-glyphs span {
-            position: absolute;
-            font-family: var(--font-display);
-            font-style: italic;
-            color: rgba(231, 169, 71, 0.32);
-            line-height: 1;
-            user-select: none;
-            animation: drift 9s ease-in-out infinite;
-        }
-        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; --r: -8deg; animation-delay: 0s; }
-        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; --r: 6deg; animation-delay: -3s; }
-        .g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.2); --r: -4deg; display: none; animation-delay: -6s; }
-        .g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231, 169, 71, 0.24); --r: 10deg; display: none; animation-delay: -1.5s; }
-        .g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.16); --r: -6deg; display: none; animation-delay: -4.5s; }
-
-        @media (min-width: 860px) { .g3, .g4 { display: block; } }
-        @media (min-width: 1100px) { .g5 { display: block; } }
-
-        @keyframes drift {
-            0%, 100% { transform: translateY(0) rotate(var(--r)); }
-            50% { transform: translateY(-10px) rotate(var(--r)); }
-        }
-
-        .banner-formula {
-            position: absolute;
-            right: 4%;
-            top: 1.4rem;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.45);
-            max-width: 320px;
-            text-align: right;
-            display: none;
-        }
-        @media (min-width: 980px) { .banner-formula { display: block; } }
-
-        .top-banner-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--focus);
-            margin: 0 0 0.9rem;
-        }
-
-        .top-banner h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.6rem, 5vw, 3.75rem);
-            font-weight: 600;
-            margin: 0;
-            color: #FFFFFF;
-            letter-spacing: -0.01em;
-            text-shadow: 0 2px 24px rgba(44, 110, 142, 0.45);
-        }
-
-        .top-banner p.tagline {
-            margin: 0.6rem 0 0;
-            font-size: 1.15rem;
-            color: #DCE4F0;
-            font-weight: 400;
-        }
-
-        .header-avatar {
-            width: 86px;
-            height: 86px;
-            flex-shrink: 0;
-            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
-        }
-
-        /* ===== Navigation ===== */
-        .navigation-bar {
-            background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .navigation-bar ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            position: relative;
-        }
-
-        .nav-indicator {
-            position: absolute;
-            bottom: 0;
-            height: 3px;
-            background: var(--focus);
-            border-radius: 2px 2px 0 0;
-            transition: left 0.3s var(--ease), width 0.3s var(--ease);
-            pointer-events: none;
-            left: 0;
-            width: 0;
-        }
-
-        .navigation-bar li { flex-shrink: 0; }
-
-        .nav-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 1.05rem 1.5rem;
-            background: transparent;
-            border: none;
-            color: #C3CCDE;
-            font: inherit;
-            font-weight: 500;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: color 0.25s var(--ease), background 0.25s var(--ease);
-        }
-
-        .nav-code {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.08);
-            color: #C9D2E0;
-        }
-
-        .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
-        .nav-link[aria-selected="true"] { color: #FFFFFF; }
-        .nav-link[aria-selected="true"] .nav-code { background: var(--focus); color: var(--ink); }
-
-        /* ===== Layout ===== */
-        main { padding-top: 2.75rem; padding-bottom: 5rem; }
-        .main-layout {
-            display: grid;
-            grid-template-columns: 2.4fr 1fr;
-            gap: 2.75rem;
-            align-items: start;
-        }
-        @media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
-
-        .tab-content { display: none; position: relative; overflow: hidden; }
-        .tab-content.active-content {
-            display: block;
-            animation: rise 0.4s var(--ease);
-        }
-        .tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
-
-        .level-watermark {
-            position: absolute;
-            top: -0.5rem;
-            right: -0.5rem;
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 600;
-            font-size: 12rem;
-            line-height: 1;
-            color: rgba(44, 110, 142, 0.05);
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-        }
-
-        @keyframes rise {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-        }
-        .reveal.is-visible { opacity: 1; transform: translateY(0); }
-
-        .abstract-box {
-            border: 1px solid var(--paper-line);
-            border-left: 4px solid var(--chalk-blue);
-            background: var(--card);
-            padding: 1.9rem 2rem;
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-            margin-bottom: 2.25rem;
-        }
-        .abstract-box h3 {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.5rem;
-            margin: 0 0 0.6rem;
-        }
-        .abstract-box p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
-
-        .section-heading {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin: 2rem 0 0.3rem;
-        }
-        .section-heading i { color: var(--chalk-blue); }
-        .section-sub { color: var(--ink-soft); margin: 0 0 1.6rem; font-size: 0.98rem; }
-
-        .group-label {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            margin: 2.25rem 0 0.9rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed var(--paper-line);
-        }
-
-        /* ===== Cartes Ressources ===== */
-        .resource-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 0.85rem;
-        }
-        .resource-item {
-            position: relative;
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
-        }
-        .resource-item::after {
-            content: '';
-            position: absolute;
-            top: -1px; left: 0; right: 0; height: 9px;
-            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
-            background-size: 20px 9px;
-            background-repeat: repeat-x;
-        }
-        .resource-item:hover {
-            transform: translateY(-2px);
-            border-color: #D8D0BC;
-        }
-        .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
-        .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
-
-        .resource-item a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.15rem 1.35rem;
-            text-decoration: none;
-        }
-        .resource-title { display: flex; align-items: center; gap: 0.8rem; flex: 1; font-weight: 500; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; transition: 0.3s; }
+        .container { max-width: 900px; margin: auto; padding: 20px; }
         
-        .resource-tag {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 600;
-            padding: 0.28rem 0.5rem;
-            border-radius: 4px;
-        }
-        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
-        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
+        /* الهيدر */
+        header { background: #101C33; color: white; padding: 40px 20px; text-align: center; }
+        .controls { margin-top: 20px; display: flex; justify-content: center; gap: 10px; }
+        input { padding: 10px; border-radius: 20px; border: none; width: 250px; }
+        button.theme-btn { padding: 10px 20px; border-radius: 20px; border: none; cursor: pointer; background: var(--focus); }
 
-        .download-icon {
-            background: var(--paper);
-            color: var(--ink-soft);
-            width: 34px; height: 34px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.85rem;
-            transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.3s var(--ease);
-        }
-        .type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
-        .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
-
-        /* ===== Info Items & FAQ ===== */
-        .info-list { list-style: none; padding: 0; display: grid; gap: 0.7rem; }
-        .info-item {
-            display: flex; align-items: baseline; gap: 1.1rem;
-            padding: 0.95rem 1.2rem; background: var(--card);
-            border: 1px solid var(--paper-line); border-radius: 3px;
-        }
-        .info-year { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; color: var(--chalk-blue-deep); min-width: 3rem; }
+        /* التبويبات */
+        .nav-bar { display: flex; justify-content: center; gap: 20px; padding: 20px; border-bottom: 1px solid var(--border); }
+        .nav-btn { cursor: pointer; background: none; border: none; color: var(--text); font-weight: 600; }
         
-        .faq-list { display: grid; gap: 0.85rem; margin-top: 1rem; }
-        .faq-item { background: var(--card); border: 1px solid var(--paper-line); border-radius: 3px; }
-        .faq-item summary { cursor: pointer; padding: 1.1rem 1.3rem; font-weight: 600; display: flex; justify-content: space-between; }
-        .faq-item summary::after { content: '+'; font-family: var(--font-mono); color: var(--chalk-blue); }
-        .faq-item[open] summary::after { content: '−'; }
-        .faq-item p { margin: 0; padding: 0 1.3rem 1.2rem; color: var(--ink-soft); line-height: 1.65; }
-
-        /* ===== Sidebar & Contact ===== */
-        .sidebar-widget { background: var(--card); border: 1px solid var(--paper-line); border-radius: 4px; padding: 1.6rem; margin-bottom: 1.6rem; }
-        .widget-title { margin: 0 0 1rem; font-family: var(--font-display); font-weight: 600; display: flex; gap: 0.55rem; padding-bottom: 0.7rem; border-bottom: 1px dashed var(--paper-line); }
-        .news-list { list-style: none; padding: 0; }
-        .news-item { border-bottom: 1px dashed var(--paper-line); padding: 0.85rem 0; }
-        .news-item:last-child { border-bottom: none; }
-        .news-date { font-family: var(--font-mono); font-size: 0.72rem; color: var(--chalk-blue-deep); display: block; }
-
-        .contact-section { background: var(--card); border: 1px solid var(--paper-line); padding: 2.5rem; border-radius: 4px; }
-        .field-grid { display: grid; gap: 1.5rem; margin-bottom: 1.5rem; }
-        @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
-        .field label { display: block; font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; margin-bottom: 0.55rem; }
-        .field input, .field textarea { width: 100%; padding: 0.65rem 0.1rem; border: none; border-bottom: 2px solid var(--paper-line); background: transparent; }
-        .field input:focus, .field textarea:focus { border-color: var(--chalk-blue); outline: none; }
-        
-        .submit-row { display: flex; justify-content: flex-end; }
-        .submit-btn { background: var(--ink); color: #fff; border: none; font-weight: 600; padding: 0.85rem 1.6rem; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; }
-        .submit-btn:hover { background: var(--chalk-blue-deep); }
-
-        footer { background: var(--ink); color: #8996AC; padding: 3rem 0; text-align: center; border-top: 1px solid rgba(231, 169, 71, 0.3); }
-        footer .foot-accent { color: var(--focus); font-family: var(--font-mono); }
+        /* المحتوى */
+        .tab-content { display: none; margin-top: 30px; }
+        .active-content { display: block; }
+        .item { 
+            background: var(--card); padding: 20px; margin-bottom: 10px; 
+            border-radius: 8px; border: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center;
+        }
     </style>
 </head>
 <body>
 
-    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
-
-    <!-- En-tête -->
-    <header class="top-banner">
-        <div class="banner-glyphs" aria-hidden="true">
-            <span class="g1">∫</span><span class="g2">∑</span><span class="g3">π</span><span class="g4">√</span><span class="g5">Δ</span>
-        </div>
-        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
-        <div class="container top-banner-content">
-            <div>
-                <p class="eyebrow">Enseignant-chercheur en mathématiques</p>
-                <h1>MoBendriss</h1>
-                <p class="tagline">Cours et exercices de mathématiques</p>
-            </div>
-            <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%">
-                            <stop offset="0%" stop-color="#26496A"/>
-                            <stop offset="100%" stop-color="#0C1526"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="47" fill="url(#logoFill)" stroke="#E7A947" stroke-width="1.4"/>
-                    <text x="50" y="63" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#FBF8F2">MB</text>
-                </svg>
-            </div>
+    <header>
+        <h1>MoBendriss</h1>
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="بحث..." onkeyup="filterContent()">
+            <button class="theme-btn" onclick="toggleTheme()">الوضع</button>
         </div>
     </header>
 
-    <!-- Navigation -->
-    <nav class="navigation-bar" aria-label="Sections du site">
-        <div class="container">
-            <ul role="tablist">
-                <li aria-hidden="true"><span class="nav-indicator"></span></li>
-                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
-                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> À propos</button></li>
-                <li><button class="nav-link" role="tab" id="tab-l1" aria-controls="content-l1" aria-selected="false" onclick="switchTab('l1')"><span class="nav-code">L1</span> L1</button></li>
-                <li><button class="nav-link" role="tab" id="tab-l2" aria-controls="content-l2" aria-selected="false" onclick="switchTab('l2')"><span class="nav-code">L2</span> L2</button></li>
-                <li><button class="nav-link" role="tab" id="tab-l3" aria-controls="content-l3" aria-selected="false" onclick="switchTab('l3')"><span class="nav-code">L3</span> L3</button></li>
-                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
-                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
-            </ul>
-        </div>
+    <nav class="nav-bar">
+        <button class="nav-btn" onclick="switchTab('accueil')">الرئيسية</button>
+        <button class="nav-btn" onclick="switchTab('l1')">السنة الأولى</button>
+        <button class="nav-btn" onclick="switchTab('l2')">السنة الثانية</button>
     </nav>
 
-    <!-- Contenu Principal -->
-    <main class="container" id="main-content">
-        <div class="main-layout">
-            
-            <!-- القسم الأيمن للمحتوى المتغير -->
-            <div class="content-area">
-                
-                <!-- Accueil -->
-                <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
-                    <span class="level-watermark" aria-hidden="true">∀</span>
-                    <div class="abstract-box">
-                        <h3>Des cours et des exercices de maths, classés par niveau.</h3>
-                        <p>Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés.</p>
-                    </div>
-                    <div class="page-lead">
-                        <p>Chaque niveau regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong> et les <strong>TD</strong>. Utilisez la barre de navigation pour explorer le contenu.</p>
-                    </div>
-                </div>
+    <main class="container">
+        <div id="content-accueil" class="tab-content active-content">
+            <h2>مرحباً بك</h2>
+            <p>منصة تعليمية مخصصة لطلاب الرياضيات.</p>
+        </div>
 
-                <!-- À propos -->
-                <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
-                    <span class="level-watermark" aria-hidden="true">Σ</span>
-                    <div class="abstract-box">
-                        <h3>À propos de MoBendriss</h3>
-                        <p>Enseignant-chercheur passionné par la transmission du savoir mathématique et la recherche académique en analyse et algèbre.</p>
-                    </div>
-                    <h3 class="group-label">Parcours Académique</h3>
-                    <ul class="info-list">
-                        <li class="info-item">
-                            <span class="info-year">Depuis 2020</span>
-                            <p>Enseignant-chercheur à l'Université.</p>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-year">2019</span>
-                            <p>Doctorat en Mathématiques Fondamentales.</p>
-                        </li>
-                    </ul>
-                </div>
+        <div id="content-l1" class="tab-content">
+            <h2>دروس السنة الأولى</h2>
+            <div class="item"><span>المتتاليات العددية</span> <i class="fa-solid fa-download"></i></div>
+            <div class="item"><span>الجبر الخطي</span> <i class="fa-solid fa-download"></i></div>
+        </div>
 
-                <!-- L1 -->
-                <div id="content-l1" class="tab-content" role="tabpanel" aria-labelledby="tab-l1">
-                    <span class="level-watermark" aria-hidden="true">L1</span>
-                    <h3 class="section-heading"><i class="fa-solid fa-book"></i> Cours & Exercices — Première Année</h3>
-                    <p class="section-sub">Bases de l'analyse et algèbre linéaire.</p>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">Cours</span> Chapitre 1 : Les suites réelles</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
-                            </a>
-                        </li>
-                        <li class="resource-item type-td">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">TD</span> Fiche 1 : Exercices sur les limites</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- L2 -->
-                <div id="content-l2" class="tab-content" role="tabpanel" aria-labelledby="tab-l2">
-                    <span class="level-watermark" aria-hidden="true">L2</span>
-                    <h3 class="section-heading"><i class="fa-solid fa-book"></i> Cours & Exercices — Deuxième Année</h3>
-                    <p class="section-sub">Topologie, calcul différentiel et séries.</p>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">Cours</span> Intégrales généralisées</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- L3 -->
-                <div id="content-l3" class="tab-content" role="tabpanel" aria-labelledby="tab-l3">
-                    <span class="level-watermark" aria-hidden="true">L3</span>
-                    <h3 class="section-heading"><i class="fa-solid fa-book"></i> Cours & Exercices — Troisième Année</h3>
-                    <p class="section-sub">Analyse complexe et espaces de Hilbert.</p>
-                    <p class="empty-note">Aucun document disponible pour le moment.</p>
-                </div>
-
-                <!-- FAQ -->
-                <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
-                    <span class="level-watermark" aria-hidden="true">?</span>
-                    <h3>Foire Aux Questions</h3>
-                    <div class="faq-list">
-                        <details class="faq-item">
-                            <summary>Quand les corrigés des TD sont-ils publiés ?</summary>
-                            <p>Les corrigés sont généralement mis en ligne une semaine après la fin de la séance de TD correspondante.</p>
-                        </details>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
-                    <div class="contact-section">
-                        <h2><i class="fa-solid fa-paper-plane"></i> Contactez-moi</h2>
-                        <p>Pour toute question pédagogique, utilisez le formulaire ci-dessous.</p>
-                        <form action="#" method="POST">
-                            <div class="field-grid">
-                                <div class="field">
-                                    <label for="name">Nom Complet</label>
-                                    <input type="text" id="name" required placeholder="Ex: Jean Dupont">
-                                </div>
-                                <div class="field">
-                                    <label for="email">Adresse Email</label>
-                                    <input type="email" id="email" required placeholder="Ex: jean.dupont@univ.fr">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="message">Votre Message</label>
-                                <textarea id="message" required placeholder="Votre message ici..."></textarea>
-                            </div>
-                            <div class="submit-row">
-                                <button type="submit" class="submit-btn">Envoyer <i class="fa-solid fa-paper-plane"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- الشريط الجانبي الثابت -->
-            <aside class="sidebar">
-                <div class="sidebar-widget">
-                    <h3 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Actualités</h3>
-                    <ul class="news-list">
-                        <li class="news-item">
-                            <span class="news-date">15 Octobre 2026</span>
-                            <p>Mise en ligne du TD1 pour les étudiants de L1.</p>
-                        </li>
-                        <li class="news-item">
-                            <span class="news-date">01 Septembre 2026</span>
-                            <p>Début du semestre. Bon courage à tous !</p>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-
+        <div id="content-l2" class="tab-content">
+            <h2>دروس السنة الثانية</h2>
+            <div class="item"><span>التحليل المركب</span> <i class="fa-solid fa-download"></i></div>
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>© 2026 MoBendriss — Fait avec rigueur et <span class="foot-accent">$\mathbb{R}$</span></p>
-        </div>
-    </footer>
-
-    <!-- سكربت التحكم بالتبويبات وتأثيرات الحركة -->
     <script>
-        function updateIndicator() {
-            const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
-            const indicator = document.querySelector('.nav-indicator');
-            if (activeTab && indicator) {
-                indicator.style.left = activeTab.offsetLeft + 'px';
-                indicator.style.width = activeTab.offsetWidth + 'px';
-            }
+        function toggleTheme() {
+            const h = document.documentElement;
+            h.setAttribute('data-theme', h.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
         }
 
-        function switchTab(tabId) {
-            // إخفاء كل المحتويات
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active-content');
-            });
-            
-            // إلغاء تحديد كل الأزرار
-            document.querySelectorAll('.nav-link').forEach(btn => {
-                btn.setAttribute('aria-selected', 'false');
-            });
-
-            // إظهار المحتوى المحدد
-            const targetContent = document.getElementById('content-' + tabId);
-            if (targetContent) targetContent.classList.add('active-content');
-
-            // تحديد الزر النشط
-            const targetTab = document.getElementById('tab-' + tabId);
-            if (targetTab) targetTab.setAttribute('aria-selected', 'true');
-
-            // تحديث مكان الخط السفلي الملون
-            updateIndicator();
+        function switchTab(id) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active-content'));
+            document.getElementById('content-' + id).classList.add('active-content');
         }
 
-        // تحديث الخط عند تحميل الصفحة أول مرة وتغير حجم الشاشة
-        window.addEventListener('DOMContentLoaded', updateIndicator);
-        window.addEventListener('resize', updateIndicator);
+        function filterContent() {
+            let val = document.getElementById('searchInput').value.toLowerCase();
+            document.querySelectorAll('.item').forEach(i => {
+                i.style.display = i.innerText.toLowerCase().includes(val) ? 'flex' : 'none';
+            });
+        }
     </script>
 </body>
 </html>
