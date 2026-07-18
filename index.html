@@ -240,7 +240,7 @@
             margin: 0;
             padding: 0;
             overflow-x: auto;
-            scrollbar-width: none; /* Hide scrollbar for Clean look */
+            scrollbar-width: none;
             position: relative;
         }
         .navigation-bar ul::-webkit-scrollbar { display: none; }
@@ -698,7 +698,7 @@
         // Initialize indicator on page load
         window.addEventListener('DOMContentLoaded', () => {
             const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
-            setTimeout(() => updateIndicator(activeTab), 100); // Small delay to guarantee correct rendering size
+            setTimeout(() => updateIndicator(activeTab), 100);
         });
 
         // Handle window resize for fluid indicator response
