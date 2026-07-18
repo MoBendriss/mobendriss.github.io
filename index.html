@@ -15,7 +15,7 @@
     <!-- Icônes utilitaires -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Typographie -->
+    <!-- Typographie : une serif d'écriture pour l'identité, une sans pour la lecture, une mono pour les repères techniques -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -35,15 +35,15 @@
     <style>
         /* ===== Système de tokens ===== */
         :root {
-            --ink: #132038;
-            --ink-soft: #47536B;
-            --paper: #FBF8F2;
-            --paper-line: #E4DFCF;
+            --ink: #132038;           /* encre — fond du bandeau, texte principal */
+            --ink-soft: #47536B;      /* encre adoucie — texte secondaire */
+            --paper: #FBF8F2;         /* papier — fond de page */
+            --paper-line: #E4DFCF;    /* ligne de cahier / séparateurs discrets */
             --card: #FFFFFF;
-            --chalk-blue: #2C6E8E;
+            --chalk-blue: #2C6E8E;    /* accent principal — bleu craie */
             --chalk-blue-deep: #1F5670;
-            --ochre: #B8791A;
-            --rust: #A23B3B;
+            --ochre: #B8791A;         /* accent secondaire — craie ocre, réservé aux TD */
+            --rust: #A23B3B;          /* accent tertiaire — réservé aux cours */
             --focus: #E7A947;
 
             --font-display: 'Fraunces', Georgia, serif;
@@ -56,6 +56,7 @@
         }
 
         * { box-sizing: border-box; }
+
         html { scroll-behavior: smooth; }
 
         body {
@@ -67,6 +68,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Grain de papier très subtil — donne une texture tactile au fond */
         body::before {
             content: '';
             position: fixed;
@@ -79,8 +81,10 @@
         }
 
         header, nav, main, footer { position: relative; z-index: 1; }
+
         img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
+
+        a { color: inherit; }
 
         .container {
             max-width: 1120px;
@@ -88,6 +92,7 @@
             padding: 0 1.75rem;
         }
 
+        /* Lien d'évitement pour le clavier / lecteurs d'écran */
         .skip-link {
             position: absolute;
             left: -999px;
@@ -126,6 +131,7 @@
             border-bottom: 1px solid rgba(231, 169, 71, 0.4);
         }
 
+        /* Papier quadrillé, en pur CSS — le motif de travail du mathématicien plutôt qu'une photo de tableau générique */
         .top-banner::before {
             content: '';
             position: absolute;
@@ -137,6 +143,7 @@
             mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 55%, transparent 95%);
         }
 
+        /* Glyphes mathématiques en filigrane — matière visuelle tirée du sujet lui-même */
         .banner-glyphs {
             position: absolute;
             inset: 0;
@@ -220,8 +227,13 @@
             flex-shrink: 0;
             filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
         }
+        .header-avatar svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
 
-        /* ===== Navigation ===== */
+        /* ===== Navigation — onglets académiques ===== */
         .navigation-bar {
             background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
             position: sticky;
@@ -230,20 +242,15 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .navigation-bar .container {
-            position: relative;
-        }
-
         .navigation-bar ul {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
             overflow-x: auto;
-            scrollbar-width: none;
+            scrollbar-width: thin;
             position: relative;
         }
-        .navigation-bar ul::-webkit-scrollbar { display: none; }
 
         .nav-indicator {
             position: absolute;
@@ -251,11 +258,10 @@
             height: 3px;
             background: var(--focus);
             border-radius: 2px 2px 0 0;
-            transition: left 0.3s var(--ease), width 0.3s var(--ease);
+            transition: left 0.35s var(--ease), width 0.35s var(--ease);
             pointer-events: none;
-            left: 0;
-            width: 0;
         }
+        .navigation-bar li[aria-hidden="true"] { width: 0; height: 0; overflow: visible; }
 
         .navigation-bar li { flex-shrink: 0; }
 
@@ -266,8 +272,10 @@
             padding: 1.05rem 1.5rem;
             background: transparent;
             border: none;
+            border-bottom: 3px solid transparent;
             color: #C3CCDE;
             font: inherit;
+            font-family: var(--font-body);
             font-weight: 500;
             font-size: 0.95rem;
             white-space: nowrap;
@@ -287,13 +295,15 @@
 
         .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
 
-        .nav-link[aria-selected="true"] { color: #FFFFFF; }
+        .nav-link[aria-selected="true"] {
+            color: #FFFFFF;
+        }
         .nav-link[aria-selected="true"] .nav-code {
             background: var(--focus);
             color: var(--ink);
         }
 
-        /* ===== Layout ===== */
+        /* ===== Mise en page principale ===== */
         main { padding-top: 2.75rem; padding-bottom: 5rem; }
 
         .main-layout {
@@ -327,12 +337,24 @@
             user-select: none;
             z-index: 0;
         }
+        @media (max-width: 640px) { .level-watermark { font-size: 7rem; } }
 
         @keyframes rise {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Encadré « résumé » — comme le chapeau d'un article académique */
         .abstract-box {
             border: 1px solid var(--paper-line);
             border-left: 4px solid var(--chalk-blue);
@@ -346,11 +368,38 @@
             font-family: var(--font-display);
             font-weight: 600;
             font-size: 1.5rem;
+            color: var(--ink);
             margin: 0 0 0.6rem;
         }
-        .abstract-box p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
+        .abstract-box p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
 
-        .page-lead p { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); }
+        .page-lead p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 0 0 0.3rem;
+        }
+        .section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
+
+        .section-sub {
+            color: var(--ink-soft);
+            margin: 0 0 1.6rem;
+            font-size: 0.98rem;
+        }
 
         .group-label {
             font-family: var(--font-mono);
@@ -363,8 +412,107 @@
             border-bottom: 1px dashed var(--paper-line);
         }
 
-        /* ===== Info Items ===== */
-        .info-list { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.7rem; }
+        /* ===== Fiches ressources — effet « feuille détachée d'un bloc » ===== */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .resource-item {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.5s var(--ease);
+        }
+
+        .resource-item::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 9px;
+            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
+            background-size: 20px 9px;
+            background-repeat: repeat-x;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-2px);
+            border-color: #D8D0BC;
+        }
+        .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
+        .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
+
+        .resource-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.15rem 1.35rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .resource-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.28rem 0.5rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
+        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
+
+        .resource-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .download-icon {
+            background: var(--paper);
+            color: var(--ink-soft);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+            transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.3s var(--ease);
+        }
+        .type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
+        .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
+
+        .empty-note {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            border: 1px dashed var(--paper-line);
+            border-radius: 4px;
+            padding: 1.4rem;
+            background: rgba(44, 110, 142, 0.03);
+        }
+
+        /* ===== Page « À propos » — parcours et domaines ===== */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.7rem;
+        }
         .info-item {
             display: flex;
             align-items: baseline;
@@ -380,74 +528,223 @@
             font-size: 0.78rem;
             font-weight: 600;
             color: var(--chalk-blue-deep);
+            flex-shrink: 0;
             min-width: 3rem;
         }
-        .info-item p { margin: 0; line-height: 1.5; }
+        .info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
 
-        /* ===== Resource Items (L1, L2, L3) ===== */
-        .resource-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.85rem; }
-        .resource-item {
-            position: relative;
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 0 0 0.5rem;
+        }
+        .tag-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: #E4EEF2;
+            color: var(--chalk-blue-deep);
+            border: 1px solid rgba(44, 110, 142, 0.25);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+        .faq-item {
             background: var(--card);
             border: 1px solid var(--paper-line);
             border-radius: 3px;
             box-shadow: var(--shadow-1);
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
         }
-        .resource-item::after {
-            content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 9px;
-            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
-            background-size: 20px 9px; background-repeat: repeat-x;
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.1rem 1.3rem;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
         }
-        .resource-item:hover { transform: translateY(-2px); border-color: #D8D0BC; box-shadow: var(--shadow-2); }
-        .resource-item a { display: flex; justify-content: space-between; align-items: center; padding: 1.15rem 1.35rem; }
-        .resource-title { display: flex; align-items: center; gap: 0.8rem; flex: 1; font-weight: 500; }
-        .resource-tag { font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; padding: 0.28rem 0.5rem; border-radius: 4px; }
-        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
-        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
-        .download-icon { background: var(--paper); color: var(--ink-soft); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; }
-        .type-cours:hover .download-icon { background: var(--rust); color: #fff; }
-        .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; }
-
-        /* ===== FAQ ===== */
-        .faq-list { display: grid; gap: 0.85rem; margin-top: 1rem; }
-        .faq-item { background: var(--card); border: 1px solid var(--paper-line); border-radius: 3px; box-shadow: var(--shadow-1); }
-        .faq-item summary { cursor: pointer; padding: 1.1rem 1.3rem; font-weight: 600; display: flex; align-items: center; justify-content: space-between; }
-        .faq-item summary::after { content: '+'; font-family: var(--font-mono); font-size: 1.2rem; color: var(--chalk-blue); }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--chalk-blue);
+            flex-shrink: 0;
+        }
         .faq-item[open] summary::after { content: '−'; }
-        .faq-item p { margin: 0; padding: 0 1.3rem 1.2rem; color: var(--ink-soft); line-height: 1.65; }
+        .faq-item summary:hover { color: var(--chalk-blue-deep); }
+        .faq-item p {
+            margin: 0;
+            padding: 0 1.3rem 1.2rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
 
-        /* ===== Sidebar ===== */
-        .sidebar-widget { background: var(--card); border: 1px solid var(--paper-line); border-radius: 4px; padding: 1.6rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-1); }
-        .widget-title { margin: 0 0 1rem; font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; display: flex; align-items: center; gap: 0.55rem; padding-bottom: 0.7rem; border-bottom: 1px dashed var(--paper-line); }
-        .widget-title i { color: var(--chalk-blue); }
-        .news-list { list-style: none; margin: 0; padding: 0; }
-        .news-item { border-bottom: 1px dashed var(--paper-line); padding: 0.85rem 0; }
-        .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .news-date { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; color: var(--chalk-blue-deep); display: block; margin-bottom: 0.25rem; }
-        .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
-        .math-btn { display: flex; align-items: center; justify-content: center; gap: 0.75rem; background: var(--ink); color: #fff; padding: 1rem 1.4rem; border-radius: 4px; font-weight: 600; width: 100%; border: none; cursor: pointer; transition: background 0.2s; }
+        /* ===== Barre latérale ===== */
+        .sidebar-widget {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 4px;
+            padding: 1.6rem;
+            margin-bottom: 1.6rem;
+            box-shadow: var(--shadow-1);
+        }
+
+        .math-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--ink);
+            color: #fff;
+            padding: 1rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s var(--ease);
+        }
         .math-btn:hover { background: var(--chalk-blue-deep); }
-        .math-btn i { color: var(--focus); }
+        .math-btn i { color: var(--focus); font-size: 1.25rem; }
 
-        /* ===== Contact ===== */
-        .contact-section { background: var(--card); border: 1px solid var(--paper-line); padding: 2.5rem; border-radius: 4px; box-shadow: var(--shadow-1); }
-        .contact-section h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.75rem; margin: 0 0 0.4rem; display: flex; align-items: center; gap: 0.6rem; }
+        .widget-title {
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px dashed var(--paper-line);
+        }
+        .widget-title i { color: var(--chalk-blue); }
+
+        .news-list { list-style: none; margin: 0; padding: 0; }
+        .news-item {
+            border-bottom: 1px dashed var(--paper-line);
+            padding: 0.85rem 0;
+        }
+        .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .news-item:first-child { padding-top: 0; }
+        .news-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--chalk-blue-deep);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+
+        /* ===== Contact — style « fiche » administrative ===== */
+        .contact-section {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-1);
+        }
+        @media (min-width: 640px) { .contact-section { padding: 3rem; } }
+
+        .contact-section h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin: 0 0 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
         .contact-section h2 i { color: var(--chalk-blue); }
         .contact-section > p { color: var(--ink-soft); margin: 0 0 2.25rem; }
-        .field-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
         @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
-        .field label { display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.55rem; }
-        .field input, .field textarea { width: 100%; font: inherit; padding: 0.65rem 0.1rem; border: none; border-bottom: 2px solid var(--paper-line); background: transparent; color: var(--ink); }
+
+        .field label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 0.55rem;
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 0.65rem 0.1rem;
+            border: none;
+            border-bottom: 2px solid var(--paper-line);
+            background: transparent;
+            color: var(--ink);
+            border-radius: 0;
+            transition: border-color 0.2s var(--ease);
+        }
         .field textarea { resize: vertical; min-height: 110px; }
-        .field input:focus, .field textarea:focus { border-color: var(--chalk-blue); outline: none; }
-        .submit-row { display: flex; justify-content: flex-end; }
-        .submit-btn { background: var(--ink); color: #fff; border: none; font-weight: 600; padding: 0.85rem 1.6rem; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem; transition: background 0.2s, transform 0.2s; }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--chalk-blue);
+            outline: none;
+        }
+        .field input::placeholder,
+        .field textarea::placeholder { color: #A6ADBB; }
+
+        .submit-row { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
+
+        .submit-btn {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 0.98rem;
+            padding: 0.85rem 1.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+        }
         .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
 
-        /* ===== Footer ===== */
-        footer { background: var(--ink); color: #8996AC; padding: 3rem 0; text-align: center; border-top: 1px solid rgba(231, 169, 71, 0.3); }
-        footer p { margin: 0; font-family: var(--font-mono); font-size: 0.82rem; }
+        /* ===== Pied de page ===== */
+        footer {
+            background: var(--ink);
+            color: #8996AC;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(231, 169, 71, 0.3);
+        }
+        footer p {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+        }
         footer .foot-accent { color: var(--focus); }
     </style>
 </head>
@@ -459,7 +756,7 @@
     <header class="top-banner">
         <div class="banner-glyphs" aria-hidden="true">
             <span class="g1">∫</span>
-            <span class="g2">...</span>
+            <span class="g2">∑</span>
             <span class="g3">π</span>
             <span class="g4">√</span>
             <span class="g5">Δ</span>
@@ -493,15 +790,15 @@
     <!-- Navigation -->
     <nav class="navigation-bar" aria-label="Sections du site">
         <div class="container">
-            <span class="nav-indicator" id="indicator"></span>
             <ul role="tablist">
-                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true"><i class="fa-solid fa-house"></i> Accueil</button></li>
-                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false"><i class="fa-solid fa-user"></i> À propos</button></li>
-                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false"><span class="nav-code">L1</span> Première année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false"><span class="nav-code">L2</span> Deuxième année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false"><span class="nav-code">L3</span> Troisième année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
-                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false"><i class="fa-solid fa-envelope"></i> Contact</button></li>
+                <li aria-hidden="true"><span class="nav-indicator"></span></li>
+                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
+                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> À propos</button></li>
+                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> Troisième année</button></li>
+                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
+                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
             </ul>
         </div>
     </nav>
@@ -528,132 +825,153 @@
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
                         <h3>À propos de MoBendriss</h3>
-                        <p>Passionné par la transmission du savoir mathématique et l'accompagnement des étudiants dans leur parcours académique.</p>
+                        <p>[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
                     </div>
 
                     <h3 class="group-label">Formation</h3>
                     <ul class="info-list">
                         <li class="info-item">
-                            <span class="info-year">2025</span>
-                            <p>Master en Mathématiques Professionnelles et Sciences de l'Éducation.</p>
+                            <span class="info-year">20XX</span>
+                            <p>[Doctorat en Mathématiques — Université, spécialité]</p>
                         </li>
                         <li class="info-item">
-                            <span class="info-year">2021</span>
-                            <p>Licence Fondamentale en Mathématiques.</p>
+                            <span class="info-year">20XX</span>
+                            <p>[Master / Agrégation — Université, spécialité]</p>
                         </li>
                     </ul>
+
+                    <h3 class="group-label">Domaines d'enseignement et de recherche</h3>
+                    <div class="tag-row">
+                        <span class="tag-pill">Analyse</span>
+                        <span class="tag-pill">Logique</span>
+                        <span class="tag-pill">Analyse fonctionnelle</span>
+                        <span class="tag-pill">[Votre domaine]</span>
+                    </div>
                 </div>
 
-                <!-- L1 Première Année -->
+
                 <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
                     <span class="level-watermark" aria-hidden="true">L1</span>
-                    <div class="abstract-box">
-                        <h3>Première Année (L1)</h3>
-                        <p>Ressources fondamentales pour débuter le cycle universitaire en mathématiques.</p>
-                    </div>
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Première année — L1</h2>
+                    <p class="section-sub">Cliquez sur un document pour lancer le téléchargement.</p>
+
+                    <h3 class="group-label">Cours</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">COURS</span> Algèbre Linéaire 1</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
+                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">COURS</span> Notions de logique</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
+                    </ul>
+
+                    <h3 class="group-label">Exercices &amp; TD</h3>
+                    <ul class="resource-list">
                         <li class="resource-item type-td">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">TD</span> Fiche 1 : Espaces Vectoriels</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
+                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">TD 1</span> Logique et raisonnements</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- L2 Deuxième Année -->
+                <!-- Deuxième année -->
                 <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
                     <span class="level-watermark" aria-hidden="true">L2</span>
-                    <div class="abstract-box">
-                        <h3>Deuxième Année (L2)</h3>
-                        <p>Approfondissement des concepts mathématiques clés.</p>
-                    </div>
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Deuxième année — L2</h2>
+                    <p class="section-sub">Documents et supports pour le deuxième niveau universitaire.</p>
+
+                    <h3 class="group-label">Cours</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">COURS</span> Analyse Réelle</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
+                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
+                                <span class="resource-title"><span class="resource-tag">COURS</span> Analyse fonctionnelle</span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
                 </div>
 
-                <!-- L3 Troisième Année -->
+                <!-- Troisième année -->
                 <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
                     <span class="level-watermark" aria-hidden="true">L3</span>
-                    <div class="abstract-box">
-                        <h3>Troisième Année (L3)</h3>
-                        <p>Spécialisation et outils mathématiques avancés.</p>
-                    </div>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="#">
-                                <span class="resource-title"><span class="resource-tag">COURS</span> Topologie & Géométrie</span>
-                                <span class="download-icon"><i class="fa-solid fa-download"></i></span>
-                            </a>
-                        </li>
-                    </ul>
+                    <h2 class="section-heading"><i class="fa-solid fa-award"></i> Troisième année — L3</h2>
+                    <p class="section-sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
+                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
                 </div>
 
                 <!-- FAQ -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
                     <span class="level-watermark" aria-hidden="true">?</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> Questions fréquentes</h2>
+                    <p class="section-sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+
                     <div class="faq-list">
                         <details class="faq-item">
-                            <summary>Comment télécharger les fiches de TD ?</summary>
-                            <p>Il vous suffit de cliquer sur l'icône de téléchargement à droite de chaque ressource pour récupérer le document au format PDF.</p>
+                            <summary>Comment télécharger un document ?</summary>
+                            <p>Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Les documents sont-ils mis à jour régulièrement ?</summary>
+                            <p>[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Comment vous contacter en cas de question sur un exercice ?</summary>
+                            <p>Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
+                            <p>[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
                         </details>
                     </div>
                 </div>
 
                 <!-- Contact -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
-                    <div class="contact-section">
-                        <h2><i class="fa-solid fa-envelope"></i> Contactez-moi</h2>
-                        <p>Pour toute question académique, utilisez le formulaire ci-dessous.</p>
-                        <form action="#" method="POST">
+                    <section class="contact-section">
+                        <h2><i class="fa-solid fa-paper-plane"></i> Contact direct</h2>
+                        <p>Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
+                        <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
                             <div class="field-grid">
                                 <div class="field">
-                                    <label for="name">Nom Complet</label>
-                                    <input type="text" id="name" name="name" required placeholder="Votre nom">
+                                    <label for="name">Nom complet</label>
+                                    <input type="text" id="name" name="name" placeholder="Votre nom" required>
                                 </div>
                                 <div class="field">
-                                    <label for="email">Adresse Email</label>
-                                    <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                                    <label for="email">Adresse e-mail</label>
+                                    <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
                                 </div>
                             </div>
-                            <div class="field" style="margin-bottom: 1.5rem;">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" required placeholder="Votre message ici..."></textarea>
+                            <div class="field">
+                                <label for="message">Votre message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required></textarea>
                             </div>
                             <div class="submit-row">
-                                <button type="submit" class="submit-btn">Envoyer <i class="fa-solid fa-paper-plane"></i></button>
+                                <button type="submit" class="submit-btn">Envoyer le message <i class="fa-regular fa-paper-plane"></i></button>
                             </div>
                         </form>
-                    </div>
+                    </section>
                 </div>
 
             </section>
 
-            <!-- Barre latérale (Sidebar) -->
-            <aside class="sidebar-wrapper">
+            <!-- Barre latérale -->
+            <aside id="sidebar">
                 <div class="sidebar-widget">
-                    <h3 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Actualités</h3>
+                    <button class="math-btn" onclick="switchTab('premiere-annee')">
+                        <i class="fa-solid fa-infinity"></i> Mathématiques
+                    </button>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
                     <ul class="news-list">
                         <li class="news-item">
-                            <span class="news-date">18 Juillet 2026</span>
-                            <p>Mise en ligne des nouvelles fiches de révision pour les examens de Licence.</p>
+                            <span class="news-date">JUILLET 2026</span>
+                            <p>Mise en ligne du cours de logique pour la première année.</p>
                         </li>
                     </ul>
-                </div>
-                <div class="sidebar-widget">
-                    <button class="math-btn"><i class="fa-solid fa-calculator"></i> Boîte à outils Maths</button>
                 </div>
             </aside>
 
@@ -662,50 +980,84 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 <span class="foot-accent">MoBendriss</span>. Tous droits réservés. Développé avec rigueur mathématique.</p>
+            <p>© 2026 MoBendriss. Tous droits réservés. <span class="foot-accent">Conçu avec rigueur.</span></p>
         </div>
     </footer>
 
-    <!-- JavaScript dynamic Tabs System -->
     <script>
-        const tabs = document.querySelectorAll('.nav-link');
-        const contents = document.querySelectorAll('.tab-content');
-        const indicator = document.getElementById('indicator');
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        function updateIndicator(activeTab) {
-            if(activeTab) {
-                indicator.style.left = `${activeTab.offsetLeft}px`;
-                indicator.style.width = `${activeTab.offsetWidth}px`;
-            }
+        function positionIndicator(button) {
+            var indicator = document.querySelector('.nav-indicator');
+            var list = document.querySelector('.navigation-bar ul');
+            if (!indicator || !button || !list) return;
+            var listRect = list.getBoundingClientRect();
+            var btnRect = button.getBoundingClientRect();
+            indicator.style.left = (btnRect.left - listRect.left) + 'px';
+            indicator.style.width = btnRect.width + 'px';
         }
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Remove active classes
-                tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-                contents.forEach(c => c.classList.remove('active-content'));
+        function revealChildren(panel) {
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item');
+            items.forEach(function (el, i) {
+                el.classList.remove('is-visible');
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 60) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
+            });
+        }
 
-                // Set current active
-                tab.setAttribute('aria-selected', 'true');
-                const targetId = tab.getAttribute('aria-controls');
-                document.getElementById(targetId).classList.add('active-content');
+        function switchTab(tabId) {
+            document.querySelectorAll('.nav-link').forEach(function (link) {
+                link.setAttribute('aria-selected', 'false');
+            });
+            var activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.setAttribute('aria-selected', 'true');
+                positionIndicator(activeTab);
+                activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+            }
 
-                // Move indicator
-                updateIndicator(tab);
+            document.querySelectorAll('.tab-content').forEach(function (panel) {
+                panel.classList.remove('active-content');
+            });
+            var activePanel = document.getElementById('content-' + tabId);
+            if (activePanel) {
+                activePanel.classList.add('active-content');
+                revealChildren(activePanel);
+            }
+
+            window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+        }
+
+        window.addEventListener('load', function () {
+            positionIndicator(document.getElementById('tab-accueil'));
+            revealChildren(document.getElementById('content-accueil'));
+
+            document.querySelectorAll('.sidebar-widget').forEach(function (el, i) {
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 90) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
             });
         });
 
-        // Initialize indicator on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
-            setTimeout(() => updateIndicator(activeTab), 100);
+        window.addEventListener('resize', function () {
+            positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
         });
 
-        // Handle window resize for fluid indicator response
-        window.addEventListener('resize', () => {
-            const activeTab = document.querySelector('.nav-link[aria-selected="true"]');
-            updateIndicator(activeTab);
-        });
+        var navList = document.querySelector('.navigation-bar ul');
+        if (navList) {
+            navList.addEventListener('scroll', function () {
+                positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+            }, { passive: true });
+        }
     </script>
+
 </body>
 </html>
