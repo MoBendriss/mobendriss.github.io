@@ -82,6 +82,31 @@
 
         header, nav, main, footer { position: relative; z-index: 1; }
 
+        /* Touches mathématiques discrètes dans les marges — visibles seulement quand il y a de la place */
+        .site-glyphs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            display: none;
+        }
+        .site-glyphs span {
+            position: absolute;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--chalk-blue);
+            opacity: 0.07;
+            line-height: 1;
+            user-select: none;
+        }
+        .sg1 { top: 14vh; left: 2.5vw; font-size: 5.5rem; }
+        .sg2 { top: 42vh; right: 2.5vw; font-size: 4.5rem; }
+        .sg3 { top: 68vh; left: 3vw; font-size: 3.8rem; }
+        .sg4 { top: 85vh; right: 3.5vw; font-size: 4rem; }
+        .sg5 { top: 6vh; right: 4vw; font-size: 3.2rem; }
+
+        @media (min-width: 1440px) { .site-glyphs { display: block; } }
+
         img { max-width: 100%; display: block; }
 
         a { color: inherit; }
@@ -219,11 +244,29 @@
         .top-banner h1 {
             font-family: var(--font-display);
             font-size: clamp(2.6rem, 5vw, 3.75rem);
-            font-weight: 600;
+            font-weight: 700;
             margin: 0;
             color: #FFFFFF;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
             text-shadow: 0 2px 24px rgba(44, 110, 142, 0.45);
+        }
+
+        .wordmark { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .wordmark .wm-a { color: var(--focus); }
+        .wordmark .wm-b { color: #FFFFFF; }
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: var(--chalk-blue);
+            color: #fff;
+            font-size: 0.7rem;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
+            flex-shrink: 0;
+            vertical-align: middle;
         }
 
         .top-banner p.tagline {
@@ -262,7 +305,46 @@
             overflow-x: auto;
             scrollbar-width: thin;
             position: relative;
+            flex: 1;
+            min-width: 0;
         }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-search {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            margin: 0.6rem 0;
+            flex-shrink: 0;
+            transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+        }
+        .nav-search:focus-within {
+            border-color: var(--focus);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .nav-search i { color: #9AA6BC; font-size: 0.85rem; flex-shrink: 0; }
+        .nav-search input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 0.86rem;
+            width: 170px;
+        }
+        .nav-search input:focus { outline: none; }
+        .nav-search input::placeholder { color: #8996AC; }
+        .nav-search input::-webkit-search-cancel-button { filter: invert(1); opacity: 0.6; cursor: pointer; }
 
         .nav-indicator {
             position: absolute;
@@ -552,6 +634,50 @@
             background: rgba(44, 110, 142, 0.03);
         }
 
+        /* ===== Vidéos ===== */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1.4rem;
+        }
+        .video-card {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+        }
+        .video-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-2);
+        }
+        .video-thumb {
+            aspect-ratio: 16 / 9;
+            background:
+                radial-gradient(ellipse 70% 70% at 50% 50%, rgba(231, 169, 71, 0.14), transparent 70%),
+                linear-gradient(140deg, #16233F 0%, #0C1526 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.6rem;
+        }
+        .video-thumb i {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(231, 169, 71, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .video-info { padding: 0.95rem 1.1rem 1.1rem; }
+        .video-info .resource-tag { background: #F5EBDA; color: var(--ochre); margin-bottom: 0.5rem; display: inline-block; }
+        .video-info p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
+
         /* ===== Page « À propos » — parcours et domaines ===== */
         .info-list {
             list-style: none;
@@ -820,6 +946,7 @@
             .header-avatar,
             .banner-glyphs,
             .banner-formula,
+            .site-glyphs,
             #sidebar,
             .print-btn,
             .level-watermark,
@@ -832,7 +959,8 @@
                 padding: 0 0 1rem;
             }
             .top-banner::before { display: none; }
-            .top-banner h1, .eyebrow, .tagline { color: #000 !important; text-shadow: none !important; }
+            .top-banner h1, .eyebrow, .tagline, .wm-a, .wm-b { color: #000 !important; text-shadow: none !important; }
+            .verified-badge { display: none !important; }
             .main-layout { display: block; }
             .tab-content { display: block !important; overflow: visible; }
             .tab-content:not(.active-content) { display: none !important; }
@@ -851,6 +979,14 @@
     <a class="skip-link" href="#main-content">Aller au contenu principal</a>
     <div id="tab-announcer" class="sr-only" aria-live="polite"></div>
 
+    <div class="site-glyphs" aria-hidden="true">
+        <span class="sg1">∞</span>
+        <span class="sg2">∂</span>
+        <span class="sg3">≈</span>
+        <span class="sg4">∴</span>
+        <span class="sg5">Ω</span>
+    </div>
+
     <!-- En-tête -->
     <header class="top-banner">
         <div class="banner-glyphs" aria-hidden="true">
@@ -864,7 +1000,7 @@
         <div class="container top-banner-content">
             <div>
                 <p class="eyebrow">Enseignant-chercheur en mathématiques</p>
-                <h1>MoBendriss</h1>
+                <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
                 <p class="tagline">Cours et exercices de mathématiques</p>
             </div>
             <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
@@ -888,17 +1024,22 @@
 
     <!-- Navigation -->
     <nav class="navigation-bar" aria-label="Sections du site">
-        <div class="container">
+        <div class="container nav-inner">
             <ul role="tablist">
                 <li aria-hidden="true"><span class="nav-indicator"></span></li>
                 <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
                 <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> À propos</button></li>
+                <li><button class="nav-link" role="tab" id="tab-videos" aria-controls="content-videos" aria-selected="false" onclick="switchTab('videos')"><i class="fa-solid fa-video"></i> Vidéos</button></li>
                 <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> Troisième année</button></li>
                 <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
             </ul>
+            <form class="nav-search" role="search" onsubmit="return false;">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document">
+            </form>
         </div>
     </nav>
 
@@ -948,6 +1089,39 @@
                     </div>
                 </div>
 
+                <!-- Vidéos -->
+                <div id="content-videos" class="tab-content" role="tabpanel" aria-labelledby="tab-videos">
+                    <span class="level-watermark" aria-hidden="true">▷</span>
+                    <div class="panel-head">
+                        <h2 class="section-heading"><i class="fa-solid fa-video"></i> Vidéos</h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                    </div>
+                    <p class="section-sub">Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]</p>
+
+                    <div class="video-grid">
+                        <div class="video-card">
+                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
+                            <div class="video-info">
+                                <span class="resource-tag">VIDÉO</span>
+                                <p>[Titre — Introduction à la logique]</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
+                            <div class="video-info">
+                                <span class="resource-tag">VIDÉO</span>
+                                <p>[Titre — Méthode de résolution d'un TD]</p>
+                            </div>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
+                            <div class="video-info">
+                                <span class="resource-tag">VIDÉO</span>
+                                <p>[Titre — Correction d'un examen]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
                     <span class="level-watermark" aria-hidden="true">L1</span>
@@ -1086,6 +1260,12 @@
                     </section>
                 </div>
 
+                <!-- Résultats de recherche (généré dynamiquement) -->
+                <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
+                    <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
+                    <div id="search-results" class="resource-list"></div>
+                </div>
+
             </section>
 
             <!-- Barre latérale -->
@@ -1129,7 +1309,7 @@
 
     <script>
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact'];
+        var TAB_IDS = ['accueil', 'apropos', 'videos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact'];
         var isNavigatingByHash = false;
 
         function isValidTab(id) { return TAB_IDS.indexOf(id) !== -1; }
@@ -1145,7 +1325,7 @@
         }
 
         function revealChildren(panel) {
-            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item');
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .video-card');
             items.forEach(function (el, i) {
                 el.classList.remove('is-visible');
                 el.classList.add('reveal');
@@ -1160,6 +1340,7 @@
         function switchTab(tabId, opts) {
             opts = opts || {};
             if (!isValidTab(tabId)) return;
+            lastActiveTab = tabId;
 
             document.querySelectorAll('.nav-link').forEach(function (link) {
                 link.setAttribute('aria-selected', 'false');
@@ -1256,6 +1437,103 @@
                 positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
             }, { passive: true });
         }
+
+        // ===== Recherche instantanée dans les documents =====
+        var searchIndex = [];
+        var lastActiveTab = 'accueil';
+        var searchTimer;
+
+        function buildSearchIndex() {
+            searchIndex = [];
+            document.querySelectorAll('.tab-content .resource-item').forEach(function (item) {
+                var a = item.querySelector('a');
+                var titleEl = item.querySelector('.resource-title');
+                var tagEl = item.querySelector('.resource-tag');
+                var panel = item.closest('.tab-content');
+                var levelHeading = panel ? panel.querySelector('h2') : null;
+                if (!a || !titleEl) return;
+                var typeClass = Array.prototype.slice.call(item.classList).filter(function (c) { return c.indexOf('type-') === 0; })[0] || '';
+                searchIndex.push({
+                    title: titleEl.textContent.replace(/\s+/g, ' ').trim(),
+                    href: a.getAttribute('href'),
+                    tag: tagEl ? tagEl.textContent.trim() : '',
+                    level: levelHeading ? levelHeading.textContent.replace(/\s+/g, ' ').trim() : '',
+                    typeClass: typeClass
+                });
+            });
+        }
+
+        function performSearch(rawQuery) {
+            var query = (rawQuery || '').trim().toLowerCase();
+            var searchPanel = document.getElementById('content-search');
+            var resultsBox = document.getElementById('search-results');
+            var heading = document.getElementById('search-heading');
+            if (!searchPanel || !resultsBox || !heading) return;
+
+            if (!query) {
+                switchTab(lastActiveTab, { updateHash: false, scrollTop: false });
+                return;
+            }
+
+            var matches = searchIndex.filter(function (item) {
+                return item.title.toLowerCase().indexOf(query) !== -1 || item.level.toLowerCase().indexOf(query) !== -1;
+            });
+
+            document.querySelectorAll('.tab-content').forEach(function (p) { p.classList.remove('active-content'); });
+            document.querySelectorAll('.nav-link').forEach(function (l) { l.setAttribute('aria-selected', 'false'); });
+            var indicator = document.querySelector('.nav-indicator');
+            if (indicator) indicator.style.width = '0px';
+
+            heading.textContent = matches.length
+                ? 'Résultats pour « ' + rawQuery.trim() + ' » (' + matches.length + ')'
+                : 'Aucun résultat pour « ' + rawQuery.trim() + ' »';
+
+            resultsBox.innerHTML = '';
+            matches.forEach(function (item) {
+                var row = document.createElement('div');
+                row.className = 'resource-item ' + item.typeClass;
+                var link = document.createElement('a');
+                link.href = item.href;
+                link.setAttribute('download', '');
+                link.innerHTML =
+                    '<span class="resource-title"><span class="resource-tag">' + item.tag + '</span> ' + item.title + '</span>' +
+                    '<span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>';
+                row.appendChild(link);
+                resultsBox.appendChild(row);
+            });
+            if (!matches.length) {
+                var note = document.createElement('p');
+                note.className = 'empty-note';
+                note.textContent = 'Essayez un autre mot-clé, ou parcourez directement les onglets par niveau.';
+                resultsBox.appendChild(note);
+            }
+
+            searchPanel.classList.add('active-content');
+            revealChildren(searchPanel);
+
+            var announcer = document.getElementById('tab-announcer');
+            if (announcer) {
+                announcer.textContent = matches.length ? (matches.length + ' résultat(s) trouvé(s)') : 'Aucun résultat trouvé';
+            }
+        }
+
+        var searchInput = document.getElementById('site-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                var val = this.value;
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(function () { performSearch(val); }, 180);
+            });
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    performSearch('');
+                    this.blur();
+                }
+            });
+        }
+
+        window.addEventListener('load', buildSearchIndex);
     </script>
 
 </body>
