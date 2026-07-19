@@ -1292,86 +1292,51 @@
                     </div>
                 </div>
 
-                <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
-                    <span class="level-watermark" aria-hidden="true">L1</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l1.heading">Première année — L1</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l1.sub">Cliquez sur un document pour lancer le téléchargement.</p>
-
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
+             <!-- شريط الملاحة العلوي المتوافق مع المحتوى الخاص بك -->
+    <nav class="navigation-bar" role="navigation" aria-label="Menu principal">
+        <div class="container nav-container">
+            <!-- المؤشر الديناميكي السفلي -->
+            <div class="nav-indicator" aria-hidden="true"></div>
+            
+            <ul class="nav-list" role="tablist">
+                <li>
+                    <button class="nav-link" role="tab" id="tab-accueil" aria-selected="true" aria-controls="content-accueil">
+                        <i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span>
+                    </button>
+                </li>
+                
+                <!-- قائمة Mathématiques المنسدلة المربوطة بالسنوات الثلاث -->
+                <li class="nav-item-dropdown">
+                    <button class="nav-link dropdown-toggle" id="btn-math" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-calculator"></i> <span data-i18n="nav.math">Mathématiques</span> <i class="fa-solid fa-chevron-down arrow-inline"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btn-math">
+                        <li>
+                            <button class="dropdown-item" role="tab" id="tab-premiere-annee" aria-selected="false" aria-controls="content-premiere-annee">
+                                <span class="nav-code">L1</span> <span data-i18n="l1.title">Première année</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" role="tab" id="tab-deuxieme-annee" aria-selected="false" aria-controls="content-deuxieme-annee">
+                                <span class="nav-code">L2</span> <span data-i18n="l2.title">Deuxième année</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="dropdown-item" role="tab" id="tab-troisieme-annee" aria-selected="false" aria-controls="content-troisieme-annee">
+                                <span class="nav-code">L3</span> <span data-i18n="l3.title">Troisième année</span>
+                            </button>
                         </li>
                     </ul>
+                </li>
 
-                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
-                    <ul class="resource-list">
-                        <li class="resource-item type-td">
-                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
-                    <ul class="resource-list">
-                        <li class="resource-item type-exam">
-                            <a href="documents/examens/1SC_examen1_corrige.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Deuxième année -->
-                <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
-                    <span class="level-watermark" aria-hidden="true">L2</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l2.heading">Deuxième année — L2</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l2.sub">Documents et supports pour le deuxième niveau universitaire.</p>
-
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-                </div>
-
-                <!-- Troisième année -->
-                <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
-                    <span class="level-watermark" aria-hidden="true">L3</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-award"></i> <span data-i18n="l3.heading">Troisième année — L3</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l3.sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
-
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-                </div>
+                <li>
+                    <button class="nav-link" role="tab" id="tab-about" aria-selected="false" aria-controls="content-about">
+                        <i class="fa-solid fa-user-graduate"></i> <span data-i18n="nav.about">À propos</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
                 <!-- FAQ -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
@@ -1505,136 +1470,104 @@
         </div>
     </footer>
 
-    <script>
-        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'videos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact', 'confidentialite'];
-        var isNavigatingByHash = false;
+   document.addEventListener('DOMContentLoaded', () => {
+    // جلب جميع الأزرار (العادية وداخل القائمة المنسدلة)
+    const tabs = document.querySelectorAll('.nav-link[role="tab"], .dropdown-item[role="tab"]');
+    const panels = document.querySelectorAll('.tab-content');
+    const indicator = document.querySelector('.nav-indicator');
+    const mathBtn = document.getElementById('btn-math');
+    const dropdownWrapper = document.querySelector('.nav-item-dropdown');
 
-        function isValidTab(id) { return TAB_IDS.indexOf(id) !== -1; }
-
-        function positionIndicator(button) {
-            var indicator = document.querySelector('.nav-indicator');
-            var list = document.querySelector('.navigation-bar ul');
-            if (!indicator || !button || !list) return;
-            var listRect = list.getBoundingClientRect();
-            var btnRect = button.getBoundingClientRect();
-            indicator.style.left = (btnRect.left - listRect.left) + 'px';
-            indicator.style.width = btnRect.width + 'px';
+    function updateIndicator(activeTab) {
+        if (!indicator || !activeTab) return;
+        
+        // إذا ضغط المستخدم على L1 أو L2 أو L3، نجعل الخط السفلي يضيء تحت كلمة Mathématiques
+        let targetForIndicator = activeTab;
+        if (activeTab.classList.contains('dropdown-item')) {
+            targetForIndicator = mathBtn;
         }
 
-        function revealChildren(panel) {
-            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .video-card');
-            items.forEach(function (el, i) {
-                el.classList.remove('is-visible');
-                el.classList.add('reveal');
-                if (reduceMotion) { el.classList.add('is-visible'); return; }
-                el.style.transitionDelay = (i * 60) + 'ms';
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
-                });
-            });
+        const tabRect = targetForIndicator.getBoundingClientRect();
+        const navRect = targetForIndicator.parentElement.parentElement.getBoundingClientRect();
+        const offsetLeft = tabRect.left - navRect.left + targetForIndicator.parentElement.parentElement.scrollLeft;
+        
+        indicator.style.left = `${offsetLeft}px`;
+        indicator.style.width = `${tabRect.width}px`;
+    }
+
+    function switchTab(tab) {
+        // إعادة تهيئة الأزرار
+        tabs.forEach(t => {
+            t.setAttribute('aria-selected', 'false');
+            if(t.classList.contains('dropdown-item')) {
+                t.style.fontWeight = 'normal';
+            }
+        });
+        mathBtn.setAttribute('aria-selected', 'false');
+        mathBtn.classList.remove('active');
+
+        // إخفاء جميع الحاويات (L1, L2, L3 والصفحة الرئيسية)
+        panels.forEach(p => {
+            p.style.display = 'none'; 
+            p.classList.remove('active-content');
+        });
+
+        // تفعيل الزر المختار
+        tab.setAttribute('aria-selected', 'true');
+        
+        // إذا كان الزر المختار فرعياً، ننشط زر الماث الرئيسي علمياً وبصرياً
+        if (tab.classList.contains('dropdown-item')) {
+            mathBtn.setAttribute('aria-selected', 'true');
+            tab.style.fontWeight = 'bold';
         }
 
-        function switchTab(tabId, opts) {
-            opts = opts || {};
-            if (!isValidTab(tabId)) return;
-            lastActiveTab = tabId;
-
-            document.querySelectorAll('.nav-link').forEach(function (link) {
-                link.setAttribute('aria-selected', 'false');
-            });
-            var activeTab = document.getElementById('tab-' + tabId);
-            if (activeTab) {
-                activeTab.setAttribute('aria-selected', 'true');
-                positionIndicator(activeTab);
-                activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
-            }
-
-            document.querySelectorAll('.tab-content').forEach(function (panel) {
-                panel.classList.remove('active-content');
-            });
-            var activePanel = document.getElementById('content-' + tabId);
-            if (activePanel) {
-                activePanel.classList.add('active-content');
-                revealChildren(activePanel);
-
-                var announcer = document.getElementById('tab-announcer');
-                if (announcer) {
-                    var heading = activePanel.querySelector('h2, h3');
-                    announcer.textContent = 'Section affichée : ' + (heading ? heading.textContent.trim() : tabId);
-                }
-            }
-
-            if (opts.updateHash !== false && history.pushState) {
-                try {
-                    isNavigatingByHash = true;
-                    history.pushState({ tab: tabId }, '', '#' + tabId);
-                } catch (e) {
-                    // Certains navigateurs refusent pushState en file:// local — sans conséquence en ligne.
-                } finally {
-                    isNavigatingByHash = false;
-                }
-            }
-
-            if (opts.scrollTop !== false) {
-                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-            }
+        // إظهار المحتوى المطابق للـ id المحدد في aria-controls
+        const targetPanelId = tab.getAttribute('aria-controls');
+        const targetPanel = document.getElementById(targetPanelId);
+        
+        if (targetPanel) {
+            targetPanel.style.display = 'block'; // فتح القسم المطلوب مباشرة
+            targetPanel.classList.add('active-content');
         }
 
-        // Navigation au clavier entre les onglets (flèches, Origine/Fin)
-        document.querySelectorAll('.nav-link').forEach(function (btn) {
-            btn.addEventListener('keydown', function (e) {
-                var currentId = btn.id.replace('tab-', '');
-                var idx = TAB_IDS.indexOf(currentId);
-                if (idx === -1) return;
-                var newIdx = null;
-                if (e.key === 'ArrowRight') newIdx = (idx + 1) % TAB_IDS.length;
-                else if (e.key === 'ArrowLeft') newIdx = (idx - 1 + TAB_IDS.length) % TAB_IDS.length;
-                else if (e.key === 'Home') newIdx = 0;
-                else if (e.key === 'End') newIdx = TAB_IDS.length - 1;
-                if (newIdx !== null) {
-                    e.preventDefault();
-                    var newId = TAB_IDS[newIdx];
-                    switchTab(newId, { scrollTop: false });
-                    var newBtn = document.getElementById('tab-' + newId);
-                    if (newBtn) newBtn.focus();
-                }
-            });
+        updateIndicator(tab);
+        
+        // إغلاق القائمة المنسدلة تلقائياً للهواتف بعد الاختيار
+        dropdownWrapper.classList.remove('open');
+    }
+
+    // إضافة حدث النقر لكل الأزرار
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            switchTab(e.currentTarget);
         });
+    });
 
-        window.addEventListener('load', function () {
-            var initial = location.hash ? location.hash.substring(1) : 'accueil';
-            if (!isValidTab(initial)) initial = 'accueil';
-            switchTab(initial, { updateHash: false, scrollTop: false });
+    // تشغيل القائمة في الهواتف عند الضغط على الكلمة الرئيسية Mathématiques
+    mathBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownWrapper.classList.toggle('open');
+        const expanded = dropdownWrapper.classList.contains('open');
+        mathBtn.setAttribute('aria-expanded', expanded);
+    });
 
-            document.querySelectorAll('.sidebar-widget').forEach(function (el, i) {
-                el.classList.add('reveal');
-                if (reduceMotion) { el.classList.add('is-visible'); return; }
-                el.style.transitionDelay = (i * 90) + 'ms';
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
-                });
-            });
-        });
+    // إغلاق القائمة في حال النقر خارجها
+    document.addEventListener('click', () => {
+        dropdownWrapper.classList.remove('open');
+        mathBtn.setAttribute('aria-expanded', 'false');
+    });
 
-        // Navigateur précédent/suivant — garde les onglets synchronisés avec l'URL
-        window.addEventListener('popstate', function () {
-            if (isNavigatingByHash) return;
-            var id = location.hash ? location.hash.substring(1) : 'accueil';
-            if (!isValidTab(id)) id = 'accueil';
-            switchTab(id, { updateHash: false, scrollTop: false });
-        });
-
-        window.addEventListener('resize', function () {
-            positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
-        });
-
-        var navList = document.querySelector('.navigation-bar ul');
-        if (navList) {
-            navList.addEventListener('scroll', function () {
-                positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
-            }, { passive: true });
-        }
+    // تفعيل وتحديد مكان الخط السفلي عند بداية تحميل الصفحة
+    const initialActiveTab = document.querySelector('[aria-selected="true"]');
+    if (initialActiveTab) {
+        setTimeout(() => updateIndicator(initialActiveTab), 100);
+    }
+    
+    window.addEventListener('resize', () => {
+        const activeTab = document.querySelector('[aria-selected="true"]');
+        updateIndicator(activeTab);
+    });
+});
 
         // ===== Recherche instantanée dans les documents =====
         var searchIndex = [];
