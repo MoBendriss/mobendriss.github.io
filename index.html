@@ -1,33 +1,31 @@
+إليك **النسخة النهائية** جاهزة في ملف واحد `index.html`:
+
+```html
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoBendriss | Cours et exercices de mathématiques</title>
-    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
+    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés.">
     <meta name="theme-color" content="#132038">
-
     <link rel="canonical" href="https://mobendriss.github.io/">
 
     <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
+    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:url" content="https://mobendriss.github.io/">
     <meta property="og:image" content="https://mobendriss.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta name="twitter:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
-    <meta name="twitter:image" content="https://mobendriss.github.io/og-image.jpg">
 
     <script>
         (function () {
             try {
                 var t = localStorage.getItem('mb-theme');
-                if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+                if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
                 document.documentElement.setAttribute('data-theme', t);
+
                 var l = localStorage.getItem('mb-lang');
                 if (l === 'ar') {
                     document.documentElement.setAttribute('lang', 'ar');
@@ -86,6 +84,7 @@
             --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px -8px rgba(0, 0, 0, 0.5);
             --shadow-2: 0 20px 34px -18px rgba(0, 0, 0, 0.7);
         }
+
         [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
         [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
         [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
@@ -145,12 +144,9 @@
         .sg3 { top: 68vh; left: 3vw; font-size: 3.8rem; }
         .sg4 { top: 85vh; right: 3.5vw; font-size: 4rem; }
         .sg5 { top: 6vh; right: 4vw; font-size: 3.2rem; }
-
         @media (min-width: 1440px) { .site-glyphs { display: block; } }
 
-        img { max-width: 100%; display: block; }
         a { color: inherit; }
-
         .container {
             max-width: 1120px;
             margin: 0 auto;
@@ -195,7 +191,6 @@
             }
         }
 
-        /* ===== البند البصري العلوي ===== */
         .top-banner {
             position: relative;
             background:
@@ -238,7 +233,6 @@
         .g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.2); --r: -4deg; display: none; animation-delay: -6s; }
         .g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231, 169, 71, 0.24); --r: 10deg; display: none; animation-delay: -1.5s; }
         .g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.16); --r: -6deg; display: none; animation-delay: -4.5s; }
-
         @media (min-width: 860px) { .g3, .g4 { display: block; } }
         @media (min-width: 1100px) { .g5 { display: block; } }
 
@@ -291,6 +285,7 @@
         .wordmark { display: inline-flex; align-items: center; gap: 0.5rem; }
         .wordmark .wm-a { color: var(--focus); }
         .wordmark .wm-b { color: #FFFFFF; }
+
         .verified-badge {
             display: inline-flex;
             align-items: center;
@@ -325,7 +320,6 @@
             display: block;
         }
 
-        /* ===== شريط التنقل وقائمة الألسنة ===== */
         .navigation-bar {
             background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
             position: sticky;
@@ -334,7 +328,6 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        /* إخفاء شريط التمرير الأفقي بشكل كامل ونهائي لجميع المتصفحات مع الاحتفاظ بمرونة اللمس */
         .navigation-bar ul {
             display: flex;
             list-style: none;
@@ -344,14 +337,9 @@
             position: relative;
             flex: 1;
             min-width: 0;
-            
-            /* إخفاء شريط التمرير لمتصفح فايرفوكس */
-            scrollbar-width: none; 
-            /* إخفاء شريط التمرير لمتصفحات IE و Edge القديمة */
-            -ms-overflow-style: none; 
+            scrollbar-width: none;
+            -ms-overflow-style: none;
         }
-
-        /* إخفاء شريط التمرير لمتصفحات Chrome, Safari, Edge الحديثة */
         .navigation-bar ul::-webkit-scrollbar {
             display: none !important;
             width: 0 !important;
@@ -455,11 +443,9 @@
             cursor: pointer;
             transition: color 0.25s var(--ease), background 0.25s var(--ease);
         }
-
         .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
         .nav-link[aria-selected="true"] { color: #FFFFFF; }
 
-        /* ===== هيكلة المحتوى ===== */
         main { padding-top: 2.75rem; padding-bottom: 5rem; }
 
         .main-layout {
@@ -567,7 +553,6 @@
             border-bottom: 1px dashed var(--paper-line);
         }
 
-        /* عنوان مستويات تبويب الرياضيات */
         .level-title {
             font-family: var(--font-display);
             font-weight: 600;
@@ -603,7 +588,6 @@
             border-radius: 4px 0 0 4px;
         }
 
-        /* ===== عناصر وقوائم الموارد ===== */
         .resource-list {
             list-style: none;
             padding: 0;
@@ -699,7 +683,6 @@
             background: rgba(44, 110, 142, 0.03);
         }
 
-        /* ===== صفحة من أنا ===== */
         .info-list {
             list-style: none;
             padding: 0;
@@ -743,7 +726,6 @@
             border: 1px solid rgba(44, 110, 142, 0.25);
         }
 
-        /* ===== الأسئلة المتكررة ===== */
         .faq-list {
             display: grid;
             gap: 0.85rem;
@@ -783,7 +765,6 @@
             line-height: 1.65;
         }
 
-        /* ===== القائمة الجانبية ===== */
         .sidebar-widget {
             background: var(--card);
             border: 1px solid var(--paper-line);
@@ -862,7 +843,6 @@
         }
         .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
 
-        /* ===== استمارة التواصل المباشر ===== */
         .contact-section {
             background: var(--card);
             border: 1px solid var(--paper-line);
@@ -943,7 +923,6 @@
         }
         .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
 
-        /* ===== التذييل ===== */
         footer {
             background: var(--ink);
             color: #8996AC;
@@ -978,7 +957,6 @@
         }
         .footer-link:hover { color: var(--focus); }
 
-        /* ===== أنماط اللغات واتجاهات الصفحة RTL ===== */
         [dir="rtl"] body {
             font-family: 'IBM Plex Sans Arabic', var(--font-body);
         }
@@ -1020,41 +998,6 @@
         [dir="rtl"] .field textarea {
             text-align: right;
         }
-
-        /* ===== وضعية الطباعة ===== */
-        @media print {
-            body::before { display: none; }
-            .skip-link,
-            .navigation-bar,
-            .header-avatar,
-            .banner-glyphs,
-            .banner-formula,
-            .site-glyphs,
-            #sidebar,
-            .nav-toggles,
-            .level-watermark,
-            footer {
-                display: none !important;
-            }
-            .top-banner {
-                background: #fff !important;
-                border-bottom: 2px solid #000;
-                padding: 0 0 1rem;
-            }
-            .top-banner::before { display: none; }
-            .top-banner h1, .eyebrow, .tagline, .wm-a, .wm-b { color: #000 !important; text-shadow: none !important; }
-            .verified-badge { display: none !important; }
-            .main-layout { display: block; }
-            .tab-content { display: block !important; overflow: visible; }
-            .tab-content:not(.active-content) { display: none !important; }
-            .resource-item, .abstract-box, .info-item, .faq-item, .contact-section {
-                box-shadow: none !important;
-                border: 1px solid #999 !important;
-                break-inside: avoid;
-            }
-            a { text-decoration: none; color: #000 !important; }
-            .download-icon { display: none; }
-        }
     </style>
 </head>
 <body>
@@ -1070,7 +1013,6 @@
         <span class="sg5">Ω</span>
     </div>
 
-    <!-- ترويسة الموقع -->
     <header class="top-banner">
         <div class="banner-glyphs" aria-hidden="true">
             <span class="g1">∫</span>
@@ -1105,7 +1047,6 @@
         </div>
     </header>
 
-    <!-- قائمة التنقل العلوية -->
     <nav class="navigation-bar" aria-label="Sections du site">
         <div class="container nav-inner">
             <ul role="tablist">
@@ -1116,10 +1057,12 @@
                 <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
             </ul>
+
             <form class="nav-search" role="search" onsubmit="return false;">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
                 <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria">
             </form>
+
             <div class="nav-toggles">
                 <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer le site en arabe">
                     <span class="lang-toggle-label">AR</span>
@@ -1131,13 +1074,11 @@
         </div>
     </nav>
 
-    <!-- محتويات الموقع -->
     <main class="container">
         <div class="main-layout">
 
             <section id="main-content">
 
-                <!-- الرئيسية -->
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
                     <span class="level-watermark" aria-hidden="true">∀</span>
                     <div class="abstract-box">
@@ -1149,7 +1090,6 @@
                     </div>
                 </div>
 
-                <!-- من أنا -->
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
@@ -1178,14 +1118,12 @@
                     </div>
                 </div>
 
-                <!-- الرياضيات (يجمع المستويات L1, L2, L3) -->
                 <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques">
                     <span class="level-watermark" aria-hidden="true">∞</span>
                     <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
                     <p class="section-sub" data-i18n="maths.sub">Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.</p>
 
-                    <!-- المستوى الأول L1 -->
-                    <h3 class="level-title" data-i18n="maths.l1title"><span class="level-code">L1</span> <span data-i18n="maths.l1label">Première année</span></h3>
+                    <h3 class="level-title" data-i18n="maths.l1title"><span class="level-code">L1</span> Première année</h3>
 
                     <h4 class="group-label" data-i18n="group.cours">Cours</h4>
                     <ul class="resource-list">
@@ -1217,8 +1155,7 @@
                         </li>
                     </ul>
 
-                    <!-- المستوى الثاني L2 -->
-                    <h3 class="level-title" data-i18n="maths.l2title"><span class="level-code">L2</span> <span data-i18n="maths.l2label">Deuxième année</span></h3>
+                    <h3 class="level-title" data-i18n="maths.l2title"><span class="level-code">L2</span> Deuxième année</h3>
 
                     <h4 class="group-label" data-i18n="group.cours">Cours</h4>
                     <ul class="resource-list">
@@ -1233,8 +1170,7 @@
                     <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
                     <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
 
-                    <!-- المستوى الثالث L3 -->
-                    <h3 class="level-title" data-i18n="maths.l3title"><span class="level-code">L3</span> <span data-i18n="maths.l3label">Troisième année</span></h3>
+                    <h3 class="level-title" data-i18n="maths.l3title"><span class="level-code">L3</span> Troisième année</h3>
 
                     <h4 class="group-label" data-i18n="group.cours">Cours</h4>
                     <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
@@ -1246,11 +1182,10 @@
                     <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
                 </div>
 
-                <!-- الأسئلة الشائعة -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
                     <span class="level-watermark" aria-hidden="true">?</span>
                     <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
-                    <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+                    <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes.</p>
                     <div class="faq-list">
                         <details class="faq-item">
                             <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
@@ -1271,7 +1206,6 @@
                     </div>
                 </div>
 
-                <!-- التواصل المباشر -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
                     <section class="contact-section">
                         <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
@@ -1298,7 +1232,6 @@
                     </section>
                 </div>
 
-                <!-- الشروط والخصوصية -->
                 <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité">
                     <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
                     <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026.</p>
@@ -1326,7 +1259,6 @@
                     </div>
                 </div>
 
-                <!-- نتائج البحث -->
                 <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
                     <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
                     <div id="search-results" class="resource-list"></div>
@@ -1412,6 +1344,7 @@
             document.querySelectorAll('.nav-link').forEach(function (link) {
                 link.setAttribute('aria-selected', 'false');
             });
+
             var activeTab = document.getElementById('tab-' + tabId);
             if (activeTab) {
                 activeTab.setAttribute('aria-selected', 'true');
@@ -1422,6 +1355,7 @@
             document.querySelectorAll('.tab-content').forEach(function (panel) {
                 panel.classList.remove('active-content');
             });
+
             var activePanel = document.getElementById('content-' + tabId);
             if (activePanel) {
                 activePanel.classList.add('active-content');
@@ -1497,7 +1431,6 @@
             }, { passive: true });
         }
 
-        /* ===== البحث الفوري السريع ===== */
         var searchIndex = [];
         var searchTimer;
 
@@ -1529,7 +1462,10 @@
             var heading = document.getElementById('search-heading');
             if (!searchPanel || !resultsBox || !heading) return;
 
-            if (!query) { switchTab(lastActiveTab, { updateHash: false, scrollTop: false }); return; }
+            if (!query) {
+                switchTab(lastActiveTab, { updateHash: false, scrollTop: false });
+                return;
+            }
 
             var matches = searchIndex.filter(function (item) {
                 return item.title.toLowerCase().indexOf(query) !== -1;
@@ -1585,11 +1521,14 @@
                 searchTimer = setTimeout(function () { performSearch(val); }, 180);
             });
             searchInput.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') { this.value = ''; performSearch(''); this.blur(); }
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    performSearch('');
+                    this.blur();
+                }
             });
         }
 
-        /* ===== ملف الترجمة المدمج FR / AR ===== */
         window.I18N = {
             fr: {
                 eyebrow: "Enseignant-chercheur en mathématiques",
@@ -1622,11 +1561,8 @@
                 "maths.heading": "Mathématiques",
                 "maths.sub": "Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.",
                 "maths.l1title": "<span class='level-code'>L1</span> Première année",
-                "maths.l1label": "Première année",
                 "maths.l2title": "<span class='level-code'>L2</span> Deuxième année",
-                "maths.l2label": "Deuxième année",
                 "maths.l3title": "<span class='level-code'>L3</span> Troisième année",
-                "maths.l3label": "Troisième année",
                 "group.cours": "Cours",
                 "group.td": "Exercices &amp; TD",
                 "group.examens": "Examens &amp; Corrigés",
@@ -1707,11 +1643,8 @@
                 "maths.heading": "الرياضيات",
                 "maths.sub": "انقر على وثيقة لبدء التحميل. الموارد مصنّفة حسب المستوى.",
                 "maths.l1title": "<span class='level-code'>L1</span> السنة الأولى",
-                "maths.l1label": "السنة الأولى",
                 "maths.l2title": "<span class='level-code'>L2</span> السنة الثانية",
-                "maths.l2label": "السنة الثانية",
                 "maths.l3title": "<span class='level-code'>L3</span> السنة الثالثة",
-                "maths.l3label": "السنة الثالثة",
                 "group.cours": "الدروس",
                 "group.td": "التمارين والأعمال الموجهة",
                 "group.examens": "الامتحانات والتصحيحات",
@@ -1767,6 +1700,7 @@
             if (!I18N[lang]) lang = 'fr';
             document.documentElement.setAttribute('lang', lang);
             document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
             document.querySelectorAll('[data-i18n]').forEach(function (el) {
                 var key = el.getAttribute('data-i18n');
                 var val = I18N[lang][key] || I18N.fr[key];
@@ -1782,10 +1716,12 @@
                 var val = I18N[lang][key] || I18N.fr[key];
                 if (val !== undefined) el.setAttribute('aria-label', val);
             });
+
             var label = document.querySelector('.lang-toggle-label');
             var langBtn = document.getElementById('lang-toggle');
             if (label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
             if (langBtn) langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
+
             try { localStorage.setItem('mb-lang', lang); } catch (e) {}
             buildSearchIndex();
         }
@@ -1799,7 +1735,6 @@
             });
         }
 
-        /* ===== الوضع الداكن والليلي ===== */
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             var icon = document.querySelector('#theme-toggle i');
@@ -1808,6 +1743,7 @@
             if (btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
             try { localStorage.setItem('mb-theme', theme); } catch (e) {}
         }
+
         var themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
@@ -1821,3 +1757,9 @@
 
 </body>
 </html>
+```
+
+إذا أردت، أستطيع في الرسالة التالية أن أرسل لك أيضًا:
+1. **نسخة أنظف ومختصرة أكثر**  
+2. **نسخة مع تعريب كامل فقط**  
+3. **نسخة مع استبدال النصوص المؤقتة `[ ... ]` بنص احترافي جاهز**
