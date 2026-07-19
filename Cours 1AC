@@ -1,0 +1,9 @@
+<li class="resource-item type-cours">
+    <a href="documents/cours/اسم-الملف.pdf" download>
+        <span class="resource-title">
+            <span class="resource-tag">COURS</span>
+            عنوان الدرس
+        </span>
+        <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+    </a>
+</li>
