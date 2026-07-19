@@ -1,0 +1,38 @@
+<!-- شبكة عرض الدروس فعالة -->
+        <div id="lessons-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- سيتم توليد البطاقات ديناميكياً عبر الجافا سكريبت -->
+        </div>
+
+        <!-- رسالة عند عدم وجود نتائج للبحث -->
+        <div id="no-results" class="hidden text-center py-12">
+            <p class="text-stone-500" id="no-results-text">لم يتم العثور على أي دروس تطابق بحثك.</p>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- اأضف كود نموذج الاتصال الخاص بـ Formspree هنا بالتحديد -->
+        <!-- ======================================================== -->
+        <div class="max-w-md mx-auto bg-white border border-stone-200 rounded-xl p-6 shadow-sm mt-16 mb-8">
+            <h2 class="text-base font-bold text-stone-800 mb-4 text-center">تواصل معنا / طرح سؤال أو استفسار</h2>
+            
+            <form action="https://formspree.io/f/xdaqgreq" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1">البريد الإلكتروني للقرّاء:</label>
+                    <input type="email" name="email" required 
+                           class="w-full px-3 py-2 bg-stone-50 border border-stone-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900">
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-medium text-stone-600 mb-1">رسالتك أو استفسارك:</label>
+                    <textarea name="message" rows="4" required 
+                              class="w-full px-3 py-2 bg-stone-50 border border-stone-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-900/20 focus:border-blue-900"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full py-2 bg-blue-900 text-white rounded-lg text-xs font-medium hover:bg-blue-800 transition">
+                    إرسال الرسالة
+                </button>
+            </form>
+        </div>
+        <!-- ======================================================== -->
+
+    </main> <!-- هذا هو وسم إغلاق الماين الحالي في كودك -->
