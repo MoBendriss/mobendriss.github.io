@@ -1,0 +1,9 @@
+<li class="resource-item type-td">
+    <a href="documents/exercices/اسم-الملف.pdf" download>
+        <span class="resource-title">
+            <span class="resource-tag">TD</span>
+            عنوان التمرين
+        </span>
+        <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+    </a>
+</li>
