@@ -2,15 +2,55 @@
 <html lang="fr" dir="ltr" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('mb-theme');
+                if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+                document.documentElement.setAttribute('data-theme', t);
+                var l = localStorage.getItem('mb-lang');
+                if (l === 'ar') {
+                    document.documentElement.setAttribute('lang', 'ar');
+                    document.documentElement.setAttribute('dir', 'rtl');
+                }
+            } catch (e) {}
+        })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoBendriss | Cours et exercices de mathématiques</title>
     <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
     <meta name="theme-color" content="#132038">
+
+    <link rel="canonical" href="https://mobendriss.github.io/">
+
     <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
     <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" content="https://mobendriss.github.io/">
+    <meta property="og:image" content="https://mobendriss.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MoBendriss — Cours et exercices de mathématiques">
+    <meta name="twitter:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
+    <meta name="twitter:image" content="https://mobendriss.github.io/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "MoBendriss",
+        "jobTitle": "Enseignant-chercheur en mathématiques",
+        "description": "Cours, travaux dirigés et exercices corrigés de mathématiques pour Licence 1, 2 et 3.",
+        "url": "https://mobendriss.github.io/",
+        "knowsAbout": ["Analyse", "Logique", "Analyse fonctionnelle"]
+    }
+    </script>
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Icônes utilitaires -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -18,7 +58,7 @@
     <!-- Typographie : une serif d'écriture pour l'identité, une sans pour la lecture, une mono pour les repères techniques -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Rendu des formules mathématiques -->
     <script>
@@ -53,6 +93,31 @@
             --shadow-1: 0 1px 2px rgba(19, 32, 56, 0.05), 0 6px 16px -8px rgba(19, 32, 56, 0.12);
             --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, 0.28);
             --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        [data-theme="dark"] {
+            --ink: #E8ECF4;
+            --ink-soft: #A9B4C7;
+            --paper: #0E1626;
+            --paper-line: #263047;
+            --card: #16213A;
+            --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px -8px rgba(0, 0, 0, 0.5);
+            --shadow-2: 0 20px 34px -18px rgba(0, 0, 0, 0.7);
+        }
+        [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
+        [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
+        [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
+        [data-theme="dark"] .video-info .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
+        [data-theme="dark"] .tag-pill { background: rgba(44, 110, 142, 0.25); color: #8FC4DE; border-color: rgba(143, 196, 222, 0.3); }
+        [data-theme="dark"] .field input,
+        [data-theme="dark"] .field textarea { color: var(--ink); }
+        [data-theme="dark"] .empty-note { background: rgba(44, 110, 142, 0.08); }
+        [data-theme="dark"] .video-thumb { background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(231, 169, 71, 0.14), transparent 70%), linear-gradient(140deg, #1B2A46 0%, #0A1220 100%); }
+        [data-theme="dark"] body::before { opacity: 0.08; mix-blend-mode: overlay; }
+        [data-theme="dark"] .nav-search input::-webkit-search-cancel-button { filter: none; }
+
+        body, .resource-item, .abstract-box, .sidebar-widget, .info-item, .faq-item, .contact-section, .video-card, .field input, .field textarea {
+            transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
         }
 
         * { box-sizing: border-box; }
@@ -345,6 +410,38 @@
         .nav-search input:focus { outline: none; }
         .nav-search input::placeholder { color: #8996AC; }
         .nav-search input::-webkit-search-cancel-button { filter: invert(1); opacity: 0.6; cursor: pointer; }
+
+        .nav-toggles {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .icon-toggle {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #C3CCDE;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .icon-toggle:hover {
+            border-color: var(--focus);
+            color: var(--focus);
+            transform: translateY(-1px);
+        }
+        .lang-toggle-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
 
         .nav-indicator {
             position: absolute;
@@ -937,6 +1034,69 @@
             letter-spacing: 0.02em;
         }
         footer .foot-accent { color: var(--focus); }
+        .footer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-link {
+            background: none;
+            border: none;
+            font: inherit;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #8996AC;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .footer-link:hover { color: var(--focus); }
+
+        /* ===== Mode arabe (RTL) ===== */
+        [dir="rtl"] body {
+            font-family: 'IBM Plex Sans Arabic', var(--font-body);
+        }
+        [dir="rtl"] .top-banner h1,
+        [dir="rtl"] .section-heading,
+        [dir="rtl"] .abstract-box h3,
+        [dir="rtl"] .widget-title {
+            font-family: 'Amiri', var(--font-display);
+        }
+        [dir="rtl"] .eyebrow,
+        [dir="rtl"] .group-label,
+        [dir="rtl"] .resource-tag,
+        [dir="rtl"] .tag-pill,
+        [dir="rtl"] .footer-link,
+        [dir="rtl"] .print-btn,
+        [dir="rtl"] .news-badge,
+        [dir="rtl"] footer p,
+        [dir="rtl"] .nav-search input {
+            font-family: 'IBM Plex Sans Arabic', var(--font-body);
+            letter-spacing: 0;
+        }
+        [dir="rtl"] .nav-code,
+        [dir="rtl"] .news-date,
+        [dir="rtl"] .info-year,
+        [dir="rtl"] .lang-toggle-label {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: var(--font-mono);
+        }
+        [dir="rtl"] .wordmark { direction: ltr; unicode-bidi: isolate; }
+        [dir="rtl"] .skip-link { left: auto; right: -999px; }
+        [dir="rtl"] .skip-link:focus { right: 0; left: auto; }
+        [dir="rtl"] .abstract-box,
+        [dir="rtl"] .contact-section blockquote {
+            border-left: none;
+            border-right: 4px solid var(--chalk-blue);
+        }
+        [dir="rtl"] .field input,
+        [dir="rtl"] .field textarea {
+            text-align: right;
+        }
 
         /* ===== Impression ===== */
         @media print {
@@ -949,6 +1109,7 @@
             .site-glyphs,
             #sidebar,
             .print-btn,
+            .nav-toggles,
             .level-watermark,
             footer {
                 display: none !important;
@@ -999,9 +1160,9 @@
         <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
         <div class="container top-banner-content">
             <div>
-                <p class="eyebrow">Enseignant-chercheur en mathématiques</p>
+                <p class="eyebrow" data-i18n="eyebrow">Enseignant-chercheur en mathématiques</p>
                 <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
-                <p class="tagline">Cours et exercices de mathématiques</p>
+                <p class="tagline" data-i18n="tagline">Cours et exercices de mathématiques</p>
             </div>
             <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1027,19 +1188,27 @@
         <div class="container nav-inner">
             <ul role="tablist">
                 <li aria-hidden="true"><span class="nav-indicator"></span></li>
-                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> Accueil</button></li>
-                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> À propos</button></li>
-                <li><button class="nav-link" role="tab" id="tab-videos" aria-controls="content-videos" aria-selected="false" onclick="switchTab('videos')"><i class="fa-solid fa-video"></i> Vidéos</button></li>
-                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> Première année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> Deuxième année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> Troisième année</button></li>
-                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> FAQ</button></li>
-                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> Contact</button></li>
+                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-videos" aria-controls="content-videos" aria-selected="false" onclick="switchTab('videos')"><i class="fa-solid fa-video"></i> <span data-i18n="nav.videos">Vidéos</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> <span data-i18n="nav.l1">Première année</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> <span data-i18n="nav.l2">Deuxième année</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> <span data-i18n="nav.l3">Troisième année</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
             </ul>
             <form class="nav-search" role="search" onsubmit="return false;">
                 <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document">
+                <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria">
             </form>
+            <div class="nav-toggles">
+                <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer le site en arabe">
+                    <span class="lang-toggle-label">AR</span>
+                </button>
+                <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Activer le mode sombre">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -1052,11 +1221,11 @@
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
                     <span class="level-watermark" aria-hidden="true">∀</span>
                     <div class="abstract-box">
-                        <h3>Des cours et des exercices de maths, classés par niveau.</h3>
-                        <p>Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
+                        <h3 data-i18n="accueil.title">Des cours et des exercices de maths, classés par niveau.</h3>
+                        <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
                     </div>
                     <div class="page-lead">
-                        <p>Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.</p>
+                        <p data-i18n="accueil.lead">Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.</p>
                     </div>
                 </div>
 
@@ -1064,28 +1233,28 @@
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
-                        <h3>À propos de MoBendriss</h3>
-                        <p>[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
+                        <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
+                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
                     </div>
 
-                    <h3 class="group-label">Formation</h3>
+                    <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
                     <ul class="info-list">
                         <li class="info-item">
                             <span class="info-year">20XX</span>
-                            <p>[Doctorat en Mathématiques — Université, spécialité]</p>
+                            <p data-i18n="apropos.dip1">[Doctorat en Mathématiques — Université, spécialité]</p>
                         </li>
                         <li class="info-item">
                             <span class="info-year">20XX</span>
-                            <p>[Master / Agrégation — Université, spécialité]</p>
+                            <p data-i18n="apropos.dip2">[Master / Agrégation — Université, spécialité]</p>
                         </li>
                     </ul>
 
-                    <h3 class="group-label">Domaines d'enseignement et de recherche</h3>
+                    <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'enseignement et de recherche</h3>
                     <div class="tag-row">
-                        <span class="tag-pill">Analyse</span>
-                        <span class="tag-pill">Logique</span>
-                        <span class="tag-pill">Analyse fonctionnelle</span>
-                        <span class="tag-pill">[Votre domaine]</span>
+                        <span class="tag-pill" data-i18n="apropos.tag1">Analyse</span>
+                        <span class="tag-pill" data-i18n="apropos.tag2">Logique</span>
+                        <span class="tag-pill" data-i18n="apropos.tag3">Analyse fonctionnelle</span>
+                        <span class="tag-pill" data-i18n="apropos.tag4">[Votre domaine]</span>
                     </div>
                 </div>
 
@@ -1093,31 +1262,31 @@
                 <div id="content-videos" class="tab-content" role="tabpanel" aria-labelledby="tab-videos">
                     <span class="level-watermark" aria-hidden="true">▷</span>
                     <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-video"></i> Vidéos</h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                        <h2 class="section-heading"><i class="fa-solid fa-video"></i> <span data-i18n="videos.heading">Vidéos</span></h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
                     </div>
-                    <p class="section-sub">Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]</p>
+                    <p class="section-sub" data-i18n="videos.sub">Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]</p>
 
                     <div class="video-grid">
                         <div class="video-card">
                             <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
                             <div class="video-info">
-                                <span class="resource-tag">VIDÉO</span>
-                                <p>[Titre — Introduction à la logique]</p>
+                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
+                                <p data-i18n="videos.card1">[Titre — Introduction à la logique]</p>
                             </div>
                         </div>
                         <div class="video-card">
                             <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
                             <div class="video-info">
-                                <span class="resource-tag">VIDÉO</span>
-                                <p>[Titre — Méthode de résolution d'un TD]</p>
+                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
+                                <p data-i18n="videos.card2">[Titre — Méthode de résolution d'un TD]</p>
                             </div>
                         </div>
                         <div class="video-card">
                             <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
                             <div class="video-info">
-                                <span class="resource-tag">VIDÉO</span>
-                                <p>[Titre — Correction d'un examen]</p>
+                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
+                                <p data-i18n="videos.card3">[Titre — Correction d'un examen]</p>
                             </div>
                         </div>
                     </div>
@@ -1126,36 +1295,36 @@
                 <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
                     <span class="level-watermark" aria-hidden="true">L1</span>
                     <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Première année — L1</h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l1.heading">Première année — L1</span></h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
                     </div>
-                    <p class="section-sub">Cliquez sur un document pour lancer le téléchargement.</p>
+                    <p class="section-sub" data-i18n="l1.sub">Cliquez sur un document pour lancer le téléchargement.</p>
 
-                    <h3 class="group-label">Cours</h3>
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
                             <a href="documents/cours/1SC_cours1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag">COURS</span> Notions de logique</span>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
 
-                    <h3 class="group-label">Exercices &amp; TD</h3>
+                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-td">
                             <a href="documents/exercices/1SC_td1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag">TD 1</span> Logique et raisonnements</span>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
 
-                    <h3 class="group-label">Examens &amp; Corrigés</h3>
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-exam">
                             <a href="documents/examens/1SC_examen1_corrige.pdf" download>
-                                <span class="resource-title"><span class="resource-tag">EXAMEN</span> Session normale — corrigé</span>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
@@ -1166,69 +1335,69 @@
                 <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
                     <span class="level-watermark" aria-hidden="true">L2</span>
                     <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> Deuxième année — L2</h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l2.heading">Deuxième année — L2</span></h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
                     </div>
-                    <p class="section-sub">Documents et supports pour le deuxième niveau universitaire.</p>
+                    <p class="section-sub" data-i18n="l2.sub">Documents et supports pour le deuxième niveau universitaire.</p>
 
-                    <h3 class="group-label">Cours</h3>
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
                             <a href="documents/cours/analyse_fonctionnelle.pdf" download>
-                                <span class="resource-title"><span class="resource-tag">COURS</span> Analyse fonctionnelle</span>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
 
-                    <h3 class="group-label">Examens &amp; Corrigés</h3>
-                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
                 </div>
 
                 <!-- Troisième année -->
                 <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
                     <span class="level-watermark" aria-hidden="true">L3</span>
                     <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-award"></i> Troisième année — L3</h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                        <h2 class="section-heading"><i class="fa-solid fa-award"></i> <span data-i18n="l3.heading">Troisième année — L3</span></h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
                     </div>
-                    <p class="section-sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
+                    <p class="section-sub" data-i18n="l3.sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
 
-                    <h3 class="group-label">Cours</h3>
-                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
 
-                    <h3 class="group-label">Exercices &amp; TD</h3>
-                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
 
-                    <h3 class="group-label">Examens &amp; Corrigés</h3>
-                    <p class="empty-note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
                 </div>
 
                 <!-- FAQ -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
                     <span class="level-watermark" aria-hidden="true">?</span>
                     <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> Questions fréquentes</h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Imprimer</button>
+                        <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
+                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
                     </div>
-                    <p class="section-sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+                    <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
 
                     <div class="faq-list">
                         <details class="faq-item">
-                            <summary>Comment télécharger un document ?</summary>
-                            <p>Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                            <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
+                            <p data-i18n="faq.a1">Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
                         </details>
                         <details class="faq-item">
-                            <summary>Les documents sont-ils mis à jour régulièrement ?</summary>
-                            <p>[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+                            <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
+                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
                         </details>
                         <details class="faq-item">
-                            <summary>Comment vous contacter en cas de question sur un exercice ?</summary>
-                            <p>Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+                            <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
+                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
                         </details>
                         <details class="faq-item">
-                            <summary>Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
-                            <p>[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
+                            <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
+                            <p data-i18n="faq.a4">[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
                         </details>
                     </div>
                 </div>
@@ -1236,25 +1405,25 @@
                 <!-- Contact -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
                     <section class="contact-section">
-                        <h2><i class="fa-solid fa-paper-plane"></i> Contact direct</h2>
-                        <p>Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
+                        <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
+                        <p data-i18n="contact.intro">Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
                         <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
                             <div class="field-grid">
                                 <div class="field">
-                                    <label for="name">Nom complet</label>
-                                    <input type="text" id="name" name="name" placeholder="Votre nom" required>
+                                    <label for="name" data-i18n="contact.nameLabel">Nom complet</label>
+                                    <input type="text" id="name" name="name" placeholder="Votre nom" required data-i18n-placeholder="contact.namePh">
                                 </div>
                                 <div class="field">
-                                    <label for="email">Adresse e-mail</label>
+                                    <label for="email" data-i18n="contact.emailLabel">Adresse e-mail</label>
                                     <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
                                 </div>
                             </div>
                             <div class="field">
-                                <label for="message">Votre message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required></textarea>
+                                <label for="message" data-i18n="contact.messageLabel">Votre message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required data-i18n-placeholder="contact.messagePh"></textarea>
                             </div>
                             <div class="submit-row">
-                                <button type="submit" class="submit-btn">Envoyer le message <i class="fa-regular fa-paper-plane"></i></button>
+                                <button type="submit" class="submit-btn"><span data-i18n="contact.submit">Envoyer le message</span> <i class="fa-regular fa-paper-plane"></i></button>
                             </div>
                         </form>
                     </section>
@@ -1266,33 +1435,61 @@
                     <div id="search-results" class="resource-list"></div>
                 </div>
 
+                <!-- Confidentialité & Conditions -->
+                <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité et conditions d'utilisation">
+                    <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
+                    <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]</p>
+
+                    <h3 class="group-label" data-i18n="legal.privacyTitle">Politique de confidentialité</h3>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.</p>
+                    </div>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.</p>
+                    </div>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.</p>
+                    </div>
+
+                    <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.</p>
+                    </div>
+                </div>
+
             </section>
 
             <!-- Barre latérale -->
             <aside id="sidebar">
                 <div class="sidebar-widget">
                     <button class="math-btn" onclick="switchTab('premiere-annee')">
-                        <i class="fa-solid fa-infinity"></i> Mathématiques
+                        <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
                     </button>
                 </div>
 
                 <div class="sidebar-widget">
-                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> Actualités</h4>
+                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.newsTitle">Actualités</span></h4>
                     <ul class="news-list">
                         <li class="news-item">
                             <div class="news-meta">
                                 <span class="news-date">JUIL. 2026</span>
-                                <span class="news-badge">Nouveau</span>
+                                <span class="news-badge" data-i18n="sidebar.newBadge">Nouveau</span>
                             </div>
-                            <p>Mise en ligne du cours de logique pour la première année.</p>
+                            <p data-i18n="sidebar.news1">Mise en ligne du cours de logique pour la première année.</p>
                         </li>
                         <li class="news-item">
                             <span class="news-date">JUIN 2026</span>
-                            <p>[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]</p>
+                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]</p>
                         </li>
                         <li class="news-item">
                             <span class="news-date">MAI 2026</span>
-                            <p>[Une autre actualité à personnaliser.]</p>
+                            <p data-i18n="sidebar.news3">[Une autre actualité à personnaliser.]</p>
                         </li>
                     </ul>
                 </div>
@@ -1302,14 +1499,15 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2026 MoBendriss. Tous droits réservés. <span class="foot-accent">Conçu avec rigueur.</span></p>
+        <div class="container footer-inner">
+            <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
+            <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.legalLink">Confidentialité &amp; conditions</button>
         </div>
     </footer>
 
     <script>
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'videos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact'];
+        var TAB_IDS = ['accueil', 'apropos', 'videos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact', 'confidentialite'];
         var isNavigatingByHash = false;
 
         function isValidTab(id) { return TAB_IDS.indexOf(id) !== -1; }
@@ -1533,7 +1731,253 @@
             });
         }
 
+        // ===== Traduction FR / AR =====
+        var I18N = {
+            fr: {
+                eyebrow: "Enseignant-chercheur en mathématiques",
+                tagline: "Cours et exercices de mathématiques",
+                "nav.accueil": "Accueil",
+                "nav.apropos": "À propos",
+                "nav.videos": "Vidéos",
+                "nav.l1": "Première année",
+                "nav.l2": "Deuxième année",
+                "nav.l3": "Troisième année",
+                "nav.faq": "FAQ",
+                "nav.contact": "Contact",
+                "search.placeholder": "Rechercher un document…",
+                "search.aria": "Rechercher un document",
+                "accueil.title": "Des cours et des exercices de maths, classés par niveau.",
+                "accueil.welcome": "Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.",
+                "accueil.lead": "Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.",
+                "apropos.heading": "À propos de MoBendriss",
+                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]",
+                "apropos.formation": "Formation",
+                "apropos.dip1": "[Doctorat en Mathématiques — Université, spécialité]",
+                "apropos.dip2": "[Master / Agrégation — Université, spécialité]",
+                "apropos.domaines": "Domaines d'enseignement et de recherche",
+                "apropos.tag1": "Analyse",
+                "apropos.tag2": "Logique",
+                "apropos.tag3": "Analyse fonctionnelle",
+                "apropos.tag4": "[Votre domaine]",
+                "videos.heading": "Vidéos",
+                "videos.sub": "Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]",
+                "videos.card1": "[Titre — Introduction à la logique]",
+                "videos.card2": "[Titre — Méthode de résolution d'un TD]",
+                "videos.card3": "[Titre — Correction d'un examen]",
+                "videos.tag": "VIDÉO",
+                "btn.print": "Imprimer",
+                "l1.heading": "Première année — L1",
+                "l1.sub": "Cliquez sur un document pour lancer le téléchargement.",
+                "l2.heading": "Deuxième année — L2",
+                "l2.sub": "Documents et supports pour le deuxième niveau universitaire.",
+                "l3.heading": "Troisième année — L3",
+                "l3.sub": "Espace réservé aux modules de spécialité et d'approfondissement.",
+                "group.cours": "Cours",
+                "group.td": "Exercices &amp; TD",
+                "group.examens": "Examens &amp; Corrigés",
+                "tag.cours": "COURS",
+                "tag.td1": "TD 1",
+                "tag.examen": "EXAMEN",
+                "l1.cours1": "Notions de logique",
+                "l1.td1": "Logique et raisonnements",
+                "l1.exam1": "Session normale — corrigé",
+                "l2.cours1": "Analyse fonctionnelle",
+                "empty.note": "Aucun document en ligne pour le moment. Revenez bientôt.",
+                "faq.heading": "Questions fréquentes",
+                "faq.sub": "Les réponses aux questions les plus courantes sur l'organisation du site et des cours.",
+                "faq.q1": "Comment télécharger un document ?",
+                "faq.a1": "Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
+                "faq.q2": "Les documents sont-ils mis à jour régulièrement ?",
+                "faq.a2": "[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]",
+                "faq.q3": "Comment vous contacter en cas de question sur un exercice ?",
+                "faq.a3": "Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]",
+                "faq.q4": "Un document que je cherche n'est pas encore en ligne, que faire ?",
+                "faq.a4": "[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]",
+                "contact.heading": "Contact direct",
+                "contact.intro": "Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.",
+                "contact.nameLabel": "Nom complet",
+                "contact.namePh": "Votre nom",
+                "contact.emailLabel": "Adresse e-mail",
+                "contact.messageLabel": "Votre message",
+                "contact.messagePh": "Votre message détaillé...",
+                "contact.submit": "Envoyer le message",
+                "legal.heading": "Confidentialité &amp; conditions",
+                "legal.sub": "Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]",
+                "legal.privacyTitle": "Politique de confidentialité",
+                "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.",
+                "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.",
+                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.",
+                "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.",
+                "legal.termsTitle": "Conditions d'utilisation",
+                "legal.terms1": "<strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.",
+                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.",
+                "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
+                "footer.tagline": "Conçu avec rigueur.",
+                "footer.legalLink": "Confidentialité &amp; conditions",
+                "sidebar.mathBtn": "Mathématiques",
+                "sidebar.newsTitle": "Actualités",
+                "sidebar.newBadge": "Nouveau",
+                "sidebar.news1": "Mise en ligne du cours de logique pour la première année.",
+                "sidebar.news2": "[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]",
+                "sidebar.news3": "[Une autre actualité à personnaliser.]"
+            },
+            ar: {
+                eyebrow: "أستاذ باحث في الرياضيات",
+                tagline: "دروس وتمارين في الرياضيات",
+                "nav.accueil": "الرئيسية",
+                "nav.apropos": "من أنا",
+                "nav.videos": "فيديوهات",
+                "nav.l1": "السنة الأولى",
+                "nav.l2": "السنة الثانية",
+                "nav.l3": "السنة الثالثة",
+                "nav.faq": "الأسئلة الشائعة",
+                "nav.contact": "تواصل",
+                "search.placeholder": "ابحث عن وثيقة…",
+                "search.aria": "البحث عن وثيقة",
+                "accueil.title": "دروس وتمارين في الرياضيات، مصنّفة حسب المستوى.",
+                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس، وأوراق الأعمال الموجهة، والتمارين المصححة الموضوعة رهن إشارة الطلبة.",
+                "accueil.lead": "كل مستوى — L1، L2، L3 — يضم وثائقه الخاصة، مصنّفة في فئتين: <strong>الدروس</strong>، التي تضع التعاريف والنتائج، و<strong>الأعمال الموجهة</strong>، التي تطبّقها عملياً. استخدموا الألسنة أعلاه للوصول مباشرة إلى وثائق مستواكم.",
+                "apropos.heading": "من هو MoBendriss",
+                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات. هذه الفقرة نموذج يمكن تخصيصه.]",
+                "apropos.formation": "التكوين",
+                "apropos.dip1": "[دكتوراه في الرياضيات — الجامعة، التخصص]",
+                "apropos.dip2": "[ماستر / تبريز — الجامعة، التخصص]",
+                "apropos.domaines": "مجالات التدريس والبحث",
+                "apropos.tag1": "التحليل",
+                "apropos.tag2": "المنطق",
+                "apropos.tag3": "التحليل الدالي",
+                "apropos.tag4": "[مجالك]",
+                "videos.heading": "فيديوهات",
+                "videos.sub": "شروحات مصوّرة مكمّلة للدروس. [استبدل كل بطاقة «فيديو» أدناه بوسم <code>&lt;iframe&gt;</code> من يوتيوب/فيميو بمجرد نشر فيديوهاتك.]",
+                "videos.card1": "[العنوان — مقدمة في المنطق]",
+                "videos.card2": "[العنوان — طريقة حل عمل موجّه]",
+                "videos.card3": "[العنوان — تصحيح امتحان]",
+                "videos.tag": "فيديو",
+                "btn.print": "طباعة",
+                "l1.heading": "السنة الأولى — L1",
+                "l1.sub": "انقر على وثيقة لبدء التحميل.",
+                "l2.heading": "السنة الثانية — L2",
+                "l2.sub": "وثائق ودعامات للمستوى الجامعي الثاني.",
+                "l3.heading": "السنة الثالثة — L3",
+                "l3.sub": "فضاء مخصص لوحدات التخصص والتعميق.",
+                "group.cours": "الدروس",
+                "group.td": "التمارين والأعمال الموجهة",
+                "group.examens": "الامتحانات والتصحيحات",
+                "tag.cours": "درس",
+                "tag.td1": "TD 1",
+                "tag.examen": "امتحان",
+                "l1.cours1": "مبادئ المنطق",
+                "l1.td1": "المنطق والاستدلالات",
+                "l1.exam1": "الدورة العادية — مصحح",
+                "l2.cours1": "التحليل الدالي",
+                "empty.note": "لا توجد وثيقة متاحة حالياً. عودوا قريباً.",
+                "faq.heading": "الأسئلة الشائعة",
+                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً حول تنظيم الموقع والدروس.",
+                "faq.q1": "كيف أحمّل وثيقة؟",
+                "faq.a1": "افتح لسان مستواك (L1 أو L2 أو L3)، ثم انقر مباشرة على عنوان الوثيقة المطلوبة: يبدأ التحميل تلقائياً.",
+                "faq.q2": "هل يتم تحديث الوثائق بانتظام؟",
+                "faq.a2": "[حدّد هنا وتيرة النشر: مثلاً، يُنشر دعم جديد مع كل فصل جديد يُدرَّس.]",
+                "faq.q3": "كيف أتواصل معك بخصوص سؤال حول تمرين؟",
+                "faq.a3": "استخدم استمارة لسان «تواصل». [أضف هنا، إن أردت، ساعات تواجدك أو استقبالك للطلبة.]",
+                "faq.q4": "الوثيقة التي أبحث عنها غير متوفرة بعد، ماذا أفعل؟",
+                "faq.a4": "[وضّح هنا الخطوات: مثلاً، راسلني عبر الاستمارة مع تحديد المستوى والموضوع المعنيين.]",
+                "contact.heading": "تواصل مباشر",
+                "contact.intro": "لأي سؤال أكاديمي أو تعاون بيداغوجي، لا تتردد في مراسلتي.",
+                "contact.nameLabel": "الاسم الكامل",
+                "contact.namePh": "اسمك",
+                "contact.emailLabel": "البريد الإلكتروني",
+                "contact.messageLabel": "رسالتك",
+                "contact.messagePh": "رسالتك المفصّلة...",
+                "contact.submit": "إرسال الرسالة",
+                "legal.heading": "الخصوصية والشروط",
+                "legal.sub": "آخر تحديث: يوليوز 2026. [هذا نص نموذجي عام — يُنصح بمراجعته من طرف مختص قانوني لضمان مطابقته الكاملة لبلدك.]",
+                "legal.privacyTitle": "سياسة الخصوصية",
+                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك، وبريدك الإلكتروني، ومحتوى رسالتك. تُستخدم هذه المعلومات فقط للرد عليك، ولا تُباع أو تُشارك لأغراض تجارية.",
+                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم إرسال الاستمارة عبر خدمة FormSubmit التي تستقبل الرسالة وتُحيلها بالبريد الإلكتروني. راجع سياسة خصوصيتها الخاصة لمزيد من التفاصيل.",
+                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل هذا الموقع خطوطاً (Google Fonts)، وأيقونات (Font Awesome)، ومحرك عرض رياضي (MathJax) من خوادم خارجية. قد تستقبل هذه الخدمات عنوان IP الخاص بك عند التحميل، بشكل مستقل عن هذا الموقع.",
+                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها عبر الكتابة من خلال استمارة التواصل.",
+                "legal.termsTitle": "شروط الاستخدام",
+                "legal.terms1": "<strong>استخدام الوثائق.</strong> الدروس والأعمال الموجهة والامتحانات المقترحة مخصصة للاستخدام التربوي الشخصي. يُمنع أي نسخ أو نشر لأغراض تجارية دون إذن مسبق.",
+                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي» وقد تحتوي على أخطاء؛ ولا تُغني عن الدعامات الرسمية لمؤسستك.",
+                "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
+                "footer.tagline": "صُمم بدقة.",
+                "footer.legalLink": "الخصوصية والشروط",
+                "sidebar.mathBtn": "الرياضيات",
+                "sidebar.newsTitle": "آخر الأخبار",
+                "sidebar.newBadge": "جديد",
+                "sidebar.news1": "نشر درس المنطق للسنة الأولى.",
+                "sidebar.news2": "[خبر يمكن تخصيصه: عمل موجّه جديد، تاريخ امتحان، معلومة عن الدخول الجامعي...]",
+                "sidebar.news3": "[خبر آخر يمكن تخصيصه.]"
+            }
+        };
+
+        function applyLang(lang) {
+            if (!I18N[lang]) lang = 'fr';
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+            document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.innerHTML = val;
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.setAttribute('placeholder', val);
+            });
+            document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n-aria');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.setAttribute('aria-label', val);
+            });
+
+            var label = document.querySelector('.lang-toggle-label');
+            var langBtn = document.getElementById('lang-toggle');
+            if (label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
+            if (langBtn) langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
+
+            try { localStorage.setItem('mb-lang', lang); } catch (e) {}
+            buildSearchIndex();
+        }
+
+        var langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            applyLang(document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr');
+            langToggle.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr';
+                applyLang(current === 'ar' ? 'fr' : 'ar');
+            });
+        }
+
+        // ===== Mode sombre =====
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            var icon = document.querySelector('#theme-toggle i');
+            var btn = document.getElementById('theme-toggle');
+            if (icon) { icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
+            if (btn) { btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'); }
+            try { localStorage.setItem('mb-theme', theme); } catch (e) {}
+        }
+        var themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+            themeToggle.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('data-theme');
+                applyTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        }
+
         window.addEventListener('load', buildSearchIndex);
+
+        // Enregistrement du service worker (PWA) — s'active uniquement en HTTPS/localhost
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js').catch(function () {
+                    // Échec silencieux : le site fonctionne normalement sans mode hors-ligne.
+                });
+            });
+        }
     </script>
 
 </body>
