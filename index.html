@@ -1,1825 +1,1073 @@
-html
+إليك النسخة الكاملة النهائية لملف `index.html` بعد تطبيق جميع التعديلات:
+
+- ✅ حذف قسم الفيديو
+- ✅ حذف أزرار الطباعة
+- ✅ دمج L1/L2/L3 في تبويب واحد "Mathématiques"
+- ✅ إخفاء شريط التمرير الأفقي
+
+```html
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoBendriss | Cours et exercices de mathématiques</title>
-    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
-    <meta name="theme-color" content="#132038">
-
-    <link rel="canonical" href="https://mobendriss.github.io/">
-
-    <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:url" content="https://mobendriss.github.io/">
-    <meta property="og:image" content="https://mobendriss.github.io/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta name="twitter:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
-    <meta name="twitter:image" content="https://mobendriss.github.io/og-image.jpg">
-
-    <script>
-        (function () {
-            try {
-                var t = localStorage.getItem('mb-theme');
-                if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
-                document.documentElement.setAttribute('data-theme', t);
-                var l = localStorage.getItem('mb-lang');
-                if (l === 'ar') {
-                    document.documentElement.setAttribute('lang', 'ar');
-                    document.documentElement.setAttribute('dir', 'rtl');
-                }
-            } catch (e) {}
-        })();
-    </script>
-
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        window.MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            options: { enableMenu: false }
-        };
-    </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <style>
-        :root {
-            --ink: #132038;
-            --ink-soft: #47536B;
-            --paper: #FBF8F2;
-            --paper-line: #E4DFCF;
-            --card: #FFFFFF;
-            --chalk-blue: #2C6E8E;
-            --chalk-blue-deep: #1F5670;
-            --ochre: #B8791A;
-            --rust: #A23B3B;
-            --focus: #E7A947;
-
-            --font-display: 'Fraunces', Georgia, serif;
-            --font-body: 'Inter', sans-serif;
-            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
-
-            --shadow-1: 0 1px 2px rgba(19, 32, 56, 0.05), 0 6px 16px -8px rgba(19, 32, 56, 0.12);
-            --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, 0.28);
-            --ease: cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        [data-theme="dark"] {
-            --ink: #E8ECF4;
-            --ink-soft: #A9B4C7;
-            --paper: #0E1626;
-            --paper-line: #263047;
-            --card: #16213A;
-            --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px -8px rgba(0, 0, 0, 0.5);
-            --shadow-2: 0 20px 34px -18px rgba(0, 0, 0, 0.7);
-        }
-        [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
-        [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
-        [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
-        [data-theme="dark"] .tag-pill { background: rgba(44, 110, 142, 0.25); color: #8FC4DE; border-color: rgba(143, 196, 222, 0.3); }
-        [data-theme="dark"] .field input,
-        [data-theme="dark"] .field textarea { color: var(--ink); }
-        [data-theme="dark"] .empty-note { background: rgba(44, 110, 142, 0.08); }
-        [data-theme="dark"] body::before { opacity: 0.08; mix-blend-mode: overlay; }
-
-        body, .resource-item, .abstract-box, .sidebar-widget, .info-item, .faq-item, .contact-section, .field input, .field textarea {
-            transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
-        }
-
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            margin: 0;
-            position: relative;
-            font-family: var(--font-body);
-            background: var(--paper);
-            color: var(--ink);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            inset: 0;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-            opacity: 0.05;
-            mix-blend-mode: multiply;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        header, nav, main, footer { position: relative; z-index: 1; }
-
-        .site-glyphs {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            display: none;
-        }
-        .site-glyphs span {
-            position: absolute;
-            font-family: var(--font-display);
-            font-style: italic;
-            color: var(--chalk-blue);
-            opacity: 0.07;
-            line-height: 1;
-            user-select: none;
-        }
-        .sg1 { top: 14vh; left: 2.5vw; font-size: 5.5rem; }
-        .sg2 { top: 42vh; right: 2.5vw; font-size: 4.5rem; }
-        .sg3 { top: 68vh; left: 3vw; font-size: 3.8rem; }
-        .sg4 { top: 85vh; right: 3.5vw; font-size: 4rem; }
-        .sg5 { top: 6vh; right: 4vw; font-size: 3.2rem; }
-
-        @media (min-width: 1440px) { .site-glyphs { display: block; } }
-
-        img { max-width: 100%; display: block; }
-        a { color: inherit; }
-
-        .container {
-            max-width: 1120px;
-            margin: 0 auto;
-            padding: 0 1.75rem;
-        }
-
-        .skip-link {
-            position: absolute;
-            left: -999px;
-            top: 0;
-            background: var(--focus);
-            color: var(--ink);
-            padding: 0.75rem 1.25rem;
-            font-weight: 600;
-            z-index: 1000;
-            border-radius: 0 0 6px 0;
-        }
-        .skip-link:focus { left: 0; }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        :focus-visible {
-            outline: 3px solid var(--focus);
-            outline-offset: 2px;
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after {
-                transition-duration: 0.001ms !important;
-                animation-duration: 0.001ms !important;
-            }
-        }
-
-        /* ===== البند البصري العلوي ===== */
-        .top-banner {
-            position: relative;
-            background:
-                radial-gradient(ellipse 60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
-                radial-gradient(ellipse 50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
-                linear-gradient(160deg, #16233F 0%, #101C33 55%, #0B1526 100%);
-            padding: 4.5rem 0 3.75rem;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(231, 169, 71, 0.4);
-        }
-
-        .top-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
-            background-size: 34px 34px;
-            mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 55%, transparent 95%);
-        }
-
-        .banner-glyphs {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            pointer-events: none;
-        }
-        .banner-glyphs span {
-            position: absolute;
-            font-family: var(--font-display);
-            font-style: italic;
-            color: rgba(231, 169, 71, 0.32);
-            line-height: 1;
-            user-select: none;
-            animation: drift 9s ease-in-out infinite;
-        }
-        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; --r: -8deg; animation-delay: 0s; }
-        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; --r: 6deg; animation-delay: -3s; }
-        .g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.2); --r: -4deg; display: none; animation-delay: -6s; }
-        .g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231, 169, 71, 0.24); --r: 10deg; display: none; animation-delay: -1.5s; }
-        .g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.16); --r: -6deg; display: none; animation-delay: -4.5s; }
-
-        @media (min-width: 860px) { .g3, .g4 { display: block; } }
-        @media (min-width: 1100px) { .g5 { display: block; } }
-
-        @keyframes drift {
-            0%, 100% { transform: translateY(0) rotate(var(--r)); }
-            50% { transform: translateY(-10px) rotate(var(--r)); }
-        }
-
-        .banner-formula {
-            position: absolute;
-            right: 4%;
-            top: 1.4rem;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.45);
-            max-width: 320px;
-            text-align: right;
-            display: none;
-        }
-        @media (min-width: 980px) { .banner-formula { display: block; } }
-
-        .top-banner-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .eyebrow {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--focus);
-            margin: 0 0 0.9rem;
-        }
-
-        .top-banner h1 {
-            font-family: var(--font-display);
-            font-size: clamp(2.6rem, 5vw, 3.75rem);
-            font-weight: 700;
-            margin: 0;
-            color: #FFFFFF;
-            letter-spacing: -0.02em;
-            text-shadow: 0 2px 24px rgba(44, 110, 142, 0.45);
-        }
-
-        .wordmark { display: inline-flex; align-items: center; gap: 0.5rem; }
-        .wordmark .wm-a { color: var(--focus); }
-        .wordmark .wm-b { color: #FFFFFF; }
-        .verified-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 1.5rem;
-            height: 1.5rem;
-            border-radius: 50%;
-            background: var(--chalk-blue);
-            color: #fff;
-            font-size: 0.7rem;
-            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
-            flex-shrink: 0;
-            vertical-align: middle;
-        }
-
-        .top-banner p.tagline {
-            margin: 0.6rem 0 0;
-            font-size: 1.15rem;
-            color: #DCE4F0;
-            font-weight: 400;
-        }
-
-        .header-avatar {
-            width: 86px;
-            height: 86px;
-            flex-shrink: 0;
-            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
-        }
-        .header-avatar svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        /* ===== شريط التنقل وقائمة الألسنة ===== */
-        .navigation-bar {
-            background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        /* إخفاء شريط التمرير الأفقي بشكل كامل ونهائي لجميع المتصفحات مع الاحتفاظ بمرونة اللمس */
-        .navigation-bar ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            overflow-x: auto;
-            position: relative;
-            flex: 1;
-            min-width: 0;
-            
-            /* إخفاء شريط التمرير لمتصفح فايرفوكس */
-            scrollbar-width: none; 
-            /* إخفاء شريط التمرير لمتصفحات IE و Edge القديمة */
-            -ms-overflow-style: none; 
-        }
-
-        /* إخفاء شريط التمرير لمتصفحات Chrome, Safari, Edge الحديثة */
-        .navigation-bar ul::-webkit-scrollbar {
-            display: none !important;
-            width: 0 !important;
-            height: 0 !important;
-            background: transparent !important;
-        }
-
-        .nav-inner {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-search {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            border-radius: 999px;
-            padding: 0.5rem 1rem;
-            margin: 0.6rem 0;
-            flex-shrink: 0;
-            transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
-        }
-        .nav-search:focus-within {
-            border-color: var(--focus);
-            background: rgba(255, 255, 255, 0.1);
-        }
-        .nav-search i { color: #9AA6BC; font-size: 0.85rem; flex-shrink: 0; }
-        .nav-search input {
-            background: transparent;
-            border: none;
-            color: #fff;
-            font: inherit;
-            font-family: var(--font-body);
-            font-size: 0.86rem;
-            width: 170px;
-        }
-        .nav-search input:focus { outline: none; }
-        .nav-search input::placeholder { color: #8996AC; }
-
-        .nav-toggles {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-shrink: 0;
-        }
-        .icon-toggle {
-            width: 2.3rem;
-            height: 2.3rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            color: #C3CCDE;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
-        }
-        .icon-toggle:hover {
-            border-color: var(--focus);
-            color: var(--focus);
-            transform: translateY(-1px);
-        }
-        .lang-toggle-label {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.03em;
-        }
-
-        .nav-indicator {
-            position: absolute;
-            bottom: 0;
-            height: 3px;
-            background: var(--focus);
-            border-radius: 2px 2px 0 0;
-            transition: left 0.35s var(--ease), width 0.35s var(--ease);
-            pointer-events: none;
-        }
-        .navigation-bar li { flex-shrink: 0; }
-
-        .nav-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding: 1.05rem 1.5rem;
-            background: transparent;
-            border: none;
-            border-bottom: 3px solid transparent;
-            color: #C3CCDE;
-            font: inherit;
-            font-family: var(--font-body);
-            font-weight: 500;
-            font-size: 0.95rem;
-            white-space: nowrap;
-            cursor: pointer;
-            transition: color 0.25s var(--ease), background 0.25s var(--ease);
-        }
-
-        .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
-        .nav-link[aria-selected="true"] { color: #FFFFFF; }
-
-        /* ===== هيكلة المحتوى ===== */
-        main { padding-top: 2.75rem; padding-bottom: 5rem; }
-
-        .main-layout {
-            display: grid;
-            grid-template-columns: 2.4fr 1fr;
-            gap: 2.75rem;
-            align-items: start;
-        }
-        @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; }
-        }
-
-        .tab-content { display: none; position: relative; overflow: hidden; }
-        .tab-content.active-content {
-            display: block;
-            animation: rise 0.4s var(--ease);
-        }
-        .tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
-
-        .level-watermark {
-            position: absolute;
-            top: -0.5rem;
-            right: -0.5rem;
-            font-family: var(--font-display);
-            font-style: italic;
-            font-weight: 600;
-            font-size: 12rem;
-            line-height: 1;
-            color: rgba(44, 110, 142, 0.05);
-            pointer-events: none;
-            user-select: none;
-            z-index: 0;
-        }
-        @media (max-width: 640px) { .level-watermark { font-size: 7rem; } }
-
-        @keyframes rise {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
-        }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .abstract-box {
-            border: 1px solid var(--paper-line);
-            border-left: 4px solid var(--chalk-blue);
-            background: var(--card);
-            padding: 1.9rem 2rem;
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-            margin-bottom: 2.25rem;
-        }
-        .abstract-box h3 {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.5rem;
-            color: var(--ink);
-            margin: 0 0 0.6rem;
-        }
-        .abstract-box p {
-            margin: 0;
-            color: var(--ink-soft);
-            line-height: 1.7;
-        }
-
-        .page-lead p {
-            font-size: 1.05rem;
-            line-height: 1.75;
-            color: var(--ink-soft);
-        }
-
-        .section-heading {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.6rem;
-            color: var(--ink);
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin: 0 0 0.3rem;
-        }
-        .section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
-
-        .section-sub {
-            color: var(--ink-soft);
-            margin: 0.6rem 0 1.6rem;
-            font-size: 0.98rem;
-        }
-
-        .group-label {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            margin: 2.25rem 0 0.9rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px dashed var(--paper-line);
-        }
-
-        /* عنوان مستويات تبويب الرياضيات */
-        .level-title {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.3rem;
-            color: var(--chalk-blue-deep);
-            margin: 2.75rem 0 0.5rem;
-            padding: 0.85rem 1.2rem;
-            background: linear-gradient(90deg, rgba(44, 110, 142, 0.08), transparent);
-            border-left: 4px solid var(--chalk-blue);
-            border-radius: 0 4px 4px 0;
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-        .level-title:first-of-type { margin-top: 0.5rem; }
-        .level-title .level-code {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.2rem 0.55rem;
-            border-radius: 4px;
-            background: var(--chalk-blue);
-            color: #fff;
-            letter-spacing: 0.04em;
-        }
-        [data-theme="dark"] .level-title {
-            background: linear-gradient(90deg, rgba(44, 110, 142, 0.15), transparent);
-        }
-        [dir="rtl"] .level-title {
-            border-left: none;
-            border-right: 4px solid var(--chalk-blue);
-            background: linear-gradient(-90deg, rgba(44, 110, 142, 0.08), transparent);
-            border-radius: 4px 0 0 4px;
-        }
-
-        /* ===== عناصر وقوائم الموارد ===== */
-        .resource-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 0.5rem;
-            display: grid;
-            gap: 0.85rem;
-        }
-
-        .resource-item {
-            position: relative;
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
-        }
-
-        .resource-item::after {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 0;
-            right: 0;
-            height: 9px;
-            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
-            background-size: 20px 9px;
-            background-repeat: repeat-x;
-        }
-
-        .resource-item:hover {
-            transform: translateY(-2px);
-            border-color: #D8D0BC;
-        }
-        .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
-        .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
-        .type-exam:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--ochre); }
-
-        .resource-item a {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.15rem 1.35rem;
-            text-decoration: none;
-            color: var(--ink);
-        }
-
-        .resource-tag {
-            font-family: var(--font-mono);
-            font-size: 0.68rem;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            padding: 0.28rem 0.5rem;
-            border-radius: 4px;
-            flex-shrink: 0;
-        }
-        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
-        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
-        .type-exam .resource-tag { background: #F5EBDA; color: var(--ochre); }
-
-        .resource-title {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            flex: 1;
-            font-weight: 500;
-        }
-
-        .download-icon {
-            background: var(--paper);
-            color: var(--ink-soft);
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.3s var(--ease);
-        }
-        .type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
-        .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
-        .type-exam:hover .download-icon { background: var(--ochre); color: #fff; transform: translateY(2px); }
-
-        .empty-note {
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            color: var(--ink-soft);
-            border: 1px dashed var(--paper-line);
-            border-radius: 4px;
-            padding: 1.4rem;
-            background: rgba(44, 110, 142, 0.03);
-        }
-
-        /* ===== صفحة من أنا ===== */
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 0.5rem;
-            display: grid;
-            gap: 0.7rem;
-        }
-        .info-item {
-            display: flex;
-            align-items: baseline;
-            gap: 1.1rem;
-            padding: 0.95rem 1.2rem;
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-        }
-        .info-year {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--chalk-blue-deep);
-            flex-shrink: 0;
-            min-width: 3rem;
-        }
-        .info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
-
-        .tag-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin: 0 0 0.5rem;
-        }
-        .tag-pill {
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            padding: 0.4rem 0.85rem;
-            border-radius: 999px;
-            background: #E4EEF2;
-            color: var(--chalk-blue-deep);
-            border: 1px solid rgba(44, 110, 142, 0.25);
-        }
-
-        /* ===== الأسئلة المتكررة ===== */
-        .faq-list {
-            display: grid;
-            gap: 0.85rem;
-            margin-top: 1rem;
-        }
-        .faq-item {
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 3px;
-            box-shadow: var(--shadow-1);
-        }
-        .faq-item summary {
-            cursor: pointer;
-            list-style: none;
-            padding: 1.1rem 1.3rem;
-            font-weight: 600;
-            color: var(--ink);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-        }
-        .faq-item summary::-webkit-details-marker { display: none; }
-        .faq-item summary::after {
-            content: '+';
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            color: var(--chalk-blue);
-            flex-shrink: 0;
-        }
-        .faq-item[open] summary::after { content: '−'; }
-        .faq-item summary:hover { color: var(--chalk-blue-deep); }
-        .faq-item p {
-            margin: 0;
-            padding: 0 1.3rem 1.2rem;
-            color: var(--ink-soft);
-            line-height: 1.65;
-        }
-
-        /* ===== القائمة الجانبية ===== */
-        .sidebar-widget {
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 4px;
-            padding: 1.6rem;
-            margin-bottom: 1.6rem;
-            box-shadow: var(--shadow-1);
-        }
-
-        .math-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.75rem;
-            background: var(--ink);
-            color: #fff;
-            padding: 1rem 1.4rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            width: 100%;
-            border: none;
-            font: inherit;
-            cursor: pointer;
-            transition: background 0.2s var(--ease);
-        }
-        .math-btn:hover { background: var(--chalk-blue-deep); }
-        .math-btn i { color: var(--focus); font-size: 1.25rem; }
-
-        .widget-title {
-            margin: 0 0 1rem;
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            padding-bottom: 0.7rem;
-            border-bottom: 1px dashed var(--paper-line);
-        }
-        .widget-title i { color: var(--chalk-blue); }
-
-        .news-list { list-style: none; margin: 0; padding: 0; }
-        .news-item {
-            border-bottom: 1px dashed var(--paper-line);
-            padding: 0.85rem 0;
-        }
-        .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .news-item:first-child { padding-top: 0; }
-        .news-date {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--chalk-blue-deep);
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-        .news-meta {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 0.25rem;
-        }
-        .news-meta .news-date { margin-bottom: 0; }
-        .news-badge {
-            font-family: var(--font-mono);
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: var(--rust);
-            color: #fff;
-            padding: 0.15rem 0.5rem;
-            border-radius: 999px;
-        }
-        .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
-
-        /* ===== استمارة التواصل المباشر ===== */
-        .contact-section {
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            padding: 2.5rem;
-            border-radius: 4px;
-            box-shadow: var(--shadow-1);
-        }
-        @media (min-width: 640px) { .contact-section { padding: 3rem; } }
-
-        .contact-section h2 {
-            font-family: var(--font-display);
-            font-weight: 600;
-            font-size: 1.75rem;
-            margin: 0 0 0.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .contact-section h2 i { color: var(--chalk-blue); }
-        .contact-section > p { color: var(--ink-soft); margin: 0 0 2.25rem; }
-
-        .field-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
-
-        .field label {
-            display: block;
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--ink-soft);
-            margin-bottom: 0.55rem;
-        }
-        .field input,
-        .field textarea {
-            width: 100%;
-            font: inherit;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            padding: 0.65rem 0.1rem;
-            border: none;
-            border-bottom: 2px solid var(--paper-line);
-            background: transparent;
-            color: var(--ink);
-            border-radius: 0;
-            transition: border-color 0.2s var(--ease);
-        }
-        .field textarea { resize: vertical; min-height: 110px; }
-        .field input:focus,
-        .field textarea:focus {
-            border-color: var(--chalk-blue);
-            outline: none;
-        }
-        .field input::placeholder,
-        .field textarea::placeholder { color: #A6ADBB; }
-
-        .submit-row { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
-
-        .submit-btn {
-            background: var(--ink);
-            color: #fff;
-            border: none;
-            font-weight: 600;
-            font-size: 0.98rem;
-            padding: 0.85rem 1.6rem;
-            border-radius: 4px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            transition: background 0.2s var(--ease), transform 0.2s var(--ease);
-        }
-        .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
-
-        /* ===== التذييل ===== */
-        footer {
-            background: var(--ink);
-            color: #8996AC;
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(231, 169, 71, 0.3);
-        }
-        footer p {
-            margin: 0;
-            font-family: var(--font-mono);
-            font-size: 0.82rem;
-            letter-spacing: 0.02em;
-        }
-        footer .foot-accent { color: var(--focus); }
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-        .footer-link {
-            background: none;
-            border: none;
-            font: inherit;
-            font-family: var(--font-mono);
-            font-size: 0.78rem;
-            color: #8996AC;
-            cursor: pointer;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-        .footer-link:hover { color: var(--focus); }
-
-        /* ===== أنماط اللغات واتجاهات الصفحة RTL ===== */
-        [dir="rtl"] body {
-            font-family: 'IBM Plex Sans Arabic', var(--font-body);
-        }
-        [dir="rtl"] .top-banner h1,
-        [dir="rtl"] .section-heading,
-        [dir="rtl"] .abstract-box h3,
-        [dir="rtl"] .widget-title,
-        [dir="rtl"] .level-title {
-            font-family: 'Amiri', var(--font-display);
-        }
-        [dir="rtl"] .eyebrow,
-        [dir="rtl"] .group-label,
-        [dir="rtl"] .resource-tag,
-        [dir="rtl"] .tag-pill,
-        [dir="rtl"] .footer-link,
-        [dir="rtl"] .news-badge,
-        [dir="rtl"] footer p,
-        [dir="rtl"] .nav-search input {
-            font-family: 'IBM Plex Sans Arabic', var(--font-body);
-            letter-spacing: 0;
-        }
-        [dir="rtl"] .news-date,
-        [dir="rtl"] .info-year,
-        [dir="rtl"] .lang-toggle-label,
-        [dir="rtl"] .level-code {
-            direction: ltr;
-            unicode-bidi: isolate;
-            display: inline-block;
-            font-family: var(--font-mono);
-        }
-        [dir="rtl"] .wordmark { direction: ltr; unicode-bidi: isolate; }
-        [dir="rtl"] .skip-link { left: auto; right: -999px; }
-        [dir="rtl"] .skip-link:focus { right: 0; left: auto; }
-        [dir="rtl"] .abstract-box {
-            border-left: none;
-            border-right: 4px solid var(--chalk-blue);
-        }
-        [dir="rtl"] .field input,
-        [dir="rtl"] .field textarea {
-            text-align: right;
-        }
-
-        /* ===== وضعية الطباعة ===== */
-        @media print {
-            body::before { display: none; }
-            .skip-link,
-            .navigation-bar,
-            .header-avatar,
-            .banner-glyphs,
-            .banner-formula,
-            .site-glyphs,
-            #sidebar,
-            .nav-toggles,
-            .level-watermark,
-            footer {
-                display: none !important;
-            }
-            .top-banner {
-                background: #fff !important;
-                border-bottom: 2px solid #000;
-                padding: 0 0 1rem;
-            }
-            .top-banner::before { display: none; }
-            .top-banner h1, .eyebrow, .tagline, .wm-a, .wm-b { color: #000 !important; text-shadow: none !important; }
-            .verified-badge { display: none !important; }
-            .main-layout { display: block; }
-            .tab-content { display: block !important; overflow: visible; }
-            .tab-content:not(.active-content) { display: none !important; }
-            .resource-item, .abstract-box, .info-item, .faq-item, .contact-section {
-                box-shadow: none !important;
-                border: 1px solid #999 !important;
-                break-inside: avoid;
-            }
-            a { text-decoration: none; color: #000 !important; }
-            .download-icon { display: none; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MoBendriss | Cours et exercices de mathématiques</title>
+<meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés pour Licence 1, 2 et 3.">
+<meta name="theme-color" content="#132038">
+<link rel="canonical" href="https://mobendriss.github.io/">
+<meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
+<meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://mobendriss.github.io/">
+
+<script>
+(function(){
+  try {
+    var t = localStorage.getItem('mb-theme');
+    if(!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+    var l = localStorage.getItem('mb-lang');
+    if(l === 'ar'){
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+    }
+  } catch(e){}
+})();
+</script>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --ink: #132038;
+  --ink-soft: #47536B;
+  --paper: #FBF8F2;
+  --paper-line: #E4DFCF;
+  --card: #FFFFFF;
+  --chalk-blue: #2C6E8E;
+  --chalk-blue-deep: #1F5670;
+  --ochre: #B8791A;
+  --rust: #A23B3B;
+  --focus: #E7A947;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --shadow-1: 0 1px 2px rgba(19,32,56,0.05), 0 6px 16px -8px rgba(19,32,56,0.12);
+  --shadow-2: 0 20px 34px -18px rgba(19,32,56,0.28);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="dark"] {
+  --ink: #E8ECF4;
+  --ink-soft: #A9B4C7;
+  --paper: #0E1626;
+  --paper-line: #263047;
+  --card: #16213A;
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.3), 0 6px 16px -8px rgba(0,0,0,0.5);
+  --shadow-2: 0 20px 34px -18px rgba(0,0,0,0.7);
+}
+[data-theme="dark"] .type-cours .resource-tag { background: rgba(162,59,59,0.25); color: #E9A0A0; }
+[data-theme="dark"] .type-td .resource-tag { background: rgba(44,110,142,0.28); color: #8FC4DE; }
+[data-theme="dark"] .type-exam .resource-tag { background: rgba(184,121,26,0.25); color: #E3B462; }
+[data-theme="dark"] .tag-pill { background: rgba(44,110,142,0.25); color: #8FC4DE; border-color: rgba(143,196,222,0.3); }
+[data-theme="dark"] .field input, [data-theme="dark"] .field textarea { color: var(--ink); }
+[data-theme="dark"] .empty-note { background: rgba(44,110,142,0.08); }
+[data-theme="dark"] body::before { opacity: 0.08; mix-blend-mode: overlay; }
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  position: relative;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+header, nav, main, footer { position: relative; z-index: 1; }
+
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--focus); color: var(--ink);
+  padding: 0.75rem 1.25rem; font-weight: 600; z-index: 1000;
+  border-radius: 0 0 6px 0;
+}
+.skip-link:focus { left: 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.001ms !important; animation-duration: 0.001ms !important;
+  }
+}
+
+.container { max-width: 1120px; margin: 0 auto; padding: 0 1.75rem; }
+
+.top-banner {
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 90% at 85% 0%, rgba(44,110,142,0.35), transparent 60%),
+    radial-gradient(ellipse 50% 70% at 8% 100%, rgba(231,169,71,0.14), transparent 65%),
+    linear-gradient(160deg, #16233F 0%, #101C33 55%, #0B1526 100%);
+  padding: 4.5rem 0 3.75rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(231,169,71,0.4);
+}
+
+.top-banner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(231,169,71,0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231,169,71,0.16) 1px, transparent 1px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 55%, transparent 95%);
+}
+
+.banner-glyphs {
+  position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+}
+.banner-glyphs span {
+  position: absolute; font-family: var(--font-display); font-style: italic;
+  color: rgba(231,169,71,0.32); line-height: 1; user-select: none;
+  animation: drift 9s ease-in-out infinite;
+}
+.g1 { top: -1.2rem; left: 4%; font-size: 9rem; --r: -8deg; animation-delay: 0s; }
+.g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; --r: 6deg; animation-delay: -3s; }
+.g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.2); --r: -4deg; display: none; animation-delay: -6s; }
+.g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231,169,71,0.24); --r: 10deg; display: none; animation-delay: -1.5s; }
+.g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.16); --r: -6deg; display: none; animation-delay: -4.5s; }
+@media (min-width: 860px) { .g3, .g4 { display: block; } }
+@media (min-width: 1100px) { .g5 { display: block; } }
+@keyframes drift {
+  0%, 100% { transform: translateY(0) rotate(var(--r)); }
+  50% { transform: translateY(-10px) rotate(var(--r)); }
+}
+
+.banner-formula {
+  position: absolute; right: 4%; top: 1.4rem; font-size: 0.95rem;
+  color: rgba(255,255,255,0.45); max-width: 320px; text-align: right; display: none;
+}
+@media (min-width: 980px) { .banner-formula { display: block; } }
+
+.top-banner-content {
+  position: relative; z-index: 2;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 2rem; flex-wrap: wrap;
+}
+
+.eyebrow {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--focus); margin: 0 0 0.9rem;
+}
+
+.top-banner h1 {
+  font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 3.75rem);
+  font-weight: 700; margin: 0; color: #FFFFFF; letter-spacing: -0.02em;
+  text-shadow: 0 2px 24px rgba(44,110,142,0.45);
+}
+
+.wordmark { display: inline-flex; align-items: center; gap: 0.5rem; }
+.wordmark .wm-a { color: var(--focus); }
+.wordmark .wm-b { color: #FFFFFF; }
+.verified-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%; background: var(--chalk-blue);
+  color: #fff; font-size: 0.7rem; box-shadow: 0 0 0 2px rgba(255,255,255,0.18);
+  flex-shrink: 0; vertical-align: middle;
+}
+
+.top-banner p.tagline {
+  margin: 0.6rem 0 0; font-size: 1.15rem; color: #DCE4F0; font-weight: 400;
+}
+
+.header-avatar {
+  width: 86px; height: 86px; flex-shrink: 0;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,0.35));
+}
+.header-avatar svg { width: 100%; height: 100%; display: block; }
+
+.navigation-bar {
+  background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
+  position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.navigation-bar ul {
+  display: flex; list-style: none; margin: 0; padding: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+  flex: 1; min-width: 0;
+}
+.navigation-bar ul::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-inner {
+  display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;
+}
+
+.nav-search {
+  display: flex; align-items: center; gap: 0.55rem;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px; padding: 0.5rem 1rem; margin: 0.6rem 0;
+  flex-shrink: 0;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.nav-search:focus-within { border-color: var(--focus); background: rgba(255,255,255,0.1); }
+.nav-search i { color: #9AA6BC; font-size: 0.85rem; flex-shrink: 0; }
+.nav-search input {
+  background: transparent; border: none; color: #fff; font: inherit; font-family: var(--font-body);
+  font-size: 0.86rem; width: 170px;
+}
+.nav-search input:focus { outline: none; }
+.nav-search input::placeholder { color: #8996AC; }
+
+.nav-toggles {
+  display: flex; align-items: center; gap: 0.5rem; flex-shrink: 0;
+}
+.icon-toggle {
+  width: 2.3rem; height: 2.3rem; border-radius: 50%;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  color: #C3CCDE; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.icon-toggle:hover { border-color: var(--focus); color: var(--focus); transform: translateY(-1px); }
+.lang-toggle-label {
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em;
+}
+
+.nav-indicator {
+  position: absolute; bottom: 0; height: 3px;
+  background: var(--focus); border-radius: 2px 2px 0 0;
+  transition: left 0.35s var(--ease), width 0.35s var(--ease);
+  pointer-events: none;
+}
+
+.navigation-bar li { flex-shrink: 0; }
+
+.nav-link {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 1.05rem 1.5rem; background: transparent; border: none;
+  border-bottom: 3px solid transparent; color: #C3CCDE; font: inherit;
+  font-family: var(--font-body); font-weight: 500; font-size: 0.95rem;
+  white-space: nowrap; cursor: pointer;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.nav-link:hover { color: #FFFFFF; background: rgba(255,255,255,0.04); }
+.nav-link[aria-selected="true"] { color: #FFFFFF; }
+
+main { padding-top: 2.75rem; padding-bottom: 5rem; }
+.main-layout {
+  display: grid; grid-template-columns: 2.4fr 1fr; gap: 2.75rem; align-items: start;
+}
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+
+.tab-content { display: none; position: relative; overflow: hidden; }
+.tab-content.active-content {
+  display: block; animation: rise 0.4s var(--ease);
+}
+.tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
+
+.level-watermark {
+  position: absolute; top: -0.5rem; right: -0.5rem;
+  font-family: var(--font-display); font-style: italic; font-weight: 600;
+  font-size: 12rem; line-height: 1; color: rgba(44,110,142,0.05);
+  pointer-events: none; user-select: none; z-index: 0;
+}
+@media (max-width: 640px) { .level-watermark { font-size: 7rem; } }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(14px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.abstract-box {
+  border: 1px solid var(--paper-line); border-left: 4px solid var(--chalk-blue);
+  background: var(--card); padding: 1.9rem 2rem; border-radius: 3px;
+  box-shadow: var(--shadow-1); margin-bottom: 2.25rem;
+}
+.abstract-box h3 {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.5rem;
+  color: var(--ink); margin: 0 0 0.6rem;
+}
+.abstract-box p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
+
+.page-lead p { font-size: 1.05rem; line-height: 1.75; color: var(--ink-soft); }
+
+.section-heading {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.6rem;
+  color: var(--ink); display: flex; align-items: center; gap: 0.65rem;
+  margin: 0 0 0.3rem;
+}
+.section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
+
+.panel-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+}
+.panel-head .section-heading { margin-bottom: 0; }
+
+.section-sub { color: var(--ink-soft); margin: 0.6rem 0 1.6rem; font-size: 0.98rem; }
+
+.group-label {
+  font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft);
+  margin: 2.25rem 0 0.9rem; padding-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--paper-line);
+}
+
+.resource-list {
+  list-style: none; padding: 0; margin: 0 0 0.5rem;
+  display: grid; gap: 0.85rem;
+}
+
+.resource-item {
+  position: relative; background: var(--card); border: 1px solid var(--paper-line);
+  border-radius: 3px; box-shadow: var(--shadow-1);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.resource-item::after {
+  content: ''; position: absolute; top: -1px; left: 0; right: 0; height: 9px;
+  background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
+  background-size: 20px 9px; background-repeat: repeat-x;
+}
+.resource-item:hover { transform: translateY(-2px); border-color: #D8D0BC; }
+.type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
+.type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
+.type-exam:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--ochre); }
+
+.resource-item a {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem; padding: 1.15rem 1.35rem; text-decoration: none; color: var(--ink);
+}
+
+.resource-tag {
+  font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.06em; padding: 0.28rem 0.5rem; border-radius: 4px; flex-shrink: 0;
+}
+.type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
+.type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
+.type-exam .resource-tag { background: #F5EBDA; color: var(--ochre); }
+
+.resource-title {
+  display: flex; align-items: center; gap: 0.8rem; flex: 1; font-weight: 500;
+}
+
+.download-icon {
+  background: var(--paper); color: var(--ink-soft); width: 34px; height: 34px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; flex-shrink: 0;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.3s var(--ease);
+}
+.type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
+.type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
+.type-exam:hover .download-icon { background: var(--ochre); color: #fff; transform: translateY(2px); }
+
+.empty-note {
+  font-family: var(--font-mono); font-size: 0.9rem; color: var(--ink-soft);
+  border: 1px dashed var(--paper-line); border-radius: 4px; padding: 1.4rem;
+  background: rgba(44,110,142,0.03);
+}
+
+.info-list {
+  list-style: none; padding: 0; margin: 0 0 0.5rem;
+  display: grid; gap: 0.7rem;
+}
+.info-item {
+  display: flex; align-items: baseline; gap: 1.1rem;
+  padding: 0.95rem 1.2rem; background: var(--card); border: 1px solid var(--paper-line);
+  border-radius: 3px; box-shadow: var(--shadow-1);
+}
+.info-year {
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600;
+  color: var(--chalk-blue-deep); flex-shrink: 0; min-width: 3rem;
+}
+.info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
+
+.tag-row {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0 0 0.5rem;
+}
+.tag-pill {
+  font-family: var(--font-mono); font-size: 0.78rem; padding: 0.4rem 0.85rem;
+  border-radius: 999px; background: #E4EEF2; color: var(--chalk-blue-deep);
+  border: 1px solid rgba(44,110,142,0.25);
+}
+
+.faq-list {
+  display: grid; gap: 0.85rem; margin-top: 1rem;
+}
+.faq-item {
+  background: var(--card); border: 1px solid var(--paper-line);
+  border-radius: 3px; box-shadow: var(--shadow-1);
+}
+.faq-item summary {
+  cursor: pointer; list-style: none; padding: 1.1rem 1.3rem;
+  font-weight: 600; color: var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+'; font-family: var(--font-mono); font-size: 1.2rem;
+  color: var(--chalk-blue); flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: '−'; }
+.faq-item summary:hover { color: var(--chalk-blue-deep); }
+.faq-item p {
+  margin: 0; padding: 0 1.3rem 1.2rem; color: var(--ink-soft); line-height: 1.65;
+}
+
+.sidebar-widget {
+  background: var(--card); border: 1px solid var(--paper-line); border-radius: 4px;
+  padding: 1.6rem; margin-bottom: 1.6rem; box-shadow: var(--shadow-1);
+}
+
+.math-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.75rem;
+  background: var(--ink); color: #fff; padding: 1rem 1.4rem; border-radius: 4px;
+  text-decoration: none; font-weight: 600; width: 100%; border: none; font: inherit;
+  cursor: pointer; transition: background 0.2s var(--ease);
+}
+.math-btn:hover { background: var(--chalk-blue-deep); }
+.math-btn i { color: var(--focus); font-size: 1.25rem; }
+
+.widget-title {
+  margin: 0 0 1rem; font-family: var(--font-display); font-weight: 600;
+  font-size: 1.1rem; display: flex; align-items: center; gap: 0.55rem;
+  padding-bottom: 0.7rem; border-bottom: 1px dashed var(--paper-line);
+}
+.widget-title i { color: var(--chalk-blue); }
+
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-item { border-bottom: 1px dashed var(--paper-line); padding: 0.85rem 0; }
+.news-item:last-child { border-bottom: none; padding-bottom: 0; }
+.news-item:first-child { padding-top: 0; }
+.news-date {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--chalk-blue-deep); display: block; margin-bottom: 0.25rem;
+}
+.news-meta {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;
+}
+.news-meta .news-date { margin-bottom: 0; }
+.news-badge {
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase; background: var(--rust); color: #fff;
+  padding: 0.15rem 0.5rem; border-radius: 999px;
+}
+.news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+
+.contact-section {
+  background: var(--card); border: 1px solid var(--paper-line);
+  padding: 2.5rem; border-radius: 4px; box-shadow: var(--shadow-1);
+}
+@media (min-width: 640px) { .contact-section { padding: 3rem; } }
+
+.contact-section h2 {
+  font-family: var(--font-display); font-weight: 600; font-size: 1.75rem;
+  margin: 0 0 0.4rem; display: flex; align-items: center; gap: 0.6rem;
+}
+.contact-section h2 i { color: var(--chalk-blue); }
+.contact-section > p { color: var(--ink-soft); margin: 0 0 2.25rem; }
+
+.field-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 1.5rem;
+}
+@media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
+
+.field label {
+  display: block; font-family: var(--font-mono); font-size: 0.72rem;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 0.55rem;
+}
+.field input, .field textarea {
+  width: 100%; font: inherit; font-family: var(--font-body); font-size: 1rem;
+  padding: 0.65rem 0.1rem; border: none; border-bottom: 2px solid var(--paper-line);
+  background: transparent; color: var(--ink); border-radius: 0;
+  transition: border-color 0.2s var(--ease);
+}
+.field textarea { resize: vertical; min-height: 110px; }
+.field input:focus, .field textarea:focus {
+  border-color: var(--chalk-blue); outline: none;
+}
+.field input::placeholder, .field textarea::placeholder { color: #A6ADBB; }
+
+.submit-row { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
+.submit-btn {
+  background: var(--ink); color: #fff; border: none; font-weight: 600;
+  font-size: 0.98rem; padding: 0.85rem 1.6rem; border-radius: 4px;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 0.6rem;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
+
+footer {
+  background: var(--ink); color: #8996AC; padding: 3rem 0;
+  text-align: center; border-top: 1px solid rgba(231,169,71,0.3);
+}
+footer p {
+  margin: 0; font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.02em;
+}
+footer .foot-accent { color: var(--focus); }
+.footer-inner {
+  display: flex; align-items: center; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.footer-link {
+  background: none; border: none; font: inherit; font-family: var(--font-mono);
+  font-size: 0.78rem; color: #8996AC; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.footer-link:hover { color: var(--focus); }
+
+[dir="rtl"] body { font-family: 'IBM Plex Sans Arabic', var(--font-body); }
+[dir="rtl"] .top-banner h1, [dir="rtl"] .section-heading, [dir="rtl"] .abstract-box h3, [dir="rtl"] .widget-title {
+  font-family: 'Amiri', var(--font-display);
+}
+[dir="rtl"] .eyebrow, [dir="rtl"] .group-label, [dir="rtl"] .resource-tag,
+[dir="rtl"] .tag-pill, [dir="rtl"] .footer-link,
+[dir="rtl"] .news-badge, [dir="rtl"] footer p, [dir="rtl"] .nav-search input {
+  font-family: 'IBM Plex Sans Arabic', var(--font-body); letter-spacing: 0;
+}
+[dir="rtl"] .news-date, [dir="rtl"] .info-year, [dir="rtl"] .lang-toggle-label {
+  direction: ltr; unicode-bidi: isolate; display: inline-block; font-family: var(--font-mono);
+}
+[dir="rtl"] .wordmark { direction: ltr; unicode-bidi: isolate; }
+[dir="rtl"] .skip-link { left: auto; right: -999px; }
+[dir="rtl"] .skip-link:focus { right: 0; left: auto; }
+[dir="rtl"] .abstract-box, [dir="rtl"] .contact-section blockquote {
+  border-left: none; border-right: 4px solid var(--chalk-blue);
+}
+[dir="rtl"] .field input, [dir="rtl"] .field textarea { text-align: right; }
+
+@media print {
+  body::before { display: none; }
+  .skip-link, .navigation-bar, .header-avatar, .banner-glyphs,
+  .banner-formula, .site-glyphs, #sidebar,
+  .nav-toggles, .level-watermark, footer { display: none !important; }
+  .top-banner {
+    background: #fff !important; border-bottom: 2px solid #000; padding: 0 0 1rem;
+  }
+  .top-banner::before { display: none; }
+  .top-banner h1, .eyebrow, .tagline, .wm-a, .wm-b { color: #000 !important; text-shadow: none !important; }
+  .verified-badge { display: none !important; }
+  .main-layout { display: block; }
+  .tab-content { display: block !important; overflow: visible; }
+  .tab-content:not(.active-content) { display: none !important; }
+  .resource-item, .abstract-box, .info-item, .faq-item, .contact-section {
+    box-shadow: none !important; border: 1px solid #999 !important; break-inside: avoid;
+  }
+  a { text-decoration: none; color: #000 !important; }
+  .download-icon { display: none; }
+}
+</style>
 </head>
 <body>
 
-    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
-    <div id="tab-announcer" class="sr-only" aria-live="polite"></div>
+<a class="skip-link" href="#main-content">Aller au contenu principal</a>
+<div id="tab-announcer" class="sr-only" aria-live="polite"></div>
 
-    <div class="site-glyphs" aria-hidden="true">
-        <span class="sg1">∞</span>
-        <span class="sg2">∂</span>
-        <span class="sg3">≈</span>
-        <span class="sg4">∴</span>
-        <span class="sg5">Ω</span>
+<div class="site-glyphs" aria-hidden="true">
+  <span class="sg1">∞</span>
+  <span class="sg2">∂</span>
+  <span class="sg3">≈</span>
+  <span class="sg4">∴</span>
+  <span class="sg5">Ω</span>
+</div>
+
+<header class="top-banner">
+  <div class="banner-glyphs" aria-hidden="true">
+    <span class="g1">∫</span><span class="g2">∑</span><span class="g3">π</span><span class="g4">√</span><span class="g5">Δ</span>
+  </div>
+  <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
+  <div class="container top-banner-content">
+    <div>
+      <p class="eyebrow" data-i18n="eyebrow">Enseignant-chercheur en mathématiques</p>
+      <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
+      <p class="tagline" data-i18n="tagline">Cours et exercices de mathématiques</p>
     </div>
+    <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
+      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%"><stop offset="0%" stop-color="#26496A"/><stop offset="100%" stop-color="#0C1526"/></linearGradient></defs>
+        <circle cx="50" cy="50" r="47" fill="url(#logoFill)" stroke="#E7A947" stroke-width="1.4"/>
+        <circle cx="50" cy="50" r="40" fill="none" stroke="#E7A947" stroke-opacity="0.35" stroke-width="0.7"/>
+        <text x="34" y="43" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="15" fill="#E7A947" opacity="0.55">∫</text>
+        <text x="50" y="63" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#FBF8F2" letter-spacing="-1">MB</text>
+        <line x1="33" y1="70" x2="67" y2="70" stroke="#E7A947" stroke-width="1" stroke-opacity="0.75"/>
+        <text x="50" y="80" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6.2" letter-spacing="2.5" fill="#DCE4F0" opacity="0.8">MATHS</text>
+      </svg>
+    </div>
+  </div>
+</header>
 
-    <!-- ترويسة الموقع -->
-    <header class="top-banner">
-        <div class="banner-glyphs" aria-hidden="true">
-            <span class="g1">∫</span>
-            <span class="g2">∑</span>
-            <span class="g3">π</span>
-            <span class="g4">√</span>
-            <span class="g5">Δ</span>
+<nav class="navigation-bar" aria-label="Sections du site">
+  <div class="container nav-inner">
+    <ul role="tablist">
+      <li aria-hidden="true"><span class="nav-indicator"></span></li>
+      <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
+      <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
+      <li><button class="nav-link" role="tab" id="tab-mathematiques" aria-controls="content-mathematiques" aria-selected="false" onclick="switchTab('mathematiques')"><i class="fa-solid fa-square-root-variable"></i> <span data-i18n="nav.math">Mathématiques</span></button></li>
+      <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
+      <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
+    </ul>
+
+    <form class="nav-search" role="search" onsubmit="return false;">
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria">
+    </form>
+
+    <div class="nav-toggles">
+      <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer le site en arabe">
+        <span class="lang-toggle-label">AR</span>
+      </button>
+      <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Activer le mode sombre">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+  <div class="main-layout">
+
+    <section id="main-content">
+
+      <!-- Accueil -->
+      <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
+        <span class="level-watermark" aria-hidden="true">∀</span>
+        <div class="abstract-box">
+          <h3 data-i18n="accueil.title">Des cours et des exercices de maths, classés par niveau.</h3>
+          <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
         </div>
-        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
-        <div class="container top-banner-content">
-            <div>
-                <p class="eyebrow" data-i18n="eyebrow">Enseignant-chercheur en mathématiques</p>
-                <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
-                <p class="tagline" data-i18n="tagline">Cours et exercices de mathématiques</p>
+        <div class="page-lead">
+          <p data-i18n="accueil.lead">Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.</p>
+        </div>
+      </div>
+
+      <!-- À propos -->
+      <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
+        <span class="level-watermark" aria-hidden="true">Σ</span>
+        <div class="abstract-box">
+          <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
+          <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
+        </div>
+
+        <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
+        <ul class="info-list">
+          <li class="info-item"><span class="info-year">20XX</span><p data-i18n="apropos.dip1">[Doctorat en Mathématiques — Université, spécialité]</p></li>
+          <li class="info-item"><span class="info-year">20XX</span><p data-i18n="apropos.dip2">[Master / Agrégation — Université, spécialité]</p></li>
+        </ul>
+
+        <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'enseignement et de recherche</h3>
+        <div class="tag-row">
+          <span class="tag-pill" data-i18n="apropos.tag1">Analyse</span>
+          <span class="tag-pill" data-i18n="apropos.tag2">Logique</span>
+          <span class="tag-pill" data-i18n="apropos.tag3">Analyse fonctionnelle</span>
+          <span class="tag-pill" data-i18n="apropos.tag4">[Votre domaine]</span>
+        </div>
+      </div>
+
+      <!-- Mathématiques -->
+      <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques">
+        <span class="level-watermark" aria-hidden="true">∑</span>
+        <div class="panel-head">
+          <h2 class="section-heading"><i class="fa-solid fa-square-root-variable"></i> <span data-i18n="math.heading">Mathématiques</span></h2>
+        </div>
+        <p class="section-sub" data-i18n="math.sub">Retrouvez ici l'ensemble des documents de mathématiques : cours, exercices et examens corrigés.</p>
+
+        <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+        <ul class="resource-list">
+          <li class="resource-item type-cours">
+            <a href="documents/cours/1SC_cours1_logique.pdf" download>
+              <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
+              <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+          </li>
+          <li class="resource-item type-cours">
+            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
+              <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
+              <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+        <ul class="resource-list">
+          <li class="resource-item type-td">
+            <a href="documents/exercices/1SC_td1_logique.pdf" download>
+              <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
+              <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+        <ul class="resource-list">
+          <li class="resource-item type-exam">
+            <a href="documents/examens/1SC_examen1_corrige.pdf" download>
+              <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
+              <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
+        <span class="level-watermark" aria-hidden="true">?</span>
+        <div class="panel-head">
+          <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
+        </div>
+        <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
+            <p data-i18n="faq.a1">Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
+            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
+            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+          </details>
+          <details class="faq-item">
+            <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
+            <p data-i18n="faq.a4">[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
+        <section class="contact-section">
+          <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
+          <p data-i18n="contact.intro">Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
+          <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
+            <div class="field-grid">
+              <div class="field">
+                <label for="name" data-i18n="contact.nameLabel">Nom complet</label>
+                <input type="text" id="name" name="name" placeholder="Votre nom" required data-i18n-placeholder="contact.namePh">
+              </div>
+              <div class="field">
+                <label for="email" data-i18n="contact.emailLabel">Adresse e-mail</label>
+                <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
+              </div>
             </div>
-            <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
-                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%">
-                            <stop offset="0%" stop-color="#26496A"/>
-                            <stop offset="100%" stop-color="#0C1526"/>
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="47" fill="url(#logoFill)" stroke="#E7A947" stroke-width="1.4"/>
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="#E7A947" stroke-opacity="0.35" stroke-width="0.7"/>
-                    <text x="34" y="43" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="15" fill="#E7A947" opacity="0.55">∫</text>
-                    <text x="50" y="63" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#FBF8F2" letter-spacing="-1">MB</text>
-                    <line x1="33" y1="70" x2="67" y2="70" stroke="#E7A947" stroke-width="1" stroke-opacity="0.75"/>
-                    <text x="50" y="80" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6.2" letter-spacing="2.5" fill="#DCE4F0" opacity="0.8">MATHS</text>
-                </svg>
+            <div class="field">
+              <label for="message" data-i18n="contact.messageLabel">Votre message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required data-i18n-placeholder="contact.messagePh"></textarea>
             </div>
-        </div>
-    </header>
-
-    <!-- قائمة التنقل العلوية -->
-    <nav class="navigation-bar" aria-label="Sections du site">
-        <div class="container nav-inner">
-            <ul role="tablist">
-                <li aria-hidden="true"><span class="nav-indicator"></span></li>
-                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-mathematiques" aria-controls="content-mathematiques" aria-selected="false" onclick="switchTab('mathematiques')"><i class="fa-solid fa-infinity"></i> <span data-i18n="nav.maths">Mathématiques</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
-            </ul>
-            <form class="nav-search" role="search" onsubmit="return false;">
-                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria">
-            </form>
-            <div class="nav-toggles">
-                <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer le site en arabe">
-                    <span class="lang-toggle-label">AR</span>
-                </button>
-                <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Activer le mode sombre">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+            <div class="submit-row">
+              <button type="submit" class="submit-btn"><span data-i18n="contact.submit">Envoyer le message</span> <i class="fa-regular fa-paper-plane"></i></button>
             </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- Confidentialité -->
+      <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité et conditions d'utilisation">
+        <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
+        <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]</p>
+
+        <h3 class="group-label" data-i18n="legal.privacyTitle">Politique de confidentialité</h3>
+        <div class="abstract-box" style="margin-bottom:1.5rem;">
+          <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.</p>
         </div>
-    </nav>
-
-    <!-- محتويات الموقع -->
-    <main class="container">
-        <div class="main-layout">
-
-            <section id="main-content">
-
-                <!-- الرئيسية -->
-                <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
-                    <span class="level-watermark" aria-hidden="true">∀</span>
-                    <div class="abstract-box">
-                        <h3 data-i18n="accueil.title">Des cours et des exercices de maths, classés par niveau.</h3>
-                        <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
-                    </div>
-                    <div class="page-lead">
-                        <p data-i18n="accueil.lead">Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — L1, L2, L3 — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.</p>
-                    </div>
-                </div>
-
-                <!-- من أنا -->
-                <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
-                    <span class="level-watermark" aria-hidden="true">Σ</span>
-                    <div class="abstract-box">
-                        <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
-                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]</p>
-                    </div>
-
-                    <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
-                    <ul class="info-list">
-                        <li class="info-item">
-                            <span class="info-year">20XX</span>
-                            <p data-i18n="apropos.dip1">[Doctorat en Mathématiques — Université, spécialité]</p>
-                        </li>
-                        <li class="info-item">
-                            <span class="info-year">20XX</span>
-                            <p data-i18n="apropos.dip2">[Master / Agrégation — Université, spécialité]</p>
-                        </li>
-                    </ul>
-
-                    <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'enseignement et de recherche</h3>
-                    <div class="tag-row">
-                        <span class="tag-pill" data-i18n="apropos.tag1">Analyse</span>
-                        <span class="tag-pill" data-i18n="apropos.tag2">Logique</span>
-                        <span class="tag-pill" data-i18n="apropos.tag3">Analyse fonctionnelle</span>
-                        <span class="tag-pill" data-i18n="apropos.tag4">[Votre domaine]</span>
-                    </div>
-                </div>
-
-                <!-- الرياضيات (يجمع المستويات L1, L2, L3) -->
-                <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques">
-                    <span class="level-watermark" aria-hidden="true">∞</span>
-                    <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
-                    <p class="section-sub" data-i18n="maths.sub">Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.</p>
-
-                    <!-- المستوى الأول L1 -->
-                    <h3 class="level-title" data-i18n="maths.l1title"><span class="level-code">L1</span> <span data-i18n="maths.l1label">Première année</span></h3>
-
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
-                    <ul class="resource-list">
-                        <li class="resource-item type-td">
-                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <ul class="resource-list">
-                        <li class="resource-item type-exam">
-                            <a href="documents/examens/1SC_examen1_corrige.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <!-- المستوى الثاني L2 -->
-                    <h3 class="level-title" data-i18n="maths.l2title"><span class="level-code">L2</span> <span data-i18n="maths.l2label">Deuxième année</span></h3>
-
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
-                    <ul class="resource-list">
-                        <li class="resource-item type-cours">
-                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <!-- المستوى الثالث L3 -->
-                    <h3 class="level-title" data-i18n="maths.l3title"><span class="level-code">L3</span> <span data-i18n="maths.l3label">Troisième année</span></h3>
-
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-                </div>
-
-                <!-- الأسئلة الشائعة -->
-                <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
-                    <span class="level-watermark" aria-hidden="true">?</span>
-                    <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
-                    <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
-                    <div class="faq-list">
-                        <details class="faq-item">
-                            <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
-                            <p data-i18n="faq.a1">Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
-                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication.]</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
-                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
-                            <p data-i18n="faq.a4">[Indiquez la marche à suivre.]</p>
-                        </details>
-                    </div>
-                </div>
-
-                <!-- التواصل المباشر -->
-                <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
-                    <section class="contact-section">
-                        <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
-                        <p data-i18n="contact.intro">Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
-                        <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
-                            <div class="field-grid">
-                                <div class="field">
-                                    <label for="name" data-i18n="contact.nameLabel">Nom complet</label>
-                                    <input type="text" id="name" name="name" placeholder="Votre nom" required data-i18n-placeholder="contact.namePh">
-                                </div>
-                                <div class="field">
-                                    <label for="email" data-i18n="contact.emailLabel">Adresse e-mail</label>
-                                    <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
-                                </div>
-                            </div>
-                            <div class="field">
-                                <label for="message" data-i18n="contact.messageLabel">Votre message</label>
-                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required data-i18n-placeholder="contact.messagePh"></textarea>
-                            </div>
-                            <div class="submit-row">
-                                <button type="submit" class="submit-btn"><span data-i18n="contact.submit">Envoyer le message</span> <i class="fa-regular fa-paper-plane"></i></button>
-                            </div>
-                        </form>
-                    </section>
-                </div>
-
-                <!-- الشروط والخصوصية -->
-                <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité">
-                    <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
-                    <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026.</p>
-
-                    <h3 class="group-label" data-i18n="legal.privacyTitle">Politique de confidentialité</h3>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message.</p>
-                    </div>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.</p>
-                    </div>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.</p>
-                    </div>
-                    <div class="abstract-box">
-                        <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.</p>
-                    </div>
-
-                    <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.</p>
-                    </div>
-                    <div class="abstract-box">
-                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».</p>
-                    </div>
-                </div>
-
-                <!-- نتائج البحث -->
-                <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
-                    <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
-                    <div id="search-results" class="resource-list"></div>
-                </div>
-
-            </section>
-
-            <aside id="sidebar">
-                <div class="sidebar-widget">
-                    <button class="math-btn" onclick="switchTab('mathematiques')">
-                        <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
-                    </button>
-                </div>
-
-                <div class="sidebar-widget">
-                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.newsTitle">Actualités</span></h4>
-                    <ul class="news-list">
-                        <li class="news-item">
-                            <div class="news-meta">
-                                <span class="news-date">JUIL. 2026</span>
-                                <span class="news-badge" data-i18n="sidebar.newBadge">Nouveau</span>
-                            </div>
-                            <p data-i18n="sidebar.news1">Mise en ligne du cours de logique pour la première année.</p>
-                        </li>
-                        <li class="news-item">
-                            <span class="news-date">JUIN 2026</span>
-                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser.]</p>
-                        </li>
-                        <li class="news-item">
-                            <span class="news-date">MAI 2026</span>
-                            <p data-i18n="sidebar.news3">[Une autre actualité à personnaliser.]</p>
-                        </li>
-                    </ul>
-                </div>
-            </aside>
-
+        <div class="abstract-box" style="margin-bottom:1.5rem;">
+          <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.</p>
         </div>
-    </main>
-
-    <footer>
-        <div class="container footer-inner">
-            <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
-            <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.legalLink">Confidentialité &amp; conditions</button>
+        <div class="abstract-box" style="margin-bottom:1.5rem;">
+          <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.</p>
         </div>
-    </footer>
+        <div class="abstract-box">
+          <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.</p>
+        </div>
 
-    <script>
-        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'mathematiques', 'faq', 'contact', 'confidentialite'];
-        var isNavigatingByHash = false;
-        var lastActiveTab = 'accueil';
+        <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
+        <div class="abstract-box" style="margin-bottom:1.5rem;">
+          <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.</p>
+        </div>
+        <div class="abstract-box">
+          <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.</p>
+        </div>
+      </div>
 
-        function isValidTab(id) { return TAB_IDS.indexOf(id) !== -1; }
+      <!-- Recherche -->
+      <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
+        <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
+        <div id="search-results" class="resource-list"></div>
+      </div>
 
-        function positionIndicator(button) {
-            var indicator = document.querySelector('.nav-indicator');
-            var list = document.querySelector('.navigation-bar ul');
-            if (!indicator || !button || !list) return;
-            var listRect = list.getBoundingClientRect();
-            var btnRect = button.getBoundingClientRect();
-            indicator.style.left = (btnRect.left - listRect.left) + 'px';
-            indicator.style.width = btnRect.width + 'px';
-        }
+    </section>
 
-        function revealChildren(panel) {
-            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .level-title');
-            items.forEach(function (el, i) {
-                el.classList.remove('is-visible');
-                el.classList.add('reveal');
-                if (reduceMotion) { el.classList.add('is-visible'); return; }
-                el.style.transitionDelay = (i * 60) + 'ms';
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
-                });
-            });
-        }
+    <aside id="sidebar">
+      <div class="sidebar-widget">
+        <button class="math-btn" onclick="switchTab('mathematiques')">
+          <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
+        </button>
+      </div>
 
-        function switchTab(tabId, opts) {
-            opts = opts || {};
-            if (!isValidTab(tabId)) return;
-            lastActiveTab = tabId;
+      <div class="sidebar-widget">
+        <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.newsTitle">Actualités</span></h4>
+        <ul class="news-list">
+          <li class="news-item">
+            <div class="news-meta">
+              <span class="news-date">JUIL. 2026</span>
+              <span class="news-badge" data-i18n="sidebar.newBadge">Nouveau</span>
+            </div>
+            <p data-i18n="sidebar.news1">Mise en ligne du cours de logique pour la première année.</p>
+          </li>
+          <li class="news-item">
+            <span class="news-date">JUIN 2026</span>
+            <p data-i18n="sidebar.news2">[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]</p>
+          </li>
+          <li class="news-item">
+            <span class="news-date">MAI 2026</span>
+            <p data-i18n="sidebar.news3">[Une autre actualité à personnaliser.]</p>
+          </li>
+        </ul>
+      </div>
+    </aside>
 
-            document.querySelectorAll('.nav-link').forEach(function (link) {
-                link.setAttribute('aria-selected', 'false');
-            });
-            var activeTab = document.getElementById('tab-' + tabId);
-            if (activeTab) {
-                activeTab.setAttribute('aria-selected', 'true');
-                positionIndicator(activeTab);
-                activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
-            }
+  </div>
+</main>
 
-            document.querySelectorAll('.tab-content').forEach(function (panel) {
-                panel.classList.remove('active-content');
-            });
-            var activePanel = document.getElementById('content-' + tabId);
-            if (activePanel) {
-                activePanel.classList.add('active-content');
-                revealChildren(activePanel);
-                var announcer = document.getElementById('tab-announcer');
-                if (announcer) {
-                    var heading = activePanel.querySelector('h2, h3');
-                    announcer.textContent = (heading ? heading.textContent.trim() : tabId);
-                }
-            }
+<footer>
+  <div class="container footer-inner">
+    <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
+    <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.legalLink">Confidentialité &amp; conditions</button>
+  </div>
+</footer>
 
-            if (opts.updateHash !== false && history.pushState) {
-                try {
-                    isNavigatingByHash = true;
-                    history.pushState({ tab: tabId }, '', '#' + tabId);
-                } catch (e) {} finally { isNavigatingByHash = false; }
-            }
+<script>
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var lastActiveTab = 'accueil';
+var isNavigatingByHash = false;
+var TAB_IDS = ['accueil','apropos','mathematiques','faq','contact','confidentialite'];
 
-            if (opts.scrollTop !== false) {
-                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-            }
-        }
+function isValidTab(id) {
+  return TAB_IDS.indexOf(id) !== -1;
+}
 
-        document.querySelectorAll('.nav-link').forEach(function (btn) {
-            btn.addEventListener('keydown', function (e) {
-                var currentId = btn.id.replace('tab-', '');
-                var idx = TAB_IDS.indexOf(currentId);
-                if (idx === -1) return;
-                var newIdx = null;
-                if (e.key === 'ArrowRight') newIdx = (idx + 1) % TAB_IDS.length;
-                else if (e.key === 'ArrowLeft') newIdx = (idx - 1 + TAB_IDS.length) % TAB_IDS.length;
-                else if (e.key === 'Home') newIdx = 0;
-                else if (e.key === 'End') newIdx = TAB_IDS.length - 1;
-                if (newIdx !== null) {
-                    e.preventDefault();
-                    switchTab(TAB_IDS[newIdx], { scrollTop: false });
-                    var newBtn = document.getElementById('tab-' + TAB_IDS[newIdx]);
-                    if (newBtn) newBtn.focus();
-                }
-            });
-        });
+function positionIndicator(button) {
+  var indicator = document.querySelector('.nav-indicator');
+  var list = document.querySelector('.navigation-bar ul');
+  if (!indicator || !button || !list) return;
+  var listRect = list.getBoundingClientRect();
+  var btnRect = button.getBoundingClientRect();
+  indicator.style.left = (btnRect.left - listRect.left) + 'px';
+  indicator.style.width = btnRect.width + 'px';
+}
 
-        window.addEventListener('load', function () {
-            var initial = location.hash ? location.hash.substring(1) : 'accueil';
-            if (!isValidTab(initial)) initial = 'accueil';
-            switchTab(initial, { updateHash: false, scrollTop: false });
+function revealChildren(panel) {
+  var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .sidebar-widget');
+  items.forEach(function(el, i){
+    el.classList.remove('is-visible');
+    el.classList.add('reveal');
+    if (reduceMotion) { el.classList.add('is-visible'); return; }
+    el.style.transitionDelay = (i * 60) + 'ms';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ el.classList.add('is-visible'); });
+    });
+  });
+}
 
-            document.querySelectorAll('.sidebar-widget').forEach(function (el, i) {
-                el.classList.add('reveal');
-                if (reduceMotion) { el.classList.add('is-visible'); return; }
-                el.style.transitionDelay = (i * 90) + 'ms';
-                requestAnimationFrame(function () {
-                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
-                });
-            });
-        });
+function switchTab(tabId, opts) {
+  opts = opts || {};
+  if (!isValidTab(tabId)) return;
+  lastActiveTab = tabId;
 
-        window.addEventListener('popstate', function () {
-            if (isNavigatingByHash) return;
-            var id = location.hash ? location.hash.substring(1) : 'accueil';
-            if (!isValidTab(id)) id = 'accueil';
-            switchTab(id, { updateHash: false, scrollTop: false });
-        });
+  document.querySelectorAll('.nav-link').forEach(function(link){
+    link.setAttribute('aria-selected', 'false');
+  });
+  var activeTab = document.getElementById('tab-' + tabId);
+  if (activeTab) {
+    activeTab.setAttribute('aria-selected', 'true');
+    positionIndicator(activeTab);
+    activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
 
-        window.addEventListener('resize', function () {
-            positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
-        });
+  document.querySelectorAll('.tab-content').forEach(function(panel){
+    panel.classList.remove('active-content');
+  });
+  var activePanel = document.getElementById('content-' + tabId);
+  if (activePanel) {
+    activePanel.classList.add('active-content');
+    revealChildren(activePanel);
+    var announcer = document.getElementById('tab-announcer');
+    if (announcer) {
+      var heading = activePanel.querySelector('h2, h3');
+      announcer.textContent = 'Section affichée : ' + (heading ? heading.textContent.trim() : tabId);
+    }
+  }
 
-        var navList = document.querySelector('.navigation-bar ul');
-        if (navList) {
-            navList.addEventListener('scroll', function () {
-                positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
-            }, { passive: true });
-        }
+  if (opts.updateHash !== false && history.pushState) {
+    try {
+      isNavigatingByHash = true;
+      history.pushState({ tab: tabId }, '', '#' + tabId);
+    } catch (e) {
+      // ignore
+    } finally {
+      isNavigatingByHash = false;
+    }
+  }
 
-        /* ===== البحث الفوري السريع ===== */
-        var searchIndex = [];
-        var searchTimer;
+  if (opts.scrollTop !== false) {
+    window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+}
 
-        function formatTemplate(str, vars) {
-            return str.replace(/\{(\w+)\}/g, function (_, k) { return (vars[k] !== undefined ? vars[k] : ''); });
-        }
+document.querySelectorAll('.nav-link').forEach(function(btn){
+  btn.addEventListener('keydown', function(e){
+    var currentId = btn.id.replace('tab-', '');
+    var idx = TAB_IDS.indexOf(currentId);
+    if (idx === -1) return;
+    var newIdx = null;
+    if (e.key === 'ArrowRight') newIdx = (idx + 1) % TAB_IDS.length;
+    else if (e.key === 'ArrowLeft') newIdx = (idx - 1 + TAB_IDS.length) % TAB_IDS.length;
+    else if (e.key === 'Home') newIdx = 0;
+    else if (e.key === 'End') newIdx = TAB_IDS.length - 1;
+    if (newIdx !== null) {
+      e.preventDefault();
+      var newId = TAB_IDS[newIdx];
+      switchTab(newId, { scrollTop: false });
+      var newBtn = document.getElementById('tab-' + newId);
+      if (newBtn) newBtn.focus();
+    }
+  });
+});
 
-        function buildSearchIndex() {
-            searchIndex = [];
-            document.querySelectorAll('.tab-content .resource-item').forEach(function (item) {
-                var a = item.querySelector('a');
-                var titleEl = item.querySelector('.resource-title');
-                var tagEl = item.querySelector('.resource-tag');
-                if (!a || !titleEl) return;
-                var typeClass = Array.prototype.slice.call(item.classList).filter(function (c) { return c.indexOf('type-') === 0; })[0] || '';
-                searchIndex.push({
-                    title: titleEl.textContent.replace(/\s+/g, ' ').trim(),
-                    href: a.getAttribute('href'),
-                    tag: tagEl ? tagEl.textContent.trim() : '',
-                    typeClass: typeClass
-                });
-            });
-        }
+window.addEventListener('load', function(){
+  var initial = location.hash ? location.hash.substring(1) : 'accueil';
+  if (!isValidTab(initial)) initial = 'accueil';
+  switchTab(initial, { updateHash: false, scrollTop: false });
 
-        function performSearch(rawQuery) {
-            var query = (rawQuery || '').trim().toLowerCase();
-            var searchPanel = document.getElementById('content-search');
-            var resultsBox = document.getElementById('search-results');
-            var heading = document.getElementById('search-heading');
-            if (!searchPanel || !resultsBox || !heading) return;
+  document.querySelectorAll('.sidebar-widget').forEach(function(el, i){
+    el.classList.add('reveal');
+    if (reduceMotion) { el.classList.add('is-visible'); return; }
+    el.style.transitionDelay = (i * 90) + 'ms';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ el.classList.add('is-visible'); });
+    });
+  });
+});
 
-            if (!query) { switchTab(lastActiveTab, { updateHash: false, scrollTop: false }); return; }
+window.addEventListener('popstate', function(){
+  if (isNavigatingByHash) return;
+  var id = location.hash ? location.hash.substring(1) : 'accueil';
+  if (!isValidTab(id)) id = 'accueil';
+  switchTab(id, { updateHash: false, scrollTop: false });
+});
 
-            var matches = searchIndex.filter(function (item) {
-                return item.title.toLowerCase().indexOf(query) !== -1;
-            });
+window.addEventListener('resize', function(){
+  positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+});
 
-            document.querySelectorAll('.tab-content').forEach(function (p) { p.classList.remove('active-content'); });
-            document.querySelectorAll('.nav-link').forEach(function (l) { l.setAttribute('aria-selected', 'false'); });
-            var indicator = document.querySelector('.nav-indicator');
-            if (indicator) indicator.style.width = '0px';
+var navList = document.querySelector('.navigation-bar ul');
+if (navList) {
+  navList.addEventListener('scroll', function(){
+    positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+  }, { passive: true });
+}
 
-            var lang = document.documentElement.getAttribute('lang') || 'fr';
-            var dict = (window.I18N && I18N[lang]) ? I18N[lang] : (window.I18N ? I18N['fr'] : {});
+/* ===== Recherche ===== */
+var searchIndex = [];
+var searchTimer;
 
-            heading.textContent = matches.length
-                ? formatTemplate((dict['search.resultsHeading'] || "Résultats pour « {query} » ({count})"), { query: rawQuery.trim(), count: matches.length })
-                : formatTemplate((dict['search.noResultsHeading'] || "Aucun résultat pour « {query} »"), { query: rawQuery.trim() });
+function formatTemplate(str, vars) {
+  return str.replace(/\{(\w+)\}/g, function(_, k){ return (vars[k] !== undefined ? vars[k] : ''); });
+}
 
-            resultsBox.innerHTML = '';
-            matches.forEach(function (item) {
-                var row = document.createElement('div');
-                row.className = 'resource-item ' + item.typeClass;
-                var link = document.createElement('a');
-                link.href = item.href;
-                link.setAttribute('download', '');
-                link.innerHTML = '<span class="resource-title"><span class="resource-tag">' + item.tag + '</span> ' + item.title + '</span><span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>';
-                row.appendChild(link);
-                resultsBox.appendChild(row);
-            });
+function buildSearchIndex() {
+  searchIndex = [];
+  document.querySelectorAll('.tab-content .resource-item').forEach(function(item){
+    var a = item.querySelector('a');
+    var titleEl = item.querySelector('.resource-title');
+    var tagEl = item.querySelector('.resource-tag');
+    var panel = item.closest('.tab-content');
+    var levelHeading = panel ? panel.querySelector('h2') : null;
+    if (!a || !titleEl) return;
+    var typeClass = Array.prototype.slice.call(item.classList).filter(function(c){ return c.indexOf('type-') === 0; })[0] || '';
+    searchIndex.push({
+      title: titleEl.textContent.replace(/\s+/g, ' ').trim(),
+      href: a.getAttribute('href'),
+      tag: tagEl ? tagEl.textContent.trim() : '',
+      level: levelHeading ? levelHeading.textContent.replace(/\s+/g, ' ').trim() : '',
+      typeClass: typeClass
+    });
+  });
+}
 
-            if (!matches.length) {
-                var note = document.createElement('p');
-                note.className = 'empty-note';
-                note.textContent = (dict['search.emptyNote'] || "Essayez un autre mot-clé.");
-                resultsBox.appendChild(note);
-            }
+function performSearch(rawQuery) {
+  var query = (rawQuery || '').trim().toLowerCase();
+  var searchPanel = document.getElementById('content-search');
+  var resultsBox = document.getElementById('search-results');
+  var heading = document.getElementById('search-heading');
+  if (!searchPanel || !resultsBox || !heading) return;
 
-            searchPanel.classList.add('active-content');
-            revealChildren(searchPanel);
+  if (!query) {
+    switchTab(lastActiveTab, { updateHash: false, scrollTop: false });
+    return;
+  }
 
-            var announcer = document.getElementById('tab-announcer');
-            if (announcer) {
-                announcer.textContent = matches.length
-                    ? formatTemplate((dict['search.announcerFound'] || "{count} résultat(s)"), { count: matches.length })
-                    : (dict['search.announcerNone'] || "Aucun résultat");
-            }
-        }
+  var matches = searchIndex.filter(function(item){
+    return item.title.toLowerCase().indexOf(query) !== -1 || item.level.toLowerCase().indexOf(query) !== -1;
+  });
 
-        var searchInput = document.getElementById('site-search');
-        if (searchInput) {
-            searchInput.addEventListener('input', function () {
-                var val = this.value;
-                clearTimeout(searchTimer);
-                searchTimer = setTimeout(function () { performSearch(val); }, 180);
-            });
-            searchInput.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') { this.value = ''; performSearch(''); this.blur(); }
-            });
-        }
+  document.querySelectorAll('.tab-content').forEach(function(p){ p.classList.remove('active-content'); });
+  document.querySelectorAll('.nav-link').forEach(function(l){ l.setAttribute('aria-selected', 'false'); });
+  var indicator = document.querySelector('.nav-indicator');
+  if (indicator) indicator.style.width = '0px';
 
-        /* ===== ملف الترجمة المدمج FR / AR ===== */
-        window.I18N = {
-            fr: {
-                eyebrow: "Enseignant-chercheur en mathématiques",
-                tagline: "Cours et exercices de mathématiques",
-                "nav.accueil": "Accueil",
-                "nav.apropos": "À propos",
-                "nav.maths": "Mathématiques",
-                "nav.faq": "FAQ",
-                "nav.contact": "Contact",
-                "search.placeholder": "Rechercher un document…",
-                "search.aria": "Rechercher un document",
-                "search.resultsHeading": "Résultats pour « {query} » ({count})",
-                "search.noResultsHeading": "Aucun résultat pour « {query} »",
-                "search.emptyNote": "Essayez un autre mot-clé, ou parcourez l'onglet Mathématiques.",
-                "search.announcerFound": "{count} résultat(s) trouvé(s)",
-                "search.announcerNone": "Aucun résultat trouvé",
-                "accueil.title": "Des cours et des exercices de maths, classés par niveau.",
-                "accueil.welcome": "Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.",
-                "accueil.lead": "Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — L1, L2, L3 — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.",
-                "apropos.heading": "À propos de MoBendriss",
-                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]",
-                "apropos.formation": "Formation",
-                "apropos.dip1": "[Doctorat en Mathématiques — Université, spécialité]",
-                "apropos.dip2": "[Master / Agrégation — Université, spécialité]",
-                "apropos.domaines": "Domaines d'enseignement et de recherche",
-                "apropos.tag1": "Analyse",
-                "apropos.tag2": "Logique",
-                "apropos.tag3": "Analyse fonctionnelle",
-                "apropos.tag4": "[Votre domaine]",
-                "maths.heading": "Mathématiques",
-                "maths.sub": "Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.",
-                "maths.l1title": "<span class='level-code'>L1</span> Première année",
-                "maths.l1label": "Première année",
-                "maths.l2title": "<span class='level-code'>L2</span> Deuxième année",
-                "maths.l2label": "Deuxième année",
-                "maths.l3title": "<span class='level-code'>L3</span> Troisième année",
-                "maths.l3label": "Troisième année",
-                "group.cours": "Cours",
-                "group.td": "Exercices &amp; TD",
-                "group.examens": "Examens &amp; Corrigés",
-                "tag.cours": "COURS",
-                "tag.td1": "TD 1",
-                "tag.examen": "EXAMEN",
-                "l1.cours1": "Notions de logique",
-                "l1.td1": "Logique et raisonnements",
-                "l1.exam1": "Session normale — corrigé",
-                "l2.cours1": "Analyse fonctionnelle",
-                "empty.note": "Aucun document en ligne pour le moment. Revenez bientôt.",
-                "faq.heading": "Questions fréquentes",
-                "faq.sub": "Les réponses aux questions les plus courantes.",
-                "faq.q1": "Comment télécharger un document ?",
-                "faq.a1": "Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
-                "faq.q2": "Les documents sont-ils mis à jour régulièrement ?",
-                "faq.a2": "[Précisez ici votre rythme de publication.]",
-                "faq.q3": "Comment vous contacter en cas de question sur un exercice ?",
-                "faq.a3": "Utilisez le formulaire de l'onglet Contact.",
-                "faq.q4": "Un document que je cherche n'est pas encore en ligne, que faire ?",
-                "faq.a4": "[Indiquez la marche à suivre.]",
-                "contact.heading": "Contact direct",
-                "contact.intro": "Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.",
-                "contact.nameLabel": "Nom complet",
-                "contact.namePh": "Votre nom",
-                "contact.emailLabel": "Adresse e-mail",
-                "contact.messageLabel": "Votre message",
-                "contact.messagePh": "Votre message détaillé...",
-                "contact.submit": "Envoyer le message",
-                "legal.heading": "Confidentialité &amp; conditions",
-                "legal.sub": "Dernière mise à jour : juillet 2026.",
-                "legal.privacyTitle": "Politique de confidentialité",
-                "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message.",
-                "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.",
-                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.",
-                "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.",
-                "legal.termsTitle": "Conditions d'utilisation",
-                "legal.terms1": "<strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.",
-                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».",
-                "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
-                "footer.tagline": "Conçu avec rigueur.",
-                "footer.legalLink": "Confidentialité &amp; conditions",
-                "sidebar.mathBtn": "Mathématiques",
-                "sidebar.newsTitle": "Actualités",
-                "sidebar.newBadge": "Nouveau",
-                "sidebar.news1": "Mise en ligne du cours de logique pour la première année.",
-                "sidebar.news2": "[Une actualité à personnaliser.]",
-                "sidebar.news3": "[Une autre actualité à personnaliser.]"
-            },
-            ar: {
-                eyebrow: "أستاذ باحث في الرياضيات",
-                tagline: "دروس وتمارين في الرياضيات",
-                "nav.accueil": "الرئيسية",
-                "nav.apropos": "من أنا",
-                "nav.maths": "الرياضيات",
-                "nav.faq": "الأسئلة الشائعة",
-                "nav.contact": "تواصل",
-                "search.placeholder": "ابحث عن وثيقة…",
-                "search.aria": "البحث عن وثيقة",
-                "search.resultsHeading": "نتائج « {query} » ({count})",
-                "search.noResultsHeading": "لا توجد نتائج لـ « {query} »",
-                "search.emptyNote": "جرّب كلمة أخرى، أو تصفح لسان الرياضيات مباشرة.",
-                "search.announcerFound": "تم العثور على {count} نتيجة",
-                "search.announcerNone": "لا توجد نتائج",
-                "accueil.title": "دروس وتمارين في الرياضيات، مصنّفة حسب المستوى.",
-                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس وأوراق الأعمال الموجهة والتمارين المصححة.",
-                "accueil.lead": "الوثائق مجمّعة في لسان <strong>الرياضيات</strong>، مرتّبة حسب المستوى — L1، L2، L3 — ومصنّفة إلى دروس وأعمال موجهة وامتحانات. استخدموا الألسنة أعلاه للتنقل.",
-                "apropos.heading": "من هو MoBendriss",
-                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات.]",
-                "apropos.formation": "التكوين",
-                "apropos.dip1": "[دكتوراه في الرياضيات — الجامعة، التخصص]",
-                "apropos.dip2": "[ماستر / تبريز — الجامعة، التخصص]",
-                "apropos.domaines": "مجالات التدريس والبحث",
-                "apropos.tag1": "التحليل",
-                "apropos.tag2": "المنطق",
-                "apropos.tag3": "التحليل الدالي",
-                "apropos.tag4": "[مجالك]",
-                "maths.heading": "الرياضيات",
-                "maths.sub": "انقر على وثيقة لبدء التحميل. الموارد مصنّفة حسب المستوى.",
-                "maths.l1title": "<span class='level-code'>L1</span> السنة الأولى",
-                "maths.l1label": "السنة الأولى",
-                "maths.l2title": "<span class='level-code'>L2</span> السنة الثانية",
-                "maths.l2label": "السنة الثانية",
-                "maths.l3title": "<span class='level-code'>L3</span> السنة الثالثة",
-                "maths.l3label": "السنة الثالثة",
-                "group.cours": "الدروس",
-                "group.td": "التمارين والأعمال الموجهة",
-                "group.examens": "الامتحانات والتصحيحات",
-                "tag.cours": "درس",
-                "tag.td1": "TD 1",
-                "tag.examen": "امتحان",
-                "l1.cours1": "مبادئ المنطق",
-                "l1.td1": "المنطق والاستدلالات",
-                "l1.exam1": "الدورة العادية — مصحح",
-                "l2.cours1": "التحليل الدالي",
-                "empty.note": "لا توجد وثيقة متاحة حالياً. عودوا قريباً.",
-                "faq.heading": "الأسئلة الشائعة",
-                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً.",
-                "faq.q1": "كيف أحمّل وثيقة؟",
-                "faq.a1": "افتح لسان الرياضيات، ثم انقر مباشرة على عنوان الوثيقة: يبدأ التحميل تلقائياً.",
-                "faq.q2": "هل يتم تحديث الوثائق بانتظام؟",
-                "faq.a2": "[حدّد هنا وتيرة النشر.]",
-                "faq.q3": "كيف أتواصل معك بخصوص سؤال حول تمرين؟",
-                "faq.a3": "استخدم استمارة لسان «تواصل».",
-                "faq.q4": "الوثيقة التي أبحث عنها غير متوفرة بعد، ماذا أفعل؟",
-                "faq.a4": "[وضّح هنا الخطوات.]",
-                "contact.heading": "تواصل مباشر",
-                "contact.intro": "لأي سؤال أكاديمي أو تعاون بيداغوجي، لا تتردد في مراسلتي.",
-                "contact.nameLabel": "الاسم الكامل",
-                "contact.namePh": "اسمك",
-                "contact.emailLabel": "البريد الإلكتروني",
-                "contact.messageLabel": "رسالتك",
-                "contact.messagePh": "رسالتك المفصّلة...",
-                "contact.submit": "إرسال الرسالة",
-                "legal.heading": "الخصوصية والشروط",
-                "legal.sub": "آخر تحديث: يوليوز 2026.",
-                "legal.privacyTitle": "سياسة الخصوصية",
-                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك وبريدك الإلكتروني ومحتوى رسالتك.",
-                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم الإرسال عبر خدمة FormSubmit.",
-                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل الموقع خطوطاً وأيقونات ومحرك MathJax من خوادم خارجية.",
-                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها.",
-                "legal.termsTitle": "شروط الاستخدام",
-                "legal.terms1": "<strong>استخدام الوثائق.</strong> المحتويات مخصصة للاستخدام التربوي الشخصي.",
-                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي».",
-                "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
-                "footer.tagline": "صُمم بدقة.",
-                "footer.legalLink": "الخصوصية والشروط",
-                "sidebar.mathBtn": "الرياضيات",
-                "sidebar.newsTitle": "آخر الأخبار",
-                "sidebar.newBadge": "جديد",
-                "sidebar.news1": "نشر درس المنطق للسنة الأولى.",
-                "sidebar.news2": "[خبر يمكن تخصيصه.]",
-                "sidebar.news3": "[خبر آخر يمكن تخصيصه.]"
-            }
-        };
+  var lang = document.documentElement.getAttribute('lang') || 'fr';
+  var dict = (window.I18N && I18N[lang]) ? I18N[lang] : (window.I18N && I18N['fr'] ? I18N['fr'] : {});
 
-        function applyLang(lang) {
-            if (!I18N[lang]) lang = 'fr';
-            document.documentElement.setAttribute('lang', lang);
-            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-            document.querySelectorAll('[data-i18n]').forEach(function (el) {
-                var key = el.getAttribute('data-i18n');
-                var val = I18N[lang][key] || I18N.fr[key];
-                if (val !== undefined) el.innerHTML = val;
-            });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
-                var key = el.getAttribute('data-i18n-placeholder');
-                var val = I18N[lang][key] || I18N.fr[key];
-                if (val !== undefined) el.setAttribute('placeholder', val);
-            });
-            document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
-                var key = el.getAttribute('data-i18n-aria');
-                var val = I18N[lang][key] || I18N.fr[key];
-                if (val !== undefined) el.setAttribute('aria-label', val);
-            });
-            var label = document.querySelector('.lang-toggle-label');
-            var langBtn = document.getElementById('lang-toggle');
-            if (label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
-            if (langBtn) langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
-            try { localStorage.setItem('mb-lang', lang); } catch (e) {}
-            buildSearchIndex();
-        }
+  heading.textContent = matches.length
+    ? formatTemplate((dict['search.resultsHeading'] || "Résultats pour « {query} » ({count})"), { query: rawQuery.trim(), count: matches.length })
+    : formatTemplate((dict['search.noResultsHeading'] || "Aucun résultat pour « {query} »"), { query: rawQuery.trim() });
 
-        var langToggle = document.getElementById('lang-toggle');
-        if (langToggle) {
-            applyLang(document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr');
-            langToggle.addEventListener('click', function () {
-                var current = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr';
-                applyLang(current === 'ar' ? 'fr' : 'ar');
-            });
-        }
-
-        /* ===== الوضع الداكن والليلي ===== */
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            var icon = document.querySelector('#theme-toggle i');
-            var btn = document.getElementById('theme-toggle');
-            if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-            if (btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
-            try { localStorage.setItem('mb-theme', theme); } catch (e) {}
-        }
-        var themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
-            themeToggle.addEventListener('click', function () {
-                applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-            });
-        }
-
-        window.addEventListener('load', buildSearchIndex);
-    </script>
-
-</body>
-</html>
-```
+  resultsBox.innerHTML = '';
+  matches.forEach(function(item){
+    var row = document.createElement('div');
+    row.className = 'resource-item ' + item.typeClass;
+    var link = document.createElement('a');
+    link.href = item.href;
+    link
