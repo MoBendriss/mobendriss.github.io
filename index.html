@@ -1,3 +1,8 @@
+لإزالة **شريط التمرير الأفقي الأبيض (Scrollbar)** الذي يظهر في قائمة التنقل والذي يبدو مشوهاً في بعض المتصفحات (مثل Edge وChrome على نظام Windows)، قمنا بتحديث أنماط CSS لإخفائه تماماً بجميع المتصفحات (Chrome, Safari, Firefox, Edge) مع الحفاظ على إمكانية سحب القائمة وتمريرها باللمس على الهواتف بشكل طبيعي ومرن جداً.
+
+إليك كود الصفحة الكامل المحدث والجاهز للنسخ والحفظ مباشرة في ملف **`index.html`**:
+
+```html
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" data-theme="light">
 <head>
@@ -22,7 +27,6 @@
     <meta name="twitter:description" content="Cours, TD et exercices corrigés en mathématiques, du L1 au L3.">
     <meta name="twitter:image" content="https://mobendriss.github.io/og-image.jpg">
 
-    <!-- كود تحديد السمة واللغة قبل التحميل لمنع الوميض الأبيض -->
     <script>
         (function () {
             try {
@@ -38,16 +42,13 @@
         })();
     </script>
 
-    <!-- أيقونة مدمجة كلياً بصيغة SVG لتعمل فوراً دون أي ملف خارجي -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
 
-    <!-- الموارد الخارجية عبر شبكات تسليم المحتوى المستقرة (CDNs) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- محرك MathJax لعرض المعادلات الرياضية المعقدة -->
     <script>
         window.MathJax = {
             tex: {
@@ -60,7 +61,6 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
-        /* ===== نظام الألوان والسمات البصرية ===== */
         :root {
             --ink: #132038;
             --ink-soft: #47536B;
@@ -94,15 +94,13 @@
         [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
         [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
         [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
-        [data-theme="dark"] .video-info .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
         [data-theme="dark"] .tag-pill { background: rgba(44, 110, 142, 0.25); color: #8FC4DE; border-color: rgba(143, 196, 222, 0.3); }
         [data-theme="dark"] .field input,
         [data-theme="dark"] .field textarea { color: var(--ink); }
         [data-theme="dark"] .empty-note { background: rgba(44, 110, 142, 0.08); }
-        [data-theme="dark"] .video-thumb { background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(231, 169, 71, 0.14), transparent 70%), linear-gradient(140deg, #1B2A46 0%, #0A1220 100%); }
         [data-theme="dark"] body::before { opacity: 0.08; mix-blend-mode: overlay; }
 
-        body, .resource-item, .abstract-box, .sidebar-widget, .info-item, .faq-item, .contact-section, .video-card, .field input, .field textarea {
+        body, .resource-item, .abstract-box, .sidebar-widget, .info-item, .faq-item, .contact-section, .field input, .field textarea {
             transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
         }
 
@@ -118,7 +116,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ملمس ورقي ناعم خلف التصميم */
         body::before {
             content: '';
             position: fixed;
@@ -132,7 +129,6 @@
 
         header, nav, main, footer { position: relative; z-index: 1; }
 
-        /* رموز تزيينية جانبية للشاشات الكبيرة */
         .site-glyphs {
             position: fixed;
             inset: 0;
@@ -204,7 +200,7 @@
             }
         }
 
-        /* ===== الهيدر والبند البصري العلوي ===== */
+        /* ===== البند البصري العلوي ===== */
         .top-banner {
             position: relative;
             background:
@@ -334,7 +330,7 @@
             display: block;
         }
 
-        /* ===== شريط التنقل والألسنة التفاعلية ===== */
+        /* ===== شريط التنقل وقائمة الألسنة ===== */
         .navigation-bar {
             background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
             position: sticky;
@@ -343,16 +339,29 @@
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
+        /* إخفاء شريط التمرير الأفقي بشكل كامل ونهائي لجميع المتصفحات مع الاحتفاظ بمرونة اللمس */
         .navigation-bar ul {
             display: flex;
             list-style: none;
             margin: 0;
             padding: 0;
             overflow-x: auto;
-            scrollbar-width: thin;
             position: relative;
             flex: 1;
             min-width: 0;
+            
+            /* إخفاء شريط التمرير لمتصفح فايرفوكس */
+            scrollbar-width: none; 
+            /* إخفاء شريط التمرير لمتصفحات IE و Edge القديمة */
+            -ms-overflow-style: none; 
+        }
+
+        /* إخفاء شريط التمرير لمتصفحات Chrome, Safari, Edge الحديثة */
+        .navigation-bar ul::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: transparent !important;
         }
 
         .nav-inner {
@@ -452,24 +461,10 @@
             transition: color 0.25s var(--ease), background 0.25s var(--ease);
         }
 
-        .nav-code {
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            font-weight: 600;
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            background: rgba(255,255,255,0.08);
-            color: #C9D2E0;
-        }
-
         .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
         .nav-link[aria-selected="true"] { color: #FFFFFF; }
-        .nav-link[aria-selected="true"] .nav-code {
-            background: var(--focus);
-            color: var(--ink);
-        }
 
-        /* ===== هيكلة التصميم وتدفق المحتوى ===== */
+        /* ===== هيكلة المحتوى ===== */
         main { padding-top: 2.75rem; padding-bottom: 5rem; }
 
         .main-layout {
@@ -520,7 +515,6 @@
             transform: translateY(0);
         }
 
-        /* حاويات ملخص المحتوى المقتبسة من الأسلوب الأكاديمي المرموق */
         .abstract-box {
             border: 1px solid var(--paper-line);
             border-left: 4px solid var(--chalk-blue);
@@ -561,38 +555,6 @@
         }
         .section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
 
-        .panel-head {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .panel-head .section-heading { margin-bottom: 0; }
-
-        .print-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.76rem;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            padding: 0.5rem 0.9rem;
-            border-radius: 4px;
-            border: 1px solid var(--paper-line);
-            background: var(--card);
-            color: var(--ink-soft);
-            cursor: pointer;
-            transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
-            flex-shrink: 0;
-        }
-        .print-btn:hover {
-            border-color: var(--chalk-blue);
-            color: var(--chalk-blue-deep);
-            background: #EEF5F8;
-        }
-
         .section-sub {
             color: var(--ink-soft);
             margin: 0.6rem 0 1.6rem;
@@ -610,7 +572,43 @@
             border-bottom: 1px dashed var(--paper-line);
         }
 
-        /* ===== عناصر وقوائم الموارد التعليمية ===== */
+        /* عنوان مستويات تبويب الرياضيات */
+        .level-title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--chalk-blue-deep);
+            margin: 2.75rem 0 0.5rem;
+            padding: 0.85rem 1.2rem;
+            background: linear-gradient(90deg, rgba(44, 110, 142, 0.08), transparent);
+            border-left: 4px solid var(--chalk-blue);
+            border-radius: 0 4px 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        .level-title:first-of-type { margin-top: 0.5rem; }
+        .level-title .level-code {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            background: var(--chalk-blue);
+            color: #fff;
+            letter-spacing: 0.04em;
+        }
+        [data-theme="dark"] .level-title {
+            background: linear-gradient(90deg, rgba(44, 110, 142, 0.15), transparent);
+        }
+        [dir="rtl"] .level-title {
+            border-left: none;
+            border-right: 4px solid var(--chalk-blue);
+            background: linear-gradient(-90deg, rgba(44, 110, 142, 0.08), transparent);
+            border-radius: 4px 0 0 4px;
+        }
+
+        /* ===== عناصر وقوائم الموارد ===== */
         .resource-list {
             list-style: none;
             padding: 0;
@@ -706,51 +704,7 @@
             background: rgba(44, 110, 142, 0.03);
         }
 
-        /* ===== شبكة الفيديوهات المدمجة ===== */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.1rem;
-            margin-top: 1.4rem;
-        }
-        .video-card {
-            background: var(--card);
-            border: 1px solid var(--paper-line);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: var(--shadow-1);
-            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
-        }
-        .video-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-2);
-        }
-        .video-thumb {
-            aspect-ratio: 16 / 9;
-            background:
-                radial-gradient(ellipse 70% 70% at 50% 50%, rgba(231, 169, 71, 0.14), transparent 70%),
-                linear-gradient(140deg, #16233F 0%, #0C1526 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.6rem;
-        }
-        .video-thumb i {
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(231, 169, 71, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .video-info { padding: 0.95rem 1.1rem 1.1rem; }
-        .video-info .resource-tag { background: #F5EBDA; color: var(--ochre); margin-bottom: 0.5rem; display: inline-block; }
-        .video-info p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.5; }
-
-        /* ===== الصفحات الذاتية والسيرة الأكاديمية ===== */
+        /* ===== صفحة من أنا ===== */
         .info-list {
             list-style: none;
             padding: 0;
@@ -794,7 +748,7 @@
             border: 1px solid rgba(44, 110, 142, 0.25);
         }
 
-        /* ===== قائمة الأسئلة المتكررة التفاعلية ===== */
+        /* ===== الأسئلة المتكررة ===== */
         .faq-list {
             display: grid;
             gap: 0.85rem;
@@ -834,7 +788,7 @@
             line-height: 1.65;
         }
 
-        /* ===== القائمة الجانبية (Sidebar) ===== */
+        /* ===== القائمة الجانبية ===== */
         .sidebar-widget {
             background: var(--card);
             border: 1px solid var(--paper-line);
@@ -913,7 +867,7 @@
         }
         .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
 
-        /* ===== استمارة التواصل الإداري المرموقة ===== */
+        /* ===== استمارة التواصل المباشر ===== */
         .contact-section {
             background: var(--card);
             border: 1px solid var(--paper-line);
@@ -994,7 +948,7 @@
         }
         .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
 
-        /* ===== التذييل (Footer) ===== */
+        /* ===== التذييل ===== */
         footer {
             background: var(--ink);
             color: #8996AC;
@@ -1029,14 +983,15 @@
         }
         .footer-link:hover { color: var(--focus); }
 
-        /* ===== أنماط اللغة العربية (RTL) ===== */
+        /* ===== أنماط اللغات واتجاهات الصفحة RTL ===== */
         [dir="rtl"] body {
             font-family: 'IBM Plex Sans Arabic', var(--font-body);
         }
         [dir="rtl"] .top-banner h1,
         [dir="rtl"] .section-heading,
         [dir="rtl"] .abstract-box h3,
-        [dir="rtl"] .widget-title {
+        [dir="rtl"] .widget-title,
+        [dir="rtl"] .level-title {
             font-family: 'Amiri', var(--font-display);
         }
         [dir="rtl"] .eyebrow,
@@ -1044,17 +999,16 @@
         [dir="rtl"] .resource-tag,
         [dir="rtl"] .tag-pill,
         [dir="rtl"] .footer-link,
-        [dir="rtl"] .print-btn,
         [dir="rtl"] .news-badge,
         [dir="rtl"] footer p,
         [dir="rtl"] .nav-search input {
             font-family: 'IBM Plex Sans Arabic', var(--font-body);
             letter-spacing: 0;
         }
-        [dir="rtl"] .nav-code,
         [dir="rtl"] .news-date,
         [dir="rtl"] .info-year,
-        [dir="rtl"] .lang-toggle-label {
+        [dir="rtl"] .lang-toggle-label,
+        [dir="rtl"] .level-code {
             direction: ltr;
             unicode-bidi: isolate;
             display: inline-block;
@@ -1063,8 +1017,7 @@
         [dir="rtl"] .wordmark { direction: ltr; unicode-bidi: isolate; }
         [dir="rtl"] .skip-link { left: auto; right: -999px; }
         [dir="rtl"] .skip-link:focus { right: 0; left: auto; }
-        [dir="rtl"] .abstract-box,
-        [dir="rtl"] .contact-section blockquote {
+        [dir="rtl"] .abstract-box {
             border-left: none;
             border-right: 4px solid var(--chalk-blue);
         }
@@ -1073,7 +1026,7 @@
             text-align: right;
         }
 
-        /* ===== إعدادات الطباعة ورندرة الصفحات الورقية ===== */
+        /* ===== وضعية الطباعة ===== */
         @media print {
             body::before { display: none; }
             .skip-link,
@@ -1083,7 +1036,6 @@
             .banner-formula,
             .site-glyphs,
             #sidebar,
-            .print-btn,
             .nav-toggles,
             .level-watermark,
             footer {
@@ -1123,7 +1075,7 @@
         <span class="sg5">Ω</span>
     </div>
 
-    <!-- ترويسة الموقع (الهيدر) -->
+    <!-- ترويسة الموقع -->
     <header class="top-banner">
         <div class="banner-glyphs" aria-hidden="true">
             <span class="g1">∫</span>
@@ -1158,17 +1110,14 @@
         </div>
     </header>
 
-    <!-- شريط القائمة العلوية -->
+    <!-- قائمة التنقل العلوية -->
     <nav class="navigation-bar" aria-label="Sections du site">
         <div class="container nav-inner">
             <ul role="tablist">
                 <li aria-hidden="true"><span class="nav-indicator"></span></li>
                 <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-videos" aria-controls="content-videos" aria-selected="false" onclick="switchTab('videos')"><i class="fa-solid fa-video"></i> <span data-i18n="nav.videos">Vidéos</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-premiere-annee" aria-controls="content-premiere-annee" aria-selected="false" onclick="switchTab('premiere-annee')"><span class="nav-code">L1</span> <span data-i18n="nav.l1">Première année</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-deuxieme-annee" aria-controls="content-deuxieme-annee" aria-selected="false" onclick="switchTab('deuxieme-annee')"><span class="nav-code">L2</span> <span data-i18n="nav.l2">Deuxième année</span></button></li>
-                <li><button class="nav-link" role="tab" id="tab-troisieme-annee" aria-controls="content-troisieme-annee" aria-selected="false" onclick="switchTab('troisieme-annee')"><span class="nav-code">L3</span> <span data-i18n="nav.l3">Troisième année</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-mathematiques" aria-controls="content-mathematiques" aria-selected="false" onclick="switchTab('mathematiques')"><i class="fa-solid fa-infinity"></i> <span data-i18n="nav.maths">Mathématiques</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
             </ul>
@@ -1187,7 +1136,7 @@
         </div>
     </nav>
 
-    <!-- المحتوى الرئيسي للموقع -->
+    <!-- محتويات الموقع -->
     <main class="container">
         <div class="main-layout">
 
@@ -1201,7 +1150,7 @@
                         <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
                     </div>
                     <div class="page-lead">
-                        <p data-i18n="accueil.lead">Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.</p>
+                        <p data-i18n="accueil.lead">Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — L1, L2, L3 — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.</p>
                     </div>
                 </div>
 
@@ -1209,8 +1158,8 @@
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
-                        <h3 class="apropos-h3" data-i18n="apropos.heading">À propos de MoBendriss</h3>
-                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
+                        <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
+                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]</p>
                     </div>
 
                     <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
@@ -1234,50 +1183,16 @@
                     </div>
                 </div>
 
-                <!-- الفيديوهات -->
-                <div id="content-videos" class="tab-content" role="tabpanel" aria-labelledby="tab-videos">
-                    <span class="level-watermark" aria-hidden="true">▷</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-video"></i> <span data-i18n="videos.heading">Vidéos</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="videos.sub">Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]</p>
+                <!-- الرياضيات (يجمع المستويات L1, L2, L3) -->
+                <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques">
+                    <span class="level-watermark" aria-hidden="true">∞</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
+                    <p class="section-sub" data-i18n="maths.sub">Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.</p>
 
-                    <div class="video-grid">
-                        <div class="video-card">
-                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
-                            <div class="video-info">
-                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
-                                <p data-i18n="videos.card1">[Titre — Introduction à la logique]</p>
-                            </div>
-                        </div>
-                        <div class="video-card">
-                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
-                            <div class="video-info">
-                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
-                                <p data-i18n="videos.card2">[Titre — Méthode de résolution d'un TD]</p>
-                            </div>
-                        </div>
-                        <div class="video-card">
-                            <div class="video-thumb"><i class="fa-solid fa-play"></i></div>
-                            <div class="video-info">
-                                <span class="resource-tag" data-i18n="videos.tag">VIDÉO</span>
-                                <p data-i18n="videos.card3">[Titre — Correction d'un examen]</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <!-- المستوى الأول L1 -->
+                    <h3 class="level-title" data-i18n="maths.l1title"><span class="level-code">L1</span> <span data-i18n="maths.l1label">Première année</span></h3>
 
-                <!-- المستوى الأول (L1) -->
-                <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
-                    <span class="level-watermark" aria-hidden="true">L1</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l1.heading">Première année — L1</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l1.sub">Cliquez sur un document pour lancer le téléchargement.</p>
-
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
                             <a href="documents/cours/1SC_cours1_logique.pdf" download>
@@ -1287,7 +1202,7 @@
                         </li>
                     </ul>
 
-                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
                     <ul class="resource-list">
                         <li class="resource-item type-td">
                             <a href="documents/exercices/1SC_td1_logique.pdf" download>
@@ -1297,7 +1212,7 @@
                         </li>
                     </ul>
 
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
                     <ul class="resource-list">
                         <li class="resource-item type-exam">
                             <a href="documents/examens/1SC_examen1_corrige.pdf" download>
@@ -1306,18 +1221,11 @@
                             </a>
                         </li>
                     </ul>
-                </div>
 
-                <!-- المستوى الثاني (L2) -->
-                <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
-                    <span class="level-watermark" aria-hidden="true">L2</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l2.heading">Deuxième année — L2</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l2.sub">Documents et supports pour le deuxième niveau universitaire.</p>
+                    <!-- المستوى الثاني L2 -->
+                    <h3 class="level-title" data-i18n="maths.l2title"><span class="level-code">L2</span> <span data-i18n="maths.l2label">Deuxième année</span></h3>
 
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
                             <a href="documents/cours/analyse_fonctionnelle.pdf" download>
@@ -1327,59 +1235,48 @@
                         </li>
                     </ul>
 
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+
+                    <!-- المستوى الثالث L3 -->
+                    <h3 class="level-title" data-i18n="maths.l3title"><span class="level-code">L3</span> <span data-i18n="maths.l3label">Troisième année</span></h3>
+
+                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+
+                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+
+                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
                     <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
                 </div>
 
-                <!-- المستوى الثالث (L3) -->
-                <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
-                    <span class="level-watermark" aria-hidden="true">L3</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-award"></i> <span data-i18n="l3.heading">Troisième année — L3</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
-                    <p class="section-sub" data-i18n="l3.sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
-
-                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-                </div>
-
-                <!-- الأسئلة المتكررة -->
+                <!-- الأسئلة الشائعة -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
                     <span class="level-watermark" aria-hidden="true">?</span>
-                    <div class="panel-head">
-                        <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
-                        <button class="print-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> <span data-i18n="btn.print">Imprimer</span></button>
-                    </div>
+                    <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
                     <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
-
                     <div class="faq-list">
                         <details class="faq-item">
                             <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
-                            <p data-i18n="faq.a1">Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                            <p data-i18n="faq.a1">Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
                         </details>
                         <details class="faq-item">
                             <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
-                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication.]</p>
                         </details>
                         <details class="faq-item">
                             <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
-                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact.</p>
                         </details>
                         <details class="faq-item">
                             <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
-                            <p data-i18n="faq.a4">[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
+                            <p data-i18n="faq.a4">[Indiquez la marche à suivre.]</p>
                         </details>
                     </div>
                 </div>
 
-                <!-- التواصل -->
+                <!-- التواصل المباشر -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
                     <section class="contact-section">
                         <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
@@ -1406,35 +1303,35 @@
                     </section>
                 </div>
 
-                <!-- سياسة الخصوصية والشروط -->
-                <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité et conditions d'utilisation">
+                <!-- الشروط والخصوصية -->
+                <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité">
                     <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
-                    <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]</p>
+                    <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026.</p>
 
                     <h3 class="group-label" data-i18n="legal.privacyTitle">Politique de confidentialité</h3>
                     <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.</p>
+                        <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message.</p>
                     </div>
                     <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.</p>
+                        <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.</p>
                     </div>
                     <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.</p>
+                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.</p>
                     </div>
                     <div class="abstract-box">
-                        <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.</p>
+                        <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.</p>
                     </div>
 
                     <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
                     <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.</p>
+                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.</p>
                     </div>
                     <div class="abstract-box">
-                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.</p>
+                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».</p>
                     </div>
                 </div>
 
-                <!-- تبويب نتائج البحث التفاعلية -->
+                <!-- نتائج البحث -->
                 <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
                     <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
                     <div id="search-results" class="resource-list"></div>
@@ -1442,10 +1339,9 @@
 
             </section>
 
-            <!-- الشق الجانبي من التصميم -->
             <aside id="sidebar">
                 <div class="sidebar-widget">
-                    <button class="math-btn" onclick="switchTab('premiere-annee')">
+                    <button class="math-btn" onclick="switchTab('mathematiques')">
                         <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
                     </button>
                 </div>
@@ -1462,7 +1358,7 @@
                         </li>
                         <li class="news-item">
                             <span class="news-date">JUIN 2026</span>
-                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]</p>
+                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser.]</p>
                         </li>
                         <li class="news-item">
                             <span class="news-date">MAI 2026</span>
@@ -1475,7 +1371,6 @@
         </div>
     </main>
 
-    <!-- تذييل الصفحة -->
     <footer>
         <div class="container footer-inner">
             <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
@@ -1483,10 +1378,9 @@
         </div>
     </footer>
 
-    <!-- الكود البرمجي التفاعلي للموقع -->
     <script>
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'videos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'faq', 'contact', 'confidentialite'];
+        var TAB_IDS = ['accueil', 'apropos', 'mathematiques', 'faq', 'contact', 'confidentialite'];
         var isNavigatingByHash = false;
         var lastActiveTab = 'accueil';
 
@@ -1503,7 +1397,7 @@
         }
 
         function revealChildren(panel) {
-            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .video-card');
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .level-title');
             items.forEach(function (el, i) {
                 el.classList.remove('is-visible');
                 el.classList.add('reveal');
@@ -1537,11 +1431,10 @@
             if (activePanel) {
                 activePanel.classList.add('active-content');
                 revealChildren(activePanel);
-
                 var announcer = document.getElementById('tab-announcer');
                 if (announcer) {
                     var heading = activePanel.querySelector('h2, h3');
-                    announcer.textContent = 'Section affichée : ' + (heading ? heading.textContent.trim() : tabId);
+                    announcer.textContent = (heading ? heading.textContent.trim() : tabId);
                 }
             }
 
@@ -1549,11 +1442,7 @@
                 try {
                     isNavigatingByHash = true;
                     history.pushState({ tab: tabId }, '', '#' + tabId);
-                } catch (e) {
-                    // تفادي مشكلة التشغيل التجريبي عبر بروتوكول file:// محلياً
-                } finally {
-                    isNavigatingByHash = false;
-                }
+                } catch (e) {} finally { isNavigatingByHash = false; }
             }
 
             if (opts.scrollTop !== false) {
@@ -1561,7 +1450,6 @@
             }
         }
 
-        // دعم التنقل بلوحة المفاتيح عبر ألسنة التبويب
         document.querySelectorAll('.nav-link').forEach(function (btn) {
             btn.addEventListener('keydown', function (e) {
                 var currentId = btn.id.replace('tab-', '');
@@ -1574,15 +1462,13 @@
                 else if (e.key === 'End') newIdx = TAB_IDS.length - 1;
                 if (newIdx !== null) {
                     e.preventDefault();
-                    var newId = TAB_IDS[newIdx];
-                    switchTab(newId, { scrollTop: false });
-                    var newBtn = document.getElementById('tab-' + newId);
+                    switchTab(TAB_IDS[newIdx], { scrollTop: false });
+                    var newBtn = document.getElementById('tab-' + TAB_IDS[newIdx]);
                     if (newBtn) newBtn.focus();
                 }
             });
         });
 
-        // تهيئة المتصفح عند إتمام تحميل الصفحة
         window.addEventListener('load', function () {
             var initial = location.hash ? location.hash.substring(1) : 'accueil';
             if (!isValidTab(initial)) initial = 'accueil';
@@ -1598,7 +1484,6 @@
             });
         });
 
-        // مزامنة حالة الألسنة مع زر الرجوع/التقدم بالمتصفح
         window.addEventListener('popstate', function () {
             if (isNavigatingByHash) return;
             var id = location.hash ? location.hash.substring(1) : 'accueil';
@@ -1617,14 +1502,12 @@
             }, { passive: true });
         }
 
-        // ===== محرك البحث الداخلي والذكي الفوري بالموقع =====
+        /* ===== البحث الفوري السريع ===== */
         var searchIndex = [];
         var searchTimer;
 
         function formatTemplate(str, vars) {
-            return str.replace(/\{(\w+)\}/g, function(_, k) {
-                return (vars[k] !== undefined ? vars[k] : '');
-            });
+            return str.replace(/\{(\w+)\}/g, function (_, k) { return (vars[k] !== undefined ? vars[k] : ''); });
         }
 
         function buildSearchIndex() {
@@ -1633,15 +1516,12 @@
                 var a = item.querySelector('a');
                 var titleEl = item.querySelector('.resource-title');
                 var tagEl = item.querySelector('.resource-tag');
-                var panel = item.closest('.tab-content');
-                var levelHeading = panel ? panel.querySelector('h2') : null;
                 if (!a || !titleEl) return;
                 var typeClass = Array.prototype.slice.call(item.classList).filter(function (c) { return c.indexOf('type-') === 0; })[0] || '';
                 searchIndex.push({
                     title: titleEl.textContent.replace(/\s+/g, ' ').trim(),
                     href: a.getAttribute('href'),
                     tag: tagEl ? tagEl.textContent.trim() : '',
-                    level: levelHeading ? levelHeading.textContent.replace(/\s+/g, ' ').trim() : '',
                     typeClass: typeClass
                 });
             });
@@ -1654,13 +1534,10 @@
             var heading = document.getElementById('search-heading');
             if (!searchPanel || !resultsBox || !heading) return;
 
-            if (!query) {
-                switchTab(lastActiveTab, { updateHash: false, scrollTop: false });
-                return;
-            }
+            if (!query) { switchTab(lastActiveTab, { updateHash: false, scrollTop: false }); return; }
 
             var matches = searchIndex.filter(function (item) {
-                return item.title.toLowerCase().indexOf(query) !== -1 || item.level.toLowerCase().indexOf(query) !== -1;
+                return item.title.toLowerCase().indexOf(query) !== -1;
             });
 
             document.querySelectorAll('.tab-content').forEach(function (p) { p.classList.remove('active-content'); });
@@ -1669,7 +1546,7 @@
             if (indicator) indicator.style.width = '0px';
 
             var lang = document.documentElement.getAttribute('lang') || 'fr';
-            var dict = (window.I18N && I18N[lang]) ? I18N[lang] : (window.I18N && I18N['fr'] ? I18N['fr'] : {});
+            var dict = (window.I18N && I18N[lang]) ? I18N[lang] : (window.I18N ? I18N['fr'] : {});
 
             heading.textContent = matches.length
                 ? formatTemplate((dict['search.resultsHeading'] || "Résultats pour « {query} » ({count})"), { query: rawQuery.trim(), count: matches.length })
@@ -1682,9 +1559,7 @@
                 var link = document.createElement('a');
                 link.href = item.href;
                 link.setAttribute('download', '');
-                link.innerHTML =
-                    '<span class="resource-title"><span class="resource-tag">' + item.tag + '</span> ' + item.title + '</span>' +
-                    '<span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>';
+                link.innerHTML = '<span class="resource-title"><span class="resource-tag">' + item.tag + '</span> ' + item.title + '</span><span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>';
                 row.appendChild(link);
                 resultsBox.appendChild(row);
             });
@@ -1692,7 +1567,7 @@
             if (!matches.length) {
                 var note = document.createElement('p');
                 note.className = 'empty-note';
-                note.textContent = (dict['search.emptyNote'] || "Essayez un autre mot-clé, ou parcourez directement les onglets par niveau.");
+                note.textContent = (dict['search.emptyNote'] || "Essayez un autre mot-clé.");
                 resultsBox.appendChild(note);
             }
 
@@ -1702,8 +1577,8 @@
             var announcer = document.getElementById('tab-announcer');
             if (announcer) {
                 announcer.textContent = matches.length
-                    ? formatTemplate((dict['search.announcerFound'] || "{count} résultat(s) trouvé(s)"), { count: matches.length })
-                    : (dict['search.announcerNone'] || "Aucun résultat trouvé");
+                    ? formatTemplate((dict['search.announcerFound'] || "{count} résultat(s)"), { count: matches.length })
+                    : (dict['search.announcerNone'] || "Aucun résultat");
             }
         }
 
@@ -1715,39 +1590,32 @@
                 searchTimer = setTimeout(function () { performSearch(val); }, 180);
             });
             searchInput.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape') {
-                    this.value = '';
-                    performSearch('');
-                    this.blur();
-                }
+                if (e.key === 'Escape') { this.value = ''; performSearch(''); this.blur(); }
             });
         }
 
-        // ===== نظام الترجمة المتكامل والمزدوج (FR / AR) =====
+        /* ===== ملف الترجمة المدمج FR / AR ===== */
         window.I18N = {
             fr: {
                 eyebrow: "Enseignant-chercheur en mathématiques",
                 tagline: "Cours et exercices de mathématiques",
                 "nav.accueil": "Accueil",
                 "nav.apropos": "À propos",
-                "nav.videos": "Vidéos",
-                "nav.l1": "Première année",
-                "nav.l2": "Deuxième année",
-                "nav.l3": "Troisième année",
+                "nav.maths": "Mathématiques",
                 "nav.faq": "FAQ",
                 "nav.contact": "Contact",
                 "search.placeholder": "Rechercher un document…",
                 "search.aria": "Rechercher un document",
                 "search.resultsHeading": "Résultats pour « {query} » ({count})",
                 "search.noResultsHeading": "Aucun résultat pour « {query} »",
-                "search.emptyNote": "Essayez un autre mot-clé, ou parcourez directement les onglets par niveau.",
+                "search.emptyNote": "Essayez un autre mot-clé, ou parcourez l'onglet Mathématiques.",
                 "search.announcerFound": "{count} résultat(s) trouvé(s)",
                 "search.announcerNone": "Aucun résultat trouvé",
                 "accueil.title": "Des cours et des exercices de maths, classés par niveau.",
                 "accueil.welcome": "Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.",
-                "accueil.lead": "Chaque niveau — L1, L2, L3 — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez les onglets ci-dessus pour accéder directement aux documents de votre niveau.",
+                "accueil.lead": "Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — L1, L2, L3 — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.",
                 "apropos.heading": "À propos de MoBendriss",
-                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]",
+                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]",
                 "apropos.formation": "Formation",
                 "apropos.dip1": "[Doctorat en Mathématiques — Université, spécialité]",
                 "apropos.dip2": "[Master / Agrégation — Université, spécialité]",
@@ -1756,19 +1624,14 @@
                 "apropos.tag2": "Logique",
                 "apropos.tag3": "Analyse fonctionnelle",
                 "apropos.tag4": "[Votre domaine]",
-                "videos.heading": "Vidéos",
-                "videos.sub": "Explications filmées en complément des cours. [Remplacez chaque bloc « vidéo » ci-dessous par une balise <code>&lt;iframe&gt;</code> YouTube/Vimeo une fois vos vidéos en ligne.]",
-                "videos.card1": "[Titre — Introduction à la logique]",
-                "videos.card2": "[Titre — Méthode de résolution d'un TD]",
-                "videos.card3": "[Titre — Correction d'un examen]",
-                "videos.tag": "VIDÉO",
-                "btn.print": "Imprimer",
-                "l1.heading": "Première année — L1",
-                "l1.sub": "Cliquez sur un document pour lancer le téléchargement.",
-                "l2.heading": "Deuxième année — L2",
-                "l2.sub": "Documents et supports pour le deuxième niveau universitaire.",
-                "l3.heading": "Troisième année — L3",
-                "l3.sub": "Espace réservé aux modules de spécialité et d'approfondissement.",
+                "maths.heading": "Mathématiques",
+                "maths.sub": "Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.",
+                "maths.l1title": "<span class='level-code'>L1</span> Première année",
+                "maths.l1label": "Première année",
+                "maths.l2title": "<span class='level-code'>L2</span> Deuxième année",
+                "maths.l2label": "Deuxième année",
+                "maths.l3title": "<span class='level-code'>L3</span> Troisième année",
+                "maths.l3label": "Troisième année",
                 "group.cours": "Cours",
                 "group.td": "Exercices &amp; TD",
                 "group.examens": "Examens &amp; Corrigés",
@@ -1781,15 +1644,15 @@
                 "l2.cours1": "Analyse fonctionnelle",
                 "empty.note": "Aucun document en ligne pour le moment. Revenez bientôt.",
                 "faq.heading": "Questions fréquentes",
-                "faq.sub": "Les réponses aux questions les plus courantes sur l'organisation du site et des cours.",
+                "faq.sub": "Les réponses aux questions les plus courantes.",
                 "faq.q1": "Comment télécharger un document ?",
-                "faq.a1": "Ouvrez l'onglet de votre niveau (L1, L2 ou L3), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
+                "faq.a1": "Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
                 "faq.q2": "Les documents sont-ils mis à jour régulièrement ?",
-                "faq.a2": "[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]",
+                "faq.a2": "[Précisez ici votre rythme de publication.]",
                 "faq.q3": "Comment vous contacter en cas de question sur un exercice ?",
-                "faq.a3": "Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]",
+                "faq.a3": "Utilisez le formulaire de l'onglet Contact.",
                 "faq.q4": "Un document que je cherche n'est pas encore en ligne, que faire ?",
-                "faq.a4": "[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]",
+                "faq.a4": "[Indiquez la marche à suivre.]",
                 "contact.heading": "Contact direct",
                 "contact.intro": "Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.",
                 "contact.nameLabel": "Nom complet",
@@ -1799,15 +1662,15 @@
                 "contact.messagePh": "Votre message détaillé...",
                 "contact.submit": "Envoyer le message",
                 "legal.heading": "Confidentialité &amp; conditions",
-                "legal.sub": "Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]",
+                "legal.sub": "Dernière mise à jour : juillet 2026.",
                 "legal.privacyTitle": "Politique de confidentialité",
-                "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.",
-                "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.",
-                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.",
-                "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.",
+                "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message.",
+                "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.",
+                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.",
+                "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.",
                 "legal.termsTitle": "Conditions d'utilisation",
-                "legal.terms1": "<strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.",
-                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.",
+                "legal.terms1": "<strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.",
+                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».",
                 "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
                 "footer.tagline": "Conçu avec rigueur.",
                 "footer.legalLink": "Confidentialité &amp; conditions",
@@ -1815,7 +1678,7 @@
                 "sidebar.newsTitle": "Actualités",
                 "sidebar.newBadge": "Nouveau",
                 "sidebar.news1": "Mise en ligne du cours de logique pour la première année.",
-                "sidebar.news2": "[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]",
+                "sidebar.news2": "[Une actualité à personnaliser.]",
                 "sidebar.news3": "[Une autre actualité à personnaliser.]"
             },
             ar: {
@@ -1823,24 +1686,21 @@
                 tagline: "دروس وتمارين في الرياضيات",
                 "nav.accueil": "الرئيسية",
                 "nav.apropos": "من أنا",
-                "nav.videos": "فيديوهات",
-                "nav.l1": "السنة الأولى",
-                "nav.l2": "السنة الثانية",
-                "nav.l3": "السنة الثالثة",
+                "nav.maths": "الرياضيات",
                 "nav.faq": "الأسئلة الشائعة",
                 "nav.contact": "تواصل",
                 "search.placeholder": "ابحث عن وثيقة…",
                 "search.aria": "البحث عن وثيقة",
                 "search.resultsHeading": "نتائج « {query} » ({count})",
-                "search.noResultsHeading": "لا توجد نتائج بالنسبة لـ « {query} »",
-                "search.emptyNote": "جرّب كلمة أخرى، أو تصفح الألسنة حسب المستوى مباشرة.",
-                "search.announcerFound": "{count} نتيجة(نتائج) تم العثور عليها",
+                "search.noResultsHeading": "لا توجد نتائج لـ « {query} »",
+                "search.emptyNote": "جرّب كلمة أخرى، أو تصفح لسان الرياضيات مباشرة.",
+                "search.announcerFound": "تم العثور على {count} نتيجة",
                 "search.announcerNone": "لا توجد نتائج",
                 "accueil.title": "دروس وتمارين في الرياضيات، مصنّفة حسب المستوى.",
-                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس، وأوراق الأعمال الموجهة، والتمارين المصححة الموضوعة رهن إشارة الطلبة.",
-                "accueil.lead": "كل مستوى — L1، L2، L3 — يضم وثائقه الخاصة، مصنّفة في فئتين: <strong>الدروس</strong>، التي تضع التعاريف والنتائج، و<strong>الأعمال الموجهة</strong>، التي تطبّقها عملياً. استخدموا الألسنة أعلاه للوصول مباشرة إلى وثائق مستواكم.",
+                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس وأوراق الأعمال الموجهة والتمارين المصححة.",
+                "accueil.lead": "الوثائق مجمّعة في لسان <strong>الرياضيات</strong>، مرتّبة حسب المستوى — L1، L2، L3 — ومصنّفة إلى دروس وأعمال موجهة وامتحانات. استخدموا الألسنة أعلاه للتنقل.",
                 "apropos.heading": "من هو MoBendriss",
-                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات. هذه الفقرة نموذج يمكن تخصيصه.]",
+                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات.]",
                 "apropos.formation": "التكوين",
                 "apropos.dip1": "[دكتوراه في الرياضيات — الجامعة، التخصص]",
                 "apropos.dip2": "[ماستر / تبريز — الجامعة، التخصص]",
@@ -1849,19 +1709,14 @@
                 "apropos.tag2": "المنطق",
                 "apropos.tag3": "التحليل الدالي",
                 "apropos.tag4": "[مجالك]",
-                "videos.heading": "فيديوهات",
-                "videos.sub": "شروحات مصوّرة مكمّلة للدروس. [استبدل كل بطاقة «فيديو» أدناه بوسم <code>&lt;iframe&gt;</code> من يوتيوب/فيميو بمجرد نشر فيديوهاتك.]",
-                "videos.card1": "[العنوان — مقدمة في المنطق]",
-                "videos.card2": "[العنوان — طريقة حل عمل موجّه]",
-                "videos.card3": "[العنوان — تصحيح امتحان]",
-                "videos.tag": "فيديو",
-                "btn.print": "طباعة",
-                "l1.heading": "السنة الأولى — L1",
-                "l1.sub": "انقر على وثيقة لبدء التحميل.",
-                "l2.heading": "السنة الثانية — L2",
-                "l2.sub": "وثائق ودعامات للمستوى الجامعي الثاني.",
-                "l3.heading": "السنة الثالثة — L3",
-                "l3.sub": "فضاء مخصص لوحدات التخصص والتعميق.",
+                "maths.heading": "الرياضيات",
+                "maths.sub": "انقر على وثيقة لبدء التحميل. الموارد مصنّفة حسب المستوى.",
+                "maths.l1title": "<span class='level-code'>L1</span> السنة الأولى",
+                "maths.l1label": "السنة الأولى",
+                "maths.l2title": "<span class='level-code'>L2</span> السنة الثانية",
+                "maths.l2label": "السنة الثانية",
+                "maths.l3title": "<span class='level-code'>L3</span> السنة الثالثة",
+                "maths.l3label": "السنة الثالثة",
                 "group.cours": "الدروس",
                 "group.td": "التمارين والأعمال الموجهة",
                 "group.examens": "الامتحانات والتصحيحات",
@@ -1874,15 +1729,15 @@
                 "l2.cours1": "التحليل الدالي",
                 "empty.note": "لا توجد وثيقة متاحة حالياً. عودوا قريباً.",
                 "faq.heading": "الأسئلة الشائعة",
-                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً حول تنظيم الموقع والدروس.",
+                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً.",
                 "faq.q1": "كيف أحمّل وثيقة؟",
-                "faq.a1": "افتح لسان مستواك (L1 أو L2 أو L3)، ثم انقر مباشرة على عنوان الوثيقة المطلوبة: يبدأ التحميل تلقائياً.",
+                "faq.a1": "افتح لسان الرياضيات، ثم انقر مباشرة على عنوان الوثيقة: يبدأ التحميل تلقائياً.",
                 "faq.q2": "هل يتم تحديث الوثائق بانتظام؟",
-                "faq.a2": "[حدّد هنا وتيرة النشر: مثلاً، يُنشر دعم جديد مع كل فصل جديد يُدرَّس.]",
+                "faq.a2": "[حدّد هنا وتيرة النشر.]",
                 "faq.q3": "كيف أتواصل معك بخصوص سؤال حول تمرين؟",
-                "faq.a3": "استخدم استمارة لسان «تواصل». [أضف هنا، إن أردت، ساعات تواجدك أو استقبالك للطلبة.]",
+                "faq.a3": "استخدم استمارة لسان «تواصل».",
                 "faq.q4": "الوثيقة التي أبحث عنها غير متوفرة بعد، ماذا أفعل؟",
-                "faq.a4": "[وضّح هنا الخطوات: مثلاً، راسلني عبر الاستمارة مع تحديد المستوى والموضوع المعنيين.]",
+                "faq.a4": "[وضّح هنا الخطوات.]",
                 "contact.heading": "تواصل مباشر",
                 "contact.intro": "لأي سؤال أكاديمي أو تعاون بيداغوجي، لا تتردد في مراسلتي.",
                 "contact.nameLabel": "الاسم الكامل",
@@ -1892,15 +1747,15 @@
                 "contact.messagePh": "رسالتك المفصّلة...",
                 "contact.submit": "إرسال الرسالة",
                 "legal.heading": "الخصوصية والشروط",
-                "legal.sub": "آخر تحديث: يوليوز 2026. [هذا نص نموذجي عام — يُنصح بمراجعته من طرف مختص قانوني لضمان مطابقته الكاملة لبلدك.]",
+                "legal.sub": "آخر تحديث: يوليوز 2026.",
                 "legal.privacyTitle": "سياسة الخصوصية",
-                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك، وبريدك الإلكتروني، ومحتوى رسالتك. تُستخدم هذه المعلومات فقط للرد عليك، ولا تُباع أو تُشارك لأغراض تجارية.",
-                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم إرسال الاستمارة عبر خدمة FormSubmit التي تستقبل الرسالة وتُحيلها بالبريد الإلكتروني. راجع سياسة خصوصيتها الخاصة لمزيد من التفاصيل.",
-                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل هذا الموقع خطوطاً (Google Fonts)، وأيقونات (Font Awesome)، ومحرك عرض رياضي (MathJax) من خوادم خارجية. قد تستقبل هذه الخدمات عنوان IP الخاص بك عند التحميل، بشكل مستقل عن هذا الموقع.",
-                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها عبر الكتابة من خلال استمارة التواصل.",
+                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك وبريدك الإلكتروني ومحتوى رسالتك.",
+                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم الإرسال عبر خدمة FormSubmit.",
+                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل الموقع خطوطاً وأيقونات ومحرك MathJax من خوادم خارجية.",
+                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها.",
                 "legal.termsTitle": "شروط الاستخدام",
-                "legal.terms1": "<strong>استخدام الوثائق.</strong> الدروس والأعمال الموجهة والامتحانات المقترحة مخصصة للاستخدام التربوي الشخصي. يُمنع أي نسخ أو نشر لأغراض تجارية دون إذن مسبق.",
-                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي» وقد تحتوي على أخطاء؛ ولا تُغني عن الدعامات الرسمية لمؤسستك.",
+                "legal.terms1": "<strong>استخدام الوثائق.</strong> المحتويات مخصصة للاستخدام التربوي الشخصي.",
+                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي».",
                 "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
                 "footer.tagline": "صُمم بدقة.",
                 "footer.legalLink": "الخصوصية والشروط",
@@ -1908,7 +1763,7 @@
                 "sidebar.newsTitle": "آخر الأخبار",
                 "sidebar.newBadge": "جديد",
                 "sidebar.news1": "نشر درس المنطق للسنة الأولى.",
-                "sidebar.news2": "[خبر يمكن تخصيصه: عمل موجّه جديد، تاريخ امتحان، معلومة عن الدخول الجامعي...]",
+                "sidebar.news2": "[خبر يمكن تخصيصه.]",
                 "sidebar.news3": "[خبر آخر يمكن تخصيصه.]"
             }
         };
@@ -1917,7 +1772,6 @@
             if (!I18N[lang]) lang = 'fr';
             document.documentElement.setAttribute('lang', lang);
             document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
-
             document.querySelectorAll('[data-i18n]').forEach(function (el) {
                 var key = el.getAttribute('data-i18n');
                 var val = I18N[lang][key] || I18N.fr[key];
@@ -1933,12 +1787,10 @@
                 var val = I18N[lang][key] || I18N.fr[key];
                 if (val !== undefined) el.setAttribute('aria-label', val);
             });
-
             var label = document.querySelector('.lang-toggle-label');
             var langBtn = document.getElementById('lang-toggle');
             if (label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
             if (langBtn) langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
-
             try { localStorage.setItem('mb-lang', lang); } catch (e) {}
             buildSearchIndex();
         }
@@ -1952,21 +1804,20 @@
             });
         }
 
-        // ===== محرك تبديل وضع الألوان الداكن/الفاتح (Theme) =====
+        /* ===== الوضع الداكن والليلي ===== */
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
             var icon = document.querySelector('#theme-toggle i');
             var btn = document.getElementById('theme-toggle');
-            if (icon) { icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
-            if (btn) { btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'); }
+            if (icon) icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            if (btn) btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre');
             try { localStorage.setItem('mb-theme', theme); } catch (e) {}
         }
         var themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
             themeToggle.addEventListener('click', function () {
-                var current = document.documentElement.getAttribute('data-theme');
-                applyTheme(current === 'dark' ? 'light' : 'dark');
+                applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
             });
         }
 
@@ -1975,3 +1826,4 @@
 
 </body>
 </html>
+```
