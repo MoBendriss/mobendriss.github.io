@@ -1,958 +1,2156 @@
-هذا الملف **كامل وغير مقطوع** — يحتوي على كل ما في الصور + جميع الإضافات + الكود منسق ونظيف.
-
-انسخه مباشرة في ملف `index.html` وارفعه:
-
-```html
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MoBendriss — Cours et exercices de mathématiques</title>
-<meta name="description" content="Plateforme éducative marocaine : cours, TD, examens corrigés et outils mathématiques pour le collège.">
-<meta name="theme-color" content="#123457">
-<link rel="canonical" href="https://mobendriss.github.io/">
-<meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
-<meta property="og:description" content="Cours, TD, examens corrigés et outils mathématiques pour le collège.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mobendriss.github.io/">
-<meta name="twitter:card" content="summary_large_image">
+    <meta charset="UTF-8">
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('mb-theme');
+                if (!t) { t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+                document.documentElement.setAttribute('data-theme', t);
+                var l = localStorage.getItem('mb-lang');
+                if (l === 'ar') {
+                    document.documentElement.setAttribute('lang', 'ar');
+                    document.documentElement.setAttribute('dir', 'rtl');
+                }
+            } catch (e) {}
+        })();
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoBendriss | Cours et exercices de mathématiques</title>
+    <meta name="description" content="Site personnel de MoBendriss — Professeur de mathématiques. Cours, travaux dirigés et exercices corrigés pour le collège (1AC, 2AC, 3AC).">
+    <meta name="theme-color" content="#132038">
 
-<script>
-(function(){
-  try{
-    var t=localStorage.getItem('mb-theme');
-    if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
-    document.documentElement.setAttribute('data-theme',t);
-    var l=localStorage.getItem('mb-lang');
-    if(l==='ar'){
-      document.documentElement.setAttribute('lang','ar');
-      document.documentElement.setAttribute('dir','rtl');
+    <link rel="canonical" href="https://mobendriss.github.io/">
+
+    <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
+    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques, du 1AC au 3AC.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:url" content="https://mobendriss.github.io/">
+    <meta property="og:image" content="https://mobendriss.github.io/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MoBendriss — Cours et exercices de mathématiques">
+    <meta name="twitter:description" content="Cours, TD et exercices corrigés en mathématiques, du 1AC au 3AC.">
+    <meta name="twitter:image" content="https://mobendriss.github.io/og-image.jpg">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "MoBendriss",
+        "jobTitle": "Professeur de mathématiques",
+        "description": "Cours, travaux dirigés et exercices corrigés de mathématiques pour le collège (1AC, 2AC, 3AC).",
+        "url": "https://mobendriss.github.io/",
+        "knowsAbout": ["Analyse", "Logique", "Analyse fonctionnelle"]
     }
-  }catch(e){}
-})();
-</script>
+    </script>
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23123457'/%3E%3Ctext x='50' y='64' font-size='42' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='white'%3EMB%3C/text%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,400;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Icônes utilitaires -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<style>
-:root{
-  --ink:#12253b;--ink-soft:#4a6580;--paper:#f4f1ea;--paper-line:#ddd7c5;
-  --card:#fff;--blue:#234f87;--blue-deep:#16355c;--blue-3:#4a8fcf;
-  --gold:#e1a845;--red:#a44444;--cyan:#2f7395;--shadow:0 10px 28px rgba(18,35,57,.08);
-  --mono:'IBM Plex Mono',monospace;--body:'Inter',sans-serif;--display:'Fraunces',Georgia,serif;
-  --radius:16px
-}
-[data-theme="dark"]{
-  --ink:#e8f0fa;--ink-soft:#a8b5c8;--paper:#0c1523;--paper-line:#263348;
-  --card:#152236;--shadow:0 14px 36px rgba(0,0,0,.35)
-}
-[data-theme="dark"] .type-cours .resource-tag{background:rgba(162,59,59,.22);color:#e79a9a}
-[data-theme="dark"] .type-td .resource-tag{background:rgba(44,110,142,.22);color:#8fc4de}
-[data-theme="dark"] .type-exam .resource-tag{background:rgba(184,121,26,.22);color:#e3b462}
-[data-theme="dark"] .nav-dropdown-menu{background:var(--card)}
-[data-theme="dark"] .nav-dropdown-item{color:var(--ink);border-color:var(--paper-line)}
-[data-theme="dark"] .nav-dropdown-item:hover{background:rgba(44,110,142,.15)}
-[data-theme="dark"] .dropdown-menu{box-shadow:0 12px 32px rgba(0,0,0,.45)}
-[data-theme="dark"] .hero{background:linear-gradient(135deg,#1b3a6e 0%,#16355c 55%,#0e254a 100%)}
+    <!-- Typographie : une serif d'écriture pour l'identité, une sans pour la lecture, une mono pour les repères techniques -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.25'/></svg>");opacity:.06;z-index:0}
-header,nav,main,footer{position:relative;z-index:1}
-a{color:inherit;text-decoration:none}
-.container{max-width:1180px;margin:auto;padding:0 1.25rem}
+    <!-- Rendu des formules mathématiques -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            options: { enableMenu: false }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-.skip-link{position:absolute;left:-9999px;top:0;background:var(--gold);color:#111;padding:.75rem 1rem;z-index:9999;font-weight:700;border-radius:0 0 8px 0}
-.skip-link:focus{left:0}
+    <style>
+        /* ===== Système de tokens ===== */
+        :root {
+            --ink: #132038;           /* encre — fond du bandeau, texte principal */
+            --ink-soft: #47536B;      /* encre adoucie — texte secondaire */
+            --paper: #FBF8F2;         /* papier — fond de page */
+            --paper-line: #E4DFCF;    /* ligne de cahier / séparateurs discrets */
+            --card: #FFFFFF;
+            --chalk-blue: #2C6E8E;    /* accent principal — bleu craie */
+            --chalk-blue-deep: #1F5670;
+            --ochre: #B8791A;         /* accent secondaire — craie ocre, réservé aux TD */
+            --rust: #A23B3B;          /* accent tertiaire — réservé aux cours */
+            --focus: #E7A947;
 
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+            --font-display: 'Fraunces', Georgia, serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
 
-.hero{
-  background:linear-gradient(120deg,#4aa4d4 0%,#2d7cb0 45%,#1d5f93 100%);
-  color:#fff;
-  padding:4.2rem 0 3.2rem;
-  border-bottom:1px solid rgba(255,255,255,.18);
-  overflow:hidden
-}
-.hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:2.5rem;align-items:center}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
-.hero-kicker{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:#ffe39a;margin-bottom:.9rem}
-.hero h1{font-family:var(--display);font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;margin:0;letter-spacing:-.03em;text-shadow:0 2px 18px rgba(0,0,0,.14)}
-.hero p{font-size:1.05rem;color:#eef6fb;margin-top:1rem;line-height:1.7;opacity:.96}
-.hero-badges{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.5rem}
-.hero-badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);padding:.55rem .95rem;border-radius:999px;font-size:.9rem;backdrop-filter:blur(6px)}
-.hero-mark{justify-self:end;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);display:grid;place-items:center;box-shadow:0 14px 30px rgba(0,0,0,.15)}
-.hero-mark svg{width:86px;height:86px}
-@media(max-width:900px){.hero-mark{justify-self:start}}
+            --shadow-1: 0 1px 2px rgba(19, 32, 56, 0.05), 0 6px 16px -8px rgba(19, 32, 56, 0.12);
+            --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, 0.28);
+            --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        }
 
-.topnav{background:#16355c;color:#fff;position:sticky;top:0;z-index:100;box-shadow:0 4px 18px rgba(18,35,87,.14)}
-.nav-wrap{display:flex;align-items:center;gap:1rem;min-height:74px;flex-wrap:wrap;justify-content:space-between}
-@media(min-width:1020px){.nav-wrap{justify-content:flex-start}}
+        [data-theme="dark"] {
+            --ink: #E8ECF4;
+            --ink-soft: #A9B4C7;
+            --paper: #0E1626;
+            --paper-line: #263047;
+            --card: #16213A;
+            --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px -8px rgba(0, 0, 0, 0.5);
+            --shadow-2: 0 20px 34px -18px rgba(0, 0, 0, 0.7);
+        }
+        [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
+        [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
+        [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
+        [data-theme="dark"] .tag-pill { background: rgba(44, 110, 142, 0.25); color: #8FC4DE; border-color: rgba(143, 196, 222, 0.3); }
+        [data-theme="dark"] .field input,
+        [data-theme="dark"] .field textarea { color: var(--ink); }
+        [data-theme="dark"] .empty-note { background: rgba(44, 110, 142, 0.08); }
+        [data-theme="dark"] body::before { opacity: 0.08; mix-blend-mode: overlay; }
+        [data-theme="dark"] .nav-search input::-webkit-search-cancel-button { filter: none; }
 
-.nav-main{display:flex;align-items:center;gap:.2rem;list-style:none;margin:0;padding:0;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.nav-main::-webkit-scrollbar{display:none}
-.nav-item{position:relative;flex-shrink:0}
+        body, .resource-item, .abstract-box, .sidebar-widget, .info-item, .faq-item, .contact-section, .field input, .field textarea {
+            transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+        }
 
-.nav-btn{display:inline-flex;align-items:center;gap:.55rem;border:none;background:transparent;color:#fff;padding:1rem .85rem;font:inherit;cursor:pointer;white-space:nowrap;border-radius:10px;transition:background .18s ease}
-.nav-btn:hover{background:rgba(255,255,255,.07)}
-.nav-btn.active{background:rgba(255,255,255,.1)}
-.nav-circle{width:42px;height:42px;border-radius:50%;background:#fff;color:#12253b;display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.18);flex-shrink:0;font-size:1rem}
-.nav-text{font-size:1.02rem;font-weight:500}
-.nav-chevron{font-size:.7rem;opacity:.85;transition:transform .2s ease}
-.dropdown:hover .nav-chevron,
-.dropdown.open .nav-chevron{transform:rotate(180deg)}
+        * { box-sizing: border-box; }
 
-.dropdown-menu{
-  position:absolute;top:calc(100% + 4px);left:0;min-width:260px;
-  background:#fff;color:#2b2b2b;border-radius:6px;box-shadow:0 12px 30px rgba(0,0,0,.18);
-  opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:300;overflow:hidden
-}
-.dropdown:hover .dropdown-menu,
-.dropdown.open .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
-.dropdown-menu button{
-  display:block;width:100%;padding:1.1rem 1.4rem;background:transparent;border:none;border-bottom:1px solid #ececec;
-  text-align:left;font:inherit;font-size:1rem;color:#2f2f2f;cursor:pointer;transition:background .15s ease,color .15s ease
-}
-.dropdown-menu button:last-child{border-bottom:none}
-.dropdown-menu button:hover{background:#f3f3f3;color:var(--blue-2)}
+        html { scroll-behavior: smooth; }
 
-.nav-side{display:flex;align-items:center;gap:.55rem;margin-left:auto}
-.nav-search{display:flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:.55rem .9rem}
-.nav-search input{background:transparent;border:none;color:#fff;font:inherit;font-family:inherit;width:160px;outline:none}
-.nav-search input::placeholder{color:#bdd0e6;font-size:.92rem}
-.nav-search i{color:#bdd0e6;font-size:.85rem}
-.mini-btn{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:#fff;cursor:pointer;display:grid;place-items:center;transition:transform .18s ease,background .18s ease}
-.mini-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.14)}
-.lang-label{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.03em}
+        body {
+            margin: 0;
+            position: relative;
+            font-family: var(--font-body);
+            background: var(--paper);
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased;
+        }
 
-main{padding:2.2rem 0 4rem}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:2.25rem;align-items:start}
-@media(max-width:980px){.layout{grid-template-columns:1fr}}
+        /* Grain de papier très subtil — donne une texture tactile au fond */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+            opacity: 0.05;
+            mix-blend-mode: multiply;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-.panel{display:none;animation:fadeUp .35s ease}
-.panel.active{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+        header, nav, main, footer { position: relative; z-index: 1; }
 
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
-.lead-card{padding:1.7rem 1.7rem 1.5rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
-.lead-card::after{content:"";position:absolute;inset:auto -40px -40px auto;width:140px;height:140px;background:radial-gradient(circle,rgba(48,127,187,.12),transparent 70%);pointer-events:none}
-.lead-card h2{font-family:var(--display);font-size:1.55rem;margin:0 0 .55rem;line-height:1.15}
-.lead-card p{margin:0;color:var(--ink-soft)}
-.section-head{margin-bottom:1.2rem}
-.section-title{font-family:var(--display);font-size:1.65rem;margin:0 0 .35rem;line-height:1.2}
-.section-note{margin:0;color:var(--ink-soft);font-size:.95rem}
+        /* Touches mathématiques discrètes dans les marges — visibles seulement quand il y a de la place */
+        .site-glyphs {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            display: none;
+        }
+        .site-glyphs span {
+            position: absolute;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: var(--chalk-blue);
+            opacity: 0.07;
+            line-height: 1;
+            user-select: none;
+        }
+        .sg1 { top: 14vh; left: 2.5vw; font-size: 5.5rem; }
+        .sg2 { top: 42vh; right: 2.5vw; font-size: 4.5rem; }
+        .sg3 { top: 68vh; left: 3vw; font-size: 3.8rem; }
+        .sg4 { top: 85vh; right: 3.5vw; font-size: 4rem; }
+        .sg5 { top: 6vh; right: 4vw; font-size: 3.2rem; }
 
-.quick-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.9rem;margin-top:1.2rem}
-.quick-card{padding:1.1rem 1rem;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,rgba(48,127,187,.05),transparent);box-shadow:0 4px 14px rgba(18,35,57,.03)}
-.quick-card strong{display:block;margin-bottom:.25rem;font-size:1.05rem;color:var(--ink)}
-.quick-card span{font-size:.88rem;color:var(--ink-soft)}
+        @media (min-width: 1440px) { .site-glyphs { display: block; } }
 
-.level-block{margin-top:1.6rem;padding:1.1rem 1.1rem 1.3rem;background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);scroll-margin-top:100px}
-.level-header{display:flex;align-items:center;gap:.85rem;margin-bottom:.8rem;font-family:var(--display);font-size:1.2rem;font-weight:600;color:var(--blue-2)}
-.level-code{display:inline-flex;align-items:center;justify-content:center;min-width:62px;padding:.28rem .65rem;border-radius:999px;background:var(--blue);color:#fff;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.04em}
+        img { max-width: 100%; display: block; }
 
-.resource-group{margin-top:1.2rem}
-.resource-group h4{margin:0 0 .7rem;font-family:var(--mono);letter-spacing:.09em;text-transform:uppercase;font-size:.76rem;color:var(--ink-soft)}
-.resource-list{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
-.resource-item{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
-.resource-item:hover{transform:translateY(-2px);border-color:#d0c7b2;box-shadow:0 14px 28px rgba(18,35,57,.08)}
-.resource-item a{display:flex;align-items:center;justify-content:space-between;gap:1rem;text-decoration:none;color:var(--ink);padding:1rem 1.1rem}
-.resource-title{display:flex;align-items:center;gap:.75rem;flex:1;min-width:0;font-weight:500}
-.resource-title span:last-child{overflow-wrap:anywhere}
-.resource-tag{flex-shrink:0;font-family:var(--mono);font-size:.67rem;font-weight:700;letter-spacing:.06em;padding:.26rem .5rem;border-radius:7px}
-.type-cours .resource-tag{background:#f4e7e7;color:var(--red)}
-.type-td .resource-tag{background:#e5f0f4;color:var(--cyan)}
-.type-exam .resource-tag{background:#f7eddc;color:var(--orange)}
-.resource-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink-soft);flex-shrink:0}
-.empty-note{margin:0;padding:1rem;border:1px dashed var(--line);border-radius:12px;color:var(--ink-soft);background:rgba(48,127,187,.03);font-family:var(--mono);font-size:.9rem}
+        a { color: inherit; }
 
-.about-list{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
-.about-item{display:flex;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
-.about-year{min-width:72px;font-family:var(--mono);color:var(--blue-2);font-weight:700;font-size:.78rem}
-.about-item p{margin:0;color:var(--ink-soft)}
-.pill-row{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:.6rem}
-.pill{border:1px solid rgba(47,115,149,.2);background:#e6f0f6;color:var(--cyan);padding:.42rem .82rem;border-radius:999px;font-family:var(--mono);font-size:.82rem}
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.75rem;
+        }
 
-.faq-list{display:grid;gap:.85rem;margin-top:1rem}
-.faq-item{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
-.faq-item summary{cursor:pointer;padding:1rem 1.1rem;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:1rem;list-style:none}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";color:var(--blue-2);font-family:var(--mono);font-size:1.15rem;flex-shrink:0}
-.faq-item[open] summary::after{content:"−"}
-.faq-item p{margin:0;padding:0 1.1rem 1.1rem;color:var(--ink-soft);line-height:1.6}
+        /* Lien d'évitement pour le clavier / lecteurs d'écran */
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: var(--focus);
+            color: var(--ink);
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            z-index: 1000;
+            border-radius: 0 0 6px 0;
+        }
+        .skip-link:focus { left: 0; }
 
-.contact-card{padding:1.6rem}
-.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem}
-@media(max-width:700px){.field-grid{grid-template-columns:1fr}}
-.field{margin-bottom:1rem}
-.field label{display:block;margin-bottom:.5rem;font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
-.field input,.field textarea{width:100%;border:none;border-bottom:2px solid var(--line);background:transparent;padding:.75rem .1rem;color:var(--ink);font:inherit;transition:border-color .2s ease}
-.field textarea{min-height:120px;resize:vertical}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--blue-2)}
-.submit-row{display:flex;justify-content:flex-end}
-.submit-btn{border:none;background:var(--blue);color:#fff;padding:.88rem 1.4rem;border-radius:14px;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:.6rem;transition:transform .18s ease,background .18s ease}
-.submit-btn:hover{transform:translateY(-1px);background:var(--blue-2)}
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
 
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem}
-.tool-card{padding:1.25rem;border:1px solid var(--line);border-radius:18px;background:var(--card);box-shadow:var(--shadow);scroll-margin-top:100px}
-.tool-icon{width:48px;height:48px;border-radius:50%;background:#fff;border:1px solid var(--line);box-shadow:0 2px 7px rgba(0,0,0,.08);display:grid;place-items:center;margin-bottom:.9rem;color:var(--blue);font-size:1.1rem}
-.tool-card h3{margin:0 0 .4rem;font-family:var(--display);font-size:1.25rem}
-.tool-card p{margin:0 0 1rem;color:var(--ink-soft);font-size:.95rem}
-.tool-btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;padding:.7rem 1rem;font-weight:600;transition:background .15s ease}
-.tool-btn:hover{background:#e8e6df}
+        :focus-visible {
+            outline: 3px solid var(--focus);
+            outline-offset: 2px;
+        }
 
-.search-panel .resource-list{margin-top:1rem}
-.sidebar{position:sticky;top:80px;height:fit-content}
-.sidebar .card{padding:1.25rem;margin-bottom:1.25rem}
-.sidebar-title{margin:0 0 .85rem;font-family:var(--display);font-size:1.1rem;display:flex;align-items:center;gap:.55rem}
-.sidebar-title i{color:var(--blue-2)}
-.news{list-style:none;margin:0;padding:0}
-.news li{padding:.85rem 0;border-bottom:1px dashed var(--line)}
-.news li:last-child{border-bottom:none;padding-bottom:0}
-.news li:first-child{padding-top:0}
-.news-date{display:block;margin-bottom:.25rem;font-family:var(--mono);font-size:.72rem;color:var(--blue-2);font-weight:700;letter-spacing:.04em}
-.news p{margin:0;color:var(--ink-soft);font-size:.93rem}
-.action-btn{width:100%;border:none;background:var(--ink);color:#fff;border-radius:14px;padding:1rem;font:inherit;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.6rem;transition:background .18s ease}
-.action-btn:hover{background:var(--blue-deep)}
-.action-btn i{color:var(--gold)}
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                transition-duration: 0.001ms !important;
+                animation-duration: 0.001ms !important;
+            }
+        }
 
-/* ===== FOOTER REVISIO ===== */
-.site-footer{color:#fff}
-.footer-hero{background:linear-gradient(120deg,#63b1db 0%,#2a7cab 55%,#1d6596 100%);text-align:center;padding:3.8rem 0 3rem}
-.footer-title{font-family:var(--display);font-weight:400;font-size:clamp(1.85rem,4vw,2.6rem);margin:0 0 1.25rem;color:#fff;line-height:1.15}
-.footer-desc{max-width:900px;margin:0 auto 2.2rem;color:rgba(255,255,255,.93);line-height:1.85;font-size:1.05rem}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem .9rem}
-.footer-link{border:none;background:none;color:#fff;cursor:pointer;font:inherit;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;padding:.25rem .15rem;transition:color .2s ease}
-.footer-link:hover{color:#ffe39a;outline:none}
-.footer-sep{color:rgba(255,255,255,.45);font-weight:300;user-select:none}
-.footer-bottom{background:linear-gradient(120deg,#2a7cab 0%,#1d6596 100%);padding:1.3rem 0}
-.footer-bottom-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:rgba(255,255,255,.87);font-size:.9rem}
-.footer-brand{font-family:var(--display);font-size:1.05rem;font-weight:600;color:#fff}
+        /* ===== Bandeau d'en-tête ===== */
+        .top-banner {
+            position: relative;
+            background:
+                radial-gradient(ellipse 60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
+                radial-gradient(ellipse 50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
+                linear-gradient(160deg, #16233F 0%, #101C33 55%, #0B1526 100%);
+            padding: 4.5rem 0 3.75rem;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(231, 169, 71, 0.4);
+        }
 
-@media(max-width:640px){.footer-bottom-inner{justify-content:center;text-align:center}}
-@media(max-width:850px){.hero h1{font-size:2.2rem}.hero p{font-size:1rem}}
-@media(max-width:640px){.hero-badges{gap:.55rem}.hero-badge{font-size:.82rem;padding:.45rem .7rem}.nav-wrap{padding:.15rem 0}.nav-side{width:100%;margin-top:.35rem;justify-content:space-between}.nav-search{flex:1}}
+        /* Papier quadrillé, en pur CSS — le motif de travail du mathématicien plutôt qu'une photo de tableau générique */
+        .top-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
+            background-size: 34px 34px;
+            mask-image: radial-gradient(ellipse 95% 100% at 50% 0%, black 55%, transparent 95%);
+        }
 
-[dir="rtl"] body{font-family:'IBM Plex Sans Arabic',var(--body)}
-[dir="rtl"] .hero h1,[dir="rtl"] .lead-card h2,[dir="rtl"] .lead-card h3,[dir="rtl"] .section-title,[dir="rtl"] .level-header,[dir="rtl"] .tool-card h3,[dir="rtl"] .footer-title,[dir="rtl"] .sidebar-title{font-family:'Amiri',var(--display)}
-[dir="rtl"] .eyebrow,[dir="rtl"] .group-label,[dir="rtl"] .resource-tag,[dir="rtl"] .pill,[dir="rtl"] .news-date{letter-spacing:0}
-[dir="rtl"] .news-date,[dir="rtl"] .level-code{direction:ltr;display:inline-block;unicode-bidi:isolate}
-[dir="rtl"] .about-year{direction:ltr}
-[dir="rtl"] .nav-dropdown-menu{left:auto;right:0}
-[dir="rtl"] .resource-item a,[dir="rtl"] .about-item,[dir="rtl"] .level-header{flex-direction:row-reverse}
-</style>
+        /* Glyphes mathématiques en filigrane — matière visuelle tirée du sujet lui-même */
+        .banner-glyphs {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .banner-glyphs span {
+            position: absolute;
+            font-family: var(--font-display);
+            font-style: italic;
+            color: rgba(231, 169, 71, 0.32);
+            line-height: 1;
+            user-select: none;
+            animation: drift 9s ease-in-out infinite;
+        }
+        .g1 { top: -1.2rem; left: 4%; font-size: 9rem; --r: -8deg; animation-delay: 0s; }
+        .g2 { bottom: -2.5rem; right: 6%; font-size: 11rem; --r: 6deg; animation-delay: -3s; }
+        .g3 { top: 1.6rem; right: 27%; font-size: 4rem; color: rgba(255,255,255,0.2); --r: -4deg; display: none; animation-delay: -6s; }
+        .g4 { bottom: -1.4rem; left: 30%; font-size: 3.2rem; color: rgba(231, 169, 71, 0.24); --r: 10deg; display: none; animation-delay: -1.5s; }
+        .g5 { top: 3.4rem; left: 15%; font-size: 2.6rem; color: rgba(255,255,255,0.16); --r: -6deg; display: none; animation-delay: -4.5s; }
+
+        @media (min-width: 860px) { .g3, .g4 { display: block; } }
+        @media (min-width: 1100px) { .g5 { display: block; } }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(var(--r)); }
+            50% { transform: translateY(-10px) rotate(var(--r)); }
+        }
+
+        .banner-formula {
+            position: absolute;
+            right: 4%;
+            top: 1.4rem;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.45);
+            max-width: 320px;
+            text-align: right;
+            display: none;
+        }
+        @media (min-width: 980px) { .banner-formula { display: block; } }
+
+        .top-banner-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--focus);
+            margin: 0 0 0.9rem;
+        }
+
+        .top-banner h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.6rem, 5vw, 3.75rem);
+            font-weight: 700;
+            margin: 0;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            text-shadow: 0 2px 24px rgba(44, 110, 142, 0.45);
+        }
+
+        .wordmark { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .wordmark .wm-a { color: var(--focus); }
+        .wordmark .wm-b { color: #FFFFFF; }
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: var(--chalk-blue);
+            color: #fff;
+            font-size: 0.7rem;
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.18);
+            flex-shrink: 0;
+            vertical-align: middle;
+        }
+
+        .top-banner p.tagline {
+            margin: 0.6rem 0 0;
+            font-size: 1.15rem;
+            color: #DCE4F0;
+            font-weight: 400;
+        }
+
+        .hero-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1.3rem;
+        }
+        .hero-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(231, 169, 71, 0.35);
+            border-radius: 999px;
+            padding: 0.4rem 0.9rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #E7EDF7;
+        }
+
+        .header-avatar {
+            width: 86px;
+            height: 86px;
+            flex-shrink: 0;
+            filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+        }
+        .header-avatar svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ===== Navigation — onglets académiques ===== */
+        .navigation-bar {
+            background: linear-gradient(180deg, #101C33 0%, #0B1526 100%);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .navigation-bar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            position: relative;
+            flex: 1;
+            min-width: 0;
+        }
+        .navigation-bar ul::-webkit-scrollbar { display: none; }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-search {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            border-radius: 999px;
+            padding: 0.5rem 1rem;
+            margin: 0.6rem 0;
+            flex-shrink: 0;
+            transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+        }
+        .nav-search:focus-within {
+            border-color: var(--focus);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .nav-search i { color: #9AA6BC; font-size: 0.85rem; flex-shrink: 0; }
+        .nav-search input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 0.86rem;
+            width: 170px;
+        }
+        .nav-search input:focus { outline: none; }
+        .nav-search input::placeholder { color: #8996AC; }
+        .nav-search input::-webkit-search-cancel-button { filter: invert(1); opacity: 0.6; cursor: pointer; }
+
+        .nav-toggles {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .icon-toggle {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: #C3CCDE;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .icon-toggle:hover {
+            border-color: var(--focus);
+            color: var(--focus);
+            transform: translateY(-1px);
+        }
+        .lang-toggle-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            bottom: 0;
+            height: 3px;
+            background: var(--focus);
+            border-radius: 2px 2px 0 0;
+            transition: left 0.35s var(--ease), width 0.35s var(--ease);
+            pointer-events: none;
+        }
+        .navigation-bar li[aria-hidden="true"] { width: 0; height: 0; overflow: visible; }
+
+        .navigation-bar li { flex-shrink: 0; }
+
+        .nav-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 1.05rem 1.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            color: #C3CCDE;
+            font: inherit;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.25s var(--ease), background 0.25s var(--ease);
+        }
+
+        .nav-code {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.08);
+            color: #C9D2E0;
+        }
+
+        .nav-link:hover { color: #FFFFFF; background: rgba(255, 255, 255, 0.04); }
+
+        .nav-link[aria-selected="true"] {
+            color: #FFFFFF;
+        }
+        .nav-link[aria-selected="true"] .nav-code {
+            background: var(--focus);
+            color: var(--ink);
+        }
+
+        /* ===== Menu déroulant Mathématiques (1AC / 2AC / 3AC) ===== */
+        .nav-dropdown {
+            position: relative;
+        }
+        .dropdown-caret {
+            font-size: 0.65rem;
+            margin-inline-start: 0.15rem;
+            transition: transform 0.2s var(--ease);
+        }
+        .nav-dropdown-trigger[aria-expanded="true"] .dropdown-caret {
+            transform: rotate(180deg);
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            margin-top: 0.4rem;
+            padding: 0.5rem;
+            background: #101C33;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: var(--shadow-2);
+            list-style: none;
+            z-index: 200;
+        }
+        .dropdown-menu.open,
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            width: 100%;
+            text-align: left;
+            padding: 0.7rem 0.8rem;
+            background: none;
+            border: none;
+            border-radius: 6px;
+            color: #C3CCDE;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s var(--ease), color 0.2s var(--ease);
+        }
+        .dropdown-item:hover,
+        .dropdown-item.active {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+        .dropdown-item.active .nav-code {
+            background: var(--focus);
+            color: var(--ink);
+        }
+        [dir="rtl"] .dropdown-menu { left: auto; right: 0; }
+        [dir="rtl"] .dropdown-item { text-align: right; }
+
+        /* ===== Mise en page principale ===== */
+        main { padding-top: 2.75rem; padding-bottom: 5rem; }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 2.4fr 1fr;
+            gap: 2.75rem;
+            align-items: start;
+        }
+        @media (max-width: 900px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+
+        .tab-content { display: none; position: relative; overflow: hidden; }
+        .tab-content.active-content {
+            display: block;
+            animation: rise 0.4s var(--ease);
+        }
+        .tab-content > *:not(.level-watermark) { position: relative; z-index: 1; }
+
+        .level-watermark {
+            position: absolute;
+            top: -0.5rem;
+            right: -0.5rem;
+            font-family: var(--font-display);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 12rem;
+            line-height: 1;
+            color: rgba(44, 110, 142, 0.05);
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+        @media (max-width: 640px) { .level-watermark { font-size: 7rem; } }
+
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        }
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Encadré « résumé » — comme le chapeau d'un article académique */
+        .abstract-box {
+            border: 1px solid var(--paper-line);
+            border-left: 4px solid var(--chalk-blue);
+            background: var(--card);
+            padding: 1.9rem 2rem;
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+            margin-bottom: 2.25rem;
+        }
+        .abstract-box h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.5rem;
+            color: var(--ink);
+            margin: 0 0 0.6rem;
+        }
+        .abstract-box p {
+            margin: 0;
+            color: var(--ink-soft);
+            line-height: 1.7;
+        }
+
+        .page-lead p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--ink-soft);
+        }
+
+        .section-heading {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.6rem;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 0 0 0.3rem;
+        }
+        .section-heading .fa-solid { color: var(--chalk-blue); font-size: 1.25rem; }
+
+        .section-sub {
+            color: var(--ink-soft);
+            margin: 0.6rem 0 1.6rem;
+            font-size: 0.98rem;
+        }
+
+        .group-label {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin: 2.25rem 0 0.9rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--paper-line);
+        }
+
+        /* ===== Fiches ressources — effet « feuille détachée d'un bloc » ===== */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .resource-item {
+            position: relative;
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), border-color 0.2s var(--ease), opacity 0.5s var(--ease);
+        }
+
+        .resource-item::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 0;
+            right: 0;
+            height: 9px;
+            background-image: radial-gradient(circle at 10px 4px, var(--paper) 4.5px, transparent 5px);
+            background-size: 20px 9px;
+            background-repeat: repeat-x;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-2px);
+            border-color: #D8D0BC;
+        }
+        .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
+        .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
+        .type-exam:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--ochre); }
+
+        .resource-item a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.15rem 1.35rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .resource-tag {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            padding: 0.28rem 0.5rem;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
+        .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
+        .type-exam .resource-tag { background: #F5EBDA; color: var(--ochre); }
+
+        .resource-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            background: var(--paper);
+            color: var(--ink-soft);
+            border: 1px solid var(--paper-line);
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            flex-shrink: 0;
+            transition: background 0.2s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .download-btn i { font-size: 0.78rem; }
+        .type-cours:hover .download-btn { background: var(--rust); border-color: var(--rust); color: #fff; transform: translateY(-1px); }
+        .type-td:hover .download-btn { background: var(--chalk-blue); border-color: var(--chalk-blue); color: #fff; transform: translateY(-1px); }
+        .type-exam:hover .download-btn { background: var(--ochre); border-color: var(--ochre); color: #fff; transform: translateY(-1px); }
+
+        .empty-note {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            border: 1px dashed var(--paper-line);
+            border-radius: 4px;
+            padding: 1.4rem;
+            background: rgba(44, 110, 142, 0.03);
+        }
+
+        /* ===== Page « À propos » — parcours et domaines ===== */
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+            display: grid;
+            gap: 0.7rem;
+        }
+        .info-item {
+            display: flex;
+            align-items: baseline;
+            gap: 1.1rem;
+            padding: 0.95rem 1.2rem;
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+        }
+        .info-year {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--chalk-blue-deep);
+            flex-shrink: 0;
+            min-width: 3rem;
+        }
+        .info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin: 0 0 0.5rem;
+        }
+        .tag-pill {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: #E4EEF2;
+            color: var(--chalk-blue-deep);
+            border: 1px solid rgba(44, 110, 142, 0.25);
+        }
+
+        /* ===== Outils & calculatrices ===== */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.1rem;
+            margin-top: 1.4rem;
+        }
+        .tool-card {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 10px;
+            padding: 1.6rem 1.4rem;
+            text-align: center;
+            box-shadow: var(--shadow-1);
+            transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
+        }
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-2);
+        }
+        .tool-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(44, 110, 142, 0.1);
+            color: var(--chalk-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            margin: 0 auto 1rem;
+        }
+        .tool-card h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.08rem;
+            margin: 0 0 0.5rem;
+            color: var(--ink);
+        }
+        .tool-card p {
+            margin: 0 0 1.1rem;
+            font-size: 0.87rem;
+            color: var(--ink-soft);
+            line-height: 1.5;
+        }
+        .tool-badge {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            padding: 0.35rem 0.8rem;
+            border-radius: 999px;
+            background: rgba(184, 121, 26, 0.12);
+            color: var(--ochre);
+        }
+
+        /* ===== FAQ ===== */
+        .faq-list {
+            display: grid;
+            gap: 0.85rem;
+            margin-top: 1rem;
+        }
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 3px;
+            box-shadow: var(--shadow-1);
+        }
+        .faq-item summary {
+            cursor: pointer;
+            list-style: none;
+            padding: 1.1rem 1.3rem;
+            font-weight: 600;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            color: var(--chalk-blue);
+            flex-shrink: 0;
+        }
+        .faq-item[open] summary::after { content: '−'; }
+        .faq-item summary:hover { color: var(--chalk-blue-deep); }
+        .faq-item p {
+            margin: 0;
+            padding: 0 1.3rem 1.2rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
+        /* ===== Barre latérale ===== */
+        .sidebar-widget {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            border-radius: 4px;
+            padding: 1.6rem;
+            margin-bottom: 1.6rem;
+            box-shadow: var(--shadow-1);
+        }
+
+        .math-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: var(--ink);
+            color: #fff;
+            padding: 1rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            width: 100%;
+            border: none;
+            font: inherit;
+            cursor: pointer;
+            transition: background 0.2s var(--ease);
+        }
+        .math-btn:hover { background: var(--chalk-blue-deep); }
+        .math-btn i { color: var(--focus); font-size: 1.25rem; }
+
+        .widget-title {
+            margin: 0 0 1rem;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px dashed var(--paper-line);
+        }
+        .widget-title i { color: var(--chalk-blue); }
+
+        .news-list { list-style: none; margin: 0; padding: 0; }
+        .news-item {
+            border-bottom: 1px dashed var(--paper-line);
+            padding: 0.85rem 0;
+        }
+        .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .news-item:first-child { padding-top: 0; }
+        .news-date {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--chalk-blue-deep);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+        .news-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.25rem;
+        }
+        .news-meta .news-date { margin-bottom: 0; }
+        .news-badge {
+            font-family: var(--font-mono);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: var(--rust);
+            color: #fff;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+        }
+        .news-item p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); line-height: 1.55; }
+
+        /* ===== Contact — style « fiche » administrative ===== */
+        .contact-section {
+            background: var(--card);
+            border: 1px solid var(--paper-line);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: var(--shadow-1);
+        }
+        @media (min-width: 640px) { .contact-section { padding: 3rem; } }
+
+        .contact-section h2 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin: 0 0 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .contact-section h2 i { color: var(--chalk-blue); }
+        .contact-section > p { color: var(--ink-soft); margin: 0 0 2.25rem; }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        @media (min-width: 640px) { .field-grid { grid-template-columns: 1fr 1fr; } }
+
+        .field label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-soft);
+            margin-bottom: 0.55rem;
+        }
+        .field input,
+        .field textarea {
+            width: 100%;
+            font: inherit;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            padding: 0.65rem 0.1rem;
+            border: none;
+            border-bottom: 2px solid var(--paper-line);
+            background: transparent;
+            color: var(--ink);
+            border-radius: 0;
+            transition: border-color 0.2s var(--ease);
+        }
+        .field textarea { resize: vertical; min-height: 110px; }
+        .field input:focus,
+        .field textarea:focus {
+            border-color: var(--chalk-blue);
+            outline: none;
+        }
+        .field input::placeholder,
+        .field textarea::placeholder { color: #A6ADBB; }
+
+        .submit-row { display: flex; justify-content: flex-end; margin-top: 0.5rem; }
+
+        .submit-btn {
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            font-weight: 600;
+            font-size: 0.98rem;
+            padding: 0.85rem 1.6rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+        }
+        .submit-btn:hover { background: var(--chalk-blue-deep); transform: translateY(-1px); }
+
+        /* ===== Pied de page ===== */
+        footer {
+            background: var(--ink);
+            color: #8996AC;
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(231, 169, 71, 0.3);
+        }
+        footer p {
+            margin: 0;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            letter-spacing: 0.02em;
+        }
+        footer .foot-accent { color: var(--focus); }
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        .footer-mission {
+            max-width: 640px;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            line-height: 1.7;
+            color: #A9B4C7;
+            margin: 0;
+        }
+        .footer-bottom-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .footer-link {
+            background: none;
+            border: none;
+            font: inherit;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: #8996AC;
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .footer-link:hover { color: var(--focus); }
+
+        /* ===== Mode arabe (RTL) ===== */
+        [dir="rtl"] body {
+            font-family: 'IBM Plex Sans Arabic', var(--font-body);
+        }
+        [dir="rtl"] .top-banner h1,
+        [dir="rtl"] .section-heading,
+        [dir="rtl"] .abstract-box h3,
+        [dir="rtl"] .widget-title {
+            font-family: 'Amiri', var(--font-display);
+        }
+        [dir="rtl"] .eyebrow,
+        [dir="rtl"] .group-label,
+        [dir="rtl"] .resource-tag,
+        [dir="rtl"] .tag-pill,
+        [dir="rtl"] .footer-link,
+        [dir="rtl"] .download-btn,
+        [dir="rtl"] .news-badge,
+        [dir="rtl"] footer p,
+        [dir="rtl"] .nav-search input {
+            font-family: 'IBM Plex Sans Arabic', var(--font-body);
+            letter-spacing: 0;
+        }
+        [dir="rtl"] .nav-code,
+        [dir="rtl"] .news-date,
+        [dir="rtl"] .info-year,
+        [dir="rtl"] .lang-toggle-label {
+            direction: ltr;
+            unicode-bidi: isolate;
+            display: inline-block;
+            font-family: var(--font-mono);
+        }
+        [dir="rtl"] .wordmark { direction: ltr; unicode-bidi: isolate; }
+        [dir="rtl"] .skip-link { left: auto; right: -999px; }
+        [dir="rtl"] .skip-link:focus { right: 0; left: auto; }
+        [dir="rtl"] .abstract-box,
+        [dir="rtl"] .contact-section blockquote {
+            border-left: none;
+            border-right: 4px solid var(--chalk-blue);
+        }
+        [dir="rtl"] .field input,
+        [dir="rtl"] .field textarea {
+            text-align: right;
+        }
+
+        /* ===== Impression ===== */
+        @media print {
+            body::before { display: none; }
+            .skip-link,
+            .navigation-bar,
+            .header-avatar,
+            .banner-glyphs,
+            .banner-formula,
+            .site-glyphs,
+            #sidebar,
+            .nav-toggles,
+            .level-watermark,
+            footer {
+                display: none !important;
+            }
+            .top-banner {
+                background: #fff !important;
+                border-bottom: 2px solid #000;
+                padding: 0 0 1rem;
+            }
+            .top-banner::before { display: none; }
+            .top-banner h1, .eyebrow, .tagline, .wm-a, .wm-b { color: #000 !important; text-shadow: none !important; }
+            .verified-badge { display: none !important; }
+            .main-layout { display: block; }
+            .tab-content { display: block !important; overflow: visible; }
+            .tab-content:not(.active-content) { display: none !important; }
+            .resource-item, .abstract-box, .info-item, .faq-item, .contact-section {
+                box-shadow: none !important;
+                border: 1px solid #999 !important;
+                break-inside: avoid;
+            }
+            a { text-decoration: none; color: #000 !important; }
+            .download-btn { display: none; }
+        }
+    </style>
 </head>
 <body>
-<a class="skip-link" href="#main-content">Aller au contenu principal</a>
-<div id="tab-announcer" class="sr-only" aria-live="polite"></div>
 
-<header class="hero">
-  <div class="container hero-grid">
-    <div>
-      <p class="hero-kicker" data-i18n="hero.kicker">Plateforme académique</p>
-      <h1 data-i18n="hero.title">Cours et exercices de mathématiques pour le collège</h1>
-      <p data-i18n="hero.text">Une plateforme claire, fluide et moderne pour accéder rapidement aux cours, TD, examens corrigés et outils utiles en mathématiques.</p>
-      <div class="hero-badges">
-        <span class="hero-badge">1AC</span>
-        <span class="hero-badge">2AC</span>
-        <span class="hero-badge">3AC</span>
-        <span class="hero-badge" data-i18n="hero.badge">Ressources pédagogiques</span>
-      </div>
+    <a class="skip-link" href="#main-content">Aller au contenu principal</a>
+    <div id="tab-announcer" class="sr-only" aria-live="polite"></div>
+
+    <div class="site-glyphs" aria-hidden="true">
+        <span class="sg1">∞</span>
+        <span class="sg2">∂</span>
+        <span class="sg3">≈</span>
+        <span class="sg4">∴</span>
+        <span class="sg5">Ω</span>
     </div>
-    <div class="hero-mark" aria-hidden="true">
-      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="rgba(255,255,255,.2)" stroke="rgba(255,255,255,.5)"/><text x="50" y="59" text-anchor="middle" font-family="Georgia,serif" font-size="34" font-style="italic" font-weight="700" fill="#fff">MB</text></svg>
-    </div>
-  </div>
-</header>
 
-<nav class="topnav" aria-label="Navigation principale">
-  <div class="container nav-wrap">
-    <ul class="nav-main" role="tablist">
-      <li class="nav-item"><button class="nav-btn active" id="tab-accueil" onclick="switchTab('accueil')" role="tab" aria-selected="true" aria-controls="content-accueil"><span class="nav-circle"><i class="fa-solid fa-house"></i></span><span class="nav-text" data-i18n="nav.home">Accueil</span></button></li>
-      <li class="nav-item"><button class="nav-btn" id="tab-apropos" onclick="switchTab('apropos')" role="tab" aria-selected="false" aria-controls="content-apropos"><span class="nav-circle"><i class="fa-solid fa-user"></i></span><span class="nav-text" data-i18n="nav.about">À propos</span></button></li>
-      <li class="nav-item dropdown" id="dropdown-college">
-        <button class="nav-btn" id="tab-mathematiques" onclick="toggleDropdown(event,'college')" aria-haspopup="true" aria-expanded="false" aria-controls="menu-college">
-          <span class="nav-circle"><i class="fa-solid fa-user-graduate"></i></span>
-          <span class="nav-text" data-i18n="nav.college">Collège</span>
-          <i class="fa-solid fa-chevron-down nav-chevron"></i>
-        </button>
-        <div class="dropdown-menu" id="menu-college" role="menu">
-          <button onclick="goToLevel('1ac')" role="menuitem" data-i18n="dd.1ac">1ère Année Collège</button>
-          <button onclick="goToLevel('2ac')" role="menuitem" data-i18n="dd.2ac">2ème Année Collège</button>
-          <button onclick="goToLevel('3ac')" role="menuitem" data-i18n="dd.3ac">3ème Année Collège</button>
+    <!-- En-tête -->
+    <header class="top-banner">
+        <div class="banner-glyphs" aria-hidden="true">
+            <span class="g1">∫</span>
+            <span class="g2">∑</span>
+            <span class="g3">π</span>
+            <span class="g4">√</span>
+            <span class="g5">Δ</span>
         </div>
-      </li>
-      <li class="nav-item dropdown" id="dropdown-tools">
-        <button class="nav-btn" id="tab-outils" onclick="toggleDropdown(event,'tools')" aria-haspopup="true" aria-expanded="false" aria-controls="menu-tools">
-          <span class="nav-circle"><i class="fa-solid fa-calculator"></i></span>
-          <span class="nav-text" data-i18n="nav.tools">Calculatrices</span>
-          <i class="fa-solid fa-chevron-down nav-chevron"></i>
-        </button>
-        <div class="dropdown-menu" id="menu-tools" role="menu">
-          <button onclick="goToTool('scientifique')" role="menuitem" data-i18n="tools.scientifique">Calculatrice Scientifique</button>
-          <button onclick="goToTool('geometrie')" role="menuitem" data-i18n="tools.geometrie">Géométrie</button>
-          <button onclick="goToTool('convertisseurs')" role="menuitem" data-i18n="tools.convertisseurs">Convertisseurs</button>
-        </div>
-      </li>
-      <li class="nav-item"><button class="nav-btn" id="tab-faq" onclick="switchTab('faq')" role="tab" aria-selected="false" aria-controls="content-faq"><span class="nav-circle"><i class="fa-solid fa-circle-question"></i></span><span class="nav-text" data-i18n="nav.faq">FAQ</span></button></li>
-      <li class="nav-item"><button class="nav-btn" id="tab-contact" onclick="switchTab('contact')" role="tab" aria-selected="false" aria-controls="content-contact"><span class="nav-text" data-i18n="nav.contact">Contactez-nous !</span></button></li>
-    </ul>
-
-    <div class="nav-side">
-      <div class="nav-search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <input id="site-search" type="search" data-i18n-placeholder="search.placeholder" placeholder="Rechercher..." aria-label="Rechercher" data-i18n-aria="search.aria">
-      </div>
-      <button id="lang-toggle" class="mini-btn" aria-label="Passer à l'arabe"><span class="lang-label">AR</span></button>
-      <button id="theme-toggle" class="mini-btn" aria-label="Mode sombre"><i class="fa-solid fa-moon"></i></button>
-    </div>
-  </div>
-</nav>
-
-<main class="container">
-  <div class="layout">
-    <section id="main-content">
-
-      <div id="content-accueil" class="panel active">
-        <div class="card lead-card">
-          <h2 data-i18n="home.title">Une plateforme simple pour apprendre les mathématiques</h2>
-          <p data-i18n="home.text">Accédez rapidement aux cours, travaux dirigés, examens corrigés et outils utiles pour les trois niveaux du collège.</p>
-          <div class="quick-grid">
-            <div class="quick-card"><strong>1AC</strong><span data-i18n="home.card1">Initiation, bases, logique et premiers chapitres.</span></div>
-            <div class="quick-card"><strong>2AC</strong><span data-i18n="home.card2">Approfondissement progressif et nouvelles méthodes.</span></div>
-            <div class="quick-card"><strong>3AC</strong><span data-i18n="home.card3">Préparation aux évaluations et consolidation.</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div id="content-apropos" class="panel">
-        <div class="card lead-card">
-          <h2 data-i18n="about.title">À propos de MoBendriss</h2>
-          <p data-i18n="about.text">[Présentez brièvement votre parcours, vos spécialités et votre vision pédagogique.]</p>
-        </div>
-        <h3 class="section-title" data-i18n="about.training">Formation</h3>
-        <ul class="about-list">
-          <li class="about-item"><span class="about-year">20XX</span><p data-i18n="about.training1">[Doctorat en Mathématiques — spécialité]</p></li>
-          <li class="about-item"><span class="about-year">20XX</span><p data-i18n="about.training2">[Master / Agrégation — université]</p></li>
-        </ul>
-        <h3 class="section-title" style="margin-top:1.5rem" data-i18n="about.fields">Domaines</h3>
-        <div class="pill-row">
-          <span class="pill" data-i18n="about.field1">Analyse</span>
-          <span class="pill" data-i18n="about.field2">Algèbre</span>
-          <span class="pill" data-i18n="about.field3">Géométrie</span>
-          <span class="pill" data-i18n="about.field4">Logique</span>
-        </div>
-      </div>
-
-      <div id="content-mathematiques" class="panel">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="maths.title">Mathématiques</h2>
-          <p class="section-note" data-i18n="maths.note">Choisissez un niveau et téléchargez directement vos ressources.</p>
-        </div>
-
-        <div id="level-1ac" class="level-block">
-          <div class="level-header"><span class="level-code">1AC</span><span data-i18n="level.1ac">1ère Année Collège</span></div>
-          <div class="resource-group">
-            <h4 data-i18n="group.cours">Cours</h4>
-            <ul class="resource-list">
-              <li class="resource-item type-cours"><a href="#" download><span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span><span data-i18n="doc.1ac.c1">Notions de logique</span></span><span class="resource-icon"><i class="fa-solid fa-arrow-down"></i></span></a></li>
-            </ul>
-          </div>
-          <div class="resource-group">
-            <h4 data-i18n="group.td">Exercices &amp; TD</h4>
-            <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment.</p>
-          </div>
-          <div class="resource-group">
-            <h4 data-i18n="group.exam">Examens &amp; Corrigés</h4>
-            <ul class="resource-list">
-              <li class="resource-item type-exam"><a href="#" download><span class="resource-title"><span class="resource-tag" data-i18n="tag.exam">EXAMEN</span><span data-i18n="doc.1ac.e1">Session corrigée</span></span><span class="resource-icon"><i class="fa-solid fa-arrow-down"></i></span></a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div id="level-2ac" class="level-block">
-          <div class="level-header"><span class="level-code">2AC</span><span data-i18n="level.2ac">2ème Année Collège</span></div>
-          <div class="resource-group">
-            <h4 data-i18n="group.cours">Cours</h4>
-            <ul class="resource-list">
-              <li class="resource-item type-cours"><a href="#" download><span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span><span data-i18n="doc.2ac.c1">Analyse — Chapitre 1</span></span><span class="resource-icon"><i class="fa-solid fa-arrow-down"></i></span></a></li>
-            </ul>
-          </div>
-          <div class="resource-group"><h4 data-i18n="group.td">Exercices</h4><p class="empty-note" data-i18n="empty.note">Aucun document en ligne.</p></div>
-        </div>
-
-        <div id="level-3ac" class="level-block">
-          <div class="level-header"><span class="level-code">3AC</span><span data-i18n="level.3ac">3ème Année Collège</span></div>
-          <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment.</p>
-        </div>
-      </div>
-
-      <div id="content-outils" class="panel">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="tools.title">Calculatrices &amp; Outils</h2>
-          <p class="section-note" data-i18n="tools.note">Quelques outils utiles pour les mathématiques.</p>
-        </div>
-        <div class="tools-grid">
-          <div id="tool-scientifique" class="tool-card">
-            <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
-            <h3 data-i18n="tools.scientifique">Calculatrice Scientifique</h3>
-            <p data-i18n="tools.scientifique.desc">Espace réservé à une future calculatrice scientifique en ligne.</p>
-            <a class="tool-btn" href="#" onclick="return false;"><i class="fa-solid fa-screwdriver-wrench"></i><span data-i18n="tools.coming">Bientôt disponible</span></a>
-          </div>
-          <div id="tool-geometrie" class="tool-card">
-            <div class="tool-icon"><i class="fa-solid fa-draw-polygon"></i></div>
-            <h3 data-i18n="tools.geometrie">Géométrie</h3>
-            <p data-i18n="tools.geometrie.desc">Espace dédié aux outils géométriques interactifs et constructions.</p>
-            <a class="tool-btn" href="#" onclick="return false;"><i class="fa-solid fa-screwdriver-wrench"></i><span data-i18n="tools.coming">Bientôt disponible</span></a>
-          </div>
-          <div id="tool-convertisseurs" class="tool-card">
-            <div class="tool-icon"><i class="fa-solid fa-right-left"></i></div>
-            <h3 data-i18n="tools.convertisseurs">Convertisseurs</h3>
-            <p data-i18n="tools.convertisseurs.desc">Outils de conversion de mesures, unités et grandeurs.</p>
-            <a class="tool-btn" href="#" onclick="return false;"><i class="fa-solid fa-screwdriver-wrench"></i><span data-i18n="tools.coming">Bientôt disponible</span></a>
-          </div>
-        </div>
-      </div>
-
-      <div id="content-faq" class="panel">
-        <div class="section-head">
-          <h2 class="section-title" data-i18n="faq.title">Questions fréquentes</h2>
-          <p class="section-note" data-i18n="faq.note">Réponses aux questions les plus courantes.</p>
-        </div>
-        <div class="faq-list">
-          <details class="faq-item"><summary data-i18n="faq.q1">Comment télécharger un document ?</summary><p data-i18n="faq.a1">Survolez le menu Collège, choisissez votre niveau, puis cliquez sur le document voulu.</p></details>
-          <details class="faq-item"><summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary><p data-i18n="faq.a2">[Précisez votre rythme de publication.]</p></details>
-          <details class="faq-item"><summary data-i18n="faq.q3">Comment vous contacter ?</summary><p data-i18n="faq.a3">Utilisez le menu Contactez-nous !</p></details>
-          <details class="faq-item"><summary data-i18n="faq.q4">Un document est introuvable, que faire ?</summary><p data-i18n="faq.a4">[Expliquez la démarche ici.]</p></details>
-        </div>
-      </div>
-
-      <div id="content-contact" class="panel">
-        <div class="card contact-card">
-          <h2 class="section-title" data-i18n="contact.title">Contact direct</h2>
-          <p class="section-note" data-i18n="contact.note">Pour toute question académique, n'hésitez pas.</p>
-          <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
-            <div class="field-grid">
-              <div class="field"><label for="name" data-i18n="contact.name">Nom complet</label><input id="name" name="name" type="text" required data-i18n-placeholder="contact.namePh" placeholder="Votre nom"></div>
-              <div class="field"><label for="email" data-i18n="contact.email">Adresse e-mail</label><input id="email" name="email" type="email" required placeholder="nom@exemple.com"></div>
+        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
+        <div class="container top-banner-content">
+            <div>
+                <p class="eyebrow" data-i18n="eyebrow">Professeur de mathématiques</p>
+                <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
+                <p class="tagline" data-i18n="tagline">Cours et exercices de mathématiques</p>
+                <div class="hero-badges">
+                    <span class="hero-badge">1AC</span>
+                    <span class="hero-badge">2AC</span>
+                    <span class="hero-badge">3AC</span>
+                    <span class="hero-badge" data-i18n="hero.badgeResources">Ressources pédagogiques</span>
+                </div>
             </div>
-            <div class="field"><label for="message" data-i18n="contact.message">Votre message</label><textarea id="message" name="message" required data-i18n-placeholder="contact.messagePh" placeholder="Votre message détaillé..."></textarea></div>
-            <div class="submit-row"><button class="submit-btn" type="submit"><span data-i18n="contact.send">Envoyer</span> <i class="fa-regular fa-paper-plane"></i></button></div>
-          </form>
+            <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%">
+                            <stop offset="0%" stop-color="#26496A"/>
+                            <stop offset="100%" stop-color="#0C1526"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="50" cy="50" r="47" fill="url(#logoFill)" stroke="#E7A947" stroke-width="1.4"/>
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#E7A947" stroke-opacity="0.35" stroke-width="0.7"/>
+                    <text x="34" y="43" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="15" fill="#E7A947" opacity="0.55">∫</text>
+                    <text x="50" y="63" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#FBF8F2" letter-spacing="-1">MB</text>
+                    <line x1="33" y1="70" x2="67" y2="70" stroke="#E7A947" stroke-width="1" stroke-opacity="0.75"/>
+                    <text x="50" y="80" text-anchor="middle" font-family="'IBM Plex Mono', monospace" font-size="6.2" letter-spacing="2.5" fill="#DCE4F0" opacity="0.8">MATHS</text>
+                </svg>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <div id="content-confidentialite" class="panel">
-        <div class="card lead-card">
-          <h2 data-i18n="legal.title">Confidentialité & conditions</h2>
-          <p data-i18n="legal.note">Dernière mise à jour : juillet 2026.</p>
+    <!-- Navigation -->
+    <nav class="navigation-bar" aria-label="Sections du site">
+        <div class="container nav-inner">
+            <ul role="tablist">
+                <li aria-hidden="true"><span class="nav-indicator"></span></li>
+                <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
+                <li class="nav-dropdown" id="math-dropdown-wrap">
+                    <button class="nav-link nav-dropdown-trigger" type="button" id="tab-mathematiques" aria-haspopup="true" aria-expanded="false" aria-selected="false" onclick="toggleMathMenu()">
+                        <i class="fa-solid fa-square-root-variable"></i> <span data-i18n="nav.math">Mathématiques</span> <i class="fa-solid fa-chevron-down dropdown-caret" aria-hidden="true"></i>
+                    </button>
+                    <ul class="dropdown-menu" id="math-dropdown" role="menu" aria-label="Mathématiques">
+                        <li role="none"><button role="menuitem" class="dropdown-item" id="dropdown-l1" onclick="switchTab('premiere-annee'); closeMathMenu();"><span class="nav-code">1AC</span> <span data-i18n="nav.l1">1ère année collège</span></button></li>
+                        <li role="none"><button role="menuitem" class="dropdown-item" id="dropdown-l2" onclick="switchTab('deuxieme-annee'); closeMathMenu();"><span class="nav-code">2AC</span> <span data-i18n="nav.l2">2ème année collège</span></button></li>
+                        <li role="none"><button role="menuitem" class="dropdown-item" id="dropdown-l3" onclick="switchTab('troisieme-annee'); closeMathMenu();"><span class="nav-code">3AC</span> <span data-i18n="nav.l3">3ème année collège</span></button></li>
+                    </ul>
+                </li>
+                <li><button class="nav-link" role="tab" id="tab-outils" aria-controls="content-outils" aria-selected="false" onclick="switchTab('outils')"><i class="fa-solid fa-calculator"></i> <span data-i18n="nav.outils">Outils</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
+            </ul>
+            <form class="nav-search" role="search" onsubmit="return false;">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" id="site-search" placeholder="Rechercher un document…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder" data-i18n-aria="search.aria">
+            </form>
+            <div class="nav-toggles">
+                <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer le site en arabe">
+                    <span class="lang-toggle-label">AR</span>
+                </button>
+                <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Activer le mode sombre">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
         </div>
-        <div class="card lead-card">
-          <h3 data-i18n="legal.p1t">Politique de confidentialité</h3>
-          <p data-i18n="legal.p1"><strong>Données collectées.</strong> Le formulaire recueille votre nom, e-mail et message.</p>
+    </nav>
+
+    <main class="container">
+        <div class="main-layout">
+
+            <section id="main-content">
+
+                <!-- Accueil -->
+                <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
+                    <span class="level-watermark" aria-hidden="true">∀</span>
+                    <div class="abstract-box">
+                        <h3 data-i18n="accueil.title">Des cours et des exercices de maths, classés par niveau.</h3>
+                        <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
+                    </div>
+                    <div class="page-lead">
+                        <p data-i18n="accueil.lead">Chaque niveau — 1AC, 2AC, 3AC — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez le menu « Mathématiques » ci-dessus pour accéder directement aux documents de votre niveau.</p>
+                    </div>
+                </div>
+
+                <!-- À propos -->
+                <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
+                    <span class="level-watermark" aria-hidden="true">Σ</span>
+                    <div class="abstract-box">
+                        <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
+                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]</p>
+                    </div>
+
+                    <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <span class="info-year">20XX</span>
+                            <p data-i18n="apropos.dip1">[Doctorat en Mathématiques — Université, spécialité]</p>
+                        </li>
+                        <li class="info-item">
+                            <span class="info-year">20XX</span>
+                            <p data-i18n="apropos.dip2">[Master / Agrégation — Université, spécialité]</p>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'enseignement et de recherche</h3>
+                    <div class="tag-row">
+                        <span class="tag-pill" data-i18n="apropos.tag1">Analyse</span>
+                        <span class="tag-pill" data-i18n="apropos.tag2">Logique</span>
+                        <span class="tag-pill" data-i18n="apropos.tag3">Analyse fonctionnelle</span>
+                        <span class="tag-pill" data-i18n="apropos.tag4">[Votre domaine]</span>
+                    </div>
+                </div>
+
+                <div id="content-premiere-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-premiere-annee">
+                    <span class="level-watermark" aria-hidden="true">1AC</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l1.heading">1ère année collège — 1AC</span></h2>
+                    <p class="section-sub" data-i18n="l1.sub">Cliquez sur un document pour lancer le téléchargement.</p>
+
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/1SC_cours2.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours2">[Chapitre 2 — à compléter]</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/1SC_cours3.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours3">[Chapitre 3 — à compléter]</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-td">
+                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-td">
+                            <a href="documents/exercices/1SC_td2.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td2">TD 2</span> <span data-i18n="l1.td2">[Titre — à compléter]</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-exam">
+                            <a href="documents/examens/1SC_examen1_corrige.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 2ème année collège -->
+                <div id="content-deuxieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-deuxieme-annee">
+                    <span class="level-watermark" aria-hidden="true">2AC</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-folder-open"></i> <span data-i18n="l2.heading">2ème année collège — 2AC</span></h2>
+                    <p class="section-sub" data-i18n="l2.sub">Documents et supports pour le deuxième niveau universitaire.</p>
+
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-cours">
+                            <a href="documents/cours/l2_cours2.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours2">[Chapitre 2 — à compléter]</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-td">
+                            <a href="documents/exercices/l2_td1.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l2.td1">[Titre — à compléter]</span></span>
+                                <span class="download-btn"><i class="fa-solid fa-download"></i> <span data-i18n="btn.download">PDF</span></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                </div>
+
+                <!-- 3ème année collège -->
+                <div id="content-troisieme-annee" class="tab-content" role="tabpanel" aria-labelledby="tab-troisieme-annee">
+                    <span class="level-watermark" aria-hidden="true">3AC</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-award"></i> <span data-i18n="l3.heading">3ème année collège — 3AC</span></h2>
+                    <p class="section-sub" data-i18n="l3.sub">Espace réservé aux modules de spécialité et d'approfondissement.</p>
+
+                    <h3 class="group-label" data-i18n="group.cours">Cours</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+
+                    <h3 class="group-label" data-i18n="group.td">Exercices &amp; TD</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+
+                    <h3 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h3>
+                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                </div>
+
+                <!-- Outils -->
+                <div id="content-outils" class="tab-content" role="tabpanel" aria-labelledby="tab-outils">
+                    <span class="level-watermark" aria-hidden="true">≈</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-calculator"></i> <span data-i18n="outils.heading">Outils &amp; calculatrices</span></h2>
+                    <p class="section-sub" data-i18n="outils.sub">Quelques outils utiles pour accompagner l'apprentissage des mathématiques.</p>
+
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fa-solid fa-calculator"></i></div>
+                            <h3 data-i18n="outils.tool1.title">Calculatrice scientifique</h3>
+                            <p data-i18n="outils.tool1.desc">Espace réservé à une future calculatrice scientifique en ligne.</p>
+                            <span class="tool-badge" data-i18n="outils.soon">Bientôt disponible</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fa-solid fa-draw-polygon"></i></div>
+                            <h3 data-i18n="outils.tool2.title">Géométrie</h3>
+                            <p data-i18n="outils.tool2.desc">Espace dédié aux outils géométriques interactifs et aux constructions.</p>
+                            <span class="tool-badge" data-i18n="outils.soon">Bientôt disponible</span>
+                        </div>
+                        <div class="tool-card">
+                            <div class="tool-icon"><i class="fa-solid fa-right-left"></i></div>
+                            <h3 data-i18n="outils.tool3.title">Convertisseurs</h3>
+                            <p data-i18n="outils.tool3.desc">Outils de conversion de mesures, d'unités et de grandeurs.</p>
+                            <span class="tool-badge" data-i18n="outils.soon">Bientôt disponible</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
+                    <span class="level-watermark" aria-hidden="true">?</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
+                    <p class="section-sub" data-i18n="faq.sub">Les réponses aux questions les plus courantes sur l'organisation du site et des cours.</p>
+
+                    <div class="faq-list">
+                        <details class="faq-item">
+                            <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
+                            <p data-i18n="faq.a1">Ouvrez le menu « Mathématiques », choisissez votre niveau (1AC, 2AC ou 3AC), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
+                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
+                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
+                            <p data-i18n="faq.a4">[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]</p>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
+                    <section class="contact-section">
+                        <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
+                        <p data-i18n="contact.intro">Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.</p>
+                        <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
+                            <div class="field-grid">
+                                <div class="field">
+                                    <label for="name" data-i18n="contact.nameLabel">Nom complet</label>
+                                    <input type="text" id="name" name="name" placeholder="Votre nom" required data-i18n-placeholder="contact.namePh">
+                                </div>
+                                <div class="field">
+                                    <label for="email" data-i18n="contact.emailLabel">Adresse e-mail</label>
+                                    <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="message" data-i18n="contact.messageLabel">Votre message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Votre message détaillé..." required data-i18n-placeholder="contact.messagePh"></textarea>
+                            </div>
+                            <div class="submit-row">
+                                <button type="submit" class="submit-btn"><span data-i18n="contact.submit">Envoyer le message</span> <i class="fa-regular fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <!-- Résultats de recherche (généré dynamiquement) -->
+                <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
+                    <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
+                    <div id="search-results" class="resource-list"></div>
+                </div>
+
+                <!-- Confidentialité & Conditions -->
+                <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité et conditions d'utilisation">
+                    <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
+                    <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]</p>
+
+                    <h3 class="group-label" data-i18n="legal.privacyTitle">Politique de confidentialité</h3>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy1"><strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.</p>
+                    </div>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.</p>
+                    </div>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.</p>
+                    </div>
+
+                    <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
+                    <div class="abstract-box" style="margin-bottom:1.5rem;">
+                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.</p>
+                    </div>
+                    <div class="abstract-box">
+                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Barre latérale -->
+            <aside id="sidebar">
+                <div class="sidebar-widget">
+                    <button class="math-btn" onclick="switchTab('premiere-annee')">
+                        <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
+                    </button>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.newsTitle">Actualités</span></h4>
+                    <ul class="news-list">
+                        <li class="news-item">
+                            <div class="news-meta">
+                                <span class="news-date">JUIL. 2026</span>
+                                <span class="news-badge" data-i18n="sidebar.newBadge">Nouveau</span>
+                            </div>
+                            <p data-i18n="sidebar.news1">Mise en ligne du cours de logique pour la première année.</p>
+                        </li>
+                        <li class="news-item">
+                            <span class="news-date">JUIN 2026</span>
+                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]</p>
+                        </li>
+                        <li class="news-item">
+                            <span class="news-date">MAI 2026</span>
+                            <p data-i18n="sidebar.news3">[Une autre actualité à personnaliser.]</p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
         </div>
-        <div class="card lead-card">
-          <h3 data-i18n="legal.p2t">Sous-traitant technique</h3>
-          <p data-i18n="legal.p2"><strong>FormSubmit.</strong> L'envoi est géré par un service tiers.</p>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <p class="footer-mission" data-i18n="footer.mission">Une plateforme éducative pour aider les élèves du collège à mieux comprendre leurs leçons de mathématiques, grâce à une pédagogie claire et accessible.</p>
+            <div class="footer-bottom-row">
+                <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
+                <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.legalLink">Confidentialité &amp; conditions</button>
+            </div>
         </div>
-        <div class="card lead-card">
-          <h3 data-i18n="legal.p3t">Conditions d'utilisation</h3>
-          <p data-i18n="legal.p3"><strong>Usage pédagogique personnel.</strong> Les contenus sont proposés pour un usage éducatif.</p>
-        </div>
-      </div>
+    </footer>
 
-      <div id="content-search" class="panel search-panel">
-        <div class="section-head">
-          <h2 class="section-title" id="search-heading">Résultats</h2>
-          <p class="section-note" data-i18n="search.note">Résultats de recherche dans les documents.</p>
-        </div>
-        <div id="search-results" class="resource-list"></div>
-      </div>
+    <script>
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var TAB_IDS = ['accueil', 'apropos', 'premiere-annee', 'deuxieme-annee', 'troisieme-annee', 'outils', 'faq', 'contact', 'confidentialite'];
+        var NAV_CYCLE_IDS = ['accueil', 'apropos', 'mathematiques', 'outils', 'faq', 'contact'];
+        var LEVEL_IDS = ['premiere-annee', 'deuxieme-annee', 'troisieme-annee'];
+        var LEVEL_TO_DROPDOWN = { 'premiere-annee': 'dropdown-l1', 'deuxieme-annee': 'dropdown-l2', 'troisieme-annee': 'dropdown-l3' };
+        var isNavigatingByHash = false;
 
-    </section>
+        function isValidTab(id) { return TAB_IDS.indexOf(id) !== -1; }
 
-    <aside class="sidebar">
-      <div class="card">
-        <button class="action-btn" onclick="switchTab('mathematiques')">
-          <i class="fa-solid fa-infinity"></i>
-          <span data-i18n="sidebar.button">Mathématiques</span>
-        </button>
-      </div>
+        function positionIndicator(button) {
+            var indicator = document.querySelector('.nav-indicator');
+            var list = document.querySelector('.navigation-bar ul');
+            if (!indicator || !button || !list) return;
+            var listRect = list.getBoundingClientRect();
+            var btnRect = button.getBoundingClientRect();
+            indicator.style.left = (btnRect.left - listRect.left) + 'px';
+            indicator.style.width = btnRect.width + 'px';
+        }
 
-      <div class="card">
-        <h3 class="sidebar-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.news">Actualités</span></h3>
-        <ul class="news">
-          <li><span class="news-date">JUIL. 2026</span><p data-i18n="sidebar.n1">Mise en ligne du cours de logique.</p></li>
-          <li><span class="news-date">JUIN 2026</span><p data-i18n="sidebar.n2">Actualité personnalisable.</p></li>
-          <li><span class="news-date">MAI 2026</span><p data-i18n="sidebar.n3">Autre actualité personnalisable.</p></li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-</main>
+        function revealChildren(panel) {
+            var items = panel.querySelectorAll('.resource-item, .abstract-box, .empty-note, .info-item, .faq-item, .tool-card');
+            items.forEach(function (el, i) {
+                el.classList.remove('is-visible');
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 60) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
+            });
+        }
 
-<footer class="site-footer">
-  <div class="footer-hero">
-    <div class="container">
-      <h2 class="footer-title" data-i18n="footer.title">Plateforme de cours et exercices de mathématiques</h2>
-      <p class="footer-desc" data-i18n="footer.text">MoBendriss est une plateforme éducative marocaine mettant à disposition des cours, exercices, examens corrigés et supports pédagogiques téléchargeables. Notre objectif : aider les élèves à mieux comprendre leurs leçons et réussir grâce à une pédagogie claire, moderne et accessible.</p>
+        function switchTab(tabId, opts) {
+            opts = opts || {};
+            if (!isValidTab(tabId)) return;
+            lastActiveTab = tabId;
 
-      <nav class="footer-links" aria-label="Liens utiles">
-        <button class="footer-link" onclick="switchTab('contact')" data-i18n="footer.l1">Contactez-nous !</button>
-        <span class="footer-sep">|</span>
-        <button class="footer-link" onclick="switchTab('apropos')" data-i18n="footer.l2">À propos</button>
-        <span class="footer-sep">|</span>
-        <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.l3">Politique de confidentialité</button>
-        <span class="footer-sep">|</span>
-        <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.l4">CGU</button>
-        <span class="footer-sep">|</span>
-        <button class="footer-link" onclick="switchTab('confidentialite')" data-i18n="footer.l5">Mentions légales</button>
-      </nav>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <span data-i18n="footer.copy">Copyright © 2026</span>
-      <span class="footer-brand">MoBendriss</span>
-    </div>
-  </div>
-</footer>
+            document.querySelectorAll('.nav-link').forEach(function (link) {
+                link.setAttribute('aria-selected', 'false');
+            });
+            document.querySelectorAll('.dropdown-item').forEach(function (item) {
+                item.classList.remove('active');
+            });
 
-<script>
-const TABS = ['accueil','apropos','mathematiques','outils','faq','contact','confidentialite'];
-let lastActiveTab = 'accueil';
-let searchIndex = [];
-let searchTimer = null;
+            var isLevel = LEVEL_IDS.indexOf(tabId) !== -1;
+            var activeTab = isLevel ? document.getElementById('tab-mathematiques') : document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.setAttribute('aria-selected', 'true');
+                positionIndicator(activeTab);
+                activeTab.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+            }
+            if (isLevel) {
+                var dropdownItem = document.getElementById(LEVEL_TO_DROPDOWN[tabId]);
+                if (dropdownItem) dropdownItem.classList.add('active');
+            }
 
-function switchTab(id, opts = {}){
-  if(!TABS.includes(id)) return;
-  lastActiveTab = id;
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(function (panel) {
+                panel.classList.remove('active-content');
+            });
+            var activePanel = document.getElementById('content-' + tabId);
+            if (activePanel) {
+                activePanel.classList.add('active-content');
+                revealChildren(activePanel);
 
-  const btn = document.getElementById('tab-' + id);
-  const panel = document.getElementById('content-' + id);
-  if(btn) btn.classList.add('active');
-  if(panel) panel.classList.add('active');
+                var announcer = document.getElementById('tab-announcer');
+                if (announcer) {
+                    var heading = activePanel.querySelector('h2, h3');
+                    announcer.textContent = 'Section affichée : ' + (heading ? heading.textContent.trim() : tabId);
+                }
+            }
 
-  closeDropdowns();
-  if(opts.scrollTop !== false) window.scrollTo({top:0, behavior:'smooth'});
-  if(opts.updateHash !== false) try { history.replaceState(null,'','#'+id); } catch(e){}
-}
+            if (opts.updateHash !== false && history.pushState) {
+                try {
+                    isNavigatingByHash = true;
+                    history.pushState({ tab: tabId }, '', '#' + tabId);
+                } catch (e) {
+                    // Certains navigateurs refusent pushState en file:// local — sans conséquence en ligne.
+                } finally {
+                    isNavigatingByHash = false;
+                }
+            }
 
-function goToLevel(level){
-  switchTab('mathematiques', {scrollTop:false});
-  setTimeout(() => {
-    const el = document.getElementById('level-' + level);
-    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-  }, 140);
-}
+            if (opts.scrollTop !== false) {
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            }
+        }
 
-function goToTool(tool){
-  switchTab('outils', {scrollTop:false});
-  setTimeout(() => {
-    const el = document.getElementById('tool-' + tool);
-    if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-  }, 140);
-}
+        // ===== Menu déroulant Mathématiques =====
+        function openMathMenu() {
+            var menu = document.getElementById('math-dropdown');
+            var trigger = document.getElementById('tab-mathematiques');
+            if (menu) menu.classList.add('open');
+            if (trigger) trigger.setAttribute('aria-expanded', 'true');
+        }
+        function closeMathMenu() {
+            var menu = document.getElementById('math-dropdown');
+            var trigger = document.getElementById('tab-mathematiques');
+            if (menu) menu.classList.remove('open');
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+        function toggleMathMenu() {
+            var menu = document.getElementById('math-dropdown');
+            if (menu && menu.classList.contains('open')) closeMathMenu();
+            else openMathMenu();
+        }
+        document.addEventListener('click', function (e) {
+            var wrap = document.getElementById('math-dropdown-wrap');
+            if (wrap && !wrap.contains(e.target)) closeMathMenu();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMathMenu();
+        });
 
-function closeDropdowns(){
-  document.querySelectorAll('.dropdown').forEach(dd => {
-    dd.classList.remove('open');
-    const btn = dd.querySelector('.nav-btn');
-    if(btn) btn.setAttribute('aria-expanded','false');
-  });
-}
+        // Navigation au clavier entre les onglets (flèches, Origine/Fin)
+        document.querySelectorAll('.nav-link').forEach(function (btn) {
+            btn.addEventListener('keydown', function (e) {
+                var currentId = btn.id.replace('tab-', '');
+                var idx = NAV_CYCLE_IDS.indexOf(currentId);
+                if (idx === -1) return;
+                var newIdx = null;
+                if (e.key === 'ArrowRight') newIdx = (idx + 1) % NAV_CYCLE_IDS.length;
+                else if (e.key === 'ArrowLeft') newIdx = (idx - 1 + NAV_CYCLE_IDS.length) % NAV_CYCLE_IDS.length;
+                else if (e.key === 'Home') newIdx = 0;
+                else if (e.key === 'End') newIdx = NAV_CYCLE_IDS.length - 1;
+                if (newIdx !== null) {
+                    e.preventDefault();
+                    var newId = NAV_CYCLE_IDS[newIdx];
+                    switchTab(newId, { scrollTop: false });
+                    var newBtn = document.getElementById('tab-' + newId);
+                    if (newBtn) newBtn.focus();
+                }
+            });
+        });
 
-function toggleDropdown(e, type){
-  const dd = e.target.closest('.dropdown');
-  if(!dd) return;
-  const isOpen = dd.classList.contains('open');
-  closeDropdowns();
-  if(!isOpen){
-    dd.classList.add('open');
-    const btn = dd.querySelector('.nav-btn');
-    if(btn) btn.setAttribute('aria-expanded','true');
-  }
-}
+        window.addEventListener('load', function () {
+            var initial = location.hash ? location.hash.substring(1) : 'accueil';
+            if (!isValidTab(initial)) initial = 'accueil';
+            switchTab(initial, { updateHash: false, scrollTop: false });
 
-document.addEventListener('click', function(e){
-  if(!e.target.closest('.dropdown')) closeDropdowns();
-});
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeDropdowns();
-});
+            document.querySelectorAll('.sidebar-widget').forEach(function (el, i) {
+                el.classList.add('reveal');
+                if (reduceMotion) { el.classList.add('is-visible'); return; }
+                el.style.transitionDelay = (i * 90) + 'ms';
+                requestAnimationFrame(function () {
+                    requestAnimationFrame(function () { el.classList.add('is-visible'); });
+                });
+            });
+        });
 
-function buildSearchIndex(){
-  searchIndex = [];
-  document.querySelectorAll('.resource-item').forEach(item => {
-    const a = item.querySelector('a');
-    const title = item.querySelector('.resource-title');
-    const tag = item.querySelector('.resource-tag');
-    if(!a || !title) return;
-    searchIndex.push({
-      title: title.textContent.replace(/\s+/g,' ').trim(),
-      href: a.getAttribute('href'),
-      tag: tag ? tag.textContent.trim() : '',
-      cls: [...item.classList].find(c => c.startsWith('type-')) || ''
-    });
-  });
-}
+        // Navigateur précédent/suivant — garde les onglets synchronisés avec l'URL
+        window.addEventListener('popstate', function () {
+            if (isNavigatingByHash) return;
+            var id = location.hash ? location.hash.substring(1) : 'accueil';
+            if (!isValidTab(id)) id = 'accueil';
+            switchTab(id, { updateHash: false, scrollTop: false });
+        });
 
-function formatTemplate(str, vars){
-  return str.replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? vars[k] : ''));
-}
+        window.addEventListener('resize', function () {
+            positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+        });
 
-function performSearch(raw){
-  const q = (raw || '').trim().toLowerCase();
-  const lang = document.documentElement.lang === 'ar' ? 'ar' : 'fr';
-  const dict = I18N && I18N[lang] ? I18N[lang] : I18N.fr;
+        var navList = document.querySelector('.navigation-bar ul');
+        if (navList) {
+            navList.addEventListener('scroll', function () {
+                positionIndicator(document.querySelector('.nav-link[aria-selected="true"]'));
+            }, { passive: true });
+        }
 
-  if(!q){
-    switchTab(lastActiveTab, {updateHash:false, scrollTop:false});
-    return;
-  }
+        // ===== Recherche instantanée dans les documents =====
+        var searchIndex = [];
+        var lastActiveTab = 'accueil';
+        var searchTimer;
 
-  const panel = document.getElementById('content-search');
-  const box = document.getElementById('search-results');
-  const heading = document.getElementById('search-heading');
-  if(!panel || !box || !heading) return;
+        function buildSearchIndex() {
+            searchIndex = [];
+            document.querySelectorAll('.tab-content .resource-item').forEach(function (item) {
+                var a = item.querySelector('a');
+                var titleEl = item.querySelector('.resource-title');
+                var tagEl = item.querySelector('.resource-tag');
+                var panel = item.closest('.tab-content');
+                var levelHeading = panel ? panel.querySelector('h2') : null;
+                if (!a || !titleEl) return;
+                var typeClass = Array.prototype.slice.call(item.classList).filter(function (c) { return c.indexOf('type-') === 0; })[0] || '';
+                searchIndex.push({
+                    title: titleEl.textContent.replace(/\s+/g, ' ').trim(),
+                    href: a.getAttribute('href'),
+                    tag: tagEl ? tagEl.textContent.trim() : '',
+                    level: levelHeading ? levelHeading.textContent.replace(/\s+/g, ' ').trim() : '',
+                    typeClass: typeClass
+                });
+            });
+        }
 
-  const matches = searchIndex.filter(i => i.title.toLowerCase().includes(q));
+        function performSearch(rawQuery) {
+            var query = (rawQuery || '').trim().toLowerCase();
+            var searchPanel = document.getElementById('content-search');
+            var resultsBox = document.getElementById('search-results');
+            var heading = document.getElementById('search-heading');
+            if (!searchPanel || !resultsBox || !heading) return;
 
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  panel.classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if (!query) {
+                switchTab(lastActiveTab, { updateHash: false, scrollTop: false });
+                return;
+            }
 
-  heading.textContent = matches.length
-    ? formatTemplate(dict["search.results"] || "Résultats pour « {query} » ({count})", {query: raw.trim(), count: matches.length})
-    : formatTemplate(dict["search.none"] || "Aucun résultat pour « {query} »", {query: raw.trim()});
+            var matches = searchIndex.filter(function (item) {
+                return item.title.toLowerCase().indexOf(query) !== -1 || item.level.toLowerCase().indexOf(query) !== -1;
+            });
 
-  box.innerHTML = '';
+            document.querySelectorAll('.tab-content').forEach(function (p) { p.classList.remove('active-content'); });
+            document.querySelectorAll('.nav-link').forEach(function (l) { l.setAttribute('aria-selected', 'false'); });
+            var indicator = document.querySelector('.nav-indicator');
+            if (indicator) indicator.style.width = '0px';
 
-  if(matches.length){
-    matches.forEach(i => {
-      const row = document.createElement('div');
-      row.className = 'resource-item ' + i.cls;
-      row.innerHTML =
-        '<a href="' + i.href + '" download>' +
-          '<span class="resource-title"><span class="resource-tag">' + i.tag + '</span> ' + i.title + '</span>' +
-          '<span class="resource-icon"><i class="fa-solid fa-arrow-down"></i></span>' +
-        '</a>';
-      box.appendChild(row);
-    });
-  }else{
-    const p = document.createElement('p');
-    p.className = 'empty-note';
-    p.textContent = dict["search.empty"] || "Essayez un autre mot-clé.";
-    box.appendChild(p);
-  }
-}
+            heading.textContent = matches.length
+                ? 'Résultats pour « ' + rawQuery.trim() + ' » (' + matches.length + ')'
+                : 'Aucun résultat pour « ' + rawQuery.trim() + ' »';
 
-const I18N = {
-  fr: {
-    "hero.kicker":"Plateforme académique",
-    "hero.title":"Cours et exercices de mathématiques pour le collège",
-    "hero.text":"Une plateforme claire, fluide et moderne pour accéder rapidement aux cours, TD, examens corrigés et outils utiles en mathématiques.",
-    "hero.badge":"Ressources pédagogiques",
-    "nav.home":"Accueil",
-    "nav.about":"À propos",
-    "nav.college":"Collège",
-    "nav.tools":"Calculatrices",
-    "nav.faq":"FAQ",
-    "nav.contact":"Contactez-nous !",
-    "dd.1ac":"1ère Année Collège",
-    "dd.2ac":"2ème Année Collège",
-    "dd.3ac":"3ème Année Collège",
-    "home.title":"Une plateforme simple pour apprendre les mathématiques",
-    "home.text":"Accédez rapidement aux cours, travaux dirigés, examens corrigés et outils utiles pour les trois niveaux du collège.",
-    "home.card1":"Initiation, bases, logique et premiers chapitres.",
-    "home.card2":"Approfondissement progressif et nouvelles méthodes.",
-    "home.card3":"Préparation aux évaluations et consolidation.",
-    "about.title":"À propos de MoBendriss",
-    "about.text":"[Écrivez ici une courte présentation : parcours, spécialités et vision pédagogique.]",
-    "about.training":"Formation",
-    "about.training1":"[Doctorat en Mathématiques — Université, spécialité]",
-    "about.training2":"[Master / Agrégation — Université, spécialité]",
-    "about.fields":"Domaines",
-    "about.field1":"Analyse",
-    "about.field2":"Algèbre",
-    "about.field3":"Géométrie",
-    "about.field4":"Logique",
-    "maths.title":"Mathématiques",
-    "maths.note":"Choisissez un niveau et téléchargez directement vos ressources.",
-    "level.1ac":"1ère Année Collège",
-    "level.2ac":"2ème Année Collège",
-    "level.3ac":"3ème Année Collège",
-    "group.cours":"Cours",
-    "group.td":"Exercices & TD",
-    "group.exam":"Examens & Corrigés",
-    "tag.cours":"COURS",
-    "tag.td1":"TD 1",
-    "tag.exam":"EXAMEN",
-    "doc.1ac.c1":"Notions de logique",
-    "doc.1ac.t1":"Logique et raisonnements",
-    "doc.1ac.e1":"Session corrigée",
-    "doc.2ac.c1":"Analyse — Chapitre 1",
-    "empty.note":"Aucun document en ligne pour le moment. Revenez bientôt.",
-    "tools.title":"Calculatrices & Outils",
-    "tools.note":"Quelques outils utiles pour accompagner l’apprentissage des mathématiques.",
-    "tools.scientifique":"Calculatrice Scientifique",
-    "tools.scientifique.desc":"Espace réservé à une future calculatrice scientifique en ligne.",
-    "tools.geometrie":"Géométrie",
-    "tools.geometrie.desc":"Espace dédié aux outils géométriques interactifs et constructions.",
-    "tools.convertisseurs":"Convertisseurs",
-    "tools.convertisseurs.desc":"Outils de conversion de mesures, unités et grandeurs.",
-    "tools.coming":"Bientôt disponible",
-    "faq.title":"Questions fréquentes",
-    "faq.note":"Les réponses aux questions les plus courantes.",
-    "faq.q1":"Comment télécharger un document ?",
-    "faq.a1":"Survolez le menu Collège, choisissez votre niveau, puis cliquez sur le document voulu.",
-    "faq.q2":"Les documents sont-ils mis à jour régulièrement ?",
-    "faq.a2":"[Précisez votre rythme de publication.]",
-    "faq.q3":"Comment vous contacter ?",
-    "faq.a3":"Utilisez le menu Contactez-nous !",
-    "faq.q4":"Un document est introuvable, que faire ?",
-    "faq.a4":"[Expliquez la démarche ici.]",
-    "contact.title":"Contact direct",
-    "contact.note":"Pour toute question académique, n'hésitez pas à m'écrire.",
-    "contact.name":"Nom complet",
-    "contact.namePh":"Votre nom",
-    "contact.email":"Adresse e-mail",
-    "contact.message":"Votre message",
-    "contact.messagePh":"Votre message détaillé...",
-    "contact.send":"Envoyer le message",
-    "legal.title":"Confidentialité & conditions",
-    "legal.note":"Dernière mise à jour : juillet 2026.",
-    "legal.p1t":"Politique de confidentialité",
-    "legal.p1":"<strong>Données collectées.</strong> Le formulaire recueille votre nom, e-mail et message.",
-    "legal.p2t":"Sous-traitant technique",
-    "legal.p2":"<strong>FormSubmit.</strong> L'envoi est géré par un service tiers.",
-    "legal.p3t":"Conditions d'utilisation",
-    "legal.p3":"<strong>Usage pédagogique personnel.</strong> Les contenus sont proposés pour un usage éducatif.",
-    "sidebar.button":"Mathématiques",
-    "sidebar.news":"Actualités",
-    "sidebar.n1":"Mise en ligne du cours de logique pour la première année.",
-    "sidebar.n2":"[Actualité personnalisable.]",
-    "sidebar.n3":"[Autre actualité personnalisable.]",
-    "search.placeholder":"Rechercher un document…",
-    "search.aria":"Rechercher un document",
-    "search.note":"Résultats de recherche.",
-    "search.results":"Résultats pour « {query} » ({count})",
-    "search.none":"Aucun résultat pour « {query} »",
-    "search.empty":"Essayez un autre mot-clé.",
-    "footer.title":"Plateforme de cours et exercices de mathématiques",
-    "footer.text":"MoBendriss est une plateforme éducative marocaine mettant à disposition des cours, exercices, examens corrigés et supports pédagogiques téléchargeables. Notre objectif : aider les élèves à mieux comprendre leurs leçons et réussir grâce à une pédagogie claire, moderne et accessible.",
-    "footer.l1":"Contactez-nous !",
-    "footer.l2":"À propos",
-    "footer.l3":"Politique de confidentialité",
-    "footer.l4":"CGU",
-    "footer.l5":"Mentions légales",
-    "footer.copy":"Copyright © 2026"
-  },
-  ar: {
-    "hero.kicker":"منصة أكاديمية",
-    "hero.title":"دروس وتمارين الرياضيات لسلك الإعدادي",
-    "hero.text":"منصة واضحة وسلسة للوصول السريع للدروس والأعمال الموجهة والامتحانات المصححة والأدوات المفيدة.",
-    "hero.badge":"موارد تربوية",
-    "nav.home":"الرئيسية",
-    "nav.about":"من أنا",
-    "nav.college":"الإعدادي",
-    "nav.tools":"الحاسبات",
-    "nav.faq":"الأسئلة",
-    "nav.contact":"اتصل بنا !",
-    "dd.1ac":"السنة الأولى إعدادي",
-    "dd.2ac":"السنة الثانية إعدادي",
-    "dd.3ac":"السنة الثالثة إعدادي",
-    "home.title":"منصة بسيطة لتعلّم الرياضيات",
-    "home.text":"تصفح الدروس والأعمال الموجهة والامتحانات المصححة والأدوات المفيدة للمستويات الثلاث.",
-    "home.card1":"مدخل إلى الأساسيات والمنطق.",
-    "home.card2":"تعمّق تدريجي.",
-    "home.card3":"الاستعداد للتقويمات.",
-    "about.title":"من هو MoBendriss",
-    "about.text":"[قدّم نفسك باختصار.]",
-    "about.training":"التكوين",
-    "about.training1":"[دكتوراه في الرياضيات]",
-    "about.training2":"[ماستر]",
-    "about.fields":"المجالات",
-    "about.field1":"التحليل",
-    "about.field2":"الجبر",
-    "about.field3":"الهندسة",
-    "about.field4":"المنطق",
-    "maths.title":"الرياضيات",
-    "maths.note":"اختر المستوى وحمّل الموارد مباشرة.",
-    "level.1ac":"السنة الأولى إعدادي",
-    "level.2ac":"السنة الثانية إعدادي",
-    "level.3ac":"السنة الثالثة إعدادي",
-    "group.cours":"الدروس",
-    "group.td":"التمارين والأعمال الموجهة",
-    "group.exam":"الامتحانات والتصحيحات",
-    "tag.cours":"درس",
-    "tag.td1":"TD 1",
-    "tag.exam":"امتحان",
-    "doc.1ac.c1":"مبادئ المنطق",
-    "doc.1ac.t1":"المنطق والاستدلالات",
-    "doc.1ac.e1":"دورة مصحّحة",
-    "doc.2ac.c1":"التحليل — الفصل 1",
-    "empty.note":"لا توجد وثيقة حالياً.",
-    "tools.title":"الحاسبات والأدوات",
-    "tools.note":"أدوات مفيدة لمرافقة تعلّم الرياضيات.",
-    "tools.scientifique":"حاسبة علمية",
-    "tools.scientifique.desc":"مساحة مخصّصة لحاسبة علمية مستقبلاً.",
-    "tools.geometrie":"الهندسة",
-    "tools.geometrie.desc":"أدوات هندسية تفاعلية.",
-    "tools.convertisseurs":"المحوّلات",
-    "tools.convertisseurs.desc":"تحويل الوحدات والقياسات.",
-    "tools.coming":"قريباً",
-    "faq.title":"الأسئلة الشائعة",
-    "faq.note":"إجابات عن الأسئلة الأكثر تداولاً.",
-    "faq.q1":"كيف أحمّل وثيقة؟",
-    "faq.a1":"مرّر فوق الإعدادي واختر مستواك، ثم انقر على الوثيقة.",
-    "faq.q2":"هل يتم التحديث بانتظام؟",
-    "faq.a2":"[حدّد وتيرة النشر هنا.]",
-    "faq.q3":"كيف أتواصل معك؟",
-    "faq.a3":"استعمل «اتصل بنا !».",
-    "faq.q4":"وثيقة مفقودة؟",
-    "faq.a4":"[اشرح الإجراء هنا.]",
-    "contact.title":"تواصل مباشر",
-    "contact.note":"لأي سؤال أكاديمي أو تعاون بيداغوجي.",
-    "contact.name":"الاسم الكامل",
-    "contact.namePh":"اسمك",
-    "contact.email":"البريد الإلكتروني",
-    "contact.message":"رسالتك",
-    "contact.messagePh":"رسالتك المفصّلة...",
-    "contact.send":"إرسال الرسالة",
-    "legal.title":"الخصوصية والشروط",
-    "legal.note":"آخر تحديث: يوليوز 2026.",
-    "legal.p1t":"سياسة الخصوصية",
-    "legal.p1":"<strong>البيانات.</strong> يجمع النموذج اسمك وبريدك ورسالتك.",
-    "legal.p2t":"مزوّد تقني",
-    "legal.p2":"<strong>FormSubmit.</strong> يتم الإرسال عبر خدمة خارجية.",
-    "legal.p3t":"شروط الاستخدام",
-    "legal.p3":"<strong>استعمال تربوي شخصي.</strong> المحتويات مخصّصة للتعليم.",
-    "sidebar.button":"الرياضيات",
-    "sidebar.news":"آخر الأخبار",
-    "sidebar.n1":"نشر درس المنطق للسنة الأولى.",
-    "sidebar.n2":"[خبر مخصّص.]",
-    "sidebar.n3":"[خبر آخر مخصّص.]",
-    "search.placeholder":"ابحث عن وثيقة…",
-    "search.aria":"البحث عن وثيقة",
-    "search.note":"نتائج البحث.",
-    "search.results":"نتائج « {query} » ({count})",
-    "search.none":"لا توجد نتائج لـ « {query} »",
-    "search.empty":"جرّب كلمة أخرى.",
-    "footer.title":"منصة الرياضيات التفاعلية بالمغرب",
-    "footer.text":"MoBendriss منصة مغربية تضع رهن الإشارة الدروس والأعمال الموجهة والامتحانات المصححة والموارد التربوية القابلة للتحميل. هدفنا مساعدة المتعلمين على فهم الرياضيات والنجاح عبر بيداغوجيا واضحة وعصرية.",
-    "footer.l1":"اتصل بنا !",
-    "footer.l2":"من أنا",
-    "footer.l3":"سياسة الخصوصية",
-    "footer.l4":"شروط الاستخدام",
-    "footer.l5":"معلومات قانونية",
-    "footer.copy":"حقوق النشر © 2026"
-  }
-};
+            resultsBox.innerHTML = '';
+            matches.forEach(function (item) {
+                var row = document.createElement('div');
+                row.className = 'resource-item ' + item.typeClass;
+                var link = document.createElement('a');
+                link.href = item.href;
+                link.setAttribute('download', '');
+                link.innerHTML =
+                    '<span class="resource-title"><span class="resource-tag">' + item.tag + '</span> ' + item.title + '</span>' +
+                    '<span class="download-btn"><i class="fa-solid fa-download"></i> PDF</span>';
+                row.appendChild(link);
+                resultsBox.appendChild(row);
+            });
+            if (!matches.length) {
+                var note = document.createElement('p');
+                note.className = 'empty-note';
+                note.textContent = 'Essayez un autre mot-clé, ou parcourez directement les onglets par niveau.';
+                resultsBox.appendChild(note);
+            }
 
-function applyLang(lang){
-  if(!I18N[lang]) lang = 'fr';
-  document.documentElement.setAttribute('lang', lang);
-  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            searchPanel.classList.add('active-content');
+            revealChildren(searchPanel);
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const val = I18N[lang][key] || I18N.fr[key];
-    if(val !== undefined) el.innerHTML = val;
-  });
+            var announcer = document.getElementById('tab-announcer');
+            if (announcer) {
+                announcer.textContent = matches.length ? (matches.length + ' résultat(s) trouvé(s)') : 'Aucun résultat trouvé';
+            }
+        }
 
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    const val = I18N[lang][key] || I18N.fr[key];
-    if(val !== undefined) el.setAttribute('placeholder', val);
-  });
+        var searchInput = document.getElementById('site-search');
+        if (searchInput) {
+            searchInput.addEventListener('input', function () {
+                var val = this.value;
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(function () { performSearch(val); }, 180);
+            });
+            searchInput.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') {
+                    this.value = '';
+                    performSearch('');
+                    this.blur();
+                }
+            });
+        }
 
-  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-    const key = el.getAttribute('data-i18n-aria');
-    const val = I18N[lang][key] || I18N.fr[key];
-    if(val !== undefined) el.setAttribute('aria-label', val);
-  });
+        // ===== Traduction FR / AR =====
+        var I18N = {
+            fr: {
+                eyebrow: "Professeur de mathématiques",
+                tagline: "Cours et exercices de mathématiques",
+                "hero.badgeResources": "Ressources pédagogiques",
+                "nav.accueil": "Accueil",
+                "nav.apropos": "À propos",
+                "nav.videos": "Vidéos",
+                "nav.math": "Mathématiques",
+                "nav.l1": "1ère année collège",
+                "nav.l2": "2ème année collège",
+                "nav.l3": "3ème année collège",
+                "nav.outils": "Outils",
+                "nav.faq": "FAQ",
+                "nav.contact": "Contact",
+                "search.placeholder": "Rechercher un document…",
+                "search.aria": "Rechercher un document",
+                "accueil.title": "Des cours et des exercices de maths, classés par niveau.",
+                "accueil.welcome": "Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.",
+                "accueil.lead": "Chaque niveau — 1AC, 2AC, 3AC — regroupe ses propres documents, classés en deux catégories : les <strong>cours</strong>, qui posent les définitions et les résultats, et les <strong>TD</strong>, qui les mettent en pratique. Utilisez le menu « Mathématiques » ci-dessus pour accéder directement aux documents de votre niveau.",
+                "apropos.heading": "À propos de MoBendriss",
+                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques. Ce paragraphe est un exemple à personnaliser.]",
+                "apropos.formation": "Formation",
+                "apropos.dip1": "[Doctorat en Mathématiques — Université, spécialité]",
+                "apropos.dip2": "[Master / Agrégation — Université, spécialité]",
+                "apropos.domaines": "Domaines d'enseignement et de recherche",
+                "apropos.tag1": "Analyse",
+                "apropos.tag2": "Logique",
+                "apropos.tag3": "Analyse fonctionnelle",
+                "apropos.tag4": "[Votre domaine]",
+                "l1.heading": "1ère année collège — 1AC",
+                "l1.sub": "Cliquez sur un document pour lancer le téléchargement.",
+                "l2.heading": "2ème année collège — 2AC",
+                "l2.sub": "Documents et supports pour le deuxième niveau universitaire.",
+                "l3.heading": "3ème année collège — 3AC",
+                "l3.sub": "Espace réservé aux modules de spécialité et d'approfondissement.",
+                "group.cours": "Cours",
+                "group.td": "Exercices &amp; TD",
+                "group.examens": "Examens &amp; Corrigés",
+                "tag.cours": "COURS",
+                "tag.td1": "TD 1",
+                "tag.examen": "EXAMEN",
+                "l1.cours1": "Notions de logique",
+                "l1.td1": "Logique et raisonnements",
+                "l1.exam1": "Session normale — corrigé",
+                "l1.cours2": "[Chapitre 2 — à compléter]",
+                "l1.cours3": "[Chapitre 3 — à compléter]",
+                "tag.td2": "TD 2",
+                "l1.td2": "[Titre — à compléter]",
+                "l2.cours1": "Analyse fonctionnelle",
+                "l2.cours2": "[Chapitre 2 — à compléter]",
+                "l2.td1": "[Titre — à compléter]",
+                "btn.download": "PDF",
+                "empty.note": "Aucun document en ligne pour le moment. Revenez bientôt.",
+                "faq.heading": "Questions fréquentes",
+                "faq.sub": "Les réponses aux questions les plus courantes sur l'organisation du site et des cours.",
+                "faq.q1": "Comment télécharger un document ?",
+                "faq.a1": "Ouvrez le menu « Mathématiques », choisissez votre niveau (1AC, 2AC ou 3AC), puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
+                "faq.q2": "Les documents sont-ils mis à jour régulièrement ?",
+                "faq.a2": "[Précisez ici votre rythme de publication : par exemple, un nouveau support est mis en ligne à chaque nouveau chapitre traité en cours.]",
+                "faq.q3": "Comment vous contacter en cas de question sur un exercice ?",
+                "faq.a3": "Utilisez le formulaire de l'onglet Contact. [Ajoutez ici, si vous le souhaitez, vos horaires de disponibilité ou de permanence.]",
+                "faq.q4": "Un document que je cherche n'est pas encore en ligne, que faire ?",
+                "faq.a4": "[Indiquez la marche à suivre : par exemple, contactez-moi via le formulaire en précisant le niveau et le sujet concernés.]",
+                "outils.heading": "Outils &amp; calculatrices",
+                "outils.sub": "Quelques outils utiles pour accompagner l'apprentissage des mathématiques.",
+                "outils.tool1.title": "Calculatrice scientifique",
+                "outils.tool1.desc": "Espace réservé à une future calculatrice scientifique en ligne.",
+                "outils.tool2.title": "Géométrie",
+                "outils.tool2.desc": "Espace dédié aux outils géométriques interactifs et aux constructions.",
+                "outils.tool3.title": "Convertisseurs",
+                "outils.tool3.desc": "Outils de conversion de mesures, d'unités et de grandeurs.",
+                "outils.soon": "Bientôt disponible",
+                "contact.heading": "Contact direct",
+                "contact.intro": "Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.",
+                "contact.nameLabel": "Nom complet",
+                "contact.namePh": "Votre nom",
+                "contact.emailLabel": "Adresse e-mail",
+                "contact.messageLabel": "Votre message",
+                "contact.messagePh": "Votre message détaillé...",
+                "contact.submit": "Envoyer le message",
+                "legal.heading": "Confidentialité &amp; conditions",
+                "legal.sub": "Dernière mise à jour : juillet 2026. [Ce texte est un modèle général — faites-le relire par un professionnel si vous voulez une conformité juridique complète pour votre pays.]",
+                "legal.privacyTitle": "Politique de confidentialité",
+                "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message. Ces informations sont utilisées uniquement pour vous répondre et ne sont ni vendues ni partagées à des fins commerciales.",
+                "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par le service tiers FormSubmit, qui reçoit et transmet le message par e-mail. Consultez sa propre politique de confidentialité pour plus de détails.",
+                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices (Google Fonts), des icônes (Font Awesome) et un moteur de rendu mathématique (MathJax) depuis des serveurs tiers. Ces services peuvent recevoir votre adresse IP au moment du chargement, indépendamment de ce site.",
+                "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données en écrivant via le formulaire de contact.",
+                "legal.termsTitle": "Conditions d'utilisation",
+                "legal.terms1": "<strong>Usage des documents.</strong> Les cours, TD et examens proposés sont destinés à un usage pédagogique personnel. Toute reproduction ou diffusion à des fins commerciales est interdite sans autorisation préalable.",
+                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état » et peuvent contenir des erreurs ; ils ne remplacent pas les supports officiels de votre établissement.",
+                "footer.mission": "Une plateforme éducative pour aider les élèves du collège à mieux comprendre leurs leçons de mathématiques, grâce à une pédagogie claire et accessible.",
+                "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
+                "footer.tagline": "Conçu avec rigueur.",
+                "footer.legalLink": "Confidentialité &amp; conditions",
+                "sidebar.mathBtn": "Mathématiques",
+                "sidebar.newsTitle": "Actualités",
+                "sidebar.newBadge": "Nouveau",
+                "sidebar.news1": "Mise en ligne du cours de logique pour la première année.",
+                "sidebar.news2": "[Une actualité à personnaliser : nouveau TD, date d'examen, information de rentrée...]",
+                "sidebar.news3": "[Une autre actualité à personnaliser.]"
+            },
+            ar: {
+                eyebrow: "أستاذ الرياضيات",
+                tagline: "دروس وتمارين في الرياضيات",
+                "hero.badgeResources": "موارد تربوية",
+                "nav.accueil": "الرئيسية",
+                "nav.apropos": "من أنا",
+                "nav.videos": "فيديوهات",
+                "nav.math": "الرياضيات",
+                "nav.l1": "الأولى إعدادي",
+                "nav.l2": "الثانية إعدادي",
+                "nav.l3": "الثالثة إعدادي",
+                "nav.outils": "أدوات",
+                "nav.faq": "الأسئلة الشائعة",
+                "nav.contact": "تواصل",
+                "search.placeholder": "ابحث عن وثيقة…",
+                "search.aria": "البحث عن وثيقة",
+                "accueil.title": "دروس وتمارين في الرياضيات، مصنّفة حسب المستوى.",
+                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس، وأوراق الأعمال الموجهة، والتمارين المصححة الموضوعة رهن إشارة الطلبة.",
+                "accueil.lead": "كل مستوى — الأولى، الثانية، الثالثة إعدادي — يضم وثائقه الخاصة، مصنّفة في فئتين: <strong>الدروس</strong>، التي تضع التعاريف والنتائج، و<strong>الأعمال الموجهة</strong>، التي تطبّقها عملياً. استخدموا قائمة «الرياضيات» أعلاه للوصول مباشرة إلى وثائق مستواكم.",
+                "apropos.heading": "من هو MoBendriss",
+                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات. هذه الفقرة نموذج يمكن تخصيصه.]",
+                "apropos.formation": "التكوين",
+                "apropos.dip1": "[دكتوراه في الرياضيات — الجامعة، التخصص]",
+                "apropos.dip2": "[ماستر / تبريز — الجامعة، التخصص]",
+                "apropos.domaines": "مجالات التدريس والبحث",
+                "apropos.tag1": "التحليل",
+                "apropos.tag2": "المنطق",
+                "apropos.tag3": "التحليل الدالي",
+                "apropos.tag4": "[مجالك]",
+                "l1.heading": "الأولى إعدادي — 1AC",
+                "l1.sub": "انقر على وثيقة لبدء التحميل.",
+                "l2.heading": "الثانية إعدادي — 2AC",
+                "l2.sub": "وثائق ودعامات للمستوى الجامعي الثاني.",
+                "l3.heading": "الثالثة إعدادي — 3AC",
+                "l3.sub": "فضاء مخصص لوحدات التخصص والتعميق.",
+                "group.cours": "الدروس",
+                "group.td": "التمارين والأعمال الموجهة",
+                "group.examens": "الامتحانات والتصحيحات",
+                "tag.cours": "درس",
+                "tag.td1": "TD 1",
+                "tag.examen": "امتحان",
+                "l1.cours1": "مبادئ المنطق",
+                "l1.td1": "المنطق والاستدلالات",
+                "l1.exam1": "الدورة العادية — مصحح",
+                "l1.cours2": "[الفصل 2 — يُستكمل]",
+                "l1.cours3": "[الفصل 3 — يُستكمل]",
+                "tag.td2": "TD 2",
+                "l1.td2": "[العنوان — يُستكمل]",
+                "l2.cours1": "التحليل الدالي",
+                "l2.cours2": "[الفصل 2 — يُستكمل]",
+                "l2.td1": "[العنوان — يُستكمل]",
+                "btn.download": "PDF",
+                "empty.note": "لا توجد وثيقة متاحة حالياً. عودوا قريباً.",
+                "faq.heading": "الأسئلة الشائعة",
+                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً حول تنظيم الموقع والدروس.",
+                "faq.q1": "كيف أحمّل وثيقة؟",
+                "faq.a1": "افتح قائمة «الرياضيات»، اختر مستواك (الأولى أو الثانية أو الثالثة إعدادي)، ثم انقر مباشرة على عنوان الوثيقة المطلوبة: يبدأ التحميل تلقائياً.",
+                "faq.q2": "هل يتم تحديث الوثائق بانتظام؟",
+                "faq.a2": "[حدّد هنا وتيرة النشر: مثلاً، يُنشر دعم جديد مع كل فصل جديد يُدرَّس.]",
+                "faq.q3": "كيف أتواصل معك بخصوص سؤال حول تمرين؟",
+                "faq.a3": "استخدم استمارة لسان «تواصل». [أضف هنا، إن أردت، ساعات تواجدك أو استقبالك للطلبة.]",
+                "faq.q4": "الوثيقة التي أبحث عنها غير متوفرة بعد، ماذا أفعل؟",
+                "faq.a4": "[وضّح هنا الخطوات: مثلاً، راسلني عبر الاستمارة مع تحديد المستوى والموضوع المعنيين.]",
+                "outils.heading": "أدوات وآلات حاسبة",
+                "outils.sub": "بعض الأدوات المفيدة لمرافقة تعلّم الرياضيات.",
+                "outils.tool1.title": "آلة حاسبة علمية",
+                "outils.tool1.desc": "مساحة مخصصة لآلة حاسبة علمية إلكترونية قادمة.",
+                "outils.tool2.title": "الهندسة",
+                "outils.tool2.desc": "مساحة مخصصة لأدوات هندسية تفاعلية وإنشاءات.",
+                "outils.tool3.title": "محوّلات",
+                "outils.tool3.desc": "أدوات لتحويل القياسات والوحدات والمقادير.",
+                "outils.soon": "قريباً",
+                "contact.heading": "تواصل مباشر",
+                "contact.intro": "لأي سؤال أكاديمي أو تعاون بيداغوجي، لا تتردد في مراسلتي.",
+                "contact.nameLabel": "الاسم الكامل",
+                "contact.namePh": "اسمك",
+                "contact.emailLabel": "البريد الإلكتروني",
+                "contact.messageLabel": "رسالتك",
+                "contact.messagePh": "رسالتك المفصّلة...",
+                "contact.submit": "إرسال الرسالة",
+                "legal.heading": "الخصوصية والشروط",
+                "legal.sub": "آخر تحديث: يوليوز 2026. [هذا نص نموذجي عام — يُنصح بمراجعته من طرف مختص قانوني لضمان مطابقته الكاملة لبلدك.]",
+                "legal.privacyTitle": "سياسة الخصوصية",
+                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك، وبريدك الإلكتروني، ومحتوى رسالتك. تُستخدم هذه المعلومات فقط للرد عليك، ولا تُباع أو تُشارك لأغراض تجارية.",
+                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم إرسال الاستمارة عبر خدمة FormSubmit التي تستقبل الرسالة وتُحيلها بالبريد الإلكتروني. راجع سياسة خصوصيتها الخاصة لمزيد من التفاصيل.",
+                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل هذا الموقع خطوطاً (Google Fonts)، وأيقونات (Font Awesome)، ومحرك عرض رياضي (MathJax) من خوادم خارجية. قد تستقبل هذه الخدمات عنوان IP الخاص بك عند التحميل، بشكل مستقل عن هذا الموقع.",
+                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها عبر الكتابة من خلال استمارة التواصل.",
+                "legal.termsTitle": "شروط الاستخدام",
+                "legal.terms1": "<strong>استخدام الوثائق.</strong> الدروس والأعمال الموجهة والامتحانات المقترحة مخصصة للاستخدام التربوي الشخصي. يُمنع أي نسخ أو نشر لأغراض تجارية دون إذن مسبق.",
+                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي» وقد تحتوي على أخطاء؛ ولا تُغني عن الدعامات الرسمية لمؤسستك.",
+                "footer.mission": "منصة تربوية لمساعدة تلاميذ الإعدادي على فهم دروس الرياضيات بشكل أفضل، بأسلوب بيداغوجي واضح وسهل الوصول.",
+                "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
+                "footer.tagline": "صُمم بدقة.",
+                "footer.legalLink": "الخصوصية والشروط",
+                "sidebar.mathBtn": "الرياضيات",
+                "sidebar.newsTitle": "آخر الأخبار",
+                "sidebar.newBadge": "جديد",
+                "sidebar.news1": "نشر درس المنطق للسنة الأولى.",
+                "sidebar.news2": "[خبر يمكن تخصيصه: عمل موجّه جديد، تاريخ امتحان، معلومة عن الدخول الجامعي...]",
+                "sidebar.news3": "[خبر آخر يمكن تخصيصه.]"
+            }
+        };
 
-  const label = document.querySelector('.lang-label');
-  if(label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
+        function applyLang(lang) {
+            if (!I18N[lang]) lang = 'fr';
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
-  const btn = document.getElementById('lang-toggle');
-  if(btn) btn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
+            document.querySelectorAll('[data-i18n]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.innerHTML = val;
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n-placeholder');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.setAttribute('placeholder', val);
+            });
+            document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
+                var key = el.getAttribute('data-i18n-aria');
+                var val = I18N[lang][key] || I18N.fr[key];
+                if (val !== undefined) el.setAttribute('aria-label', val);
+            });
 
-  try{ localStorage.setItem('mb-lang', lang); }catch(e){}
-  buildSearchIndex();
-}
+            var label = document.querySelector('.lang-toggle-label');
+            var langBtn = document.getElementById('lang-toggle');
+            if (label) label.textContent = lang === 'ar' ? 'FR' : 'AR';
+            if (langBtn) langBtn.setAttribute('aria-label', lang === 'ar' ? 'Switch to French' : 'التبديل إلى العربية');
 
-function applyTheme(t){
-  document.documentElement.setAttribute('data-theme', t);
-  const icon = document.querySelector('#theme-toggle i');
-  if(icon) icon.className = t === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
-  const btn = document.getElementById('theme-toggle');
-  if(btn) btn.setAttribute('aria-label', t === 'dark' ? 'Mode clair' : 'Mode sombre');
-  try{ localStorage.setItem('mb-theme', t); }catch(e){}
-}
+            try { localStorage.setItem('mb-lang', lang); } catch (e) {}
+            buildSearchIndex();
+        }
 
-const langToggle = document.getElementById('lang-toggle');
-if(langToggle){
-  applyLang(document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr');
-  langToggle.addEventListener('click', () => {
-    const c = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr';
-    applyLang(c === 'ar' ? 'fr' : 'ar');
-  });
-}
+        var langToggle = document.getElementById('lang-toggle');
+        if (langToggle) {
+            applyLang(document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr');
+            langToggle.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('lang') === 'ar' ? 'ar' : 'fr';
+                applyLang(current === 'ar' ? 'fr' : 'ar');
+            });
+        }
 
-const themeToggle = document.getElementById('theme-toggle');
-if(themeToggle){
-  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
-  themeToggle.addEventListener('click', () => {
-    const c = document.documentElement.getAttribute('data-theme') || 'light';
-    applyTheme(c === 'dark' ? 'light' : 'dark');
-  });
-}
+        // ===== Mode sombre =====
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            var icon = document.querySelector('#theme-toggle i');
+            var btn = document.getElementById('theme-toggle');
+            if (icon) { icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon'; }
+            if (btn) { btn.setAttribute('aria-label', theme === 'dark' ? 'Activer le mode clair' : 'Activer le mode sombre'); }
+            try { localStorage.setItem('mb-theme', theme); } catch (e) {}
+        }
+        var themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+            themeToggle.addEventListener('click', function () {
+                var current = document.documentElement.getAttribute('data-theme');
+                applyTheme(current === 'dark' ? 'light' : 'dark');
+            });
+        }
 
-const siteSearch = document.getElementById('site-search');
-if(siteSearch){
-  siteSearch.addEventListener('input', () => {
-    clearTimeout(searchTimer);
-    const v = siteSearch.value;
-    searchTimer = setTimeout(() => performSearch(v), 180);
-  });
-  siteSearch.addEventListener('keydown', (e) => {
-    if(e.key === 'Escape'){ siteSearch.value = ''; performSearch(''); siteSearch.blur(); }
-  });
-}
+        window.addEventListener('load', buildSearchIndex);
 
-window.addEventListener('load', () => {
-  const init = location.hash ? location.hash.substring(1) : 'accueil';
-  switchTab(TABS.includes(init) ? init : 'accueil', {updateHash:false, scrollTop:false});
-});
-</script>
+        // Enregistrement du service worker (PWA) — s'active uniquement en HTTPS/localhost
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('service-worker.js').catch(function () {
+                    // Échec silencieux : le site fonctionne normalement sans mode hors-ligne.
+                });
+            });
+        }
+    </script>
 
 </body>
 </html>
-```
-
----
-
-## ما الذي تم تنفيذه بالكامل في هذا الملف؟
-- **قائمة Collège المنسدلة** (1AC / 2AC / 3AC) — عند المرور (hover) أو النقر
-- **قائمة Calculatrices المنسدلة** (Calculatrice Scientifique / Géométrie / Convertisseurs)
-- **أيقونة دائرية بيضاء** بجانب العناصر في الأعلى
-- **Footer أزرق متدرج** مثل Revisio مع روابط مفصولة (`|`)
-- **شريط تنقل سلس** مع زر اللغة والوضع الليلي
-- **ترجمة عربية وفرنسية** كاملة
-- **بحث داخلي** في الوثائق
-- **مستويات 1AC و2AC و3AC** مع الموارد
-- **نظام تبويبات سلس** (Accueil / À propos / Collège / FAQ / Contact)
-
-انسخ الملف بالكامل — لا يوجد أي جزء ناقص.
