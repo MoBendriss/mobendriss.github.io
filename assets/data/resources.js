@@ -7,10 +7,10 @@ window.MB_RESOURCES = [
         title: {
             fr: "Enchaînement d'opérations sur les nombres décimaux",
             ar: "إنجاز العمليات على الأعداد العشرية"
+                   },
                   topics: ["كلمات", "للبحث"],
-    file: "./ documents/college/1ac/cours 1 er année.pdf",
-    updated: "2026-07-20"
-          
+    file: "./ documents/college/1ac/cours_Enchaînement d'opérations sur les nombres décimaux.pdf",
+    updated: "2026-07-20"        
         },
         description: {
             fr: "Cours synthétique avec exemples progressifs.",
