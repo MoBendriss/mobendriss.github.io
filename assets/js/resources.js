@@ -153,3 +153,8 @@ window.MB_RESOURCES = [
         updated: "2026-07-05"
     }
 ];
+document.querySelectorAll('[data-open-tab]').forEach(function (button) {
+    button.addEventListener('click', function () {
+        switchTab(button.getAttribute('data-open-tab'));
+    });
+});
