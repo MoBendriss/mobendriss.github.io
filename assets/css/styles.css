@@ -751,3 +751,144 @@ footer .foot-accent { color: var(--focus); }
     align-items: center;
     gap: .3rem;
 }
+/* =========================================================
+   ORGANISATION DES RESSOURCES PAR CYCLE ET PAR NIVEAU
+   ========================================================= */
+
+.cycle-section {
+    margin-top: 2.5rem;
+}
+
+.cycle-section:first-child {
+    margin-top: 1.5rem;
+}
+
+.cycle-heading {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    margin: 0 0 1.25rem;
+    padding: .9rem 1.1rem;
+    border: 1px solid rgba(44, 110, 142, .22);
+    border-radius: 12px;
+    background:
+        linear-gradient(90deg, rgba(44, 110, 142, .13), transparent),
+        var(--card);
+    color: var(--chalk-blue-deep);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    box-shadow: var(--shadow-1);
+}
+
+.cycle-heading i {
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 9px;
+    background: var(--grad-btn);
+    color: var(--gold-soft);
+    font-size: .95rem;
+    box-shadow: 0 5px 14px -7px var(--teal-glow);
+}
+
+.resource-level-group {
+    margin: 1.1rem 0 2rem;
+    padding: 1.1rem;
+    border-left: 2px solid rgba(44, 110, 142, .2);
+}
+
+.resource-level-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .7rem;
+    margin: 0 0 1rem;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+}
+
+.level-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3.4rem;
+    padding: .32rem .55rem;
+    border-radius: 7px;
+    background: var(--grad-gold);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    box-shadow: 0 4px 12px -6px var(--gold-glow);
+}
+
+.level-resource-count {
+    margin-inline-start: auto;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    font-weight: 500;
+}
+
+.resource-level-list {
+    display: grid;
+    gap: 1rem;
+}
+
+/* الوضع الليلي */
+[data-theme="dark"] .cycle-heading {
+    color: #A9D6E9;
+    border-color: rgba(143, 196, 222, .2);
+    background:
+        linear-gradient(90deg, rgba(44, 110, 142, .22), transparent),
+        var(--card);
+}
+
+[data-theme="dark"] .resource-level-group {
+    border-left-color: rgba(143, 196, 222, .25);
+}
+
+/* العربية RTL */
+[dir="rtl"] .resource-level-group {
+    border-left: none;
+    border-right: 2px solid rgba(44, 110, 142, .2);
+}
+
+[dir="rtl"] .level-resource-count {
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+}
+
+[data-theme="dark"][dir="rtl"] .resource-level-group {
+    border-right-color: rgba(143, 196, 222, .25);
+}
+
+/* الهاتف */
+@media (max-width: 600px) {
+    .cycle-heading {
+        font-size: 1.15rem;
+        padding: .75rem .85rem;
+    }
+
+    .resource-level-group {
+        padding: .8rem;
+        margin-bottom: 1.3rem;
+    }
+
+    .resource-level-heading {
+        font-size: 1rem;
+        gap: .5rem;
+    }
+
+    .level-resource-count {
+        width: 100%;
+        margin-inline-start: 0;
+    }
+
+    [dir="rtl"] .level-resource-count {
+        margin-inline-end: 0;
+    }
+}
