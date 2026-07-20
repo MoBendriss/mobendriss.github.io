@@ -159,57 +159,229 @@
         return card;
     }
 
-    function render() {
-        var grid    = document.getElementById("resource-grid");
-        var emptyEl = document.getElementById("resource-empty");
-        var countEl = document.getElementById("resource-count");
-        if (!grid) return;
-
-        var items = getFiltered();
-        var l     = lang();
-        var cfg   = window.MB_CONFIG || {};
-
-        grid.replaceChildren();
-
-        if (state.error) {
-            var div = document.createElement("div");
-            div.className = "error-banner";
-            div.innerHTML =
-                '<i class="fa-solid fa-triangle-exclamation"></i>'
-              + '<span>' + (l === "ar" ? (cfg.ERROR_AR || "") : (cfg.ERROR_FR || "")) + '</span>'
-              + '<button class="retry-btn" type="button">'
-              + (l === "ar" ? "إعادة المحاولة" : "Reessayer")
-              + '</button>';
-            div.querySelector(".retry-btn").addEventListener("click", function () {
-                initLoad(true);
-            });
-            grid.appendChild(div);
-            if (emptyEl) emptyEl.hidden = true;
-            return;
+   function getCycleLabel(cycle, l) {
+    var labels = {
+        college: {
+            fr: "Collège",
+            ar: "التعليم الثانوي الإعدادي"
+        },
+        lycee: {
+            fr: "Lycée",
+            ar: "التعليم الثانوي التأهيلي"
+        },
+        superieur: {
+            fr: "Enseignement supérieur & recherche",
+            ar: "التعليم العالي والبحث العلمي"
         }
+    };
 
-        items.forEach(function (r) {
-            grid.appendChild(buildCard(r));
+    return (labels[cycle] || { fr: cycle, ar: cycle })[l];
+}
+
+function getLevelLabel(level, l) {
+    var labels = {
+        "1AC": {
+            fr: "1AC — Première année collégiale",
+            ar: "1AC — السنة الأولى إعدادي"
+        },
+        "2AC": {
+            fr: "2AC — Deuxième année collégiale",
+            ar: "2AC — السنة الثانية إعدادي"
+        },
+        "3AC": {
+            fr: "3AC — Troisième année collégiale",
+            ar: "3AC — السنة الثالثة إعدادي"
+        },
+        "TCS": {
+            fr: "TCS — Tronc commun scientifique",
+            ar: "TCS — الجذع المشترك العلمي"
+        },
+        "1BAC": {
+            fr: "1BAC — Première année Baccalauréat",
+            ar: "1BAC — السنة الأولى بكالوريا"
+        },
+        "2BAC": {
+            fr: "2BAC — Deuxième année Baccalauréat",
+            ar: "2BAC — السنة الثانية بكالوريا"
+        },
+        "SUP": {
+            fr: "SUP — Enseignement supérieur",
+            ar: "SUP — التعليم العالي"
+        }
+    };
+
+    return (labels[level] || { fr: level, ar: level })[l];
+}
+
+function cycleOrder(cycle) {
+    var order = {
+        college: 1,
+        lycee: 2,
+        superieur: 3
+    };
+
+    return order[cycle] || 99;
+}
+
+function levelOrder(level) {
+    var order = {
+        "1AC": 1,
+        "2AC": 2,
+        "3AC": 3,
+        "TCS": 4,
+        "1BAC": 5,
+        "2BAC": 6,
+        "SUP": 7
+    };
+
+    return order[level] || 99;
+}
+
+function render() {
+    var grid = document.getElementById("resource-grid");
+    var emptyEl = document.getElementById("resource-empty");
+    var countEl = document.getElementById("resource-count");
+
+    if (!grid) return;
+
+    var items = getFiltered();
+    var l = lang();
+    var cfg = window.MB_CONFIG || {};
+
+    grid.replaceChildren();
+
+    /* حالة خطأ الاتصال */
+    if (state.error) {
+        var errorDiv = document.createElement("div");
+        errorDiv.className = "error-banner";
+
+        errorDiv.innerHTML =
+            '<i class="fa-solid fa-triangle-exclamation"></i>' +
+            '<span>' +
+            (l === "ar" ? (cfg.ERROR_AR || "") : (cfg.ERROR_FR || "")) +
+            "</span>" +
+            '<button class="retry-btn" type="button">' +
+            (l === "ar" ? "إعادة المحاولة" : "Réessayer") +
+            "</button>";
+
+        errorDiv.querySelector(".retry-btn").addEventListener("click", function () {
+            initLoad(true);
         });
 
-        if (countEl) {
-            countEl.textContent = l === "ar"
-                ? items.length + " مورد متاح"
-                : items.length + " ressource(s)";
-        }
+        grid.appendChild(errorDiv);
 
-        if (emptyEl) {
-            emptyEl.hidden = items.length > 0;
-            if (items.length === 0) {
-                emptyEl.textContent = l === "ar"
-                    ? (cfg.EMPTY_AR || "")
-                    : (cfg.EMPTY_FR || "");
-            }
-        }
-
-        typesetMath(grid);
+        if (emptyEl) emptyEl.hidden = true;
+        return;
     }
 
+    /* ترتيب العناصر حسب السلك ثم المستوى */
+    items.sort(function (a, b) {
+        var cycleDiff = cycleOrder(a.cycle) - cycleOrder(b.cycle);
+
+        if (cycleDiff !== 0) return cycleDiff;
+
+        return levelOrder(a.level) - levelOrder(b.level);
+    });
+
+    /*
+      تجميع الموارد:
+      {
+        college: {
+          "1AC": [resource, resource],
+          "2AC": [...]
+        },
+        lycee: {...}
+      }
+    */
+    var grouped = {};
+
+    items.forEach(function (resource) {
+        if (!grouped[resource.cycle]) {
+            grouped[resource.cycle] = {};
+        }
+
+        if (!grouped[resource.cycle][resource.level]) {
+            grouped[resource.cycle][resource.level] = [];
+        }
+
+        grouped[resource.cycle][resource.level].push(resource);
+    });
+
+    /* بناء الواجهة: سلك > مستوى > بطاقات */
+    Object.keys(grouped)
+        .sort(function (a, b) {
+            return cycleOrder(a) - cycleOrder(b);
+        })
+        .forEach(function (cycle) {
+            var cycleSection = document.createElement("section");
+            cycleSection.className = "cycle-section";
+
+            var cycleHeading = document.createElement("h3");
+            cycleHeading.className = "cycle-heading";
+            cycleHeading.innerHTML =
+                '<i class="fa-solid ' +
+                (cycle === "college"
+                    ? "fa-school"
+                    : cycle === "lycee"
+                        ? "fa-building-columns"
+                        : "fa-graduation-cap") +
+                '"></i>' +
+                "<span>" + getCycleLabel(cycle, l) + "</span>";
+
+            cycleSection.appendChild(cycleHeading);
+
+            Object.keys(grouped[cycle])
+                .sort(function (a, b) {
+                    return levelOrder(a) - levelOrder(b);
+                })
+                .forEach(function (level) {
+                    var levelSection = document.createElement("section");
+                    levelSection.className = "resource-level-group";
+
+                    var levelHeading = document.createElement("h4");
+                    levelHeading.className = "resource-level-heading";
+
+                    levelHeading.innerHTML =
+                        '<span class="level-badge">' + escapeHtml(level) + "</span>" +
+                        "<span>" + escapeHtml(getLevelLabel(level, l)) + "</span>" +
+                        '<span class="level-resource-count">' +
+                        grouped[cycle][level].length +
+                        (l === "ar" ? " مورد" : " ressource(s)") +
+                        "</span>";
+
+                    var levelList = document.createElement("div");
+                    levelList.className = "resource-level-list";
+
+                    grouped[cycle][level].forEach(function (resource) {
+                        levelList.appendChild(buildCard(resource));
+                    });
+
+                    levelSection.appendChild(levelHeading);
+                    levelSection.appendChild(levelList);
+                    cycleSection.appendChild(levelSection);
+                });
+
+            grid.appendChild(cycleSection);
+        });
+
+    if (countEl) {
+        countEl.textContent = l === "ar"
+            ? items.length + " مورد متاح"
+            : items.length + " ressource(s) disponible(s)";
+    }
+
+    if (emptyEl) {
+        emptyEl.hidden = items.length > 0;
+
+        if (items.length === 0) {
+            emptyEl.textContent = l === "ar"
+                ? (cfg.EMPTY_AR || "لا توجد موارد مطابقة.")
+                : (cfg.EMPTY_FR || "Aucune ressource correspondante.");
+        }
+    }
+
+    typesetMath(grid);
+}
     function typesetMath(root) {
         if (!root || !window.MathJax) return;
         if (typeof MathJax.typesetPromise !== "function") return;
