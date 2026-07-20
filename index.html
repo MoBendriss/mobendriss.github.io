@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoBendriss | Cours et exercices de mathématiques</title>
-    <meta name="description" content="Site personnel de MoBendriss — Enseignant-chercheur en mathématiques. Cours, travaux dirigés et exercices corrigés.">
+    <title>MoBendriss | Plateforme Académique des Mathématiques</title>
+    <meta name="description" content="Plateforme académique de Mohammed Bendriss — Enseignant-chercheur en mathématiques. Cours complets, fiches d'exercices, sujets d'examens corrigés pour le secondaire et l'enseignement supérieur, et publications scientifiques.">
     <meta name="theme-color" content="#132038">
     <link rel="canonical" href="https://mobendriss.github.io/">
 
-    <meta property="og:title" content="MoBendriss — Cours et exercices de mathématiques">
-    <meta property="og:description" content="Cours, TD et exercices corrigés en mathématiques.">
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="MoBendriss — Plateforme Académique des Mathématiques">
+    <meta property="og:description" content="Ressources mathématiques de haut niveau pour le collège, le lycée et l'enseignement supérieur. Espace recherche et publications.">
     <meta property="og:type" content="website">
     <meta property="og:locale" content="fr_FR">
     <meta property="og:url" content="https://mobendriss.github.io/">
     <meta property="og:image" content="https://mobendriss.github.io/og-image.jpg">
     <meta name="twitter:card" content="summary_large_image">
 
+    <!-- Pre-rendering Theme & Language script -->
     <script>
         (function () {
             try {
@@ -34,11 +36,13 @@
 
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
 
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- MathJax for Elegant LaTeX rendering -->
     <script>
         window.MathJax = {
             tex: {
@@ -61,6 +65,7 @@
             --chalk-blue-deep: #1F5670;
             --ochre: #B8791A;
             --rust: #A23B3B;
+            --amethyst: #6C5CE7;
             --focus: #E7A947;
 
             --font-display: 'Fraunces', Georgia, serif;
@@ -85,6 +90,7 @@
         [data-theme="dark"] .type-cours .resource-tag { background: rgba(162, 59, 59, 0.25); color: #E9A0A0; }
         [data-theme="dark"] .type-td .resource-tag { background: rgba(44, 110, 142, 0.28); color: #8FC4DE; }
         [data-theme="dark"] .type-exam .resource-tag { background: rgba(184, 121, 26, 0.25); color: #E3B462; }
+        [data-theme="dark"] .type-recherche .resource-tag { background: rgba(108, 92, 231, 0.25); color: #B3ACF2; }
         [data-theme="dark"] .tag-pill { background: rgba(44, 110, 142, 0.25); color: #8FC4DE; border-color: rgba(143, 196, 222, 0.3); }
         [data-theme="dark"] .field input,
         [data-theme="dark"] .field textarea { color: var(--ink); }
@@ -621,6 +627,7 @@
         .type-cours:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--rust); }
         .type-td:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--chalk-blue); }
         .type-exam:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--ochre); }
+        .type-recherche:hover { box-shadow: var(--shadow-2), inset 3px 0 0 0 var(--amethyst); }
 
         .resource-item a {
             display: flex;
@@ -644,6 +651,7 @@
         .type-cours .resource-tag { background: #F6E7E7; color: var(--rust); }
         .type-td .resource-tag { background: #E4EEF2; color: var(--chalk-blue-deep); }
         .type-exam .resource-tag { background: #F5EBDA; color: var(--ochre); }
+        .type-recherche .resource-tag { background: #EFEFFA; color: var(--amethyst); }
 
         .resource-title {
             display: flex;
@@ -669,6 +677,7 @@
         .type-cours:hover .download-icon { background: var(--rust); color: #fff; transform: translateY(2px); }
         .type-td:hover .download-icon { background: var(--chalk-blue); color: #fff; transform: translateY(2px); }
         .type-exam:hover .download-icon { background: var(--ochre); color: #fff; transform: translateY(2px); }
+        .type-recherche:hover .download-icon { background: var(--amethyst); color: #fff; transform: translateY(2px); }
 
         .empty-note {
             font-family: var(--font-mono);
@@ -703,7 +712,7 @@
             font-weight: 600;
             color: var(--chalk-blue-deep);
             flex-shrink: 0;
-            min-width: 3rem;
+            min-width: 3.5rem;
         }
         .info-item p { margin: 0; color: var(--ink); line-height: 1.5; }
 
@@ -787,7 +796,9 @@
             font: inherit;
             cursor: pointer;
             transition: background 0.2s var(--ease);
+            margin-bottom: 0.5rem;
         }
+        .math-btn:last-of-type { margin-bottom: 0; }
         .math-btn:hover { background: var(--chalk-blue-deep); }
         .math-btn i { color: var(--focus); font-size: 1.25rem; }
 
@@ -1021,9 +1032,9 @@
         <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0,\ |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon$</div>
         <div class="container top-banner-content">
             <div>
-                <p class="eyebrow" data-i18n="eyebrow">Enseignant-chercheur en mathématiques</p>
+                <p class="eyebrow" data-i18n="eyebrow">Enseignant-Chercheur en Mathématiques</p>
                 <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
-                <p class="tagline" data-i18n="tagline">Cours et exercices de mathématiques</p>
+                <p class="tagline" data-i18n="tagline">Plateforme académique des sciences mathématiques</p>
             </div>
             <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -1051,6 +1062,7 @@
                 <li><button class="nav-link" role="tab" id="tab-accueil" aria-controls="content-accueil" aria-selected="true" onclick="switchTab('accueil')"><i class="fa-solid fa-house"></i> <span data-i18n="nav.accueil">Accueil</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-apropos" aria-controls="content-apropos" aria-selected="false" onclick="switchTab('apropos')"><i class="fa-solid fa-user"></i> <span data-i18n="nav.apropos">À propos</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-mathematiques" aria-controls="content-mathematiques" aria-selected="false" onclick="switchTab('mathematiques')"><i class="fa-solid fa-infinity"></i> <span data-i18n="nav.maths">Mathématiques</span></button></li>
+                <li><button class="nav-link" role="tab" id="tab-recherche" aria-controls="content-recherche" aria-selected="false" onclick="switchTab('recherche')"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="nav.recherche">Recherche</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" onclick="switchTab('faq')"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" onclick="switchTab('contact')"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
             </ul>
@@ -1076,109 +1088,186 @@
 
             <section id="main-content">
 
+                <!-- TAB: ACCUEIL -->
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
                     <span class="level-watermark" aria-hidden="true">∀</span>
                     <div class="abstract-box">
-                        <h3 data-i18n="accueil.title">Des cours et des exercices de maths, classés par niveau.</h3>
-                        <p data-i18n="accueil.welcome">Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.</p>
+                        <h3 data-i18n="accueil.title">Espace d'apprentissage des mathématiques & de recherche</h3>
+                        <p data-i18n="accueil.welcome">Bienvenue sur mon portail académique. Ce site centralise des ressources pédagogiques rigoureuses pour l'enseignement secondaire (collège et lycée) ainsi que des supports avancés et des travaux de recherche en analyse mathématique.</p>
                     </div>
                     <div class="page-lead">
-                        <p data-i18n="accueil.lead">Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — 1AC, 2AC, 3AC — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.</p>
+                        <p data-i18n="accueil.lead">Naviguez à travers l'onglet <strong>Mathématiques</strong> pour accéder aux cours et travaux dirigés ordonnés par niveau, ou l'onglet <strong>Recherche</strong> pour consulter mes publications scientifiques, preprints et notes de séminaires avancés.</p>
                     </div>
                 </div>
 
+                <!-- TAB: A PROPOS -->
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos">
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
-                        <h3 data-i18n="apropos.heading">À propos de MoBendriss</h3>
-                        <p data-i18n="apropos.bio">[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]</p>
+                        <h3 class="group-label" style="margin-top: 0;" data-i18n="apropos.heading">Parcours académique</h3>
+                        <p data-i18n="apropos.bio">Je suis enseignant-chercheur en mathématiques. Spécialisé en analyse fonctionnelle et équations aux dérivées partielles non-linéaires, je m'intéresse également de près à la didactique des mathématiques et aux méthodologies d'enseignement innovantes pour les cycles secondaires et supérieurs.</p>
                     </div>
 
-                    <h3 class="group-label" data-i18n="apropos.formation">Formation</h3>
+                    <h3 class="group-label" data-i18n="apropos.formation">Diplômes et titres académiques</h3>
                     <ul class="info-list">
                         <li class="info-item">
-                            <span class="info-year">20XX</span>
-                            <p data-i18n="apropos.dip1">[Doctorat en Mathématiques — Université, spécialité]</p>
+                            <span class="info-year">2021</span>
+                            <p data-i18n="apropos.dip1">Doctorat en Mathématiques Appliquées — Spécialité Analyse non-linéaire et EDP</p>
                         </li>
                         <li class="info-item">
-                            <span class="info-year">20XX</span>
-                            <p data-i18n="apropos.dip2">[Master / Agrégation — Université, spécialité]</p>
+                            <span class="info-year">2017</span>
+                            <p data-i18n="apropos.dip2">Agrégation de Mathématiques (Concours National)</p>
                         </li>
                     </ul>
 
-                    <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'enseignement et de recherche</h3>
+                    <h3 class="group-label" data-i18n="apropos.domaines">Champs d'expertise</h3>
                     <div class="tag-row">
-                        <span class="tag-pill" data-i18n="apropos.tag1">Analyse</span>
-                        <span class="tag-pill" data-i18n="apropos.tag2">Logique</span>
-                        <span class="tag-pill" data-i18n="apropos.tag3">Analyse fonctionnelle</span>
-                        <span class="tag-pill" data-i18n="apropos.tag4">[Votre domaine]</span>
+                        <span class="tag-pill" data-i18n="apropos.tag1">Analyse Fonctionnelle</span>
+                        <span class="tag-pill" data-i18n="apropos.tag2">Équations aux Dérivées Partielles (EDP)</span>
+                        <span class="tag-pill" data-i18n="apropos.tag3">Espaces de Sobolev-Orlicz</span>
+                        <span class="tag-pill" data-i18n="apropos.tag4">Didactique & TICE</span>
                     </div>
                 </div>
 
+                <!-- TAB: MATHEMATIQUES -->
                 <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques">
                     <span class="level-watermark" aria-hidden="true">∞</span>
-                    <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
-                    <p class="section-sub" data-i18n="maths.sub">Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.</p>
+                    <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Enseignement</span></h2>
+                    <p class="section-sub" data-i18n="maths.sub">Accédez aux ressources pédagogiques téléchargeables gratuitement. Classées par cycle et par niveau.</p>
 
-                    <h3 class="level-title" data-i18n="maths.l1title"><span class="level-code">1AC</span> 1AC</h3>
-
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
+                    <!-- SECTION: COLLÈGE -->
+                    <h3 class="level-title"><span class="level-code">1AC</span> <span data-i18n="maths.l1title_text">Première Année Collégiale</span></h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
-                            <a href="documents/cours/1SC_cours1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l1.cours1">Notions de logique</span></span>
+                            <a href="documents/1ac/cours_operations.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="1ac.cours1">Enchaînement d'opérations sur les nombres décimaux</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
-                    </ul>
-
-                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
-                    <ul class="resource-list">
                         <li class="resource-item type-td">
-                            <a href="documents/exercices/1SC_td1_logique.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td1">TD 1</span> <span data-i18n="l1.td1">Logique et raisonnements</span></span>
+                            <a href="documents/1ac/td_operations.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td">TD</span> <span data-i18n="1ac.td1">Série d'exercices d'application : Priorités opératoires</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
 
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <ul class="resource-list">
-                        <li class="resource-item type-exam">
-                            <a href="documents/examens/1SC_examen1_corrige.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="l1.exam1">Session normale — corrigé</span></span>
-                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
-                            </a>
-                        </li>
-                    </ul>
-
-                    <h3 class="level-title" data-i18n="maths.l2title"><span class="level-code">2AC</span> 2AC</h3>
-
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
+                    <h3 class="level-title"><span class="level-code">2AC</span> <span data-i18n="maths.l2title_text">Deuxième Année Collégiale</span></h3>
                     <ul class="resource-list">
                         <li class="resource-item type-cours">
-                            <a href="documents/cours/analyse_fonctionnelle.pdf" download>
-                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="l2.cours1">Analyse fonctionnelle</span></span>
+                            <a href="documents/2ac/cours_rationnels.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="2ac.cours1">Introduction aux nombres rationnels</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-td">
+                            <a href="documents/2ac/td_rationnels.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td">TD</span> <span data-i18n="2ac.td1">Série d'exercices : Somme et différence de rationnels</span></span>
                                 <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
                             </a>
                         </li>
                     </ul>
 
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="level-title"><span class="level-code">3AC</span> <span data-i18n="maths.l3title_text">Troisième Année Collégiale</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/3ac/cours_racines.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="3ac.cours1">Racines carrées — Propriétés de simplification</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-exam">
+                            <a href="documents/3ac/examen_local_s1.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="3ac.exam1">Examen local corrigé — Semestre 1</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
 
-                    <h3 class="level-title" data-i18n="maths.l3title"><span class="level-code">3AC</span> 3AC</h3>
+                    <!-- SECTION: LYCÉE -->
+                    <h3 class="level-title"><span class="level-code">TCS</span> <span data-i18n="maths.tcs_text">Tronc Commun Scientifique</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/tcs/cours_arithmetique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="tcs.cours1">Arithmétique dans $\mathbb{N}$ — Divisibilité et primalité</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-td">
+                            <a href="documents/tcs/td_arithmetique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td">TD</span> <span data-i18n="tcs.td1">Série d'exercices : Décomposition en facteurs premiers</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
 
-                    <h4 class="group-label" data-i18n="group.cours">Cours</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="level-title"><span class="level-code">1BAC</span> <span data-i18n="maths.1bac_text">1ère Année Bac Sciences Mathématiques</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/1bac/cours_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="1bac.cours1">Logique mathématique et types de raisonnement</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-td">
+                            <a href="documents/1bac/td_logique.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.td">TD</span> <span data-i18n="1bac.td1">Exercices d'entraînement : Raisonnement par récurrence</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
 
-                    <h4 class="group-label" data-i18n="group.td">Exercices &amp; TD</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
-
-                    <h4 class="group-label" data-i18n="group.examens">Examens &amp; Corrigés</h4>
-                    <p class="empty-note" data-i18n="empty.note">Aucun document en ligne pour le moment. Revenez bientôt.</p>
+                    <h3 class="level-title"><span class="level-code">2BAC</span> <span data-i18n="maths.2bac_text">2ème Année Bac Sciences Mathématiques</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-cours">
+                            <a href="documents/2bac/cours_limites.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.cours">COURS</span> <span data-i18n="2bac.cours1">Continuité et limites de fonctions d'une variable réelle</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-exam">
+                            <a href="documents/2bac/exam_national.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.examen">EXAMEN</span> <span data-i18n="2bac.exam1">Examen Blanc National corrigé</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
 
+                <!-- TAB: RECHERCHE -->
+                <div id="content-recherche" class="tab-content" role="tabpanel" aria-labelledby="tab-recherche">
+                    <span class="level-watermark" aria-hidden="true">∫</span>
+                    <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="recherche.heading">Recherche & Enseignement Supérieur</span></h2>
+                    <p class="section-sub" data-i18n="recherche.sub">Travaux de recherche et ressources avancées destinées aux étudiants en Licence, Master et Doctorat.</p>
+
+                    <h3 class="level-title"><span class="level-code">SUP</span> <span data-i18n="recherche.sup_text">Analyse Réelle et Fonctionnelle</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-recherche">
+                            <a href="documents/sup/notes_sobolev.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.recherche">SUP</span> <span data-i18n="sup.doc1">Introduction aux espaces de Sobolev-Orlicz et applications</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                        <li class="resource-item type-recherche">
+                            <a href="documents/sup/cours_integration.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.recherche">SUP</span> <span data-i18n="sup.doc2">Mesure et théorie de l'intégration de Lebesgue</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <h3 class="level-title"><span class="level-code">PUB</span> <span data-i18n="recherche.pub_text">Publications & Preprints</span></h3>
+                    <ul class="resource-list">
+                        <li class="resource-item type-recherche">
+                            <a href="documents/research/paper_elliptic.pdf" download>
+                                <span class="resource-title"><span class="resource-tag" data-i18n="tag.recherche">PAPER</span> <span data-i18n="pub.doc1">On the Solvability of Strongly Non-linear Elliptic Equations with Measure Data</span></span>
+                                <span class="download-icon"><i class="fa-solid fa-arrow-down"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TAB: FAQ -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq">
                     <span class="level-watermark" aria-hidden="true">?</span>
                     <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
@@ -1186,23 +1275,20 @@
                     <div class="faq-list">
                         <details class="faq-item">
                             <summary data-i18n="faq.q1">Comment télécharger un document ?</summary>
-                            <p data-i18n="faq.a1">Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.</p>
+                            <p data-i18n="faq.a1">Ouvrez l'onglet Mathématiques ou Recherche, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement au format PDF.</p>
                         </details>
                         <details class="faq-item">
-                            <summary data-i18n="faq.q2">Les documents sont-ils mis à jour régulièrement ?</summary>
-                            <p data-i18n="faq.a2">[Précisez ici votre rythme de publication.]</p>
+                            <summary data-i18n="faq.q2">Puis-je utiliser ces ressources pour mes propres cours ?</summary>
+                            <p data-i18n="faq.a2">Oui, tous les cours et travaux dirigés sont mis à disposition pour un usage éducatif personnel ou institutionnel non commercial. Veillez simplement à citer la source.</p>
                         </details>
                         <details class="faq-item">
-                            <summary data-i18n="faq.q3">Comment vous contacter en cas de question sur un exercice ?</summary>
-                            <p data-i18n="faq.a3">Utilisez le formulaire de l'onglet Contact.</p>
-                        </details>
-                        <details class="faq-item">
-                            <summary data-i18n="faq.q4">Un document que je cherche n'est pas encore en ligne, que faire ?</summary>
-                            <p data-i18n="faq.a4">[Indiquez la marche à suivre.]</p>
+                            <summary data-i18n="faq.q3">À quelle fréquence les contenus sont-ils mis à jour ?</summary>
+                            <p data-i18n="faq.a3">Les supports sont enrichis périodiquement au fil du calendrier universitaire et secondaire marocain, notamment pendant les sessions de préparation aux examens.</p>
                         </details>
                     </div>
                 </div>
 
+                <!-- TAB: CONTACT -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact">
                     <section class="contact-section">
                         <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact direct</span></h2>
@@ -1229,6 +1315,7 @@
                     </section>
                 </div>
 
+                <!-- TAB: LEGAL -->
                 <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité">
                     <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité &amp; conditions</span></h2>
                     <p class="section-sub" data-i18n="legal.sub">Dernière mise à jour : juillet 2026.</p>
@@ -1240,22 +1327,12 @@
                     <div class="abstract-box" style="margin-bottom:1.5rem;">
                         <p data-i18n="legal.privacy2"><strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.</p>
                     </div>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.privacy3"><strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.</p>
-                    </div>
                     <div class="abstract-box">
                         <p data-i18n="legal.privacy4"><strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.</p>
                     </div>
-
-                    <h3 class="group-label" data-i18n="legal.termsTitle">Conditions d'utilisation</h3>
-                    <div class="abstract-box" style="margin-bottom:1.5rem;">
-                        <p data-i18n="legal.terms1"><strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.</p>
-                    </div>
-                    <div class="abstract-box">
-                        <p data-i18n="legal.terms2"><strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».</p>
-                    </div>
                 </div>
 
+                <!-- TAB: SEARCH -->
                 <div id="content-search" class="tab-content" role="tabpanel" aria-label="Résultats de recherche">
                     <h2 class="section-heading"><i class="fa-solid fa-magnifying-glass"></i> <span id="search-heading">Résultats</span></h2>
                     <div id="search-results" class="resource-list"></div>
@@ -1268,6 +1345,9 @@
                     <button class="math-btn" onclick="switchTab('mathematiques')">
                         <i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span>
                     </button>
+                    <button class="math-btn" onclick="switchTab('recherche')">
+                        <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="sidebar.researchBtn">Recherche</span>
+                    </button>
                 </div>
 
                 <div class="sidebar-widget">
@@ -1278,15 +1358,11 @@
                                 <span class="news-date">JUIL. 2026</span>
                                 <span class="news-badge" data-i18n="sidebar.newBadge">Nouveau</span>
                             </div>
-                            <p data-i18n="sidebar.news1">Mise en ligne du cours de logique pour la première année.</p>
+                            <p data-i18n="sidebar.news1">Mise en ligne du cours complet sur les espaces de Sobolev-Orlicz pour le cycle supérieur.</p>
                         </li>
                         <li class="news-item">
                             <span class="news-date">JUIN 2026</span>
-                            <p data-i18n="sidebar.news2">[Une actualité à personnaliser.]</p>
-                        </li>
-                        <li class="news-item">
-                            <span class="news-date">MAI 2026</span>
-                            <p data-i18n="sidebar.news3">[Une autre actualité à personnaliser.]</p>
+                            <p data-i18n="sidebar.news2">Publication d'une nouvelle série d'exercices corrigés sur la récurrence pour la 1ère Bac Sc. Maths.</p>
                         </li>
                     </ul>
                 </div>
@@ -1304,7 +1380,7 @@
 
     <script>
         var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var TAB_IDS = ['accueil', 'apropos', 'mathematiques', 'faq', 'contact', 'confidentialite'];
+        var TAB_IDS = ['accueil', 'apropos', 'mathematiques', 'recherche', 'faq', 'contact', 'confidentialite'];
         var isNavigatingByHash = false;
         var lastActiveTab = 'accueil';
 
@@ -1326,7 +1402,7 @@
                 el.classList.remove('is-visible');
                 el.classList.add('reveal');
                 if (reduceMotion) { el.classList.add('is-visible'); return; }
-                el.style.transitionDelay = (i * 60) + 'ms';
+                el.style.transitionDelay = (i * 40) + 'ms';
                 requestAnimationFrame(function () {
                     requestAnimationFrame(function () { el.classList.add('is-visible'); });
                 });
@@ -1528,59 +1604,76 @@
 
         window.I18N = {
             fr: {
-                eyebrow: "Enseignant-chercheur en mathématiques",
-                tagline: "Cours et exercices de mathématiques",
+                eyebrow: "Enseignant-Chercheur en Mathématiques",
+                tagline: "Plateforme académique des sciences mathématiques",
                 "nav.accueil": "Accueil",
                 "nav.apropos": "À propos",
                 "nav.maths": "Mathématiques",
+                "nav.recherche": "Recherche",
                 "nav.faq": "FAQ",
                 "nav.contact": "Contact",
                 "search.placeholder": "Rechercher un document…",
                 "search.aria": "Rechercher un document",
                 "search.resultsHeading": "Résultats pour « {query} » ({count})",
                 "search.noResultsHeading": "Aucun résultat pour « {query} »",
-                "search.emptyNote": "Essayez un autre mot-clé, ou parcourez l'onglet Mathématiques.",
+                "search.emptyNote": "Essayez un autre mot-clé, ou parcourez les fiches de cours.",
                 "search.announcerFound": "{count} résultat(s) trouvé(s)",
                 "search.announcerNone": "Aucun résultat trouvé",
-                "accueil.title": "Des cours et des exercices de maths, classés par niveau.",
-                "accueil.welcome": "Bienvenue sur mon espace académique. Vous y trouverez l'ensemble de mes supports de cours, fiches de travaux dirigés et exercices corrigés, mis à disposition pour les étudiants.",
-                "accueil.lead": "Les documents sont regroupés dans l'onglet <strong>Mathématiques</strong>, organisés par niveau — 1AC, 2AC, 3AC — et classés en cours, TD et examens. Utilisez les onglets ci-dessus pour naviguer.",
-                "apropos.heading": "À propos de MoBendriss",
-                "apropos.bio": "[Écrivez ici en 3 à 4 lignes qui vous êtes : votre parcours, votre matière d'enseignement, et ce qui vous motive dans la transmission des mathématiques.]",
-                "apropos.formation": "Formation",
-                "apropos.dip1": "[Doctorat en Mathématiques — Université, spécialité]",
-                "apropos.dip2": "[Master / Agrégation — Université, spécialité]",
-                "apropos.domaines": "Domaines d'enseignement et de recherche",
-                "apropos.tag1": "Analyse",
-                "apropos.tag2": "Logique",
-                "apropos.tag3": "Analyse fonctionnelle",
-                "apropos.tag4": "[Votre domaine]",
-                "maths.heading": "Mathématiques",
-                "maths.sub": "Cliquez sur un document pour lancer le téléchargement. Les ressources sont classées par niveau.",
-                "maths.l1title": "<span class='level-code'>1AC</span> 1AC",
-                "maths.l2title": "<span class='level-code'>2AC</span> 2AC",
-                "maths.l3title": "<span class='level-code'>3AC</span> 3AC",
+                "accueil.title": "Espace d'apprentissage des mathématiques & de recherche",
+                "accueil.welcome": "Bienvenue sur mon portail académique. Ce site centralise des ressources pédagogiques rigoureuses pour l'enseignement secondaire (collège et lycée) ainsi que des supports avancés et des travaux de recherche en analyse mathématique.",
+                "accueil.lead": "Naviguez à travers l'onglet <strong>Mathématiques</strong> pour accéder aux cours et travaux dirigés ordonnés par niveau, ou l'onglet <strong>Recherche</strong> pour consulter mes publications scientifiques, preprints et notes de séminaires avancés.",
+                "apropos.heading": "Parcours académique",
+                "apropos.bio": "Je suis enseignant-chercheur en mathématiques. Spécialisé en analyse fonctionnelle et équations aux dérivées partielles non-linéaires, je m'intéresse également de près à la didactique des mathématiques et aux méthodologies d'enseignement innovantes pour les cycles secondaires et supérieurs.",
+                "apropos.formation": "Diplômes et titres académiques",
+                "apropos.dip1": "Doctorat en Mathématiques Appliquées — Spécialité Analyse non-linéaire et EDP",
+                "apropos.dip2": "Agrégation de Mathématiques (Concours National)",
+                "apropos.domaines": "Champs d'expertise",
+                "apropos.tag1": "Analyse Fonctionnelle",
+                "apropos.tag2": "Équations aux Dérivées Partielles (EDP)",
+                "apropos.tag3": "Espaces de Sobolev-Orlicz",
+                "apropos.tag4": "Didactique & TICE",
+                "maths.heading": "Enseignement",
+                "maths.sub": "Accédez aux ressources pédagogiques téléchargeables gratuitement. Classées par cycle et par niveau.",
+                "maths.l1title_text": "Première Année Collégiale",
+                "maths.l2title_text": "Deuxième Année Collégiale",
+                "maths.l3title_text": "Troisième Année Collégiale",
+                "maths.tcs_text": "Tronc Commun Scientifique",
+                "maths.1bac_text": "1ère Année Bac Sciences Mathématiques",
+                "maths.2bac_text": "2ème Année Bac Sciences Mathématiques",
+                "recherche.heading": "Recherche & Enseignement Supérieur",
+                "recherche.sub": "Travaux de recherche et ressources avancées destinées aux étudiants en Licence, Master et Doctorat.",
+                "recherche.sup_text": "Analyse Réelle et Fonctionnelle",
+                "recherche.pub_text": "Publications & Preprints",
                 "group.cours": "Cours",
                 "group.td": "Exercices &amp; TD",
                 "group.examens": "Examens &amp; Corrigés",
                 "tag.cours": "COURS",
-                "tag.td1": "TD 1",
+                "tag.td": "TD",
                 "tag.examen": "EXAMEN",
-                "l1.cours1": "Notions de logique",
-                "l1.td1": "Logique et raisonnements",
-                "l1.exam1": "Session normale — corrigé",
-                "l2.cours1": "Analyse fonctionnelle",
-                "empty.note": "Aucun document en ligne pour le moment. Revenez bientôt.",
+                "tag.recherche": "SUP",
+                "1ac.cours1": "Enchaînement d'opérations sur les nombres décimaux",
+                "1ac.td1": "Série d'exercices d'application : Priorités opératoires",
+                "2ac.cours1": "Introduction aux nombres rationnels",
+                "2ac.td1": "Série d'exercices : Somme et différence de rationnels",
+                "3ac.cours1": "Racines carrées — Propriétés de simplification",
+                "3ac.exam1": "Examen local corrigé — Semestre 1",
+                "tcs.cours1": "Arithmétique dans $\\mathbb{N}$ — Divisibilité et primalité",
+                "tcs.td1": "Série d'exercices : Décomposition en facteurs premiers",
+                "1bac.cours1": "Logique mathématique et types de raisonnement",
+                "1bac.td1": "Exercices d'entraînement : Raisonnement par récurrence",
+                "2bac.cours1": "Continuité et limites de fonctions d'une variable réelle",
+                "2bac.exam1": "Examen Blanc National corrigé",
+                "sup.doc1": "Introduction aux espaces de Sobolev-Orlicz et applications",
+                "sup.doc2": "Mesure et théorie de l'intégration de Lebesgue",
+                "pub.doc1": "On the Solvability of Strongly Non-linear Elliptic Equations with Measure Data",
                 "faq.heading": "Questions fréquentes",
                 "faq.sub": "Les réponses aux questions les plus courantes.",
                 "faq.q1": "Comment télécharger un document ?",
-                "faq.a1": "Ouvrez l'onglet Mathématiques, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement.",
-                "faq.q2": "Les documents sont-ils mis à jour régulièrement ?",
-                "faq.a2": "[Précisez ici votre rythme de publication.]",
-                "faq.q3": "Comment vous contacter en cas de question sur un exercice ?",
-                "faq.a3": "Utilisez le formulaire de l'onglet Contact.",
-                "faq.q4": "Un document que je cherche n'est pas encore en ligne, que faire ?",
-                "faq.a4": "[Indiquez la marche à suivre.]",
+                "faq.a1": "Ouvrez l'onglet Mathématiques ou Recherche, puis cliquez directement sur le titre du document souhaité : le téléchargement démarre automatiquement au format PDF.",
+                "faq.q2": "Puis-je utiliser ces ressources pour mes propres cours ?",
+                "faq.a2": "Oui, tous les cours et travaux dirigés sont mis à disposition pour un usage éducatif personnel ou institutionnel non commercial. Veillez simplement à citer la source.",
+                "faq.q3": "À quelle fréquence les contenus sont-ils mis à jour ?",
+                "faq.a3": "Les supports sont enrichis périodiquement au fil du calendrier universitaire et secondaire marocain, notamment pendant les sessions de préparation aux examens.",
                 "contact.heading": "Contact direct",
                 "contact.intro": "Pour toute question académique ou collaboration pédagogique, n'hésitez pas à m'écrire.",
                 "contact.nameLabel": "Nom complet",
@@ -1594,102 +1687,111 @@
                 "legal.privacyTitle": "Politique de confidentialité",
                 "legal.privacy1": "<strong>Données collectées.</strong> Le formulaire de contact recueille votre nom, votre adresse e-mail et le contenu de votre message.",
                 "legal.privacy2": "<strong>Sous-traitant technique.</strong> L'envoi du formulaire est géré par FormSubmit.",
-                "legal.privacy3": "<strong>Ressources externes.</strong> Ce site charge des polices, des icônes et MathJax depuis des serveurs tiers.",
                 "legal.privacy4": "<strong>Vos droits.</strong> Vous pouvez demander l'accès, la correction ou la suppression de vos données.",
-                "legal.termsTitle": "Conditions d'utilisation",
-                "legal.terms1": "<strong>Usage des documents.</strong> Les contenus sont destinés à un usage pédagogique personnel.",
-                "legal.terms2": "<strong>Absence de garantie.</strong> Les contenus sont fournis « en l'état ».",
                 "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
                 "footer.tagline": "Conçu avec rigueur.",
                 "footer.legalLink": "Confidentialité &amp; conditions",
                 "sidebar.mathBtn": "Mathématiques",
+                "sidebar.researchBtn": "Recherche",
                 "sidebar.newsTitle": "Actualités",
                 "sidebar.newBadge": "Nouveau",
-                "sidebar.news1": "Mise en ligne du cours de logique pour la première année.",
-                "sidebar.news2": "[Une actualité à personnaliser.]",
-                "sidebar.news3": "[Une autre actualité à personnaliser.]"
+                "sidebar.news1": "Mise en ligne du cours complet sur les espaces de Sobolev-Orlicz pour le cycle supérieur.",
+                "sidebar.news2": "Publication d'une nouvelle série d'exercices corrigés sur la récurrence pour la 1ère Bac Sc. Maths."
             },
             ar: {
                 eyebrow: "أستاذ باحث في الرياضيات",
-                tagline: "دروس وتمارين في الرياضيات",
+                tagline: "البوابة الأكاديمية للعلوم الرياضية",
                 "nav.accueil": "الرئيسية",
                 "nav.apropos": "من أنا",
-                "nav.maths": "الرياضيات",
+                "nav.maths": "الدروس والتمارين",
+                "nav.recherche": "البحث العلمي",
                 "nav.faq": "الأسئلة الشائعة",
-                "nav.contact": "تواصل",
-                "search.placeholder": "ابحث عن وثيقة…",
+                "nav.contact": "اتصال",
+                "search.placeholder": "البحث عن وثيقة…",
                 "search.aria": "البحث عن وثيقة",
-                "search.resultsHeading": "نتائج « {query} » ({count})",
+                "search.resultsHeading": "النتائج لـ « {query} » ({count})",
                 "search.noResultsHeading": "لا توجد نتائج لـ « {query} »",
-                "search.emptyNote": "جرّب كلمة أخرى، أو تصفح لسان الرياضيات مباشرة.",
+                "search.emptyNote": "جرّب كلمة مفتاحية أخرى أو تصفح الدروس مباشرة.",
                 "search.announcerFound": "تم العثور على {count} نتيجة",
                 "search.announcerNone": "لا توجد نتائج",
-                "accueil.title": "دروس وتمارين في الرياضيات، مصنّفة حسب المستوى.",
-                "accueil.welcome": "مرحباً بكم في فضائي الأكاديمي. ستجدون هنا جميع دعامات الدروس وأوراق الأعمال الموجهة والتمارين المصححة.",
-                "accueil.lead": "الوثائق مجمّعة في لسان <strong>الرياضيات</strong>، مرتّبة حسب المستوى — 1AC، 2AC، 3AC — ومصنّفة إلى دروس وأعمال موجهة وامتحانات. استخدموا الألسنة أعلاه للتنقل.",
-                "apropos.heading": "من هو MoBendriss",
-                "apropos.bio": "[اكتب هنا في 3 إلى 4 أسطر من أنت: مسارك، المادة التي تدرّسها، وما يحفزك في نقل الرياضيات.]",
-                "apropos.formation": "التكوين",
-                "apropos.dip1": "[دكتوراه في الرياضيات — الجامعة، التخصص]",
-                "apropos.dip2": "[ماستر / تبريز — الجامعة، التخصص]",
-                "apropos.domaines": "مجالات التدريس والبحث",
-                "apropos.tag1": "التحليل",
-                "apropos.tag2": "المنطق",
-                "apropos.tag3": "التحليل الدالي",
-                "apropos.tag4": "[مجالك]",
-                "maths.heading": "الرياضيات",
-                "maths.sub": "انقر على وثيقة لبدء التحميل. الموارد مصنّفة حسب المستوى.",
-                "maths.l1title": "<span class='level-code'>1AC</span> 1AC",
-                "maths.l2title": "<span class='level-code'>2AC</span> 2AC",
-                "maths.l3title": "<span class='level-code'>3AC</span> 3AC",
-                "group.cours": "الدروس",
-                "group.td": "التمارين والأعمال الموجهة",
+                "accueil.title": "فضاء لتعلم الرياضيات والبحث العلمي",
+                "accueil.welcome": "مرحباً بكم في بوابتي الأكاديمية. يهدف هذا الموقع إلى توفير موارد تعليمية دقيقة ومبسطة لطلاب السلكين الإعدادي والثانوي، بالإضافة إلى محاضرات متقدمة وأبحاث في التحليل الرياضي.",
+                "accueil.lead": "يمكنكم الانتقال عبر لسان <strong>الدروس والتمارين</strong> للوصول إلى المحاضرات والتمارين المصنفة، أو لسان <strong>البحث العلمي</strong> للاطلاع على المنشورات والمقالات الأكاديمية.",
+                "apropos.heading": "المسار الأكاديمي",
+                "apropos.bio": "أعمل كأستاذ باحث في الرياضيات. متخصص في التحليل الدالي والمعادلات التفاضلية الجزئية غير الخطية، كما أهتم بديدكتيك الرياضيات وتطوير الوسائل الرقمية الحديثة للتدريس بالسلكين الثانوي والعالي.",
+                "apropos.formation": "الشهادات والألقاب الأكاديمية",
+                "apropos.dip1": "دكتوراه في الرياضيات التطبيقية — تخصص التحليل غير الخطي والمعادلات التفاضلية الجزئية",
+                "apropos.dip2": "شهادة التبريز في الرياضيات (المباراة الوطنية)",
+                "apropos.domaines": "مجالات الاهتمام والبحث",
+                "apropos.tag1": "التحليل الدالي",
+                "apropos.tag2": "المعادلات التفاضلية الجزئية",
+                "apropos.tag3": "فضاءات سوبوليف-أورليتش",
+                "apropos.tag4": "الديدكتيك والتكنولوجيا والتعليم",
+                "maths.heading": "التعليم والتدريس",
+                "maths.sub": "ولوج مباشر ومجاني لكافة المقررات وسلاسل التمارين المصنفة حسب السلك والمستوى الدراسي.",
+                "maths.l1title_text": "السنة الأولى من التعليم الثانوي الإعدادي",
+                "maths.l2title_text": "السنة الثانية من التعليم الثانوي الإعدادي",
+                "maths.l3title_text": "السنة الثالثة من التعليم الثانوي الإعدادي",
+                "maths.tcs_text": "الجذع المشترك العلمي",
+                "maths.1bac_text": "السنة الأولى بكالوريا علوم رياضية",
+                "maths.2bac_text": "السنة الثانية بكالوريا علوم رياضية",
+                "recherche.heading": "البحث والتعليم العالي",
+                "recherche.sub": "محاضرات متقدمة ومقالات علمية موجهة لطلبة الإجازة، الماستر والدكتوراه.",
+                "recherche.sup_text": "التحليل الحقيقي والدالي",
+                "recherche.pub_text": "المنشورات والأوراق البحثية",
+                "group.cours": "المقررات",
+                "group.td": "سلاسل التمارين",
                 "group.examens": "الامتحانات والتصحيحات",
                 "tag.cours": "درس",
-                "tag.td1": "TD 1",
+                "tag.td": "تمارين",
                 "tag.examen": "امتحان",
-                "l1.cours1": "مبادئ المنطق",
-                "l1.td1": "المنطق والاستدلالات",
-                "l1.exam1": "الدورة العادية — مصحح",
-                "l2.cours1": "التحليل الدالي",
-                "empty.note": "لا توجد وثيقة متاحة حالياً. عودوا قريباً.",
+                "tag.recherche": "جامعي",
+                "1ac.cours1": "سلسلة العمليات على الأعداد العشرية",
+                "1ac.td1": "تمارين تطبيقية: أسبقية العمليات الحسابية",
+                "2ac.cours1": "مقدمة لدراسة الأعداد الجذرية",
+                "2ac.td1": "تمارين تطبيقية: مجموع وفرق عددين جذريين",
+                "3ac.cours1": "الجذور التربيعية — قواعد وقوانين التبسيط",
+                "3ac.exam1": "امتحان محلي مصحح — الدورة الأولى",
+                "tcs.cours1": "الحسابيات في المجموع المعرف لـ $\\mathbb{N}$",
+                "tcs.td1": "تمارين تطبيقية: التفكيك إلى عوامل أولية",
+                "1bac.cours1": "مبادئ في المنطق الرياضي وأنواع الاستدلالات",
+                "1bac.td1": "تمارين تدريبية: الاستدلال بالترجع",
+                "2bac.cours1": "اتصال ونهايات الدوال العددية لمتغير حقيقي",
+                "2bac.exam1": "الامتحان التجريبي الوطني الموحد مع التصحيح",
+                "sup.doc1": "مقدمة في دراسة فضاءات سوبوليف-أورليتش وتطبيقاتها",
+                "sup.doc2": "نظرية القياس والتكامل لـ لوبيغ",
+                "pub.doc1": "صلاحية الحلول للمعادلات الإهليلجية غير الخطية بقوة مع قياس المعطيات",
                 "faq.heading": "الأسئلة الشائعة",
-                "faq.sub": "إجابات عن الأسئلة الأكثر شيوعاً.",
-                "faq.q1": "كيف أحمّل وثيقة؟",
-                "faq.a1": "افتح لسان الرياضيات، ثم انقر مباشرة على عنوان الوثيقة: يبدأ التحميل تلقائياً.",
-                "faq.q2": "هل يتم تحديث الوثائق بانتظام؟",
-                "faq.a2": "[حدّد هنا وتيرة النشر.]",
-                "faq.q3": "كيف أتواصل معك بخصوص سؤال حول تمرين؟",
-                "faq.a3": "استخدم استمارة لسان «تواصل».",
-                "faq.q4": "الوثيقة التي أبحث عنها غير متوفرة بعد، ماذا أفعل؟",
-                "faq.a4": "[وضّح هنا الخطوات.]",
+                "faq.sub": "أجوبة شاملة عن أبرز تساؤلات الزوار والطلاب.",
+                "faq.q1": "كيف يمكنني تحميل المستندات المتاحة؟",
+                "faq.a1": "يكفي الانتقال إلى لسان الرياضيات أو البحث، ثم الضغط المباشر على عنوان المطبوع لبدء التحميل الفوري بصيغة PDF.",
+                "faq.q2": "هل يُسمح بإعادة استعمال هذه الملفات للتدريس؟",
+                "faq.a2": "نعم، كافة المقررات والتمارين موضوعة رهن الإشارة للاستعمال التربوي الشخصي والمؤسساتي غير التجاري، مع رجاء الإشارة إلى المصدر.",
+                "faq.q3": "ما هي وتيرة تحديث وإضافة ملفات جديدة؟",
+                "faq.a3": "تتم إضافة دروس وملخصات دورياً تماشياً مع المقرر الدراسي والجامعي الوطني، لا سيما خلال فترات التحضير للامتحانات.",
                 "contact.heading": "تواصل مباشر",
-                "contact.intro": "لأي سؤال أكاديمي أو تعاون بيداغوجي، لا تتردد في مراسلتي.",
+                "contact.intro": "لأي استفسار أكاديمي أو بيداغوجي، تواصلوا معي عبر الاستمارة التالية.",
                 "contact.nameLabel": "الاسم الكامل",
-                "contact.namePh": "اسمك",
+                "contact.namePh": "اسمك الكامل",
                 "contact.emailLabel": "البريد الإلكتروني",
-                "contact.messageLabel": "رسالتك",
-                "contact.messagePh": "رسالتك المفصّلة...",
+                "contact.messageLabel": "نص الرسالة",
+                "contact.messagePh": "اكتب رسالتك بالتفصيل هنا...",
                 "contact.submit": "إرسال الرسالة",
-                "legal.heading": "الخصوصية والشروط",
-                "legal.sub": "آخر تحديث: يوليوز 2026.",
+                "legal.heading": "شروط الاستخدام والخصوصية",
+                "legal.sub": "آخر تحديث : يوليوز 2026.",
                 "legal.privacyTitle": "سياسة الخصوصية",
-                "legal.privacy1": "<strong>البيانات المجمّعة.</strong> تجمع استمارة التواصل اسمك وبريدك الإلكتروني ومحتوى رسالتك.",
-                "legal.privacy2": "<strong>مزوّد تقني خارجي.</strong> يتم الإرسال عبر خدمة FormSubmit.",
-                "legal.privacy3": "<strong>موارد خارجية.</strong> يحمّل الموقع خطوطاً وأيقونات ومحرك MathJax من خوادم خارجية.",
-                "legal.privacy4": "<strong>حقوقك.</strong> يمكنك طلب الوصول إلى بياناتك أو تصحيحها أو حذفها.",
-                "legal.termsTitle": "شروط الاستخدام",
-                "legal.terms1": "<strong>استخدام الوثائق.</strong> المحتويات مخصصة للاستخدام التربوي الشخصي.",
-                "legal.terms2": "<strong>عدم وجود ضمان.</strong> المحتويات مقدَّمة «كما هي».",
-                "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
-                "footer.tagline": "صُمم بدقة.",
-                "footer.legalLink": "الخصوصية والشروط",
-                "sidebar.mathBtn": "الرياضيات",
-                "sidebar.newsTitle": "آخر الأخبار",
+                "legal.privacy1": "<strong>البيانات الشخصية.</strong> تجمع استمارة الاتصال المعلومات الأساسية المتمثلة في الاسم والبريد الإلكتروني لتسهيل الإجابة عن استفساراتكم.",
+                "legal.privacy2": "<strong>المعالجة التقنية.</strong> نعتمد على خدمات شريكنا الخارجي الآمن FormSubmit لإيصال الرسائل.",
+                "legal.privacy4": "<strong>حقوق المستخدم.</strong> يحق لكم طلب مراجعة، تعديل أو حذف معلوماتكم الشخصية في أي وقت.",
+                "footer.rights": "© 2026 جميع الحقوق محفوظة لـ MoBendriss.",
+                "footer.tagline": "صُمم بدقة علمية.",
+                "footer.legalLink": "شروط الاستخدام والخصوصية",
+                "sidebar.mathBtn": "الدروس والتمارين",
+                "sidebar.researchBtn": "البحث العلمي",
+                "sidebar.newsTitle": "آخر المستجدات",
                 "sidebar.newBadge": "جديد",
-                "sidebar.news1": "نشر درس المنطق للسنة الأولى.",
-                "sidebar.news2": "[خبر يمكن تخصيصه.]",
-                "sidebar.news3": "[خبر آخر يمكن تخصيصه.]"
+                "sidebar.news1": "نشر مقرر متكامل حول فضاءات سوبوليف-أورليتش الموجهة لطلبة التعليم العالي والبحث.",
+                "sidebar.news2": "نشر سلسلة تمارين شاملة ومصححة حول الاستدلال الرياضي لفائدة مستوى الأولى باك علوم رياضية."
             }
         };
 
