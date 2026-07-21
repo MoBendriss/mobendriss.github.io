@@ -252,17 +252,22 @@ code, .mono { font-family: 'IBM Plex Mono', monospace; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.3em;
-  height: 1.3em;
-  font-size: 0.4em;
+  width: 1.25em;
+  height: 1.25em;
+  font-size: 0.38em;
   vertical-align: super;
-  background: #2563EB;
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
   color: white;
   border-radius: 50%;
-  margin-left: 0.3em;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  margin-left: 0.25em;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.35);
+  transition: transform var(--bounce), box-shadow var(--transition);
 }
-.verified-badge i { font-size: 0.6em; -webkit-text-fill-color: white; }
+.verified-badge:hover {
+  transform: scale(1.15);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.45);
+}
+.verified-badge i { font-size: 0.55em; -webkit-text-fill-color: white; }
 
 .tagline {
   margin-top: 0.6rem;
@@ -279,6 +284,75 @@ code, .mono { font-family: 'IBM Plex Mono', monospace; }
   transition: transform var(--bounce);
 }
 .header-avatar:hover svg { transform: scale(1.05) rotate(-2deg); }
+
+/* ===== Brand Group (new) ===== */
+.brand-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.brand-eq {
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: italic;
+}
+
+.brand-sup {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65em;
+  vertical-align: super;
+  line-height: 1;
+}
+
+.brand-math-tag {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-top: 0.6rem;
+  font-size: 0.75rem;
+  color: rgba(248, 250, 252, 0.2);
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.02em;
+  transition: color var(--transition);
+}
+
+.brand-group:hover .brand-math-tag {
+  color: rgba(248, 250, 252, 0.4);
+}
+
+.wm-dot {
+  color: var(--gold-light);
+  font-size: 1.2em;
+  line-height: 0;
+  margin: 0 -0.05em;
+}
+
+/* ===== New Header Logo ===== */
+.header-logo-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.header-logo-svg {
+  width: 100px;
+  height: 100px;
+  filter: drop-shadow(0 4px 30px rgba(0,0,0,0.5));
+  transition: transform var(--bounce);
+}
+
+.header-logo-wrapper:hover .header-logo-svg {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+@media (max-width: 640px) {
+  .header-logo-svg {
+    width: 80px;
+    height: 80px;
+  }
+  .brand-math-tag {
+    display: none;
+  }
+}
 
 /* ===== 🧭 Navigation (Redesigned) ===== */
 .navigation-bar {
