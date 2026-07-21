@@ -1,451 +1,310 @@
-/**
- * MoBendriss — Base de données des ressources
- * Données des ressources mathématiques par cycle et type
- */
-
-const RESOURCES = [
-    // ── Collège ───────────────────────────────────────────────
+{
+  "resources": [
     {
-        id: "col-001",
-        title: "Les nombres relatifs",
-        titleAr: "الأعداد الصحيحة",
-        description: "Cours complet sur les nombres relatifs : définitions, droite graduée, comparaison et opérations.",
-        descAr: "درس كامل عن الأعداد الصحيحة: التعريفات، المستقيم المدرج، المقارنة والعمليات.",
-        cycle: "college",
-        type: "cours",
-        level: "1ère année collège",
-        levelAr: "السنة الأولى إعدادي",
-        tags: ["nombres", "relatifs", "bases"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 34,
+      "title": "Algèbre — Nombres relatifs",
+      "titleAr": "الجبر — الأعداد النسبية",
+      "description": "Cours complet sur les nombres relatifs : addition, soustraction, multiplication, division. Niveau collège (3e). Exercices progressifs inclus.",
+      "descriptionAr": "درس كامل حول الأعداد النسبية: الجمع، الطرح، الضرب، القسمة. مستوى الإعدادي (الثالثة). يتضمن تمارين تدريجية.",
+      "cycle": "college",
+      "type": "cours",
+      "category": "Algèbre",
+      "tags": "nombres-relatifs,algèbre,calcul,3e",
+      "level": "3e",
+      "url": null,
+      "icon": "fa-solid fa-book",
+      "downloads": 245,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.798Z"
     },
     {
-        id: "col-002",
-        title: "Fractions — Exercices corrigés",
-        titleAr: "الكسور — تمارين محلولة",
-        description: "Série d'exercices progressifs sur les fractions : simplification, opérations et problèmes.",
-        descAr: "سلسلة تمارين تدريجية على الكسور: التبسيط، العمليات والمسائل.",
-        cycle: "college",
-        type: "td",
-        level: "2ème année collège",
-        levelAr: "السنة الثانية إعدادي",
-        tags: ["fractions", "exercices"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 35,
+      "title": "Géométrie — Théorème de Pythagore",
+      "titleAr": "الهندسة — نظرية فيثاغورس",
+      "description": "Exercices corrigés sur le théorème de Pythagore et sa réciproque. Collège (3e). Applications concrètes.",
+      "descriptionAr": "تمارين مصححة حول نظرية فيثاغورس وعكسها. مستوى الإعدادي (الثالثة). تطبيقات عملية.",
+      "cycle": "college",
+      "type": "td",
+      "category": "Géométrie",
+      "tags": "pythagore,géométrie,triangle-rectangle",
+      "level": "3e",
+      "url": null,
+      "icon": "fa-solid fa-draw-polygon",
+      "downloads": 189,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.800Z"
     },
     {
-        id: "col-003",
-        title: "Géométrie dans l'espace",
-        titleAr: "الهندسة في الفضاء",
-        description: "Cours sur les figures géométriques dans l'espace : cube, prisme, pyramide et leurs propriétés.",
-        descAr: "درس عن الأشكال الهندسية في الفضاء: المكعب، الموشور، الهرم وخصائصها.",
-        cycle: "college",
-        type: "cours",
-        level: "3ème année collège",
-        levelAr: "السنة الثالثة إعدادي",
-        tags: ["géométrie", "espace", "figures"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 36,
+      "title": "Probabilités — Introduction",
+      "titleAr": "الاحتمالات — مقدمة",
+      "description": "Introduction aux probabilités avec exercices corrigés. Collège (2e). Arbres de probabilités.",
+      "descriptionAr": "مقدمة في الاحتمالات مع تمارين مصححة. مستوى الإعدادي (الثانية). أشجار الاحتمالات.",
+      "cycle": "college",
+      "type": "cours",
+      "category": "Probabilités",
+      "tags": "probabilités,arbres,statistiques",
+      "level": "2e",
+      "url": null,
+      "icon": "fa-solid fa-chart-bar",
+      "downloads": 134,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.801Z"
     },
     {
-        id: "col-004",
-        title: "Examen blanc — 3ème année collège",
-        titleAr: "امتحان إعدادي — السنة الثالثة",
-        description: "Examen blanc avec corrigé complet pour la préparation au brevet.",
-        descAr: "امتحان تدريبي مع التصحيح الكامل للتحضير للامتحان الإعدادي.",
-        cycle: "college",
-        type: "exam",
-        level: "3ème année collège",
-        levelAr: "السنة الثالثة إعدادي",
-        tags: ["examen", "brevet", "blanc"],
-        downloadUrl: "#",
-        previewUrl: "#"
-    },
-
-    // ── Lycée ─────────────────────────────────────────────────
-    {
-        id: "lyc-001",
-        title: "Limites et continuité",
-        titleAr: "النهايات والاتصال",
-        description: "Cours approfondi sur les limites de fonctions, formes indéterminées et théorème des valeurs intermédiaires.",
-        descAr: "درس معمق في نهايات الدوال، الأشكال غير المحددة ونظرية القيم المتوسطة.",
-        cycle: "lycee",
-        type: "cours",
-        level: "1ère année bac",
-        levelAr: "السنة الأولى باكالوريا",
-        tags: ["limites", "continuité", "analyse"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 37,
+      "title": "Calcul littéral — Développement et factorisation",
+      "titleAr": "الحساب الحرفي — النشر والتعميل",
+      "description": "Série d'exercices sur le développement et la factorisation. Collège (4e/3e). Identités remarquables.",
+      "descriptionAr": "سلسلة تمارين في النشر والتعميل. الإعدادي (الرابعة/الثالثة). المتطابقات الهامة.",
+      "cycle": "college",
+      "type": "td",
+      "category": "Algèbre",
+      "tags": "calcul-littéral,identités-remarquables,factorisation",
+      "level": "4e/3e",
+      "url": null,
+      "icon": "fa-solid fa-square-root-variable",
+      "downloads": 201,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.802Z"
     },
     {
-        id: "lyc-002",
-        title: "Dérivation — Exercices types",
-        titleAr: "التفاضل — تمارين نمطية",
-        description: "Recueil d'exercices types sur la dérivation : dérivée usuelle, sens de variation, extremums.",
-        descAr: "مجموعة تمارين نمطية على التفاضل: المشتقة الشائعة، اتجاه التغير، القيم القصوى.",
-        cycle: "lycee",
-        type: "td",
-        level: "1ère année bac",
-        levelAr: "السنة الأولى باكالوريا",
-        tags: ["dérivation", "variation", "extremums"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 38,
+      "title": "Examen — Maths Collège (3e)",
+      "titleAr": "امتحان — الرياضيات الإعدادي (الثالثة)",
+      "description": "Sujet d'examen régional corrigé. Collège 3e. Algèbre, géométrie et probabilités.",
+      "descriptionAr": "موضوع امتحان جهوي مصحح. الإعدادي الثالثة. الجبر، الهندسة والاحتمالات.",
+      "cycle": "college",
+      "type": "exam",
+      "category": "Examens",
+      "tags": "examen,régional,3e,sujet-corrigé",
+      "level": "3e",
+      "url": null,
+      "icon": "fa-solid fa-file-pen",
+      "downloads": 312,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.803Z"
     },
     {
-        id: "lyc-003",
-        title: "Probabilités et statistiques",
-        titleAr: "الاحتمالات والإحصاء",
-        description: "Cours sur les probabilités : événements, arbre de probabilités, loi binomiale.",
-        descAr: "درس في الاحتمالات: الأحداث، شجرة الاحتمالات، التوزيع الثنائي.",
-        cycle: "lycee",
-        type: "cours",
-        level: "2ème année bac",
-        levelAr: "السنة الثانية باكالوريا",
-        tags: ["probabilités", "binomiale", "stats"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 39,
+      "title": "Analyse — Limites et continuité",
+      "titleAr": "التحليل — النهايات والاتصال",
+      "description": "Cours complet sur les limites de fonctions et la continuité. Théorèmes fondamentaux et applications. 1ère BAC Sciences.",
+      "descriptionAr": "درس كامل حول نهايات الدوال والاتصال. النظريات الأساسية والتطبيقات. أولى باك علوم.",
+      "cycle": "lycee",
+      "type": "cours",
+      "category": "Analyse",
+      "tags": "limites,continuité,fonctions,analyse",
+      "level": "1ère BAC",
+      "url": null,
+      "icon": "fa-solid fa-infinity",
+      "downloads": 412,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.804Z"
     },
     {
-        id: "lyc-004",
-        title: "Examen national — Sciences maths",
-        titleAr: "الامتحان الوطني — علوم رياضية",
-        description: "Sujets d'examens nationaux corrigés pour la filière Sciences Mathématiques.",
-        descAr: " مواضيع الامتحانات الوطنية المحلولة لشعبة العلوم الرياضية.",
-        cycle: "lycee",
-        type: "exam",
-        level: "2ème année bac",
-        levelAr: "السنة الثانية باكالوريا",
-        tags: ["examen", "national", "sciences-maths"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 40,
+      "title": "Fonctions dérivées — TD complet",
+      "titleAr": "الدوال المشتقة — تمارين شاملة",
+      "description": "Série d'exercices sur le calcul des dérivées. 30 exercices progressifs avec corrigés détaillés. 1ère BAC.",
+      "descriptionAr": "سلسلة تمارين في حساب المشتقات. 30 تمرينًا تدريجيًا مع حلول مفصلة. أولى باك.",
+      "cycle": "lycee",
+      "type": "td",
+      "category": "Analyse",
+      "tags": "dérivées,fonctions,td,exercices",
+      "level": "1ère BAC",
+      "url": null,
+      "icon": "fa-solid fa-chart-line",
+      "downloads": 356,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.807Z"
     },
     {
-        id: "lyc-005",
-        title: "Suites numériques",
-        titleAr: "التسلسلات العددية",
-        description: "Cours complet sur les suites arithmétiques, géométriques et suites récurrentes.",
-        descAr: "درس كامل عن التسلسلات الحسابية، الهندسية والتسلسلات التكرارية.",
-        cycle: "lycee",
-        type: "cours",
-        level: "1ère année bac",
-        levelAr: "السنة الأولى باكالوريا",
-        tags: ["suites", "arithmétique", "géométrique"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 41,
+      "title": "Examens — Maths 2ème BAC Sciences Physiques",
+      "titleAr": "امتحانات — الرياضيات ثانية باك علوم فيزيائية",
+      "description": "Sujets d'examens nationaux corrigés — 2ème BAC Sciences Physiques. Session normale et rattrapage.",
+      "descriptionAr": "مواضيع امتحانات وطنية مصححة — ثانية باك علوم فيزيائية. الدورة العادية والدورة الاستدراكية.",
+      "cycle": "lycee",
+      "type": "exam",
+      "category": "Examens",
+      "tags": "bac,examen-national,sciences-physiques,corrigé",
+      "level": "2ème BAC",
+      "url": null,
+      "icon": "fa-solid fa-file-pen",
+      "downloads": 567,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.808Z"
     },
     {
-        id: "lyc-006",
-        title: "Trigonométrie — TD",
-        titleAr: "علم المثلثات — تطبيقات",
-        description: "Travaux dirigés sur les fonctions trigonométriques, équations et inéquations.",
-        descAr: "تطبيقات على الدوال المثلثية، المعادلات والمتباينات.",
-        cycle: "lycee",
-        type: "td",
-        level: "1ère année bac",
-        levelAr: "السنة الأولى باكالوريا",
-        tags: ["trigonométrie", "équations"],
-        downloadUrl: "#",
-        previewUrl: "#"
-    },
-
-    // ── Supérieur ─────────────────────────────────────────────
-    {
-        id: "sup-001",
-        title: "Analyse réelle — Fondamentaux",
-        titleAr: "التحليل الحقيقي — الأساسيات",
-        description: "Cours universitaire sur l'analyse réelle : suites, séries, intégration de Riemann.",
-        descAr: "درس جامعي في التحليل الحقيقي: التسلسلات، المتسلسلات، تكامل ريمان.",
-        cycle: "superieur",
-        type: "cours",
-        level: "1ère année universitaire",
-        levelAr: "السنة الأولى جامعي",
-        tags: ["analyse", "riemann", "séries"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 42,
+      "title": "Algèbre — Suites numériques",
+      "titleAr": "الجبر — المتتاليات العددية",
+      "description": "Cours et exercices sur les suites arithmétiques et géométriques. Raisonnement par récurrence. 1ère BAC.",
+      "descriptionAr": "درس وتمارين حول المتتاليات الحسابية والهندسية. الاستدلال بالاستقراء. أولى باك.",
+      "cycle": "lycee",
+      "type": "cours",
+      "category": "Algèbre",
+      "tags": "suites,arithmétique,géométrique,récurrence",
+      "level": "1ère BAC",
+      "url": null,
+      "icon": "fa-solid fa-list-ol",
+      "downloads": 298,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.809Z"
     },
     {
-        id: "sup-002",
-        title: "Algèbre linéaire — Matrices",
-        titleAr: "الجبر الخطوي — المصفوفات",
-        description: "TD sur les matrices : opérations, déterminants, systèmes linéaires.",
-        descAr: "تطبيقات على المصفوفات: العمليات، المحددات، الأنظمة الخطية.",
-        cycle: "superieur",
-        type: "td",
-        level: "1ère année universitaire",
-        levelAr: "السنة الأولى جامعي",
-        tags: ["algèbre", "matrices", "déterminants"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 43,
+      "title": "Trigonométrie — Équations et inéquations",
+      "titleAr": "علم المثلثات — المعادلات والمتراجحات",
+      "description": "Cours de trigonométrie : équations trigonométriques, inéquations et représentations. Tronc commun.",
+      "descriptionAr": "درس في علم المثلثات: المعادلات المثلثية، المتراجحات والتمثيلات. الجذع المشترك.",
+      "cycle": "lycee",
+      "type": "cours",
+      "category": "Trigonométrie",
+      "tags": "trigonométrie,équations,cercle-trigonométrique",
+      "level": "Tronc commun",
+      "url": null,
+      "icon": "fa-solid fa-circle",
+      "downloads": 267,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.810Z"
     },
     {
-        id: "sup-003",
-        title: "Examen final — Analyse I",
-        titleAr: "امتحان نهائي — تحليل I",
-        description: "Examen final corrigé d'Analyse I pour les étudiants de MPSI/Licence.",
-        descAr: "امتحان نهائي محلول في التحليل I لطلبة MPSI/الإجازة.",
-        cycle: "superieur",
-        type: "exam",
-        level: "1ère année universitaire",
-        levelAr: "السنة الأولى جامعي",
-        tags: ["examen", "analyse-I", "final"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 44,
+      "title": "Produit scalaire — Exercices",
+      "titleAr": "الجداء السلمي — تمارين",
+      "description": "TD sur le produit scalaire dans le plan : calcul, orthogonalité, applications géométriques. 1ère BAC.",
+      "descriptionAr": "تمارين في الجداء السلمي في المستوى: الحساب، التعامد، التطبيقات الهندسية. أولى باك.",
+      "cycle": "lycee",
+      "type": "td",
+      "category": "Géométrie",
+      "tags": "produit-scalaire,orthogonalité,vecteurs",
+      "level": "1ère BAC",
+      "url": null,
+      "icon": "fa-solid fa-vector-square",
+      "downloads": 189,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.810Z"
     },
     {
-        id: "sup-004",
-        title: "Équations différentielles",
-        titleAr: "المعادلات التفاضلية",
-        description: "Cours sur les équations différentielles du 1er et 2nd ordre : méthodes de résolution.",
-        descAr: "درس عن المعادلات التفاضلية من الرتبة الأولى والثانية: طرق الحل.",
-        cycle: "superieur",
-        type: "cours",
-        level: "2ème année universitaire",
-        levelAr: "السنة الثانية جامعي",
-        tags: ["EDO", "différentielles", "résolution"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 45,
+      "title": "Analyse Fonctionnelle — Espaces de Banach",
+      "titleAr": "التحليل الدالي — فضاءات باناخ",
+      "description": "Cours avancé sur les espaces de Banach, opérateurs linéaires bornés, théorèmes fondamentaux. Niveau L3/M1 Mathématiques.",
+      "descriptionAr": "درس متقدم حول فضاءات باناخ، المؤثرات الخطية المحدودة، النظريات الأساسية. مستوى الإجازة/الماستر.",
+      "cycle": "superieur",
+      "type": "cours",
+      "category": "Analyse Fonctionnelle",
+      "tags": "banach,analyse-fonctionnelle,opérateurs",
+      "level": "L3/M1",
+      "url": null,
+      "icon": "fa-solid fa-superscript",
+      "downloads": 178,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.811Z"
     },
     {
-        id: "sup-005",
-        title: "Topologie de ℝ",
-        titleAr: "طوبولوجيا ℝ",
-        description: "Article introductif sur la topologie de ℝ : ouverts, fermés, compacts et connexité.",
-        descAr: "مقال تعريفي حول طوبولوجيا ℝ: المفتوحات، المغلقات، المتراصات والتواصل.",
-        cycle: "superieur",
-        type: "recherche",
-        level: "2ème année universitaire",
-        levelAr: "السنة الثانية جامعي",
-        tags: ["topologie", "compacts", "connexité"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 46,
+      "title": "Algèbre Linéaire — Réduction d'endomorphismes",
+      "titleAr": "الجبر الخطي — اختزال المصفوفات",
+      "description": "TD corrigé sur la diagonalisation, trigonalisation, polynôme caractéristique. L2 Mathématiques.",
+      "descriptionAr": "تمارين مصححة حول القطرية، المثلثية، كثير الحدود المميز. المستوى الثاني.",
+      "cycle": "superieur",
+      "type": "td",
+      "category": "Algèbre Linéaire",
+      "tags": "algèbre-linéaire,diagonalisation,microbes",
+      "level": "L2",
+      "url": null,
+      "icon": "fa-solid fa-matrix",
+      "downloads": 234,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.812Z"
     },
     {
-        id: "sup-006",
-        title: "Introduction à l'analyse fonctionnelle",
-        titleAr: "مقدمة في التحليل الدالي",
-        description: "Notes de recherche sur les espaces de Hilbert, opérateurs linéaires continus.",
-        descAr: "ملاحظات بحثية حول فضاءات هيلبرت، المؤثرات الخطية المستمرة.",
-        cycle: "superieur",
-        type: "recherche",
-        level: "3ème année universitaire",
-        levelAr: "السنة الثالثة جامعي",
-        tags: ["hilbert", "opérateurs", "fonctionnelle"],
-        downloadUrl: "#",
-        previewUrl: "#"
+      "id": 47,
+      "title": "Topologie Générale — Espaces métriques",
+      "titleAr": "التوبولوجيا العامة — الفضاءات المترية",
+      "description": "Cours de topologie : espaces métriques, ouverts, fermés, adhérence, compacité, connexité.",
+      "descriptionAr": "درس في التوبولوجيا: الفضاءات المترية، المجموعات المفتوحة والمغلقة، الالتصاق، التراص، الترابط.",
+      "cycle": "superieur",
+      "type": "cours",
+      "category": "Topologie",
+      "tags": "topologie,espaces-métriques,compacité",
+      "level": "L3",
+      "url": null,
+      "icon": "fa-solid fa-circle-nodes",
+      "downloads": 156,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.813Z"
+    },
+    {
+      "id": 48,
+      "title": "Recherche — Séminaire d'Analyse (EDP)",
+      "titleAr": "بحث — ندوة التحليل (المعادلات التفاضلية الجزئية)",
+      "description": "Notes de séminaire sur les équations aux dérivées partielles, analyse harmonique et applications. Niveau Master/Doctorat.",
+      "descriptionAr": "ملاحظات ندوة حول المعادلات التفاضلية الجزئية، التحليل التوافقي والتطبيقات. مستوى الماستر/الدكتوراه.",
+      "cycle": "superieur",
+      "type": "recherche",
+      "category": "Recherche",
+      "tags": "edp,analyse-harmonique,séminaire,recherche",
+      "level": "M2/Doctorat",
+      "url": null,
+      "icon": "fa-solid fa-graduation-cap",
+      "downloads": 89,
+      "featured": true,
+      "createdAt": "2026-07-21T19:23:14.813Z"
+    },
+    {
+      "id": 49,
+      "title": "Probabilités — Théorie de la mesure et intégration",
+      "titleAr": "الاحتمالات — نظرية القياس والتكامل",
+      "description": "Cours de théorie de la mesure, intégrale de Lebesgue, espaces Lp, applications aux probabilités. M1.",
+      "descriptionAr": "درس في نظرية القياس، تكامل ليبيسغ، فضاءات Lp، تطبيقات على الاحتمالات. ماستر 1.",
+      "cycle": "superieur",
+      "type": "cours",
+      "category": "Probabilités",
+      "tags": "mesure,lebesgue,Lp,probabilités",
+      "level": "M1",
+      "url": null,
+      "icon": "fa-solid fa-calculator",
+      "downloads": 123,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.814Z"
+    },
+    {
+      "id": 50,
+      "title": "Algèbre Commutative — Anneaux et modules",
+      "titleAr": "الجبر التبادلي — الحلقات والمقاييس",
+      "description": "Cours d'algèbre commutative : anneaux, idéaux, modules, localisation. Niveau M1/M2.",
+      "descriptionAr": "درس في الجبر التبادلي: الحلقات، المثاليات، المقاييس، التوضيع. مستوى ماستر 1/2.",
+      "cycle": "superieur",
+      "type": "cours",
+      "category": "Algèbre",
+      "tags": "algèbre-commutative,anneaux,modules",
+      "level": "M1/M2",
+      "url": null,
+      "icon": "fa-solid fa-shapes",
+      "downloads": 97,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.815Z"
+    },
+    {
+      "id": 51,
+      "title": "Géométrie Différentielle — Variétés",
+      "titleAr": "الهندسة التفاضلية — المتعددات",
+      "description": "Introduction aux variétés différentielles, espaces tangents, formes différentielles. L3/M1.",
+      "descriptionAr": "مقدمة في المتعددات التفاضلية، الفضاءات المماسة، الصور التفاضلية. مستوى الإجازة/الماستر.",
+      "cycle": "superieur",
+      "type": "recherche",
+      "category": "Géométrie",
+      "tags": "géométrie-différentielle,variétés,formes-différentielles",
+      "level": "L3/M1",
+      "url": null,
+      "icon": "fa-solid fa-globe",
+      "downloads": 76,
+      "featured": false,
+      "createdAt": "2026-07-21T19:23:14.815Z"
     }
-];
-
-// ── Traductions i18n ─────────────────────────────────────────
-const I18N = {
-    fr: {
-        // Navigation
-        "nav.accueil": "Accueil",
-        "nav.apropos": "À propos",
-        "nav.maths": "Mathématiques",
-        "nav.recherche": "Recherche",
-        "nav.faq": "FAQ",
-        "nav.contact": "Contact",
-
-        // Accessibility
-        "accessibility.skip": "Aller au contenu principal",
-
-        // Header
-        "eyebrow": "Enseignant de mathématiques",
-        "tagline": "Plateforme académique des mathématiques",
-
-        // Hero
-        "hero.kicker": "Plateforme académique gratuite",
-        "hero.title": "Apprenez les mathématiques avec rigueur et clarté.",
-        "hero.description": "Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.",
-        "hero.start": "Commencer",
-        "hero.research": "Recherche",
-
-        // Stats
-        "stats.cycles": "Cycles éducatifs",
-        "stats.resources": "Ressources évolutives",
-        "stats.languages": "Langues",
-
-        // À propos
-        "apropos.heading": "À propos",
-        "apropos.bio": "Enseignant de mathématiques passionné par la pédagogie et la transmission des savoirs. Cette plateforme regroupe des ressources gratuites pour les élèves et les étudiants.",
-        "apropos.domaines": "Domaines d'expertise",
-        "apropos.tag1": "Algèbre",
-        "apropos.tag2": "Analyse",
-        "apropos.tag3": "Géométrie",
-        "apropos.tag4": "Didactique",
-
-        // Mathématiques
-        "maths.heading": "Mathématiques",
-        "maths.sub": "Explorez les ressources par cycle et par type.",
-
-        // Filtres
-        "filter.allCycles": "Tous les cycles",
-        "filter.college": "Collège",
-        "filter.lycee": "Lycée",
-        "filter.superieur": "Supérieur",
-        "filter.allTypes": "Tous les types",
-        "filter.cours": "Cours",
-        "filter.td": "TD",
-        "filter.exam": "Examens",
-        "filter.recherche": "Recherche",
-        "filter.favorites": "Favoris",
-        "filter.noResults": "Aucun résultat trouvé.",
-
-        // Recherche
-        "recherche.heading": "Recherche & Supérieur",
-        "recherche.sub": "Ressources avancées pour les étudiants du supérieur.",
-
-        // FAQ
-        "faq.heading": "Questions fréquentes",
-        "faq.q1": "Comment télécharger un document ?",
-        "faq.a1": "Cliquez sur le bouton « Télécharger » de la ressource souhaitée.",
-        "faq.q2": "Les ressources sont-elles gratuites ?",
-        "faq.a2": "Oui, toutes les ressources sont gratuites et libres d'usage pédagogique.",
-        "faq.q3": "Comment vous contacter ?",
-        "faq.a3": "Utilisez le formulaire de l'onglet Contact.",
-
-        // Contact
-        "contact.heading": "Contact",
-        "contact.intro": "Pour toute question ou collaboration, écrivez-moi.",
-        "contact.nameLabel": "Nom",
-        "contact.emailLabel": "E-mail",
-        "contact.messageLabel": "Message",
-        "contact.submit": "Envoyer",
-
-        // Sidebar
-        "sidebar.mathBtn": "Mathématiques",
-        "sidebar.researchBtn": "Recherche",
-        "sidebar.newsTitle": "Actualités",
-        "sidebar.newBadge": "Nouveau",
-        "sidebar.news1": "Mise en ligne des ressources pour le cycle collégial.",
-        "sidebar.news2": "Ajout des séries d'exercices pour la 1ère BAC.",
-
-        // Légal
-        "legal.heading": "Confidentialité",
-        "legal.privacy1": "Aucune donnée personnelle n'est collectée en dehors du formulaire de contact.",
-
-        // Footer
-        "footer.rights": "© 2026 MoBendriss. Tous droits réservés.",
-        "footer.tagline": "Conçu avec rigueur.",
-        "footer.legalLink": "Confidentialité",
-
-        // Search
-        "search.placeholder": "Rechercher…",
-
-        // Resource actions
-        "resource.download": "Télécharger",
-        "resource.preview": "Aperçu",
-        "resource.count": "{count} ressource(s) trouvée(s)",
-
-        // Cycle labels
-        "cycle.college": "Collège",
-        "cycle.lycee": "Lycée",
-        "cycle.superieur": "Supérieur"
-    },
-
-    ar: {
-        // Navigation
-        "nav.accueil": "الرئيسية",
-        "nav.apropos": "حول",
-        "nav.maths": "الرياضيات",
-        "nav.recherche": "البحث",
-        "nav.faq": "أسئلة شائعة",
-        "nav.contact": "اتصل بنا",
-
-        // Accessibility
-        "accessibility.skip": "الانتقال إلى المحتوى الرئيسي",
-
-        // Header
-        "eyebrow": "أستاذ الرياضيات",
-        "tagline": "منصة أكاديمية للرياضيات",
-
-        // Hero
-        "hero.kicker": "منصة أكاديمية مجانية",
-        "hero.title": "تعلّم الرياضيات بدقة ووضوح.",
-        "hero.description": "دروس منظمة، تمارين تدريجية، امتحانات محلولة وموارد متقدمة للسلك الثانوي والتعليم العالي.",
-        "hero.start": "ابدأ الآن",
-        "hero.research": "البحث",
-
-        // Stats
-        "stats.cycles": "أطوار تعليمية",
-        "stats.resources": "موارد متجددة",
-        "stats.languages": "لغات",
-
-        // À propos
-        "apropos.heading": "حول",
-        "apropos.bio": "أستاذ رياضيات شغوف بالبيداغوجيا ونقل المعرفة. تجمع هذه المنصة موارد مجانية للتلاميذ والطلاب.",
-        "apropos.domaines": "مجالات الخبرة",
-        "apropos.tag1": "الجبر",
-        "apropos.tag2": "التحليل",
-        "apropos.tag3": "الهندسة",
-        "apropos.tag4": "الديداكتيك",
-
-        // Mathématiques
-        "maths.heading": "الرياضيات",
-        "maths.sub": "استكشف الموارد حسب الطور والنوع.",
-
-        // Filtres
-        "filter.allCycles": "جميع الأطوار",
-        "filter.college": "الإعدادي",
-        "filter.lycee": "الثانوي",
-        "filter.superieur": "التعليم العالي",
-        "filter.allTypes": "جميع الأنواع",
-        "filter.cours": "دروس",
-        "filter.td": "تطبيقات",
-        "filter.exam": "امتحانات",
-        "filter.recherche": "بحث",
-        "filter.favorites": "المفضلة",
-        "filter.noResults": "لم يتم العثور على نتائج.",
-
-        // Recherche
-        "recherche.heading": "البحث والتعليم العالي",
-        "recherche.sub": "موارد متقدمة لطلبة التعليم العالي.",
-
-        // FAQ
-        "faq.heading": "أسئلة متكررة",
-        "faq.q1": "كيف أقوم بتحميل وثيقة؟",
-        "faq.a1": "انقر على زر «تحميل» الخاص بالموارد المطلوبة.",
-        "faq.q2": "هل الموارد مجانية؟",
-        "faq.a2": "نعم، جميع الموارد مجانية ومفتوحة للاستخدام التعليمي.",
-        "faq.q3": "كيف أتواصل معكم؟",
-        "faq.a3": "استخدم نموذج الاتصال في تبويب «اتصل بنا».",
-
-        // Contact
-        "contact.heading": "اتصل بنا",
-        "contact.intro": "لأي سؤال أو تعاون، راسلني.",
-        "contact.nameLabel": "الاسم",
-        "contact.emailLabel": "البريد الإلكتروني",
-        "contact.messageLabel": "الرسالة",
-        "contact.submit": "إرسال",
-
-        // Sidebar
-        "sidebar.mathBtn": "الرياضيات",
-        "sidebar.researchBtn": "البحث",
-        "sidebar.newsTitle": "آخر الأخبار",
-        "sidebar.newBadge": "جديد",
-        "sidebar.news1": "نشر موارد السلك الإعدادي.",
-        "sidebar.news2": "إضافة سلاسل تمارين للسنة الأولى باكالوريا.",
-
-        // Légal
-        "legal.heading": "الخصوصية",
-        "legal.privacy1": "لا يتم جمع أي بيانات شخصية خارج نموذج الاتصال.",
-
-        // Footer
-        "footer.rights": "© 2026 MoBendriss. جميع الحقوق محفوظة.",
-        "footer.tagline": "صُمم بدقة.",
-        "footer.legalLink": "الخصوصية",
-
-        // Search
-        "search.placeholder": "بحث…",
-
-        // Resource actions
-        "resource.download": "تحميل",
-        "resource.preview": "معاينة",
-        "resource.count": "تم العثور على {count} مورد(موارد)",
-
-        // Cycle labels
-        "cycle.college": "الإعدادي",
-        "cycle.lycee": "الثانوي",
-        "cycle.superieur": "التعليم العالي"
-    }
-};
+  ]
+}
