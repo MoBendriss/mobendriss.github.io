@@ -1,0 +1,21 @@
+{
+  "name": "MoBendriss Academy — منصة أكاديمية للرياضيات",
+  "short_name": "MoBendriss",
+  "description": "Plateforme académique de mathématiques — La rigueur au service du savoir.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F5F0",
+  "theme_color": "#1E3A5F",
+  "orientation": "any",
+  "categories": ["education", "math", "science"],
+  "lang": "fr",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "100x100",
+      "type": "image/svg+xml"
+    }
+  ]
+}
