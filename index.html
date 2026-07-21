@@ -3,102 +3,282 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoBendriss | منصة أكاديمية للرياضيات</title>
-
-    <meta name="description" content="Plateforme académique de mathématiques — Cours, exercices corrigés, examens et ressources scientifiques pour le secondaire et l'enseignement supérieur.">
+    <title>MoBendriss | منصة أكاديمية للرياضيات — معاينة</title>
+    <meta name="description" content="Plateforme académique de mathématiques — Cours, exercices corrigés, examens et ressources scientifiques.">
     <meta name="author" content="MoBendriss">
     <meta name="theme-color" content="#132038">
     <meta name="color-scheme" content="light dark">
-    <meta name="robots" content="index, follow">
-
-    <link rel="canonical" href="https://mobendriss.github.io/">
-    <link rel="manifest" href="./manifest.webmanifest">
-
-    <meta property="og:title" content="MoBendriss — منصة أكاديمية للرياضيات">
-    <meta property="og:description" content="دروس، تمارين، امتحانات وموارد علمية في الرياضيات.">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="fr_FR">
-    <meta property="og:url" content="https://mobendriss.github.io/">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <link rel="alternate" hreflang="fr" href="https://mobendriss.github.io/">
-    <link rel="alternate" hreflang="ar" href="https://mobendriss.github.io/?lang=ar">
-    <link rel="alternate" hreflang="x-default" href="https://mobendriss.github.io/">
-
-    <script>
-        (function () {
-            try {
-                var t = localStorage.getItem('mb-theme');
-                if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', t);
-                var l = localStorage.getItem('mb-lang');
-                if (l === 'ar') {
-                    document.documentElement.setAttribute('lang', 'ar');
-                    document.documentElement.setAttribute('dir', 'rtl');
-                }
-            } catch (e) {}
-        })();
-    </script>
-
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23132038'/%3E%3Ctext x='50' y='65' font-size='44' text-anchor='middle' font-style='italic' font-weight='700' font-family='Georgia,serif' fill='%23FBF8F2'%3EMB%3C/text%3E%3C/svg%3E">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <script>
         window.MathJax = {
-            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']] },
+            tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] },
             options: { enableMenu: false }
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>(function(){try{var t=localStorage.getItem('mb-theme');if(!t)t=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);var l=localStorage.getItem('mb-lang');if(l==='ar'){document.documentElement.setAttribute('lang','ar');document.documentElement.setAttribute('dir','rtl');}}catch(e){}})();</script>
 
-    <link rel="stylesheet" href="./assets/css/styles.css">
+<style>
+/* ============================================================
+   MoBendriss — Styles principaux (Version Preview)
+   ============================================================ */
+:root{--ink:#132038;--ink-soft:#47536B;--ink-muted:#7A869A;--paper:#FBF8F2;--paper-alt:#F3EFE4;--card:#FFFFFF;--card-border:#E4DFCF;--chalk-blue:#2C6E8E;--chalk-blue-deep:#1F5670;--chalk-blue-light:#E8F4F8;--ochre:#B8791A;--ochre-light:#FDF5E8;--rust:#A23B3B;--amethyst:#6C5CE7;--focus:#E7A947;--success:#2D9F6F;--danger:#C0392B;--font-display:'Fraunces',Georgia,serif;--font-body:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--font-mono:'IBM Plex Mono','Courier New',monospace;--font-arabic:'IBM Plex Sans Arabic','Amiri',sans-serif;--shadow-1:0 1px 3px rgba(19,32,56,.06),0 8px 20px -10px rgba(19,32,56,.14);--shadow-2:0 24px 40px -20px rgba(19,32,56,.3);--shadow-card:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.06);--shadow-hover:0 8px 24px rgba(0,0,0,0.1);--container:1200px;--sidebar-width:280px;--nav-height:56px;--radius:12px;--radius-sm:8px;--radius-lg:16px;--ease:cubic-bezier(.22,1,.36,1);--transition:all 0.3s var(--ease);}
+[data-theme="dark"]{--ink:#E8E0D0;--ink-soft:#B8B0A0;--ink-muted:#8A8274;--paper:#0C1526;--paper-alt:#111C30;--card:#162240;--card-border:#263650;--chalk-blue:#4A9CC0;--chalk-blue-deep:#3A7CA0;--chalk-blue-light:#1A2E48;--ochre:#E7A947;--ochre-light:#2A2010;--shadow-1:0 1px 3px rgba(0,0,0,.2),0 8px 20px -10px rgba(0,0,0,.4);--shadow-2:0 24px 40px -20px rgba(0,0,0,.6);--shadow-card:0 1px 3px rgba(0,0,0,0.2),0 4px 12px rgba(0,0,0,0.3);--shadow-hover:0 8px 24px rgba(0,0,0,0.4);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0.01ms!important;animation-duration:0.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;font-size:16px;}
+body{font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;min-height:100vh;overflow-x:hidden;}
+[dir="rtl"] body,[dir="rtl"]{font-family:var(--font-arabic);}
+a{color:var(--chalk-blue);text-decoration:none;transition:var(--transition);}
+a:hover{color:var(--chalk-blue-deep);}
+ul,ol{list-style:none;}
+img{max-width:100%;height:auto;display:block;}
+button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit;}
+input,textarea,select{font-family:inherit;font-size:inherit;color:inherit;}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.skip-link{position:fixed;top:-100%;left:50%;transform:translateX(-50%);z-index:10000;background:var(--ochre);color:white;padding:0.75rem 1.5rem;border-radius:0 0 var(--radius) var(--radius);font-weight:600;transition:top 0.3s;}
+.skip-link:focus{top:0;color:white;}
+.container{width:92%;max-width:var(--container);margin:0 auto;}
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "MoBendriss",
-      "url": "https://mobendriss.github.io/",
-      "jobTitle": "Enseignant de mathématiques",
-      "knowsAbout": ["Mathématiques", "Analyse", "Algèbre", "Géométrie"]
-    }
-    </script>
+/* Banner */
+.top-banner{position:relative;background:radial-gradient(60% 90% at 85% 0%,rgba(44,110,142,0.35),transparent 60%),radial-gradient(50% 70% at 8% 100%,rgba(231,169,71,0.14),transparent 65%),linear-gradient(160deg,rgb(22,35,63) 0%,rgb(16,28,51) 55%,rgb(11,21,38) 100%);padding:3rem 0 2.5rem;overflow:hidden;border-bottom:1px solid rgba(231,169,71,0.4);}
+.top-banner::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(231,169,71,0.12) 1px,transparent 1px),linear-gradient(90deg,rgba(231,169,71,0.12) 1px,transparent 1px);background-size:34px 34px;mask-image:radial-gradient(95% 100% at 50% 0%,black 55%,transparent 95%);-webkit-mask-image:radial-gradient(95% 100% at 50% 0%,black 55%,transparent 95%);pointer-events:none;}
+.banner-glyphs{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+.banner-glyphs span{position:absolute;font-family:var(--font-display);color:rgba(231,169,71,0.15);font-style:italic;user-select:none;}
+.banner-glyphs .g1{top:15%;left:5%;font-size:4rem;animation:floatSlow 12s ease-in-out infinite;}
+.banner-glyphs .g2{top:60%;left:15%;font-size:3rem;animation:floatSlow 10s ease-in-out infinite 1s;}
+.banner-glyphs .g3{top:25%;right:10%;font-size:3.5rem;animation:floatSlow 14s ease-in-out infinite 2s;}
+.banner-glyphs .g4{bottom:20%;right:20%;font-size:2.5rem;animation:floatSlow 11s ease-in-out infinite 0.5s;}
+.banner-glyphs .g5{top:50%;left:45%;font-size:5rem;opacity:0.08;animation:floatSlow 16s ease-in-out infinite 3s;}
+.banner-formula{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-family:var(--font-mono);font-size:0.75rem;color:rgba(231,169,71,0.25);white-space:nowrap;pointer-events:none;}
+@keyframes floatSlow{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-15px) rotate(3deg);}}
+.top-banner-content{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.eyebrow{font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--focus);margin-bottom:0.5rem;font-weight:500;}
+.wordmark{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:#FBF8F2;line-height:1.1;letter-spacing:-0.02em;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;}
+.wm-a{font-style:italic;color:var(--focus);}
+.wm-b{color:#FBF8F2;}
+.verified-badge{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--chalk-blue);border-radius:50%;font-size:0.7rem;color:white;flex-shrink:0;}
+.tagline{font-size:1.1rem;color:rgba(255,255,255,0.75);margin-top:0.5rem;font-weight:400;}
+.header-avatar{width:110px;height:110px;flex-shrink:0;animation:fadeInScale 0.8s var(--ease) forwards;}
+.header-avatar svg{width:100%;height:100%;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.3));}
+@keyframes fadeInScale{from{opacity:0;transform:scale(0.8);}to{opacity:1;transform:scale(1);}}
+
+/* Site Glyphs */
+.site-glyphs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.site-glyphs span{position:absolute;font-family:var(--font-display);font-style:italic;color:var(--card-border);opacity:0.15;user-select:none;}
+.sg1{top:20%;right:3%;font-size:8rem;}
+.sg2{top:55%;left:2%;font-size:6rem;}
+.sg3{top:35%;left:50%;font-size:10rem;opacity:0.06;}
+.sg4{bottom:15%;right:15%;font-size:5rem;}
+.sg5{bottom:30%;left:10%;font-size:7rem;}
+
+/* Navigation */
+.navigation-bar{position:sticky;top:0;z-index:100;background:var(--card);border-bottom:1px solid var(--card-border);box-shadow:var(--shadow-1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+[data-theme="dark"] .navigation-bar{background:rgba(22,34,64,0.9);}
+.nav-inner{display:flex;align-items:center;gap:1rem;height:var(--nav-height);}
+.nav-inner>ul{display:flex;align-items:center;gap:0.25rem;flex:1;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.nav-inner>ul::-webkit-scrollbar{display:none;}
+.nav-inner>ul>li:first-child{position:relative;display:flex;align-items:center;}
+.nav-indicator{position:absolute;bottom:-1px;height:3px;background:var(--ochre);border-radius:3px 3px 0 0;transition:all 0.4s var(--ease);pointer-events:none;}
+.nav-link{display:flex;align-items:center;gap:0.5rem;padding:0.75rem 1rem;font-size:0.875rem;font-weight:500;color:var(--ink-soft);white-space:nowrap;border-radius:var(--radius-sm) var(--radius-sm) 0 0;transition:var(--transition);position:relative;}
+.nav-link:hover{color:var(--ink);background:var(--paper-alt);}
+.nav-link[aria-selected="true"]{color:var(--chalk-blue);font-weight:600;}
+.nav-link i{font-size:0.8rem;}
+.nav-search{display:flex;align-items:center;gap:0.5rem;background:var(--paper-alt);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:0.4rem 0.75rem;min-width:160px;transition:var(--transition);}
+.nav-search:focus-within{border-color:var(--chalk-blue);box-shadow:0 0 0 3px rgba(44,110,142,0.15);}
+.nav-search i{color:var(--ink-muted);font-size:0.8rem;}
+.nav-search input{border:none;background:none;outline:none;width:100%;font-size:0.85rem;color:var(--ink);}
+.nav-search input::placeholder{color:var(--ink-muted);}
+.nav-toggles{display:flex;align-items:center;gap:0.5rem;}
+.icon-toggle{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-sm);background:var(--paper-alt);border:1px solid var(--card-border);font-size:0.9rem;color:var(--ink-soft);transition:var(--transition);}
+.icon-toggle:hover{background:var(--chalk-blue-light);color:var(--chalk-blue);border-color:var(--chalk-blue);}
+.lang-toggle-label{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;letter-spacing:0.05em;}
+
+/* Main Layout */
+.main-layout{display:grid;grid-template-columns:1fr var(--sidebar-width);gap:2rem;padding:2rem 0 4rem;position:relative;z-index:1;}
+#main-content{min-width:0;}
+.tab-content{display:none;animation:fadeTab 0.4s var(--ease) forwards;position:relative;}
+.tab-content.active-content{display:block;}
+@keyframes fadeTab{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.level-watermark{position:absolute;top:-1rem;right:-0.5rem;font-family:var(--font-display);font-size:12rem;font-style:italic;color:var(--card-border);opacity:0.15;pointer-events:none;user-select:none;line-height:1;z-index:0;}
+[dir="rtl"] .level-watermark{right:auto;left:-0.5rem;}
+
+/* Home Hero */
+.home-hero{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;margin-bottom:3rem;}
+.hero-kicker{display:inline-flex;align-items:center;gap:0.5rem;font-family:var(--font-mono);font-size:0.8rem;color:var(--ochre);letter-spacing:0.05em;margin-bottom:1rem;}
+.hero-copy h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;line-height:1.3;color:var(--ink);margin-bottom:1rem;}
+.hero-copy p{color:var(--ink-soft);font-size:1.05rem;line-height:1.8;max-width:540px;margin-bottom:1.5rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-equation{display:flex;flex-direction:column;align-items:center;gap:0.75rem;font-family:var(--font-mono);font-size:0.9rem;color:var(--chalk-blue);opacity:0.6;padding:1.5rem;background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);box-shadow:var(--shadow-card);}
+.hero-equation strong{font-size:1.1rem;color:var(--ochre);}
+
+/* Stats */
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.stat-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.5rem;text-align:center;box-shadow:var(--shadow-card);transition:var(--transition);}
+.stat-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);border-color:var(--focus);}
+.stat-card strong{display:block;font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--chalk-blue);margin-bottom:0.25rem;}
+.stat-card span{font-size:0.85rem;color:var(--ink-muted);font-weight:500;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;transition:var(--transition);cursor:pointer;border:2px solid transparent;}
+.btn-primary{background:linear-gradient(135deg,var(--ochre),var(--focus));color:white;box-shadow:0 4px 12px rgba(184,121,26,0.3);}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,121,26,0.4);}
+.btn-secondary{background:transparent;color:var(--chalk-blue);border-color:var(--chalk-blue);}
+.btn-secondary:hover{background:var(--chalk-blue);color:white;}
+
+/* Abstract Box */
+.abstract-box{background:var(--card);border:1px solid var(--card-border);border-right:4px solid var(--chalk-blue);border-radius:var(--radius);padding:2rem;margin-bottom:2rem;box-shadow:var(--shadow-card);}
+[dir="rtl"] .abstract-box{border-right:1px solid var(--card-border);border-left:4px solid var(--chalk-blue);}
+.abstract-box h3{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:1rem;color:var(--ink);}
+.abstract-box p{color:var(--ink-soft);line-height:1.8;}
+.group-label{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:1rem;margin-top:1.5rem;}
+.tag-row{display:flex;flex-wrap:wrap;gap:0.75rem;}
+.tag-pill{display:inline-flex;align-items:center;padding:0.5rem 1.25rem;background:var(--chalk-blue-light);color:var(--chalk-blue);border-radius:50px;font-size:0.85rem;font-weight:600;border:1px solid transparent;transition:var(--transition);}
+.tag-pill:hover{border-color:var(--chalk-blue);transform:translateY(-2px);}
+
+/* Section Headings */
+.section-heading{font-family:var(--font-display);font-size:1.75rem;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
+.section-heading i{color:var(--chalk-blue);font-size:1.4rem;}
+.section-sub{color:var(--ink-soft);font-size:1rem;margin-bottom:2rem;}
+
+/* Resource Toolbar */
+.resource-toolbar{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;margin-bottom:1.5rem;padding:1rem;background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);box-shadow:var(--shadow-card);}
+.resource-search{display:flex;align-items:center;gap:0.5rem;background:var(--paper-alt);border:1px solid var(--card-border);border-radius:var(--radius-sm);padding:0.5rem 0.75rem;flex:1;min-width:180px;transition:var(--transition);}
+.resource-search:focus-within{border-color:var(--chalk-blue);box-shadow:0 0 0 3px rgba(44,110,142,0.15);}
+.resource-search i{color:var(--ink-muted);font-size:0.8rem;}
+.resource-search input{border:none;background:none;outline:none;width:100%;font-size:0.9rem;color:var(--ink);}
+.resource-search input::placeholder{color:var(--ink-muted);}
+.resource-toolbar select{padding:0.5rem 0.75rem;background:var(--paper-alt);border:1px solid var(--card-border);border-radius:var(--radius-sm);font-size:0.85rem;color:var(--ink);cursor:pointer;transition:var(--transition);min-width:140px;}
+.resource-toolbar select:focus{outline:none;border-color:var(--chalk-blue);box-shadow:0 0 0 3px rgba(44,110,142,0.15);}
+.filter-button{display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 1rem;background:var(--paper-alt);border:1px solid var(--card-border);border-radius:var(--radius-sm);font-size:0.85rem;font-weight:500;color:var(--ink-soft);transition:var(--transition);}
+.filter-button:hover,.filter-button.active{background:var(--ochre-light);border-color:var(--ochre);color:var(--ochre);}
+.resource-count{font-size:0.85rem;color:var(--ink-muted);margin-bottom:1rem;font-weight:500;}
+.empty-note{text-align:center;padding:3rem 1rem;color:var(--ink-muted);font-size:1rem;}
+
+/* Resource Grid */
+.resource-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;}
+.resource-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-card);transition:var(--transition);position:relative;overflow:hidden;animation:fadeInUp 0.4s var(--ease) forwards;opacity:0;}
+.resource-card::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:linear-gradient(90deg,var(--chalk-blue),var(--ochre));transform:scaleX(0);transition:transform 0.4s var(--ease);}
+.resource-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover);}
+.resource-card:hover::before{transform:scaleX(1);}
+.resource-card-header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.75rem;margin-bottom:1rem;}
+.resource-type-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius-sm);font-size:1rem;flex-shrink:0;}
+.resource-type-icon.cours{background:#E8F4F8;color:var(--chalk-blue);}
+.resource-type-icon.td{background:#FDF5E8;color:var(--ochre);}
+.resource-type-icon.exam{background:#FDE8E8;color:var(--rust);}
+.resource-type-icon.recherche{background:#EDE8FD;color:var(--amethyst);}
+[data-theme="dark"] .resource-type-icon.cours{background:#1A2E48;}
+[data-theme="dark"] .resource-type-icon.td{background:#2A2010;}
+[data-theme="dark"] .resource-type-icon.exam{background:#2A1515;}
+[data-theme="dark"] .resource-type-icon.recherche{background:#1E1A38;}
+.resource-fav-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:var(--paper-alt);border:1px solid var(--card-border);color:var(--ink-muted);font-size:0.85rem;transition:var(--transition);flex-shrink:0;}
+.resource-fav-btn:hover,.resource-fav-btn.active{background:#FDF5E8;border-color:var(--focus);color:var(--focus);}
+.resource-fav-btn.active i::before{content:"\f005";font-weight:900;}
+.resource-card h3{font-family:var(--font-display);font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:0.5rem;line-height:1.4;}
+.resource-card p{font-size:0.85rem;color:var(--ink-muted);line-height:1.6;margin-bottom:1rem;}
+.resource-meta{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;}
+.resource-badge{display:inline-flex;align-items:center;padding:0.25rem 0.6rem;border-radius:50px;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+.resource-badge.cycle{background:var(--chalk-blue-light);color:var(--chalk-blue);}
+.resource-badge.type{background:var(--ochre-light);color:var(--ochre);}
+.resource-card-actions{display:flex;gap:0.5rem;}
+.resource-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.5rem 0.75rem;border-radius:var(--radius-sm);font-size:0.8rem;font-weight:600;transition:var(--transition);}
+.resource-btn.primary{background:var(--chalk-blue);color:white;}
+.resource-btn.primary:hover{background:var(--chalk-blue-deep);}
+.resource-btn.secondary{background:var(--paper-alt);border:1px solid var(--card-border);color:var(--ink-soft);}
+.resource-btn.secondary:hover{border-color:var(--chalk-blue);color:var(--chalk-blue);}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0.75rem;}
+.faq-item{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-card);transition:var(--transition);}
+.faq-item:hover{border-color:var(--chalk-blue);}
+.faq-item summary{padding:1.25rem 1.5rem;font-weight:600;font-size:1rem;color:var(--ink);cursor:pointer;display:flex;align-items:center;gap:0.75rem;list-style:none;transition:var(--transition);}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::before{content:'\f105';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--chalk-blue);transition:transform 0.3s var(--ease);flex-shrink:0;}
+.faq-item[open] summary::before{transform:rotate(90deg);}
+.faq-item summary:hover{background:var(--paper-alt);}
+.faq-item p{padding:0 1.5rem 1.25rem;color:var(--ink-soft);line-height:1.8;}
+
+/* Contact */
+.contact-section{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:2.5rem;box-shadow:var(--shadow-card);}
+.contact-section h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;}
+.contact-section h2 i{color:var(--chalk-blue);}
+.contact-section>p{color:var(--ink-soft);margin-bottom:2rem;}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.field{display:flex;flex-direction:column;gap:0.4rem;}
+.field label{font-size:0.85rem;font-weight:600;color:var(--ink);}
+.field input,.field textarea{padding:0.75rem 1rem;border:1px solid var(--card-border);border-radius:var(--radius-sm);background:var(--paper-alt);font-size:0.95rem;transition:var(--transition);}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--chalk-blue);box-shadow:0 0 0 3px rgba(44,110,142,0.15);background:var(--card);}
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-muted);}
+.field textarea{resize:vertical;min-height:120px;}
+.submit-row{display:flex;justify-content:flex-start;margin-top:1.5rem;}
+.submit-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 2rem;background:linear-gradient(135deg,var(--ochre),var(--focus));color:white;border-radius:var(--radius-sm);font-weight:600;font-size:0.95rem;box-shadow:0 4px 12px rgba(184,121,26,0.3);transition:var(--transition);}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,121,26,0.4);}
+
+/* Sidebar */
+#sidebar{display:flex;flex-direction:column;gap:1.5rem;position:sticky;top:calc(var(--nav-height) + 2rem);height:fit-content;}
+.sidebar-widget{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow-card);}
+.math-btn{display:flex;align-items:center;gap:0.75rem;width:100%;padding:0.85rem 1rem;border-radius:var(--radius-sm);font-weight:600;font-size:0.9rem;color:var(--ink);background:var(--paper-alt);border:1px solid var(--card-border);transition:var(--transition);margin-bottom:0.75rem;}
+.math-btn:last-child{margin-bottom:0;}
+.math-btn i{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--chalk-blue-light);color:var(--chalk-blue);border-radius:var(--radius-sm);font-size:0.85rem;}
+.math-btn:hover{background:var(--chalk-blue);color:white;border-color:var(--chalk-blue);}
+.math-btn:hover i{background:rgba(255,255,255,0.2);color:white;}
+.widget-title{display:flex;align-items:center;gap:0.5rem;font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:1px solid var(--card-border);}
+.widget-title i{color:var(--ochre);font-size:0.9rem;}
+.news-list{display:flex;flex-direction:column;gap:1rem;}
+.news-item{padding-bottom:1rem;border-bottom:1px solid var(--card-border);}
+.news-item:last-child{padding-bottom:0;border-bottom:none;}
+.news-meta{display:flex;align-items:center;gap:0.5rem;margin-bottom:0.4rem;}
+.news-date{font-family:var(--font-mono);font-size:0.7rem;font-weight:600;color:var(--ink-muted);letter-spacing:0.1em;text-transform:uppercase;}
+.news-badge{display:inline-flex;padding:0.15rem 0.5rem;background:var(--ochre);color:white;border-radius:50px;font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.7;}}
+.news-item p{font-size:0.85rem;color:var(--ink-soft);line-height:1.6;}
+
+/* Footer */
+footer{background:linear-gradient(160deg,rgb(22,35,63),rgb(11,21,38));color:rgba(255,255,255,0.8);padding:1.5rem 0;position:relative;z-index:1;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer p{font-size:0.85rem;display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;}
+.foot-accent{color:var(--focus);font-style:italic;font-family:var(--font-display);}
+.footer-link{font-size:0.85rem;color:rgba(255,255,255,0.6);transition:var(--transition);padding:0.25rem 0.5rem;border-radius:var(--radius-sm);}
+.footer-link:hover{color:var(--focus);background:rgba(255,255,255,0.1);}
+
+/* Preview Badge */
+.preview-badge{position:fixed;bottom:1rem;left:1rem;z-index:9999;background:var(--ochre);color:white;padding:0.5rem 1rem;border-radius:50px;font-size:0.75rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.3);display:flex;align-items:center;gap:0.5rem;animation:pulse 2s infinite;}
+.preview-badge i{font-size:0.9rem;}
+
+/* Responsive */
+@media(max-width:1024px){.main-layout{grid-template-columns:1fr;}#sidebar{position:static;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}}
+@media(max-width:768px){.top-banner{padding:2rem 0 1.5rem;}.top-banner-content{flex-direction:column-reverse;text-align:center;align-items:center;}.header-avatar{width:80px;height:80px;}.wordmark{justify-content:center;}.nav-search{display:none;}.nav-inner>ul{gap:0;}.nav-link{padding:0.75rem 0.6rem;font-size:0.8rem;}.nav-link span{display:none;}.nav-link i{font-size:1rem;}.home-hero{grid-template-columns:1fr;gap:2rem;}.hero-equation{display:none;}.stats-grid{grid-template-columns:1fr;}.field-grid{grid-template-columns:1fr;}.resource-grid{grid-template-columns:1fr;}.level-watermark{font-size:6rem;}.banner-glyphs span{font-size:2rem;}}
+@media(max-width:480px){.hero-actions{flex-direction:column;}.btn{width:100%;}.contact-section{padding:1.5rem;}.resource-toolbar{flex-direction:column;}.resource-toolbar select,.resource-search,.filter-button{width:100%;}}
+.MathJax{font-size:1.1em!important;}
+mjx-container{overflow-x:auto;overflow-y:hidden;padding:0.25rem 0;}
+@media print{.navigation-bar,.nav-toggles,#sidebar,.banner-glyphs,.site-glyphs,.banner-formula,footer,.preview-badge{display:none!important;}.top-banner{background:#132038!important;padding:1rem 0;}body{background:white;color:black;}}
+</style>
 </head>
 <body>
-
     <a class="skip-link" href="#main-content" data-i18n="accessibility.skip">Aller au contenu principal</a>
     <div id="tab-announcer" class="sr-only" aria-live="polite"></div>
+    <div class="site-glyphs" aria-hidden="true"><span class="sg1">∞</span><span class="sg2">∂</span><span class="sg3">≈</span><span class="sg4">∴</span><span class="sg5">Ω</span></div>
 
-    <div class="site-glyphs" aria-hidden="true">
-        <span class="sg1">∞</span><span class="sg2">∂</span><span class="sg3">≈</span><span class="sg4">∴</span><span class="sg5">Ω</span>
-    </div>
+    <!-- Preview Badge -->
+    <div class="preview-badge"><i class="fa-solid fa-eye"></i> نسخة المعاينة</div>
 
     <header class="top-banner">
-        <div class="banner-glyphs" aria-hidden="true">
-            <span class="g1">∫</span><span class="g2">∑</span><span class="g3">π</span><span class="g4">√</span><span class="g5">Δ</span>
-        </div>
-        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon&gt;0,\ \exists\,\delta&gt;0$</div>
+        <div class="banner-glyphs" aria-hidden="true"><span class="g1">∫</span><span class="g2">∑</span><span class="g3">π</span><span class="g4">√</span><span class="g5">Δ</span></div>
+        <div class="banner-formula" aria-hidden="true">$\displaystyle \forall\varepsilon>0,\ \exists\,\delta>0$</div>
         <div class="container top-banner-content">
             <div>
                 <p class="eyebrow" data-i18n="eyebrow">Enseignant de mathématiques</p>
-                <h1 class="wordmark">
-                    <span class="wm-a">Mo</span><span class="wm-b">Bendriss</span>
-                    <span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span>
-                </h1>
+                <h1 class="wordmark"><span class="wm-a">Mo</span><span class="wm-b">Bendriss</span><span class="verified-badge" title="Profil vérifié"><i class="fa-solid fa-check"></i></span></h1>
                 <p class="tagline" data-i18n="tagline">Plateforme académique des mathématiques</p>
             </div>
             <div class="header-avatar" role="img" aria-label="Emblème de MoBendriss">
                 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%">
-                            <stop offset="0%" stop-color="#26496A"/>
-                            <stop offset="100%" stop-color="#0C1526"/>
-                        </linearGradient>
-                    </defs>
+                    <defs><linearGradient id="logoFill" x1="10%" y1="0%" x2="90%" y2="100%"><stop offset="0%" stop-color="#26496A"/><stop offset="100%" stop-color="#0C1526"/></linearGradient></defs>
                     <circle cx="50" cy="50" r="47" fill="url(#logoFill)" stroke="#E7A947" stroke-width="1.4"/>
                     <circle cx="50" cy="50" r="40" fill="none" stroke="#E7A947" stroke-opacity="0.35" stroke-width="0.7"/>
                     <text x="50" y="63" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="32" fill="#FBF8F2" letter-spacing="-1">MB</text>
@@ -120,32 +300,20 @@
                 <li><button class="nav-link" role="tab" id="tab-faq" aria-controls="content-faq" aria-selected="false" data-tab="faq"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav.faq">FAQ</span></button></li>
                 <li><button class="nav-link" role="tab" id="tab-contact" aria-controls="content-contact" aria-selected="false" data-tab="contact"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav.contact">Contact</span></button></li>
             </ul>
-
-            <form class="nav-search" role="search" onsubmit="return false;">
-                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                <input type="search" id="site-search" placeholder="Rechercher…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder">
-            </form>
-
+            <form class="nav-search" role="search" onsubmit="return false;"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><input type="search" id="site-search" placeholder="Rechercher…" aria-label="Rechercher un document" data-i18n-placeholder="search.placeholder"></form>
             <div class="nav-toggles">
-                <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer en arabe">
-                    <span class="lang-toggle-label">AR</span>
-                </button>
-                <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Mode sombre">
-                    <i class="fa-solid fa-moon"></i>
-                </button>
+                <button id="lang-toggle" class="icon-toggle" type="button" aria-label="Passer en arabe"><span class="lang-toggle-label">AR</span></button>
+                <button id="theme-toggle" class="icon-toggle" type="button" aria-label="Mode sombre"><i class="fa-solid fa-moon"></i></button>
             </div>
         </div>
     </nav>
 
     <main class="container">
         <div class="main-layout">
-
             <section id="main-content">
-
                 <!-- ACCUEIL -->
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
                     <span class="level-watermark" aria-hidden="true">∀</span>
-
                     <section class="home-hero">
                         <div class="hero-copy">
                             <span class="hero-kicker"><i class="fa-solid fa-sparkles"></i> <span data-i18n="hero.kicker">Plateforme académique gratuite</span></span>
@@ -156,13 +324,8 @@
                                 <button class="btn btn-secondary" data-open-tab="recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="hero.research">Recherche</span></button>
                             </div>
                         </div>
-                        <div class="hero-equation" aria-hidden="true">
-                            <span>f : \mathbb{R} \to \mathbb{R}</span>
-                            <strong>\int_a^b f(x)\,dx</strong>
-                            <span>\lim_{x \to a} f(x)</span>
-                        </div>
+                        <div class="hero-equation" aria-hidden="true"><span>f : \mathbb{R} \to \mathbb{R}</span><strong>\int_a^b f(x)\,dx</strong><span>\lim_{x \to a} f(x)</span></div>
                     </section>
-
                     <div class="stats-grid">
                         <div class="stat-card"><strong>03</strong><span data-i18n="stats.cycles">Cycles éducatifs</span></div>
                         <div class="stat-card"><strong>∞</strong><span data-i18n="stats.resources">Ressources évolutives</span></div>
@@ -173,10 +336,7 @@
                 <!-- À PROPOS -->
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos" hidden>
                     <span class="level-watermark" aria-hidden="true">Σ</span>
-                    <div class="abstract-box">
-                        <h3 data-i18n="apropos.heading">À propos</h3>
-                        <p data-i18n="apropos.bio">Enseignant de mathématiques passionné par la pédagogie et la transmission des savoirs. Cette plateforme regroupe des ressources gratuites pour les élèves et les étudiants.</p>
-                    </div>
+                    <div class="abstract-box"><h3 data-i18n="apropos.heading">À propos</h3><p data-i18n="apropos.bio">Enseignant de mathématiques passionné par la pédagogie et la transmission des savoirs.</p></div>
                     <h3 class="group-label" data-i18n="apropos.domaines">Domaines d'expertise</h3>
                     <div class="tag-row">
                         <span class="tag-pill" data-i18n="apropos.tag1">Algèbre</span>
@@ -191,29 +351,12 @@
                     <span class="level-watermark" aria-hidden="true">∞</span>
                     <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
                     <p class="section-sub" data-i18n="maths.sub">Explorez les ressources par cycle et par type.</p>
-
                     <section class="resource-toolbar" aria-label="Filtrer les ressources">
-                        <label class="resource-search">
-                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                            <span class="sr-only">Rechercher</span>
-                            <input id="resource-filter" type="search" placeholder="Rechercher…">
-                        </label>
-                        <select id="cycle-filter" aria-label="Cycle">
-                            <option value="all" data-i18n="filter.allCycles">Tous les cycles</option>
-                            <option value="college" data-i18n="filter.college">Collège</option>
-                            <option value="lycee" data-i18n="filter.lycee">Lycée</option>
-                            <option value="superieur" data-i18n="filter.superieur">Supérieur</option>
-                        </select>
-                        <select id="type-filter" aria-label="Type">
-                            <option value="all" data-i18n="filter.allTypes">Tous les types</option>
-                            <option value="cours" data-i18n="filter.cours">Cours</option>
-                            <option value="td" data-i18n="filter.td">TD</option>
-                            <option value="exam" data-i18n="filter.exam">Examens</option>
-                            <option value="recherche" data-i18n="filter.recherche">Recherche</option>
-                        </select>
+                        <label class="resource-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="sr-only">Rechercher</span><input id="resource-filter" type="search" placeholder="Rechercher…"></label>
+                        <select id="cycle-filter" aria-label="Cycle"><option value="all" data-i18n="filter.allCycles">Tous les cycles</option><option value="college" data-i18n="filter.college">Collège</option><option value="lycee" data-i18n="filter.lycee">Lycée</option><option value="superieur" data-i18n="filter.superieur">Supérieur</option></select>
+                        <select id="type-filter" aria-label="Type"><option value="all" data-i18n="filter.allTypes">Tous les types</option><option value="cours" data-i18n="filter.cours">Cours</option><option value="td" data-i18n="filter.td">TD</option><option value="exam" data-i18n="filter.exam">Examens</option><option value="recherche" data-i18n="filter.recherche">Recherche</option></select>
                         <button id="favorites-filter" class="filter-button" type="button"><i class="fa-regular fa-star"></i> <span data-i18n="filter.favorites">Favoris</span></button>
                     </section>
-
                     <p id="resource-count" class="resource-count" aria-live="polite"></p>
                     <div id="resource-grid" class="resource-grid"></div>
                     <p id="resource-empty" class="empty-note" hidden data-i18n="filter.noResults">Aucun résultat trouvé.</p>
@@ -222,7 +365,7 @@
                 <!-- RECHERCHE -->
                 <div id="content-recherche" class="tab-content" role="tabpanel" aria-labelledby="tab-recherche" hidden>
                     <span class="level-watermark" aria-hidden="true">∫</span>
-                    <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="recherche.heading">Recherche &amp; Supérieur</span></h2>
+                    <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="recherche.heading">Recherche & Supérieur</span></h2>
                     <p class="section-sub" data-i18n="recherche.sub">Ressources avancées pour les étudiants du supérieur.</p>
                     <div id="research-grid" class="resource-grid"></div>
                 </div>
@@ -244,13 +387,8 @@
                         <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact</span></h2>
                         <p data-i18n="contact.intro">Pour toute question ou collaboration, écrivez-moi.</p>
                         <form action="https://formsubmit.co/mobendriss@hotmail.com" method="POST">
-                            <input type="hidden" name="_subject" value="Message depuis mobendriss.github.io">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
-                            <div class="field-grid">
-                                <div class="field"><label for="name" data-i18n="contact.nameLabel">Nom</label><input type="text" id="name" name="name" required placeholder="Votre nom"></div>
-                                <div class="field"><label for="email" data-i18n="contact.emailLabel">E-mail</label><input type="email" id="email" name="email" required placeholder="nom@exemple.com"></div>
-                            </div>
+                            <input type="hidden" name="_subject" value="Message depuis mobendriss.github.io"><input type="hidden" name="_captcha" value="true"><input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
+                            <div class="field-grid"><div class="field"><label for="name" data-i18n="contact.nameLabel">Nom</label><input type="text" id="name" name="name" required placeholder="Votre nom"></div><div class="field"><label for="email" data-i18n="contact.emailLabel">E-mail</label><input type="email" id="email" name="email" required placeholder="nom@exemple.com"></div></div>
                             <div class="field"><label for="message" data-i18n="contact.messageLabel">Message</label><textarea id="message" name="message" rows="5" required placeholder="Votre message..."></textarea></div>
                             <div class="submit-row"><button type="submit" class="submit-btn"><span data-i18n="contact.submit">Envoyer</span> <i class="fa-regular fa-paper-plane"></i></button></div>
                         </form>
@@ -262,7 +400,6 @@
                     <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité</span></h2>
                     <div class="abstract-box"><p data-i18n="legal.privacy1">Aucune donnée personnelle n'est collectée en dehors du formulaire de contact.</p></div>
                 </div>
-
             </section>
 
             <aside id="sidebar">
@@ -278,7 +415,6 @@
                     </ul>
                 </div>
             </aside>
-
         </div>
     </main>
 
@@ -289,8 +425,39 @@
         </div>
     </footer>
 
-    <script src="./assets/data/resources.js"></script>
-    <script src="./assets/js/resources.js"></script>
-    <script src="./assets/js/app.js"></script>
+<script>
+/* ============================================================
+   MoBendriss — JavaScript مدمج (Version Preview)
+   ============================================================ */
+
+/* ── Resource Data ─────────────────────────────────────────── */
+const RESOURCES=[
+{id:"col-001",title:"Les nombres relatifs",titleAr:"الأعداد الصحيحة",description:"Cours complet sur les nombres relatifs.",descAr:"درس كامل عن الأعداد الصحيحة.",cycle:"college",type:"cours",level:"1ère année collège",levelAr:"السنة الأولى إعدادي",tags:["nombres","relatifs"],downloadUrl:"#",previewUrl:"#"},
+{id:"col-002",title:"Fractions — Exercices corrigés",titleAr:"الكسور — تمارين محلولة",description:"Série d'exercices progressifs sur les fractions.",descAr:"سلسلة تمارين تدريجية على الكسور.",cycle:"college",type:"td",level:"2ème année collège",levelAr:"السنة الثانية إعدادي",tags:["fractions"],downloadUrl:"#",previewUrl:"#"},
+{id:"col-003",title:"Géométrie dans l'espace",titleAr:"الهندسة في الفضاء",description:"Cours sur les figures géométriques dans l'espace.",descAr:"درس عن الأشكال الهندسية في الفضاء.",cycle:"college",type:"cours",level:"3ème année collège",levelAr:"السنة الثالثة إعدادي",tags:["géométrie","espace"],downloadUrl:"#",previewUrl:"#"},
+{id:"col-004",title:"Examen blanc — 3ème année",titleAr:"امتحان إعدادي",description:"Examen blanc avec corrigé complet.",descAr:"امتحان تدريبي مع التصحيح الكامل.",cycle:"college",type:"exam",level:"3ème année collège",levelAr:"السنة الثالثة إعدادي",tags:["examen","brevet"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-001",title:"Limites et continuité",titleAr:"النهايات والاتصال",description:"Cours sur les limites de fonctions.",descAr:"درس في نهايات الدوال.",cycle:"lycee",type:"cours",level:"1ère année bac",levelAr:"السنة الأولى باكالوريا",tags:["limites","continuité"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-002",title:"Dérivation — Exercices types",titleAr:"التفاضل — تمارين نمطية",description:"Exercices sur la dérivation.",descAr:"تمارين على التفاضل.",cycle:"lycee",type:"td",level:"1ère année bac",levelAr:"السنة الأولى باكالوريا",tags:["dérivation"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-003",title:"Probabilités et statistiques",titleAr:"الاحتمالات والإحصاء",description:"Cours sur les probabilités.",descAr:"درس في الاحتمالات.",cycle:"lycee",type:"cours",level:"2ème année bac",levelAr:"السنة الثانية باكالوريا",tags:["probabilités"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-004",title:"Examen national — Sciences maths",titleAr:"الامتحان الوطني",description:"Sujets d'examens nationaux corrigés.",descAr:"مواضيع الامتحانات الوطنية المحلولة.",cycle:"lycee",type:"exam",level:"2ème année bac",levelAr:"السنة الثانية باكالوريا",tags:["examen","national"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-005",title:"Suites numériques",titleAr:"التسلسلات العددية",description:"Cours sur les suites arithmétiques et géométriques.",descAr:"درس عن التسلسلات الحسابية والهندسية.",cycle:"lycee",type:"cours",level:"1ère année bac",levelAr:"السنة الأولى باكالوريا",tags:["suites"],downloadUrl:"#",previewUrl:"#"},
+{id:"lyc-006",title:"Trigonométrie — TD",titleAr:"علم المثلثات",description:"TD sur les fonctions trigonométriques.",descAr:"تطبيقات على الدوال المثلثية.",cycle:"lycee",type:"td",level:"1ère année bac",levelAr:"السنة الأولى باكالوريا",tags:["trigonométrie"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-001",title:"Analyse réelle — Fondamentaux",titleAr:"التحليل الحقيقي",description:"Cours sur l'analyse réelle.",descAr:"درس في التحليل الحقيقي.",cycle:"superieur",type:"cours",level:"1ère année univ.",levelAr:"السنة الأولى جامعي",tags:["analyse","riemann"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-002",title:"Algèbre linéaire — Matrices",titleAr:"الجبر الخطوي",description:"TD sur les matrices.",descAr:"تطبيقات على المصفوفات.",cycle:"superieur",type:"td",level:"1ère année univ.",levelAr:"السنة الأولى جامعي",tags:["algèbre","matrices"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-003",title:"Examen final — Analyse I",titleAr:"امتحان نهائي",description:"Examen final corrigé d'Analyse I.",descAr:"امتحان نهائي محلول في التحليل I.",cycle:"superieur",type:"exam",level:"1ère année univ.",levelAr:"السنة الأولى جامعي",tags:["examen","analyse-I"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-004",title:"Équations différentielles",titleAr:"المعادلات التفاضلية",description:"Cours sur les EDO.",descAr:"درس عن المعادلات التفاضلية.",cycle:"superieur",type:"cours",level:"2ème année univ.",levelAr:"السنة الثانية جامعي",tags:["EDO"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-005",title:"Topologie de ℝ",titleAr:"طوبولوجيا ℝ",description:"Article sur la topologie de ℝ.",descAr:"مقال حول طوبولوجيا ℝ.",cycle:"superieur",type:"recherche",level:"2ème année univ.",levelAr:"السنة الثانية جامعي",tags:["topologie"],downloadUrl:"#",previewUrl:"#"},
+{id:"sup-006",title:"Introduction à l'analyse fonctionnelle",titleAr:"مقدمة في التحليل الدالي",description:"Notes sur les espaces de Hilbert.",descAr:"ملاحظات حول فضاءات هيلبرت.",cycle:"superieur",type:"recherche",level:"3ème année univ.",levelAr:"السنة الثالثة جامعي",tags:["hilbert","fonctionnelle"],downloadUrl:"#",previewUrl:"#"}
+];
+
+/* ── Translations ──────────────────────────────────────────── */
+const I18N={fr:{"nav.accueil":"Accueil","nav.apropos":"À propos","nav.maths":"Mathématiques","nav.recherche":"Recherche","nav.faq":"FAQ","nav.contact":"Contact","accessibility.skip":"Aller au contenu principal","eyebrow":"Enseignant de mathématiques","tagline":"Plateforme académique des mathématiques","hero.kicker":"Plateforme académique gratuite","hero.title":"Apprenez les mathématiques avec rigueur et clarté.","hero.description":"Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.","hero.start":"Commencer","hero.research":"Recherche","stats.cycles":"Cycles éducatifs","stats.resources":"Ressources évolutives","stats.languages":"Langues","apropos.heading":"À propos","apropos.bio":"Enseignant de mathématiques passionné par la pédagogie et la transmission des savoirs.","apropos.domaines":"Domaines d'expertise","apropos.tag1":"Algèbre","apropos.tag2":"Analyse","apropos.tag3":"Géométrie","apropos.tag4":"Didactique","maths.heading":"Mathématiques","maths.sub":"Explorez les ressources par cycle et par type.","filter.allCycles":"Tous les cycles","filter.college":"Collège","filter.lycee":"Lycée","filter.superieur":"Supérieur","filter.allTypes":"Tous les types","filter.cours":"Cours","filter.td":"TD","filter.exam":"Examens","filter.recherche":"Recherche","filter.favorites":"Favoris","filter.noResults":"Aucun résultat trouvé.","recherche.heading":"Recherche & Supérieur","recherche.sub":"Ressources avancées pour les étudiants du supérieur.","faq.heading":"Questions fréquentes","faq.q1":"Comment télécharger un document ?","faq.a1":"Cliquez sur le bouton « Télécharger » de la ressource souhaitée.","faq.q2":"Les ressources sont-elles gratuites ?","faq.a2":"Oui, toutes les ressources sont gratuites et libres d'usage pédagogique.","faq.q3":"Comment vous contacter ?","faq.a3":"Utilisez le formulaire de l'onglet Contact.","contact.heading":"Contact","contact.intro":"Pour toute question ou collaboration, écrivez-moi.","contact.nameLabel":"Nom","contact.emailLabel":"E-mail","contact.messageLabel":"Message","contact.submit":"Envoyer","sidebar.mathBtn":"Mathématiques","sidebar.researchBtn":"Recherche","sidebar.newsTitle":"Actualités","sidebar.newBadge":"Nouveau","sidebar.news1":"Mise en ligne des ressources pour le cycle collégial.","sidebar.news2":"Ajout des séries d'exercices pour la 1ère BAC.","legal.heading":"Confidentialité","legal.privacy1":"Aucune donnée personnelle n'est collectée en dehors du formulaire de contact.","footer.rights":"© 2026 MoBendriss. Tous droits réservés.","footer.tagline":"Conçu avec rigueur.","footer.legalLink":"Confidentialité","search.placeholder":"Rechercher…","resource.download":"Télécharger","resource.preview":"Aperçu","resource.count":"{count} ressource(s) trouvée(s)","cycle.college":"Collège","cycle.lycee":"Lycée","cycle.superieur":"Supérieur"},ar:{"nav.accueil":"الرئيسية","nav.apropos":"حول","nav.maths":"الرياضيات","nav.recherche":"البحث","nav.faq":"أسئلة شائعة","nav.contact":"اتصل بنا","accessibility.skip":"الانتقال إلى المحتوى الرئيسي","eyebrow":"أستاذ الرياضيات","tagline":"منصة أكاديمية للرياضيات","hero.kicker":"منصة أكاديمية مجانية","hero.title":"تعلّم الرياضيات بدقة ووضوح.","hero.description":"دروس منظمة، تمارين تدريجية، امتحانات محلولة وموارد متقدمة للسلك الثانوي والتعليم العالي.","hero.start":"ابدأ الآن","hero.research":"البحث","stats.cycles":"أطوار تعليمية","stats.resources":"موارد متجددة","stats.languages":"لغات","apropos.heading":"حول","apropos.bio":"أستاذ رياضيات شغوف بالبيداغوجيا ونقل المعرفة.","apropos.domaines":"مجالات الخبرة","apropos.tag1":"الجبر","apropos.tag2":"التحليل","apropos.tag3":"الهندسة","apropos.tag4":"الديداكتيك","maths.heading":"الرياضيات","maths.sub":"استكشف الموارد حسب الطور والنوع.","filter.allCycles":"جميع الأطوار","filter.college":"الإعدادي","filter.lycee":"الثانوي","filter.superieur":"التعليم العالي","filter.allTypes":"جميع الأنواع","filter.cours":"دروس","filter.td":"تطبيقات","filter.exam":"امتحانات","filter.recherche":"بحث","filter.favorites":"المفضلة","filter.noResults":"لم يتم العثور على نتائج.","recherche.heading":"البحث والتعليم العالي","recherche.sub":"موارد متقدمة لطلبة التعليم العالي.","faq.heading":"أسئلة متكررة","faq.q1":"كيف أقوم بتحميل وثيقة؟","faq.a1":"انقر على زر «تحميل» الخاص بالموارد المطلوبة.","faq.q2":"هل الموارد مجانية؟","faq.a2":"نعم، جميع الموارد مجانية ومفتوحة للاستخدام التعليمي.","faq.q3":"كيف أتواصل معكم؟","faq.a3":"استخدم نموذج الاتصال في تبويب «اتصل بنا».","contact.heading":"اتصل بنا","contact.intro":"لأي سؤال أو تعاون، راسلني.","contact.nameLabel":"الاسم","contact.emailLabel":"البريد الإلكتروني","contact.messageLabel":"الرسالة","contact.submit":"إرسال","sidebar.mathBtn":"الرياضيات","sidebar.researchBtn":"البحث","sidebar.newsTitle":"آخر الأخبار","sidebar.newBadge":"جديد","sidebar.news1":"نشر موارد السلك الإعدادي.","sidebar.news2":"إضافة سلاسل تمارين للسنة الأولى باكالوريا.","legal.heading":"الخصوصية","legal.privacy1":"لا يتم جمع أي بيانات شخصية خارج نموذج الاتصال.","footer.rights":"© 2026 MoBendriss. جميع الحقوق محفوظة.","footer.tagline":"صُمم بدقة.","footer.legalLink":"الخصوصية","search.placeholder":"بحث…","resource.download":"تحميل","resource.preview":"معاينة","resource.count":"تم العثور على {count} مورد","cycle.college":"الإعدادي","cycle.lycee":"الثانوي","cycle.superieur":"التعليم العالي"}};
+
+/* ── Resource Module ───────────────────────────────────────── */
+const ResourceModule=(()=>{let currentFilter={cycle:'all',type:'all',search:'',favoritesOnly:false};let favorites=new Set();const grid=document.getElementById('resource-grid');const researchGrid=document.getElementById('research-grid');const searchInput=document.getElementById('resource-filter');const cycleFilter=document.getElementById('cycle-filter');const typeFilter=document.getElementById('type-filter');const favFilter=document.getElementById('favorites-filter');const countEl=document.getElementById('resource-count');const emptyEl=document.getElementById('resource-empty');function init(){loadFavorites();bindEvents();render();renderResearch();}function loadFavorites(){try{const s=localStorage.getItem('mb-favorites');if(s)favorites=new Set(JSON.parse(s));}catch(e){favorites=new Set();}}function saveFavorites(){try{localStorage.setItem('mb-favorites',JSON.stringify([...favorites]));}catch(e){}}function toggleFavorite(id){if(favorites.has(id))favorites.delete(id);else favorites.add(id);saveFavorites();render();}function bindEvents(){if(searchInput)searchInput.addEventListener('input',debounce((e)=>{currentFilter.search=e.target.value.toLowerCase().trim();render();},200));if(cycleFilter)cycleFilter.addEventListener('change',(e)=>{currentFilter.cycle=e.target.value;render();});if(typeFilter)typeFilter.addEventListener('change',(e)=>{currentFilter.type=e.target.value;render();});if(favFilter)favFilter.addEventListener('click',()=>{currentFilter.favoritesOnly=!currentFilter.favoritesOnly;favFilter.classList.toggle('active',currentFilter.favoritesOnly);favFilter.querySelector('i').className=currentFilter.favoritesOnly?'fa-solid fa-star':'fa-regular fa-star';render();});}function filterResources(r,isR=false){return r.filter(x=>{if(isR)return x.cycle==='superieur'&&x.type==='recherche';if(currentFilter.cycle!=='all'&&x.cycle!==currentFilter.cycle)return false;if(currentFilter.type!=='all'&&x.type!==currentFilter.type)return false;if(currentFilter.favoritesOnly&&!favorites.has(x.id))return false;if(currentFilter.search){const s=[x.title,x.titleAr,x.description,x.descAr,x.level,x.levelAr,...(x.tags||[])].join(' ').toLowerCase();return s.includes(currentFilter.search);}return true;});}function getLang(){return document.documentElement.lang||'fr';}function getCycleLabel(c){const l=getLang();return(I18N[l]&&I18N[l]['cycle.'+c])||c;}function getTypeIcon(t){return{cours:'fa-book-open',td:'fa-pen-to-square',exam:'fa-file-lines',recherche:'fa-flask'}[t]||'fa-file';}function createCardHTML(r,i){const l=getLang();const isAr=l==='ar';const t=isAr?(r.titleAr||r.title):r.title;const d=isAr?(r.descAr||r.description):r.description;const lv=isAr?(r.levelAr||r.level):r.level;const isF=favorites.has(r.id);const tr=I18N[l]||I18N.fr;return`<article class="resource-card" style="animation-delay:${i*0.08}s" data-id="${r.id}"><div class="resource-card-header"><div class="resource-type-icon ${r.type}"><i class="fa-solid ${getTypeIcon(r.type)}"></i></div><button class="resource-fav-btn ${isF?'active':''}" onclick="ResourceModule.toggleFavorite('${r.id}')" aria-label="Favoris"><i class="${isF?'fa-solid':'fa-regular'} fa-star"></i></button></div><h3>${t}</h3><p>${d}</p><div class="resource-meta"><span class="resource-badge cycle">${getCycleLabel(r.cycle)}</span><span class="resource-badge type">${lv}</span></div><div class="resource-card-actions"><a href="${r.downloadUrl||'#'}" class="resource-btn primary" target="_blank" rel="noopener"><i class="fa-solid fa-download"></i> ${tr['resource.download']}</a><a href="${r.previewUrl||'#'}" class="resource-btn secondary" target="_blank" rel="noopener"><i class="fa-solid fa-eye"></i> ${tr['resource.preview']}</a></div></article>`;}function render(){if(!grid)return;const f=filterResources(RESOURCES);const l=getLang();const tr=I18N[l]||I18N.fr;if(countEl)countEl.textContent=tr['resource.count'].replace('{count}',f.length);if(f.length===0){grid.innerHTML='';if(emptyEl)emptyEl.hidden=false;}else{if(emptyEl)emptyEl.hidden=true;grid.innerHTML=f.map((r,i)=>createCardHTML(r,i)).join('');}}function renderResearch(){if(!researchGrid)return;const r=filterResources(RESOURCES,true);if(r.length===0)researchGrid.innerHTML=`<p class="empty-note">${getLang()==='ar'?'لا توجد موارد بحثية بعد.':'Aucune ressource de recherche.'}</p>`;else researchGrid.innerHTML=r.map((x,i)=>createCardHTML(x,i)).join('');}function debounce(fn,d){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn.apply(this,a),d);};}return{init,render,renderResearch,toggleFavorite};})();
+
+/* ── Main App ──────────────────────────────────────────────── */
+const App=(()=>{let currentTab='accueil';let currentTheme='light';let currentLang='fr';const tabButtons=document.querySelectorAll('[role="tab"]');const tabPanels=document.querySelectorAll('[role="tabpanel"]');const themeToggle=document.getElementById('theme-toggle');const langToggle=document.getElementById('lang-toggle');const navIndicator=document.querySelector('.nav-indicator');const openTabButtons=document.querySelectorAll('[data-open-tab]');const announcer=document.getElementById('tab-announcer');function init(){loadState();applyTheme();applyLanguage();bindEvents();activateTab(currentTab,false);updateNavIndicator();if(typeof ResourceModule!=='undefined')ResourceModule.init();if(window.MathJax&&MathJax.typesetPromise)MathJax.typesetPromise().catch(()=>{});}function loadState(){try{const t=localStorage.getItem('mb-theme');if(t)currentTheme=t;const l=localStorage.getItem('mb-lang');if(l)currentLang=l;const tb=sessionStorage.getItem('mb-tab');if(tb)currentTab=tb;}catch(e){}}function saveState(){try{localStorage.setItem('mb-theme',currentTheme);localStorage.setItem('mb-lang',currentLang);sessionStorage.setItem('mb-tab',currentTab);}catch(e){}}function applyTheme(){document.documentElement.setAttribute('data-theme',currentTheme);if(themeToggle){const i=themeToggle.querySelector('i');if(i)i.className=currentTheme==='dark'?'fa-solid fa-sun':'fa-solid fa-moon';themeToggle.setAttribute('aria-label',currentTheme==='dark'?'Mode clair':'Mode sombre');}}function toggleTheme(){currentTheme=currentTheme==='light'?'dark':'light';applyTheme();saveState();}function applyLanguage(){document.documentElement.setAttribute('lang',currentLang);document.documentElement.setAttribute('dir',currentLang==='ar'?'rtl':'ltr');if(langToggle){const l=langToggle.querySelector('.lang-toggle-label');if(l)l.textContent=currentLang==='ar'?'FR':'AR';langToggle.setAttribute('aria-label',currentLang==='ar'?'Passer en français':'التبديل إلى العربية');}applyTranslations();}function toggleLanguage(){currentLang=currentLang==='fr'?'ar':'fr';applyLanguage();saveState();if(typeof ResourceModule!=='undefined'){ResourceModule.render();ResourceModule.renderResearch();}}function applyTranslations(){const tr=I18N[currentLang];if(!tr)return;document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(tr[k])el.textContent=tr[k];});document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{const k=el.getAttribute('data-i18n-placeholder');if(tr[k])el.placeholder=tr[k];});}function activateTab(tabName,animate=true){currentTab=tabName;tabButtons.forEach(btn=>{const isActive=btn.dataset.tab===tabName;btn.setAttribute('aria-selected',isActive?'true':'false');btn.classList.toggle('active',isActive);});tabPanels.forEach(panel=>{const isActive=panel.id===`content-${tabName}`;if(isActive){panel.hidden=false;panel.classList.add('active-content');if(animate){panel.style.animation='none';panel.offsetHeight;panel.style.animation='';}}else{panel.hidden=true;panel.classList.remove('active-content');}});if(animate)history.replaceState(null,'','#'+tabName);updateNavIndicator();saveState();}function updateNavIndicator(){if(!navIndicator)return;const activeBtn=document.querySelector(`[role="tab"][aria-selected="true"]`);if(!activeBtn)return;const li=activeBtn.closest('li');if(!li)return;const rect=li.getBoundingClientRect();const parentRect=li.closest('ul').getBoundingClientRect();navIndicator.style.width=`${rect.width}px`;navIndicator.style.left=`${rect.left-parentRect.left}px`;}function bindEvents(){tabButtons.forEach(btn=>{btn.addEventListener('click',()=>activateTab(btn.dataset.tab));});const tabList=document.querySelector('[role="tablist"]');if(tabList)tabList.addEventListener('keydown',(e)=>{const tabs=[...tabList.querySelectorAll('[role="tab"]')];const ci=tabs.findIndex(t=>t.getAttribute('aria-selected')==='true');let ni;if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();ni=(ci+1)%tabs.length;}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();ni=(ci-1+tabs.length)%tabs.length;}if(ni!==undefined){tabs[ni].focus();activateTab(tabs[ni].dataset.tab);}});if(themeToggle)themeToggle.addEventListener('click',toggleTheme);if(langToggle)langToggle.addEventListener('click',toggleLanguage);openTabButtons.forEach(btn=>{btn.addEventListener('click',()=>{const t=btn.dataset.openTab;if(t)activateTab(t);});});const hash=window.location.hash.slice(1);if(hash&&document.getElementById(`content-${hash}`))currentTab=hash;window.addEventListener('resize',debounce(updateNavIndicator,100));window.addEventListener('hashchange',()=>{const h=window.location.hash.slice(1);if(h&&document.getElementById(`content-${h}`)&&h!==currentTab)activateTab(h);});}function debounce(fn,d){let t;return function(...a){clearTimeout(t);t=setTimeout(()=>fn.apply(this,a),d);};}return{init,activateTab,toggleTheme,toggleLanguage};})();document.addEventListener('DOMContentLoaded',App.init);
+</script>
 </body>
 </html>
