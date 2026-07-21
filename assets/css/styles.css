@@ -1,6 +1,6 @@
 /* ============================================================
    MoBendriss — Plateforme académique de mathématiques
-   Styles principaux
+   Styles principaux — Version Originale
    ============================================================ */
 
 /* ── CSS Variables ─────────────────────────────────────────── */
@@ -201,6 +201,21 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
 .banner-glyphs .g3 { top: 25%; right: 10%; font-size: 3.5rem; animation: floatSlow 14s ease-in-out infinite 2s; }
 .banner-glyphs .g4 { bottom: 20%; right: 20%; font-size: 2.5rem; animation: floatSlow 11s ease-in-out infinite 0.5s; }
 .banner-glyphs .g5 { top: 50%; left: 45%; font-size: 5rem; opacity: 0.08; animation: floatSlow 16s ease-in-out infinite 3s; }
+.banner-glyphs .g6 { top: 8%; left: 25%; font-size: 2.8rem; animation: floatSlow 13s ease-in-out infinite 0.8s; }
+.banner-glyphs .g7 { top: 70%; left: 40%; font-size: 3.2rem; animation: floatSlow 15s ease-in-out infinite 1.5s; }
+.banner-glyphs .g8 { top: 35%; right: 25%; font-size: 2.6rem; animation: floatSlow 11s ease-in-out infinite 2.5s; }
+.banner-glyphs .g9 { top: 55%; left: 8%; font-size: 2.4rem; animation: floatSlow 14s ease-in-out infinite 0.3s; }
+.banner-glyphs .g10 { bottom: 35%; left: 55%; font-size: 2.2rem; animation: floatSlow 12s ease-in-out infinite 1.8s; }
+.banner-glyphs .g11 { top: 18%; right: 35%; font-size: 2rem; animation: floatSlow 13s ease-in-out infinite 2.2s; }
+.banner-glyphs .g12 { bottom: 15%; left: 30%; font-size: 1.8rem; animation: floatSlow 10s ease-in-out infinite 0.7s; }
+.banner-glyphs .g13 { top: 45%; right: 8%; font-size: 2.6rem; animation: floatSlow 16s ease-in-out infinite 1.2s; }
+.banner-glyphs .g14 { top: 80%; right: 40%; font-size: 2rem; animation: floatSlow 11s ease-in-out infinite 2.8s; }
+.banner-glyphs .g15 { top: 12%; left: 60%; font-size: 1.6rem; animation: floatSlow 15s ease-in-out infinite 0.4s; }
+.banner-glyphs .g16 { bottom: 45%; right: 12%; font-size: 3rem; animation: floatSlow 14s ease-in-out infinite 1.6s; }
+.banner-glyphs .g17 { top: 65%; right: 30%; font-size: 2.2rem; animation: floatSlow 12s ease-in-out infinite 2.1s; }
+.banner-glyphs .g18 { top: 30%; left: 35%; font-size: 1.8rem; animation: floatSlow 13s ease-in-out infinite 0.9s; }
+.banner-glyphs .g19 { bottom: 10%; right: 55%; font-size: 2.4rem; animation: floatSlow 10s ease-in-out infinite 1.4s; }
+.banner-glyphs .g20 { top: 5%; right: 15%; font-size: 2rem; animation: floatSlow 16s ease-in-out infinite 2.6s; }
 
 .banner-formula {
     position: absolute;
@@ -317,6 +332,21 @@ input, textarea, select { font-family: inherit; font-size: inherit; color: inher
 .sg3 { top: 35%; left: 50%; font-size: 10rem; opacity: 0.06; }
 .sg4 { bottom: 15%; right: 15%; font-size: 5rem; }
 .sg5 { bottom: 30%; left: 10%; font-size: 7rem; }
+.sg6 { top: 10%; left: 15%; font-size: 5rem; opacity: 0.1; }
+.sg7 { top: 70%; right: 25%; font-size: 4rem; opacity: 0.12; }
+.sg8 { top: 45%; left: 30%; font-size: 6rem; opacity: 0.08; }
+.sg9 { bottom: 40%; right: 8%; font-size: 4.5rem; opacity: 0.1; }
+.sg10 { top: 80%; left: 45%; font-size: 5.5rem; opacity: 0.07; }
+.sg11 { top: 15%; right: 40%; font-size: 4rem; opacity: 0.09; }
+.sg12 { bottom: 10%; left: 60%; font-size: 3.5rem; opacity: 0.11; }
+.sg13 { top: 60%; right: 50%; font-size: 4.5rem; opacity: 0.08; }
+.sg14 { top: 25%; left: 70%; font-size: 3rem; opacity: 0.1; }
+.sg15 { bottom: 50%; right: 35%; font-size: 5rem; opacity: 0.09; }
+.sg16 { top: 5%; left: 50%; font-size: 3.5rem; opacity: 0.07; }
+.sg17 { bottom: 5%; right: 50%; font-size: 4rem; opacity: 0.08; }
+.sg18 { top: 50%; left: 75%; font-size: 3rem; opacity: 0.1; }
+.sg19 { top: 75%; left: 20%; font-size: 4.5rem; opacity: 0.06; }
+.sg20 { bottom: 25%; left: 40%; font-size: 3.5rem; opacity: 0.09; }
 
 /* ── Navigation Bar ────────────────────────────────────────── */
 .navigation-bar {
@@ -1424,6 +1454,7 @@ footer p {
 
     .banner-glyphs span {
         font-size: 2rem;
+        opacity: 0.1;
     }
 }
 
