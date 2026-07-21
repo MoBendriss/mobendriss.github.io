@@ -142,6 +142,7 @@
 
             <section id="main-content">
 
+                <!-- ACCUEIL -->
                 <div id="content-accueil" class="tab-content active-content" role="tabpanel" aria-labelledby="tab-accueil">
                     <span class="level-watermark" aria-hidden="true">∀</span>
 
@@ -151,14 +152,14 @@
                             <h2 data-i18n="hero.title">Apprenez les mathématiques avec rigueur et clarté.</h2>
                             <p data-i18n="hero.description">Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.</p>
                             <div class="hero-actions">
-                                <button class="btn btn-primary" type="button" data-open-tab="mathematiques"><i class="fa-solid fa-book-open"></i> <span data-i18n="hero.start">Commencer</span></button>
-                                <button class="btn btn-secondary" type="button" data-open-tab="recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="hero.research">Recherche</span></button>
+                                <button class="btn btn-primary" data-open-tab="mathematiques"><i class="fa-solid fa-book-open"></i> <span data-i18n="hero.start">Commencer</span></button>
+                                <button class="btn btn-secondary" data-open-tab="recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="hero.research">Recherche</span></button>
                             </div>
                         </div>
                         <div class="hero-equation" aria-hidden="true">
-                            <span>\(f : \mathbb{R} \to \mathbb{R}\)</span>
-                            <strong>\(\displaystyle\int_a^b f(x)\,dx\)</strong>
-                            <span>\(\lim_{x \to a} f(x)\)</span>
+                            <span>f : \mathbb{R} \to \mathbb{R}</span>
+                            <strong>\int_a^b f(x)\,dx</strong>
+                            <span>\lim_{x \to a} f(x)</span>
                         </div>
                     </section>
 
@@ -169,6 +170,7 @@
                     </div>
                 </div>
 
+                <!-- À PROPOS -->
                 <div id="content-apropos" class="tab-content" role="tabpanel" aria-labelledby="tab-apropos" hidden>
                     <span class="level-watermark" aria-hidden="true">Σ</span>
                     <div class="abstract-box">
@@ -184,6 +186,7 @@
                     </div>
                 </div>
 
+                <!-- MATHÉMATIQUES -->
                 <div id="content-mathematiques" class="tab-content" role="tabpanel" aria-labelledby="tab-mathematiques" hidden>
                     <span class="level-watermark" aria-hidden="true">∞</span>
                     <h2 class="section-heading"><i class="fa-solid fa-infinity"></i> <span data-i18n="maths.heading">Mathématiques</span></h2>
@@ -216,6 +219,7 @@
                     <p id="resource-empty" class="empty-note" hidden data-i18n="filter.noResults">Aucun résultat trouvé.</p>
                 </div>
 
+                <!-- RECHERCHE -->
                 <div id="content-recherche" class="tab-content" role="tabpanel" aria-labelledby="tab-recherche" hidden>
                     <span class="level-watermark" aria-hidden="true">∫</span>
                     <h2 class="section-heading"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="recherche.heading">Recherche &amp; Supérieur</span></h2>
@@ -223,6 +227,7 @@
                     <div id="research-grid" class="resource-grid"></div>
                 </div>
 
+                <!-- FAQ -->
                 <div id="content-faq" class="tab-content" role="tabpanel" aria-labelledby="tab-faq" hidden>
                     <span class="level-watermark" aria-hidden="true">?</span>
                     <h2 class="section-heading"><i class="fa-solid fa-circle-question"></i> <span data-i18n="faq.heading">Questions fréquentes</span></h2>
@@ -233,6 +238,7 @@
                     </div>
                 </div>
 
+                <!-- CONTACT -->
                 <div id="content-contact" class="tab-content" role="tabpanel" aria-labelledby="tab-contact" hidden>
                     <section class="contact-section">
                         <h2><i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact.heading">Contact</span></h2>
@@ -251,6 +257,7 @@
                     </section>
                 </div>
 
+                <!-- LEGAL -->
                 <div id="content-confidentialite" class="tab-content" role="tabpanel" aria-label="Confidentialité" hidden>
                     <h2 class="section-heading"><i class="fa-solid fa-shield-halved"></i> <span data-i18n="legal.heading">Confidentialité</span></h2>
                     <div class="abstract-box"><p data-i18n="legal.privacy1">Aucune donnée personnelle n'est collectée en dehors du formulaire de contact.</p></div>
@@ -260,8 +267,8 @@
 
             <aside id="sidebar">
                 <div class="sidebar-widget">
-                    <button class="math-btn" type="button" data-open-tab="mathematiques"><i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span></button>
-                    <button class="math-btn" type="button" data-open-tab="recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="sidebar.researchBtn">Recherche</span></button>
+                    <button class="math-btn" data-open-tab="mathematiques"><i class="fa-solid fa-infinity"></i> <span data-i18n="sidebar.mathBtn">Mathématiques</span></button>
+                    <button class="math-btn" data-open-tab="recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="sidebar.researchBtn">Recherche</span></button>
                 </div>
                 <div class="sidebar-widget">
                     <h4 class="widget-title"><i class="fa-solid fa-bullhorn"></i> <span data-i18n="sidebar.newsTitle">Actualités</span></h4>
@@ -278,7 +285,7 @@
     <footer>
         <div class="container footer-inner">
             <p><span data-i18n="footer.rights">© 2026 MoBendriss. Tous droits réservés.</span> <span class="foot-accent" data-i18n="footer.tagline">Conçu avec rigueur.</span></p>
-            <button class="footer-link" type="button" data-open-tab="confidentialite" data-i18n="footer.legalLink">Confidentialité</button>
+            <button class="footer-link" data-open-tab="confidentialite" data-i18n="footer.legalLink">Confidentialité</button>
         </div>
     </footer>
 
