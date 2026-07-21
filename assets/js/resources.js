@@ -1,257 +1,109 @@
-/**
- * MoBendriss — Module de gestion des ressources
- * Rendu, filtrage et gestion des favoris
- */
+// MoBendriss Academy — Resource Logic Module
+// Gestion des ressources : filtrage, recherche, pagination, favoris
 
-const ResourceModule = (() => {
-    // State
-    let currentFilter = { cycle: 'all', type: 'all', search: '', favoritesOnly: false };
-    let favorites = new Set();
+const RESOURCES_MODULE = (() => {
+  const ITEMS_PER_PAGE = 8;
 
-    // DOM Elements
-    const grid = document.getElementById('resource-grid');
-    const researchGrid = document.getElementById('research-grid');
-    const searchInput = document.getElementById('resource-filter');
-    const cycleFilter = document.getElementById('cycle-filter');
-    const typeFilter = document.getElementById('type-filter');
-    const favFilter = document.getElementById('favorites-filter');
-    const countEl = document.getElementById('resource-count');
-    const emptyEl = document.getElementById('resource-empty');
+  // ─── State ───
+  let resources = window.MB_RESOURCES || [];
+  let filtered = [...resources];
+  let currentPage = 1;
+  let favorites = JSON.parse(localStorage.getItem('mb-favorites') || '[]');
+  let lang = localStorage.getItem('mb-lang') || 'fr';
+  let searchQuery = '';
+  let cycleFilter = 'all';
+  let typeFilter = 'all';
+  let categoryFilter = 'all';
+  let sortMode = 'newest';
+  let favoritesFilter = false;
+  let onUpdate = null;
 
-    // ── Initialization ────────────────────────────────────────
-    function init() {
-        loadFavorites();
-        bindEvents();
-        render();
-        renderResearch();
+  // ─── Categories ───
+  function getCategories() {
+    const cats = new Set(resources.filter(r => r.category).map(r => r.category));
+    return Array.from(cats).sort();
+  }
+
+  // ─── Filter ───
+  function filter() {
+    let f = [...resources];
+    if (cycleFilter !== 'all') f = f.filter(r => r.cycle === cycleFilter);
+    if (typeFilter !== 'all') f = f.filter(r => r.type === typeFilter);
+    if (categoryFilter !== 'all') f = f.filter(r => r.category === categoryFilter);
+    if (searchQuery.trim()) {
+      const q = searchQuery.trim().toLowerCase();
+      f = f.filter(r => {
+        const title = lang === 'ar' && r.titleAr ? r.titleAr : r.title;
+        const desc = lang === 'ar' && r.descriptionAr ? r.descriptionAr : r.description;
+        return title.toLowerCase().includes(q) || desc.toLowerCase().includes(q);
+      });
     }
+    if (favoritesFilter) f = f.filter(r => favorites.includes(r.id));
+    if (sortMode === 'popular') f.sort((a, b) => (b.downloads || 0) - (a.downloads || 0));
+    else f.sort((a, b) => b.id - a.id);
+    filtered = f;
+    if (currentPage > getTotalPages()) currentPage = 1;
+    return getPage();
+  }
 
-    // ── Load Favorites from localStorage ──────────────────────
-    function loadFavorites() {
-        try {
-            const stored = localStorage.getItem('mb-favorites');
-            if (stored) {
-                favorites = new Set(JSON.parse(stored));
-            }
-        } catch (e) {
-            favorites = new Set();
-        }
-    }
+  // ─── Pagination ───
+  function getTotalPages() { return Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE)); }
+  function getPage() {
+    const start = (currentPage - 1) * ITEMS_PER_PAGE;
+    return filtered.slice(start, start + ITEMS_PER_PAGE);
+  }
+  function setPage(p) { currentPage = p; if (onUpdate) onUpdate(); }
 
-    // ── Save Favorites to localStorage ────────────────────────
-    function saveFavorites() {
-        try {
-            localStorage.setItem('mb-favorites', JSON.stringify([...favorites]));
-        } catch (e) {}
-    }
+  // ─── Favorites ───
+  function toggleFav(id) {
+    const idx = favorites.indexOf(id);
+    if (idx > -1) favorites.splice(idx, 1);
+    else favorites.push(id);
+    localStorage.setItem('mb-favorites', JSON.stringify(favorites));
+    if (onUpdate) onUpdate();
+    return idx === -1; // true = added
+  }
+  function isFav(id) { return favorites.includes(id); }
 
-    // ── Toggle Favorite ───────────────────────────────────────
-    function toggleFavorite(id) {
-        if (favorites.has(id)) {
-            favorites.delete(id);
-        } else {
-            favorites.add(id);
-        }
-        saveFavorites();
-        render();
-    }
+  // ─── Stats ───
+  function getTotalDownloads() { return resources.reduce((s, r) => s + (r.downloads || 0), 0); }
+  function getFeaturedCount() { return resources.filter(r => r.featured).length; }
 
-    // ── Bind Events ───────────────────────────────────────────
-    function bindEvents() {
-        if (searchInput) {
-            searchInput.addEventListener('input', debounce((e) => {
-                currentFilter.search = e.target.value.toLowerCase().trim();
-                render();
-            }, 200));
-        }
+  // ─── Setters ───
+  function setSearch(q) { searchQuery = q; currentPage = 1; }
+  function setCycle(c) { cycleFilter = c; currentPage = 1; }
+  function setType(t) { typeFilter = t; currentPage = 1; }
+  function setCategory(c) { categoryFilter = c; currentPage = 1; }
+  function setSort(s) { sortMode = s; currentPage = 1; }
+  function setFavFilter(v) { favoritesFilter = v; currentPage = 1; }
+  function setLang(l) { lang = l; }
+  function getSearch() { return searchQuery; }
+  function getCycle() { return cycleFilter; }
+  function getType() { return typeFilter; }
+  function getCategory() { return categoryFilter; }
+  function getSort() { return sortMode; }
+  function getFavFilter() { return favoritesFilter; }
+  function getCurrentPage() { return currentPage; }
+  function getTotalCount() { return filtered.length; }
+  function getTotalPagesCount() { return getTotalPages(); }
+  function getAll() { return resources; }
+  function getFiltered() { return filtered; }
+  function getLang() { return lang; }
+  function resetFilters() { searchQuery = ''; cycleFilter = 'all'; typeFilter = 'all'; categoryFilter = 'all'; favoritesFilter = false; currentPage = 1; }
+  function hasActiveFilters() { return searchQuery || cycleFilter !== 'all' || typeFilter !== 'all' || categoryFilter !== 'all' || favoritesFilter; }
+  function setOnUpdate(fn) { onUpdate = fn; }
 
-        if (cycleFilter) {
-            cycleFilter.addEventListener('change', (e) => {
-                currentFilter.cycle = e.target.value;
-                render();
-            });
-        }
+  // ─── Research (superieur only) ───
+  function getResearchResources() { return resources.filter(r => r.cycle === 'superieur'); }
 
-        if (typeFilter) {
-            typeFilter.addEventListener('change', (e) => {
-                currentFilter.type = e.target.value;
-                render();
-            });
-        }
-
-        if (favFilter) {
-            favFilter.addEventListener('click', () => {
-                currentFilter.favoritesOnly = !currentFilter.favoritesOnly;
-                favFilter.classList.toggle('active', currentFilter.favoritesOnly);
-                favFilter.querySelector('i').className = currentFilter.favoritesOnly
-                    ? 'fa-solid fa-star'
-                    : 'fa-regular fa-star';
-                render();
-            });
-        }
-    }
-
-    // ── Filter Resources ──────────────────────────────────────
-    function filterResources(resources, isResearch = false) {
-        return resources.filter(r => {
-            // Research tab shows only superieur + recherche type
-            if (isResearch) {
-                return r.cycle === 'superieur' && r.type === 'recherche';
-            }
-
-            // Cycle filter
-            if (currentFilter.cycle !== 'all' && r.cycle !== currentFilter.cycle) return false;
-
-            // Type filter
-            if (currentFilter.type !== 'all' && r.type !== currentFilter.type) return false;
-
-            // Favorites filter
-            if (currentFilter.favoritesOnly && !favorites.has(r.id)) return false;
-
-            // Search filter
-            if (currentFilter.search) {
-                const lang = document.documentElement.lang || 'fr';
-                const searchStr = [
-                    r.title,
-                    r.titleAr,
-                    r.description,
-                    r.descAr,
-                    r.level,
-                    r.levelAr,
-                    ...(r.tags || [])
-                ].join(' ').toLowerCase();
-                return searchStr.includes(currentFilter.search);
-            }
-
-            return true;
-        });
-    }
-
-    // ── Get Current Language ──────────────────────────────────
-    function getLang() {
-        return document.documentElement.lang || 'fr';
-    }
-
-    // ── Get Cycle Label ───────────────────────────────────────
-    function getCycleLabel(cycle) {
-        const lang = getLang();
-        const key = `cycle.${cycle}`;
-        return (I18N[lang] && I18N[lang][key]) || cycle;
-    }
-
-    // ── Get Type Icon ─────────────────────────────────────────
-    function getTypeIcon(type) {
-        const icons = {
-            cours: 'fa-book-open',
-            td: 'fa-pen-to-square',
-            exam: 'fa-file-lines',
-            recherche: 'fa-flask'
-        };
-        return icons[type] || 'fa-file';
-    }
-
-    // ── Create Resource Card HTML ─────────────────────────────
-    function createCardHTML(resource, index) {
-        const lang = getLang();
-        const isAr = lang === 'ar';
-        const title = isAr ? (resource.titleAr || resource.title) : resource.title;
-        const desc = isAr ? (resource.descAr || resource.description) : resource.description;
-        const level = isAr ? (resource.levelAr || resource.level) : resource.level;
-        const isFav = favorites.has(resource.id);
-        const i18n = I18N[lang] || I18N.fr;
-
-        return `
-            <article class="resource-card" style="animation-delay: ${index * 0.08}s" data-id="${resource.id}">
-                <div class="resource-card-header">
-                    <div class="resource-type-icon ${resource.type}">
-                        <i class="fa-solid ${getTypeIcon(resource.type)}"></i>
-                    </div>
-                    <button class="resource-fav-btn ${isFav ? 'active' : ''}"
-                            onclick="ResourceModule.toggleFavorite('${resource.id}')"
-                            aria-label="${isFav ? 'Retirer des favoris' : 'Ajouter aux favoris'}">
-                        <i class="${isFav ? 'fa-solid' : 'fa-regular'} fa-star"></i>
-                    </button>
-                </div>
-                <h3>${escapeHTML(title)}</h3>
-                <p>${escapeHTML(desc)}</p>
-                <div class="resource-meta">
-                    <span class="resource-badge cycle">${getCycleLabel(resource.cycle)}</span>
-                    <span class="resource-badge type">${level}</span>
-                </div>
-                <div class="resource-card-actions">
-                    <a href="${resource.downloadUrl || '#'}" class="resource-btn primary" target="_blank" rel="noopener">
-                        <i class="fa-solid fa-download"></i> ${i18n['resource.download']}
-                    </a>
-                    <a href="${resource.previewUrl || '#'}" class="resource-btn secondary" target="_blank" rel="noopener">
-                        <i class="fa-solid fa-eye"></i> ${i18n['resource.preview']}
-                    </a>
-                </div>
-            </article>
-        `;
-    }
-
-    // ── Render Main Grid ──────────────────────────────────────
-    function render() {
-        if (!grid) return;
-
-        const filtered = filterResources(RESOURCES);
-        const lang = getLang();
-        const i18n = I18N[lang] || I18N.fr;
-
-        // Update count
-        if (countEl) {
-            countEl.textContent = i18n['resource.count'].replace('{count}', filtered.length);
-        }
-
-        // Render cards
-        if (filtered.length === 0) {
-            grid.innerHTML = '';
-            if (emptyEl) emptyEl.hidden = false;
-        } else {
-            if (emptyEl) emptyEl.hidden = true;
-            grid.innerHTML = filtered.map((r, i) => createCardHTML(r, i)).join('');
-        }
-
-        // Announce to screen readers
-        const announcer = document.getElementById('tab-announcer');
-        if (announcer) {
-            announcer.textContent = `${filtered.length} ${lang === 'ar' ? 'موارد' : 'ressources'}`;
-        }
-    }
-
-    // ── Render Research Grid ──────────────────────────────────
-    function renderResearch() {
-        if (!researchGrid) return;
-
-        const research = filterResources(RESOURCES, true);
-        if (research.length === 0) {
-            researchGrid.innerHTML = `<p class="empty-note">${getLang() === 'ar' ? 'لا توجد موارد بحثية بعد.' : 'Aucune ressource de recherche pour le moment.'}</p>`;
-        } else {
-            researchGrid.innerHTML = research.map((r, i) => createCardHTML(r, i)).join('');
-        }
-    }
-
-    // ── Utility: Escape HTML ──────────────────────────────────
-    function escapeHTML(str) {
-        const div = document.createElement('div');
-        div.textContent = str;
-        return div.innerHTML;
-    }
-
-    // ── Utility: Debounce ─────────────────────────────────────
-    function debounce(fn, delay) {
-        let timer;
-        return function (...args) {
-            clearTimeout(timer);
-            timer = setTimeout(() => fn.apply(this, args), delay);
-        };
-    }
-
-    // Public API
-    return {
-        init,
-        render,
-        renderResearch,
-        toggleFavorite
-    };
+  return {
+    filter, getPage, setPage, getTotalPages, getTotalPagesCount,
+    toggleFav, isFav, getTotalCount, getCurrentPage,
+    setSearch, setCycle, setType, setCategory, setSort, setFavFilter, setLang,
+    getSearch, getCycle, getType, getCategory, getSort, getFavFilter, getLang,
+    getCategories, getAll, getFiltered, getTotalDownloads, getFeaturedCount,
+    getResearchResources,
+    resetFilters, hasActiveFilters, setOnUpdate,
+    ITEMS_PER_PAGE,
+  };
 })();
