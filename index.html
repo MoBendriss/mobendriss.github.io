@@ -5,55 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mo Bendriss | Plateforme académique des mathématiques</title>
 <meta name="description" content="Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.">
+
 <meta property="og:title" content="Mo Bendriss | Plateforme académique des mathématiques">
 <meta property="og:description" content="Cours structurés, exercices progressifs et ressources avancées en mathématiques.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://mobendriss.github.io/">
+<meta property="og:image" content="https://mobendriss.github.io/assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;900&family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
 <style>
-* { box-sizing: border-box; margin: 0; }
+* { box-sizing: border-box; }
 
 :root {
-  --ink: #0F1A2E;
+  --ink: #132038;
   --ink-soft: #47536B;
   --paper: #FBF8F2;
   --paper-line: #E4DFCF;
-  --card: rgba(255, 255, 255, 0.7);
-  --card-solid: #FFFFFF;
+  --card: #FFFFFF;
   --chalk-blue: #2C6E8E;
   --chalk-blue-deep: #1F5670;
   --ochre: #B8791A;
   --ochre-light: #E7A947;
   --rust: #A23B3B;
   --amethyst: #6C5CE7;
-  --success: #2A9D5C;
   --focus: #E7A947;
   --font-display: 'Fraunces', Georgia, serif;
   --font-body: 'Inter', sans-serif;
-  --font-ar-display: 'Amiri', serif;
-  --font-ar-body: 'Cairo', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-  --shadow-sm: 0 2px 8px rgba(19, 32, 56, 0.06);
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --shadow-1: 0 1px 2px rgba(19, 32, 56, .05), 0 6px 16px -8px rgba(19, 32, 56, .12);
   --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, .28);
-  --shadow-glow: 0 0 40px rgba(231, 169, 71, 0.15);
   --ease: cubic-bezier(.22, 1, .36, 1);
-  --ease-out: cubic-bezier(.16, 1, .3, 1);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  --radius-xl: 28px;
   --transition-fast: 0.2s var(--ease);
   --container-max: 1200px;
-  --gradient-primary: linear-gradient(135deg, #E7A947 0%, #B8791A 50%, #2C6E8E 100%);
-  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -63,67 +60,29 @@
   }
 }
 
-html { scroll-behavior: smooth; }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ochre) var(--paper);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: var(--ochre);
+  border-radius: 10px;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--chalk-blue-deep); }
 
 body {
   position: relative;
   font-family: var(--font-body);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+  margin: 0;
   background: var(--paper);
   line-height: 1.6;
-  transition: background 0.35s var(--ease), color 0.35s var(--ease);
-  overflow-x: hidden;
 }
-
-/* Custom cursor */
-@media (hover: hover) and (pointer: fine) {
-  .custom-cursor {
-    position: fixed;
-    width: 32px;
-    height: 32px;
-    border: 2px solid var(--ochre);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transition: transform 0.15s var(--ease), width 0.2s, height 0.2s, border-color 0.2s;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
-  }
-  .custom-cursor.hover {
-    width: 60px;
-    height: 60px;
-    border-color: var(--chalk-blue);
-    background: rgba(231, 169, 71, 0.1);
-  }
-  .custom-cursor-dot {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    background: var(--ochre);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-  }
-  body { cursor: none; }
-  a, button, input, textarea, select, .clickable { cursor: none; }
-}
-
-html[dir="rtl"] body { font-family: var(--font-ar-body); }
-html[dir="rtl"] .brand-title,
-html[dir="rtl"] .hero-title,
-html[dir="rtl"] .section-title,
-html[dir="rtl"] .section-header h2,
-html[dir="rtl"] h3, html[dir="rtl"] h4,
-html[dir="rtl"] .stat-number,
-html[dir="rtl"] .logo-text,
-html[dir="rtl"] .footer-logo,
-html[dir="rtl"] .about-avatar,
-html[dir="rtl"] .quote-mark {
-  font-family: var(--font-ar-display);
-}
-html[dir="rtl"] .eyebrow { letter-spacing: 0; }
 
 .container {
   max-width: var(--container-max);
@@ -131,31 +90,25 @@ html[dir="rtl"] .eyebrow { letter-spacing: 0; }
   padding-inline: 1.5rem;
 }
 
-a { color: inherit; text-decoration: none; }
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+a { color: inherit; }
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* ======================================== */
-/* READING PROGRESS BAR                     */
-/* ======================================== */
-.reading-progress {
+.scroll-progress {
   position: fixed;
   top: 0;
-  left: 0;
-  height: 3px;
-  background: var(--gradient-primary);
+  inset-inline-start: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ochre-light), var(--chalk-blue));
+  z-index: 10000;
   width: 0%;
-  z-index: 9999;
-  transition: width 0.1s linear;
-  box-shadow: 0 0 10px rgba(231, 169, 71, 0.6);
+  transition: width 0.1s ease-out;
 }
 
-/* ======================================== */
-/* LOADING SCREEN (Premium)                 */
-/* ======================================== */
 .loading-screen {
   position: fixed;
   inset: 0;
@@ -164,136 +117,94 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  z-index: 10000;
-  transition: opacity 0.8s var(--ease), visibility 0.8s var(--ease);
+  z-index: 9999;
+  transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+  gap: 1.5rem;
 }
 
 .loading-screen.hidden { opacity: 0; visibility: hidden; }
 
 .loading-logo {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  border: 2px solid var(--ochre-light);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(19, 32, 56, 0.4);
-  animation: logoPulse 2s ease-in-out infinite;
-  position: relative;
-}
-
-.loading-logo::before {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border: 2px dashed var(--ochre-light);
-  border-radius: 50%;
-  animation: rotate 4s linear infinite;
-  opacity: 0.5;
-}
-
-@keyframes logoPulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(231, 169, 71, 0.4); }
-  50% { box-shadow: 0 0 0 20px rgba(231, 169, 71, 0); }
-}
-
-@keyframes rotate { to { transform: rotate(360deg); } }
-
-.loading-logo-text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: white;
-  font-weight: 700;
-  line-height: 1;
+  letter-spacing: 0.05em;
 }
 
-.loading-logo-sub {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  color: var(--ochre-light);
-  margin-top: 0.3rem;
-  font-weight: 600;
-}
-
-.loading-progress {
+.loading-bar-track {
   width: 200px;
   height: 3px;
   background: rgba(255,255,255,0.1);
-  border-radius: 2px;
+  border-radius: 10px;
   overflow: hidden;
-  position: relative;
 }
 
-.loading-progress-bar {
+.loading-bar-fill {
   height: 100%;
-  background: var(--gradient-primary);
   width: 0%;
-  transition: width 0.3s var(--ease);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(231, 169, 71, 0.5);
+  background: var(--ochre-light);
+  border-radius: 10px;
+  animation: loadBar 0.6s var(--ease) forwards;
 }
 
-.loading-text {
-  color: rgba(255,255,255,0.5);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
+@keyframes loadBar { to { width: 100%; } }
 
-/* ======================================== */
-/* HERO with Canvas Particles               */
-/* ======================================== */
 .top-banner {
   position: relative;
   background: 
     radial-gradient(60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
     radial-gradient(50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
     linear-gradient(160deg, rgb(22, 35, 63) 0%, rgb(16, 28, 51) 55%, rgb(11, 21, 38) 100%);
-  padding: 5rem 0 4.5rem;
+  padding: 4.5rem 0 3.75rem;
   overflow: hidden;
   border-bottom: 1px solid rgba(231, 169, 71, 0.4);
-  min-height: 600px;
-  display: flex;
-  align-items: center;
 }
 
 .top-banner::before {
   content: "";
   position: absolute;
   background-image: 
-    linear-gradient(rgba(231, 169, 71, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(231, 169, 71, 0.12) 1px, transparent 1px);
+    linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: radial-gradient(95% 100% at 50% 0%, black 55%, transparent 95%);
   inset: 0;
   pointer-events: none;
+  animation: drift 25s linear infinite;
 }
 
-#heroCanvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: 68px 68px; }
 }
 
-.mouse-gradient {
+.mesh-blob {
   position: absolute;
-  width: 600px;
-  height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(231, 169, 71, 0.15) 0%, transparent 70%);
+  filter: blur(60px);
+  opacity: 0.5;
   pointer-events: none;
-  z-index: 0;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s;
-  opacity: 0;
+  animation: float 12s ease-in-out infinite;
+}
+
+.mesh-blob-1 {
+  width: 300px; height: 300px;
+  background: rgba(44, 110, 142, 0.4);
+  top: -100px; inset-inline-end: 10%;
+  animation-delay: 0s;
+}
+
+.mesh-blob-2 {
+  width: 250px; height: 250px;
+  background: rgba(231, 169, 71, 0.25);
+  bottom: -80px; inset-inline-start: 5%;
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
 }
 
 header, nav, main, footer { position: relative; z-index: 1; }
@@ -315,16 +226,8 @@ header, nav, main, footer { position: relative; z-index: 1; }
   letter-spacing: 0.1em;
   margin: 0 0 0.75rem;
   text-transform: uppercase;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 24px;
-  height: 1px;
-  background: var(--ochre-light);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.1s forwards;
 }
 
 .brand-title {
@@ -336,6 +239,13 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   gap: 0.6rem;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.25s forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .brand-first { font-style: italic; font-weight: 400; }
@@ -351,13 +261,14 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  box-shadow: 0 0 20px rgba(231, 169, 71, 0.5);
 }
 
 .brand-tagline {
   color: rgba(255,255,255,0.75);
   font-size: 1.1rem;
   margin: 0.75rem 0 0;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.4s forwards;
 }
 
 .logo-circle {
@@ -372,11 +283,15 @@ header, nav, main, footer { position: relative; z-index: 1; }
   justify-content: center;
   background: rgba(19, 32, 56, 0.4);
   backdrop-filter: blur(10px);
-  transition: transform 0.5s var(--ease);
-  box-shadow: 0 0 40px rgba(231, 169, 71, 0.2);
+  transition: var(--transition-fast);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.15s forwards;
 }
 
-.logo-circle:hover { transform: rotate(-8deg) scale(1.05); }
+.logo-circle:hover {
+  transform: rotate(8deg) scale(1.05);
+  box-shadow: 0 0 30px rgba(231, 169, 71, 0.4);
+}
 
 .logo-text {
   font-family: var(--font-display);
@@ -394,24 +309,14 @@ header, nav, main, footer { position: relative; z-index: 1; }
   margin-top: 0.3rem;
 }
 
-/* ======================================== */
-/* MAIN NAVIGATION with Glass Effect        */
-/* ======================================== */
 .main-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: var(--card);
   border-bottom: 1px solid var(--paper-line);
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.35s var(--ease), border-color 0.35s var(--ease);
-}
-
-body.dark-mode .main-nav {
-  background: rgba(22, 35, 63, 0.85);
+  box-shadow: var(--shadow-1);
 }
 
 .nav-content {
@@ -425,15 +330,17 @@ body.dark-mode .main-nav {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 0.3rem;
+  gap: 0.5rem;
+  margin: 0;
   padding: 0;
   flex-wrap: wrap;
 }
 
 .nav-links a {
+  text-decoration: none;
   color: var(--ink-soft);
   font-weight: 500;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -442,25 +349,18 @@ body.dark-mode .main-nav {
   transition: var(--transition-fast);
   white-space: nowrap;
   position: relative;
-  overflow: hidden;
 }
 
 .nav-links a::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: 4px;
-  left: 50%;
+  bottom: 2px;
+  inset-inline-start: 50%;
   width: 0;
   height: 2px;
   background: var(--ochre);
-  transition: width 0.3s var(--ease), left 0.3s var(--ease);
-  border-radius: 1px;
-}
-
-.nav-links a:hover::after,
-.nav-links a.active::after {
-  width: 60%;
-  left: 20%;
+  transition: var(--transition-fast);
+  transform: translateX(-50%);
 }
 
 .nav-links a.active {
@@ -470,6 +370,7 @@ body.dark-mode .main-nav {
 }
 
 .nav-links a:hover { background: var(--paper); }
+.nav-links a:hover::after { width: 60%; }
 
 .nav-tools { display: flex; align-items: center; gap: 0.6rem; }
 
@@ -479,135 +380,187 @@ body.dark-mode .main-nav {
   gap: 0.5rem;
   background: var(--paper);
   padding: 0.5rem 1rem;
-  border-radius: 24px;
+  border-radius: var(--radius-sm);
   min-width: 180px;
-  transition: background 0.35s var(--ease), box-shadow 0.2s var(--ease);
-  border: 1px solid transparent;
+  transition: var(--transition-fast);
 }
 
-.search-box:focus-within {
-  box-shadow: 0 0 0 3px rgba(231, 169, 71, 0.2);
-  border-color: var(--ochre);
-}
-
-.search-box i { color: var(--ink-soft); font-size: 0.85rem; }
+.search-box:focus-within { box-shadow: 0 0 0 2px var(--ochre-light); }
+.search-box i { color: var(--ink-soft); }
 
 .search-box input {
   border: none;
   background: transparent;
   outline: none;
   width: 100%;
-  font-family: inherit;
+  font-family: var(--font-body);
   color: var(--ink);
-  font-size: 0.9rem;
 }
 
-.lang-toggle, .theme-toggle {
+.icon-btn {
   background: var(--paper);
-  border: 1px solid transparent;
-  padding: 0.5rem 0.9rem;
-  border-radius: 24px;
+  border: none;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--ink);
   transition: var(--transition-fast);
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.lang-toggle:hover, .theme-toggle:hover {
-  background: var(--paper-line);
-  transform: translateY(-1px);
-  border-color: var(--ochre);
-}
-
-.mobile-menu-btn {
   display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle, .mobile-menu-btn { display: flex; }
+
+.icon-btn:hover { background: var(--paper-line); transform: translateY(-2px); }
+
+.search-toggle-btn { display: none; }
+
+.mobile-search-bar {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--card);
+  border-bottom: 1px solid var(--paper-line);
+  padding: 0.9rem 1.5rem;
+}
+
+.mobile-search-bar.active { display: flex; }
+.mobile-search-bar i.fa-search { color: var(--ink-soft); }
+
+.mobile-search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.mobile-search-bar .close-search-btn {
   background: none;
   border: none;
-  font-size: 1.4rem;
+  color: var(--ink-soft);
+  font-size: 1.2rem;
   cursor: pointer;
-  color: var(--ink);
+  padding: 0.3rem;
 }
 
-/* ======================================== */
-/* HERO SECTION                             */
-/* ======================================== */
-.hero-section {
-  padding: 4rem 0;
-  background: var(--paper);
-  transition: background 0.35s var(--ease);
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 21, 38, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2.5rem;
+.drawer-overlay.active { opacity: 1; visibility: visible; }
+
+.drawer-menu {
+  position: fixed;
+  top: 0;
+  inset-inline-end: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--ink);
+  z-index: 999;
+  padding: 2rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex;
+  flex-direction: column;
 }
+
+:dir(rtl) .drawer-menu { transform: translateX(-100%); }
+.drawer-menu.active { transform: translateX(0); }
+
+.drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.drawer-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition-fast);
+  font-weight: 500;
+}
+
+.drawer-links a:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--ochre-light);
+  transform: translateX(-5px);
+}
+
+:dir(rtl) .drawer-links a:hover { transform: translateX(5px); }
+.drawer-links i { color: var(--ochre-light); width: 20px; }
+
+.hero-section { padding: 3.5rem 0; background: var(--paper); }
+.hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; }
 
 .badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(231, 169, 71, 0.1);
+  display: inline-block;
+  background: rgba(231, 169, 71, 0.15);
   color: var(--ochre);
   padding: 0.5rem 1.1rem;
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(231, 169, 71, 0.2);
-  position: relative;
-  overflow: hidden;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
-.badge::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--ochre);
-  animation: blink 2s ease-in-out infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(231, 169, 71, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(231, 169, 71, 0); }
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
   font-weight: 700;
   color: var(--ink);
-  line-height: 1.15;
+  line-height: 1.2;
   margin: 0 0 1.5rem;
-  letter-spacing: -0.02em;
 }
 
-.highlight {
-  color: var(--chalk-blue);
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(120deg, var(--chalk-blue) 0%, var(--amethyst) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
+.highlight { color: var(--chalk-blue); position: relative; }
 .highlight::after {
-  content: "";
+  content: '';
   position: absolute;
-  left: 0; right: 0; bottom: -2px;
+  bottom: 2px;
+  inset-inline-start: 0;
+  width: 100%;
   height: 8px;
-  background: linear-gradient(90deg, rgba(231, 169, 71, 0.3), rgba(108, 92, 231, 0.3));
-  border-radius: 4px;
+  background: rgba(231, 169, 71, 0.25);
   z-index: -1;
+  border-radius: 4px;
 }
 
 .hero-desc {
@@ -618,136 +571,70 @@ body.dark-mode .main-nav {
   max-width: 600px;
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
+.hero-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
 
 .btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.9rem 1.8rem;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-weight: 600;
   transition: var(--transition-fast);
   border: none;
   cursor: pointer;
-  font-size: 0.95rem;
-  font-family: inherit;
+  font-size: 1rem;
+  font-family: var(--font-body);
   position: relative;
   overflow: hidden;
-  isolation: isolate;
 }
 
-.btn .ripple {
+.btn::before {
+  content: '';
   position: absolute;
+  top: 50%; inset-inline-start: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.25);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transform: scale(0);
-  animation: ripple 0.6s linear;
-  pointer-events: none;
+  transform: translate(-50%,-50%);
+  transition: width 0.5s, height 0.5s;
 }
 
-@keyframes ripple {
-  to { transform: scale(4); opacity: 0; }
-}
+.btn:active::before { width: 300px; height: 300px; }
 
-.btn-primary {
-  background: var(--gradient-primary);
-  color: white;
-  box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.6);
-  background-size: 200% 200%;
-  animation: gradientShift 5s ease infinite;
-}
-
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
+.btn-primary { background: var(--ochre); color: white; }
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px -8px rgba(184, 121, 26, 0.8);
+  background: var(--chalk-blue-deep);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(31, 86, 112, 0.5);
 }
 
-.btn-secondary {
-  background: var(--card-solid);
-  color: var(--ink);
-  border: 1px solid var(--paper-line);
-}
+.btn-secondary { background: white; color: var(--ink); border: 1px solid var(--paper-line); }
+.btn-secondary:hover { background: var(--paper); transform: translateY(-3px); }
 
-.btn-secondary:hover {
-  background: var(--paper);
-  transform: translateY(-2px);
-  border-color: var(--ochre);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 
 .stat-card {
-  background: var(--card);
-  backdrop-filter: blur(10px);
+  background: white;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   text-align: center;
   transition: var(--transition-fast);
-  position: relative;
-  overflow: hidden;
 }
 
-.stat-card::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--gradient-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s var(--ease);
-}
-
-html[dir="rtl"] .stat-card::before { transform-origin: right; }
-
-.stat-card:hover { box-shadow: var(--shadow-2); transform: translateY(-4px); }
-.stat-card:hover::before { transform: scaleX(1); }
+.stat-card:hover { box-shadow: var(--shadow-2); transform: translateY(-5px); border-color: var(--ochre-light); }
 
 .stat-number {
   display: block;
   font-family: var(--font-display);
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  line-height: 1;
+  color: var(--ochre);
 }
 
-.stat-suffix {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-  margin-top: 0.3rem;
-  display: block;
-}
+.stat-label { font-size: 0.85rem; color: var(--ink-soft); }
 
 .hero-sidebar { display: flex; flex-direction: column; }
 
@@ -761,8 +648,6 @@ html[dir="rtl"] .stat-card::before { transform-origin: right; }
   font-weight: 600;
   margin-bottom: 1rem;
   transition: var(--transition-fast);
-  position: relative;
-  overflow: hidden;
 }
 
 .sidebar-btn-primary {
@@ -771,30 +656,18 @@ html[dir="rtl"] .stat-card::before { transform-origin: right; }
   box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.5);
 }
 
-.sidebar-btn-primary:hover { transform: translateY(-2px) scale(1.02); }
+.sidebar-btn-primary:hover { transform: translateY(-3px) scale(1.02); }
 
-.sidebar-btn-secondary {
-  background: var(--card-solid);
-  color: var(--ink);
-  border: 1px solid var(--paper-line);
-}
-
-.sidebar-btn-secondary:hover {
-  background: var(--paper);
-  border-color: var(--ochre);
-}
+.sidebar-btn-secondary { background: white; color: var(--ink); border: 1px solid var(--paper-line); }
+.sidebar-btn-secondary:hover { background: var(--paper); }
 
 .news-card, .social-card {
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(228, 223, 207, 0.6);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1rem;
-  transition: var(--transition-fast);
-}
-
-.news-card:hover, .social-card:hover {
-  transform: translateY(-2px);
   box-shadow: var(--shadow-1);
 }
 
@@ -805,32 +678,22 @@ html[dir="rtl"] .stat-card::before { transform-origin: right; }
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-display);
 }
 
 .news-card h3 i { color: var(--ochre); }
 .social-card h3 i { color: var(--chalk-blue); }
 
-.news-item {
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--paper-line);
-  transition: var(--transition-fast);
-}
-
-.news-item:hover { padding-inline-start: 0.3rem; }
+.news-item { padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--paper-line); }
 .news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
 .news-date {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--ink-soft);
   display: flex;
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 0.4rem;
   font-family: var(--font-mono);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .news-tag {
@@ -838,10 +701,8 @@ html[dir="rtl"] .stat-card::before { transform-origin: right; }
   color: white;
   padding: 0.1rem 0.6rem;
   border-radius: 10px;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-family: var(--font-body);
-  font-weight: 700;
-  text-transform: uppercase;
 }
 
 .news-item p { margin: 0; font-size: 0.9rem; color: var(--ink); }
@@ -861,230 +722,44 @@ html[dir="rtl"] .stat-card::before { transform-origin: right; }
   transition: var(--transition-fast);
 }
 
-.social-icons a:hover {
-  background: var(--ochre);
-  color: white;
-  transform: translateY(-3px) rotate(8deg);
-  box-shadow: 0 8px 16px -4px rgba(184, 121, 26, 0.4);
-}
+.social-icons a:hover { background: var(--ochre); color: white; transform: translateY(-3px) rotate(5deg); }
 
-/* ======================================== */
-/* SVG WAVE DIVIDER                         */
-/* ======================================== */
-.wave-divider {
-  position: relative;
-  height: 60px;
-  width: 100%;
-  overflow: hidden;
-  background: var(--paper);
-}
-
-body.dark-mode .wave-divider { background: var(--paper); }
-
-.wave-divider svg {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.wave-divider.flip { transform: scaleY(-1); background: transparent; }
-.wave-divider.flip svg { fill: var(--paper); }
-
-/* ======================================== */
-/* QUOTE SECTION                            */
-/* ======================================== */
-.quote-section {
-  padding: 3rem 0;
-  background: linear-gradient(135deg, rgba(231, 169, 71, 0.05), rgba(44, 110, 142, 0.05));
-  border-block: 1px solid var(--paper-line);
-  transition: background 0.35s var(--ease);
-  position: relative;
-  overflow: hidden;
-}
-
-body.dark-mode .quote-section {
-  background: linear-gradient(135deg, rgba(231, 169, 71, 0.08), rgba(44, 110, 142, 0.08));
-}
-
-.quote-container {
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.quote-mark {
-  font-family: var(--font-display);
-  font-size: 6rem;
-  color: var(--ochre-light);
-  line-height: 0.5;
-  opacity: 0.3;
-  display: block;
-  margin-bottom: 0;
-  user-select: none;
-}
-
-.quote-text {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.5rem;
-  color: var(--ink);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  min-height: 80px;
-  transition: opacity 0.4s var(--ease);
-}
-
-.quote-author {
-  color: var(--ochre);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
-}
-
-.quote-author::before, .quote-author::after {
-  content: "";
-  width: 40px;
-  height: 1px;
-  background: var(--ochre);
-}
-
-.quote-controls {
-  display: flex;
-  justify-content: center;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
-}
-
-.quote-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--paper-line);
-  border: none;
-  cursor: pointer;
-  transition: var(--transition-fast);
-  padding: 0;
-}
-
-.quote-dot.active {
-  background: var(--ochre);
-  transform: scale(1.3);
-  box-shadow: 0 0 0 4px rgba(231, 169, 71, 0.2);
-}
-
-/* ======================================== */
-/* GLASSMORPHISM CARD TEMPLATE              */
-/* ======================================== */
-.glass-card {
-  background: var(--card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(228, 223, 207, 0.5);
-  border-radius: var(--radius-lg);
-  position: relative;
-  overflow: hidden;
-}
-
-.glass-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(231, 169, 71, 0.3), transparent 50%, rgba(108, 92, 231, 0.3));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease);
-}
-
-.glass-card:hover::before { opacity: 1; }
-
-/* ======================================== */
-/* RESOURCES SECTION                        */
-/* ======================================== */
-.resources-section { padding: 4rem 0; }
+.resources-section { padding: 2rem 0 5rem; }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: var(--ink);
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-  letter-spacing: -0.01em;
+  gap: 0.6rem;
 }
 
 .section-title i { color: var(--ochre); }
 
-.section-title::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--paper-line), transparent);
-  margin-inline-start: 1rem;
-}
-
-html[dir="rtl"] .section-title::after {
-  background: linear-gradient(270deg, var(--paper-line), transparent);
-}
-
-.resources-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
+.resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
 .resource-card {
-  padding: 2.2rem;
+  padding: 2rem;
   border-radius: var(--radius-lg);
   text-decoration: none;
   transition: var(--transition-fast);
   display: block;
-  cursor: pointer;
-  border: 1px solid transparent;
   position: relative;
   overflow: hidden;
 }
 
-.resource-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  padding: 2px;
-  background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease);
-}
-
-.resource-card:hover::before { opacity: 1; }
-
-.resource-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-2);
-}
+.resource-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-2); }
 
 .resource-blue { background: linear-gradient(135deg, #EBF4FC, #F5F9FE); }
 .resource-green { background: linear-gradient(135deg, #E8FAF0, #F3FDF7); }
 .resource-purple { background: linear-gradient(135deg, #F3EFFC, #F9F7FE); }
 
 .resource-icon {
-  width: 55px;
-  height: 55px;
-  border-radius: 14px;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1092,79 +767,44 @@ html[dir="rtl"] .section-title::after {
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
   transition: var(--transition-fast);
-  box-shadow: 0 8px 16px -4px rgba(0,0,0,0.15);
 }
 
-.resource-card:hover .resource-icon {
-  transform: scale(1.1) rotate(-5deg);
-  box-shadow: 0 12px 24px -4px rgba(0,0,0,0.25);
+.resource-card:hover .resource-icon { transform: scale(1.1) rotate(-5deg); }
+
+.resource-blue .resource-icon { background: #2C6E8E; }
+.resource-green .resource-icon { background: #2A9D5C; }
+.resource-purple .resource-icon { background: var(--amethyst); }
+
+.resource-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); margin: 0 0 0.3rem; }
+
+.resource-blue p { color: #2C6E8E; margin: 0; }
+.resource-green p { color: #2A9D5C; margin: 0; }
+.resource-purple p { color: var(--amethyst); margin: 0; }
+
+.progress-track {
+  margin-top: 1rem;
+  height: 6px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.resource-blue .resource-icon { background: linear-gradient(135deg, #2C6E8E, #1F5670); }
-.resource-green .resource-icon { background: linear-gradient(135deg, #2A9D5C, #1D7A45); }
-.resource-purple .resource-icon { background: linear-gradient(135deg, #6C5CE7, #5A4BCF); }
+.progress-fill { height: 100%; border-radius: 10px; width: 0%; transition: width 1.2s var(--ease); }
 
-.resource-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  color: var(--ink);
-  margin: 0 0 0.3rem;
-}
+.resource-blue .progress-fill { background: #2C6E8E; }
+.resource-green .progress-fill { background: #2A9D5C; }
+.resource-purple .progress-fill { background: var(--amethyst); }
 
-.resource-blue p { color: #2C6E8E; margin: 0; font-weight: 500; }
-.resource-green p { color: #2A9D5C; margin: 0; font-weight: 500; }
-.resource-purple p { color: var(--amethyst); margin: 0; font-weight: 500; }
+.progress-label { font-size: 0.75rem; color: var(--ink-soft); margin-top: 0.4rem; display: block; }
 
-.page-section {
-  padding: 5rem 0;
-  scroll-margin-top: 90px;
-  transition: background 0.35s var(--ease);
-}
+.page-section { padding: 4rem 0; scroll-margin-top: 90px; }
+.page-section:nth-child(even) { background: white; }
 
-.page-section:nth-child(even) { background: var(--card-solid); }
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
+.section-header h2 { font-family: var(--font-display); font-size: 2.2rem; color: var(--ink); margin-bottom: 1rem; }
+.section-header p { color: var(--ink-soft); font-size: 1.1rem; }
 
-.section-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 3.5rem;
-}
-
-.section-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--ochre);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-
-.section-eyebrow::before, .section-eyebrow::after {
-  content: "";
-  width: 30px;
-  height: 1px;
-  background: var(--ochre);
-}
-
-.section-header h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  color: var(--ink);
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
-}
-
-.section-header p { color: var(--ink-soft); font-size: 1.05rem; }
-
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  align-items: start;
-}
+.about-content { display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start; }
 
 .about-avatar {
   width: 100%;
@@ -1178,21 +818,12 @@ html[dir="rtl"] .section-title::after {
   font-family: var(--font-display);
   font-size: 4rem;
   font-style: italic;
-  box-shadow: var(--shadow-2);
-  position: relative;
+  transition: var(--transition-fast);
 }
 
-.about-avatar::after {
-  content: "";
-  position: absolute;
-  inset: -8px;
-  border: 2px dashed var(--ochre-light);
-  border-radius: calc(var(--radius-lg) + 4px);
-  opacity: 0.5;
-  animation: rotate 20s linear infinite;
-}
+.about-avatar:hover { transform: scale(1.03) rotate(-2deg); }
 
-.about-text h3 { font-family: var(--font-display); color: var(--ink); margin-bottom: 1rem; font-size: 1.5rem; }
+.about-text h3 { font-family: var(--font-display); color: var(--ink); margin-bottom: 1rem; }
 .about-text p { color: var(--ink-soft); margin-bottom: 1.5rem; line-height: 1.8; }
 
 .skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
@@ -1205,366 +836,101 @@ html[dir="rtl"] .section-title::after {
   font-size: 0.85rem;
   font-weight: 600;
   transition: var(--transition-fast);
-  cursor: default;
-  border: 1px solid transparent;
 }
 
-.skill-tag:hover {
-  background: var(--chalk-blue);
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(44, 110, 142, 0.4);
-}
+.skill-tag:hover { background: var(--chalk-blue); color: white; transform: translateY(-2px); }
 
 .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
-.level-card {
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: var(--transition-fast);
-  position: relative;
-  overflow: hidden;
-}
-
-.level-card:hover {
-  box-shadow: var(--shadow-2);
-  transform: translateY(-6px);
-  border-color: var(--ochre);
-}
+.level-card { background: white; border: 1px solid var(--paper-line); border-radius: var(--radius-lg); padding: 2rem; transition: var(--transition-fast); }
+.level-card:hover { box-shadow: var(--shadow-2); transform: translateY(-6px); border-color: var(--ochre-light); }
 
 .level-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-  margin-bottom: 1.2rem;
-  box-shadow: 0 8px 16px -4px rgba(0,0,0,0.15);
+  width: 60px; height: 60px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; color: white; margin-bottom: 1.2rem;
 }
 
-.level-card h3 {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  margin-bottom: 0.8rem;
-  color: var(--ink);
-}
+.level-card h3 { font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 0.8rem; color: var(--ink); }
 
 .chapter-list { list-style: none; padding: 0; margin: 1rem 0 0; }
 
 .chapter-list li {
-  padding: 0.7rem 0;
-  border-bottom: 1px dashed var(--paper-line);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--paper-line);
   color: var(--ink-soft);
   display: flex;
   align-items: center;
   gap: 0.6rem;
   font-size: 0.9rem;
-  cursor: pointer;
   transition: var(--transition-fast);
 }
 
-.chapter-list li:hover {
-  color: var(--ochre);
-  padding-inline-start: 0.4rem;
-}
-
+.chapter-list li:hover { color: var(--ochre); padding-inline-start: 5px; }
 .chapter-list li:last-child { border-bottom: none; }
 .chapter-list i { color: var(--ochre); font-size: 0.8rem; }
 
-/* ======================================== */
-/* COURSE TIMELINE                          */
-/* ======================================== */
-.timeline-section {
-  padding: 5rem 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(231, 169, 71, 0.03) 100%);
-}
-
-.timeline {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 2px;
-  background: linear-gradient(180deg, var(--ochre-light), var(--chalk-blue), var(--amethyst));
-  transform: translateX(-50%);
-}
-
-html[dir="rtl"] .timeline::before { left: auto; right: 50%; transform: translateX(50%); }
-
-.timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 1.5rem 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.timeline-item:nth-child(odd) {
-  left: 0;
-  text-align: end;
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  text-align: start;
-}
-
-html[dir="rtl"] .timeline-item:nth-child(odd) {
-  left: 50%;
-  text-align: start;
-}
-html[dir="rtl"] .timeline-item:nth-child(even) {
-  left: 0;
-  text-align: end;
-}
-
-.timeline-dot {
-  position: absolute;
-  top: 2rem;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--card-solid);
-  border: 3px solid var(--ochre);
-  box-shadow: 0 0 0 4px var(--paper);
-  z-index: 2;
-}
-
-.timeline-item:nth-child(odd) .timeline-dot {
-  right: -10px;
-}
-
-.timeline-item:nth-child(even) .timeline-dot {
-  left: -10px;
-}
-
-html[dir="rtl"] .timeline-item:nth-child(odd) .timeline-dot {
-  right: auto;
-  left: -10px;
-}
-
-html[dir="rtl"] .timeline-item:nth-child(even) .timeline-dot {
-  left: auto;
-  right: -10px;
-}
-
-.timeline-content {
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-md);
-  padding: 1.5rem;
-  transition: var(--transition-fast);
-}
-
-.timeline-content:hover {
-  transform: scale(1.02);
-  box-shadow: var(--shadow-1);
-  border-color: var(--ochre);
-}
-
-.timeline-year {
-  display: inline-block;
-  background: var(--gradient-primary);
-  color: white;
-  padding: 0.2rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-family: var(--font-mono);
-}
-
-.timeline-content h4 {
-  font-family: var(--font-display);
-  color: var(--ink);
-  margin-bottom: 0.4rem;
-  font-size: 1.1rem;
-}
-
-.timeline-content p {
-  color: var(--ink-soft);
-  font-size: 0.9rem;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* ======================================== */
-/* TESTIMONIALS CAROUSEL                    */
-/* ======================================== */
-.testimonials-section {
-  padding: 5rem 0;
-  background: var(--card-solid);
-  overflow: hidden;
-}
-
-.testimonials-track {
-  display: flex;
-  gap: 1.5rem;
-  animation: scroll 40s linear infinite;
-  width: max-content;
-}
-
-.testimonials-track:hover { animation-play-state: paused; }
-
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.testimonial-card {
-  flex: 0 0 380px;
-  background: var(--paper);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  position: relative;
-  transition: var(--transition-fast);
-}
-
-.testimonial-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-1);
-  border-color: var(--ochre);
-}
-
-.testimonial-stars {
-  color: var(--ochre);
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.testimonial-text {
-  color: var(--ink);
-  font-style: italic;
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.testimonial-avatar {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: var(--gradient-primary);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.testimonial-info h5 {
-  color: var(--ink);
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.testimonial-info span {
-  color: var(--ink-soft);
-  font-size: 0.8rem;
-}
-
-/* ======================================== */
-/* RESEARCH GRID                            */
-/* ======================================== */
 .research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 
 .research-card {
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-md);
-  padding: 1.8rem;
-  display: flex;
-  gap: 1.2rem;
-  transition: var(--transition-fast);
-  position: relative;
-  overflow: hidden;
+  background: white; border: 1px solid var(--paper-line); border-radius: var(--radius-md);
+  padding: 1.8rem; display: flex; gap: 1.2rem; transition: var(--transition-fast);
 }
 
-.research-card::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--gradient-primary);
-  transform: scaleY(0);
-  transform-origin: top;
-  transition: transform 0.3s var(--ease);
-}
-
-.research-card:hover::before { transform: scaleY(1); }
-
-.research-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-1);
-  border-color: var(--amethyst);
-}
+.research-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-1); }
 
 .research-icon {
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(108, 92, 231, 0.05));
-  color: var(--amethyst);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  transition: var(--transition-fast);
-}
-
-.research-card:hover .research-icon {
-  background: linear-gradient(135deg, var(--amethyst), #5A4BCF);
-  color: white;
-  transform: rotate(-5deg);
+  width: 50px; height: 50px; min-width: 50px; border-radius: 12px;
+  background: rgba(108, 92, 231, 0.1); color: var(--amethyst);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
 }
 
 .research-card h4 { color: var(--ink); margin: 0 0 0.5rem; font-family: var(--font-display); }
-.research-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+.research-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
 
-/* ======================================== */
-/* FAQ                                      */
-/* ======================================== */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.testimonial-card {
+  background: white; border: 1px solid var(--paper-line); border-radius: var(--radius-lg);
+  padding: 2rem; transition: var(--transition-fast); position: relative;
+}
+
+.testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-2); }
+
+.testimonial-quote-icon {
+  color: rgba(231, 169, 71, 0.25);
+  font-size: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  inset-inline-end: 1.5rem;
+}
+
+.testimonial-stars { color: var(--ochre-light); margin-bottom: 1rem; font-size: 0.9rem; }
+.testimonial-text { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+
+.testimonial-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-family: var(--font-display); font-style: italic;
+}
+
+.testimonial-author h5 { margin: 0; color: var(--ink); font-size: 0.95rem; }
+.testimonial-author span { font-size: 0.8rem; color: var(--ink-soft); }
+
 .faq-list { max-width: 800px; margin: 0 auto; }
 
 .faq-item {
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  border-radius: var(--radius-md);
-  margin-bottom: 1rem;
-  overflow: hidden;
-  transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  background: white; border: 1px solid var(--paper-line); border-radius: var(--radius-md);
+  margin-bottom: 1rem; overflow: hidden; transition: var(--transition-fast);
 }
 
-.faq-item.open {
-  border-color: var(--ochre);
-  box-shadow: var(--shadow-1);
-}
+.faq-item:hover { border-color: var(--ochre-light); }
 
 .faq-question {
+  width: 100%;
+  background: none;
+  border: none;
   padding: 1.3rem 1.5rem;
   cursor: pointer;
   display: flex;
@@ -1572,12 +938,12 @@ html[dir="rtl"] .timeline-item:nth-child(even) .timeline-dot {
   align-items: center;
   font-weight: 600;
   color: var(--ink);
-  gap: 1rem;
-  transition: var(--transition-fast);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  text-align: start;
 }
 
-.faq-item.open .faq-question { color: var(--ochre); }
-.faq-question i { color: var(--ochre); transition: var(--transition-fast); flex-shrink: 0; }
+.faq-question i { color: var(--ochre); transition: var(--transition-fast); }
 .faq-item.open .faq-question i { transform: rotate(180deg); }
 
 .faq-answer {
@@ -1590,464 +956,124 @@ html[dir="rtl"] .timeline-item:nth-child(even) .timeline-dot {
 .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
 .faq-answer p { color: var(--ink-soft); margin: 0; line-height: 1.7; }
 
-/* ======================================== */
-/* CONTACT                                  */
-/* ======================================== */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
-.contact-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  transition: var(--transition-fast);
-}
-
-.contact-item:hover {
-  background: var(--paper);
-  transform: translateX(4px);
-}
-
-html[dir="rtl"] .contact-item:hover { transform: translateX(-4px); }
+.contact-item { display: flex; align-items: center; gap: 1rem; }
 
 .contact-icon {
-  width: 50px;
-  height: 50px;
-  min-width: 50px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(184, 121, 26, 0.15), rgba(184, 121, 26, 0.05));
-  color: var(--ochre);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
+  width: 50px; height: 50px; min-width: 50px; border-radius: 12px;
+  background: rgba(184, 121, 26, 0.1); color: var(--ochre);
+  display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
   transition: var(--transition-fast);
 }
 
-.contact-item:hover .contact-icon {
-  background: var(--gradient-primary);
-  color: white;
-  transform: scale(1.08) rotate(-5deg);
-}
+.contact-item:hover .contact-icon { background: var(--ochre); color: white; transform: rotate(-8deg); }
 
 .contact-item h4 { margin: 0 0 0.2rem; color: var(--ink); font-size: 0.95rem; }
 .contact-item p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
 
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-}
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+.float-field { position: relative; }
 
-.contact-form input, .contact-form textarea {
-  padding: 0.9rem 1.2rem;
+.float-field input, .float-field textarea {
+  width: 100%;
+  padding: 1rem 1.1rem 0.5rem;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  background: var(--paper);
-  color: var(--ink);
-  font-family: inherit;
+  font-family: var(--font-body);
   font-size: 0.95rem;
   outline: none;
   transition: var(--transition-fast);
+  background: white;
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
-  border-color: var(--ochre);
-  box-shadow: 0 0 0 3px rgba(184, 121, 26, 0.1);
-  background: var(--card-solid);
-}
+.float-field textarea { min-height: 120px; resize: vertical; padding-top: 1.3rem; }
 
-.contact-form textarea { resize: vertical; min-height: 120px; }
-
-/* ======================================== */
-/* SOLVER CARDS with TABS                   */
-/* ======================================== */
-.solver-card {
-  margin-top: 2rem;
-  padding: 2.5rem;
-  background: var(--card-solid);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-line);
-  box-shadow: var(--shadow-1);
-  transition: background 0.35s var(--ease);
-}
-
-.solver-card h3 {
-  font-family: var(--font-display);
-  margin: 0 0 1rem;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 1.3rem;
-}
-
-.solver-card h3 i { color: var(--ochre); }
-
-.solver-tabs {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  background: var(--paper);
-  padding: 0.3rem;
-  border-radius: var(--radius-md);
-  width: fit-content;
-}
-
-.solver-tab {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: var(--radius-sm);
-  background: transparent;
+.float-field label {
+  position: absolute;
+  inset-inline-start: 1.1rem;
+  top: 1rem;
   color: var(--ink-soft);
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  pointer-events: none;
   transition: var(--transition-fast);
-  font-family: inherit;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+  background: white;
+  padding: 0 0.3rem;
 }
 
-.solver-tab:hover { color: var(--ink); }
+.float-field input:focus, .float-field textarea:focus {
+  border-color: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(231, 169, 71, 0.15);
+}
 
-.solver-tab.active {
-  background: var(--card-solid);
+.float-field input:focus + label,
+.float-field input:not(:placeholder-shown) + label,
+.float-field textarea:focus + label,
+.float-field textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  inset-inline-start: 0.8rem;
+  font-size: 0.75rem;
   color: var(--ochre);
-  box-shadow: var(--shadow-sm);
+  font-weight: 600;
 }
 
-.solver-panel { display: none; }
-.solver-panel.active { display: block; animation: fadeIn 0.3s var(--ease); }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.solver-inputs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
-.input-group { display: flex; flex-direction: column; gap: 0.4rem; }
-
-.input-group label {
+.form-status {
   font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-
-.input-group input, .input-group select {
   padding: 0.7rem 1rem;
-  border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  outline: none;
-  transition: var(--transition-fast);
-}
-
-.input-group input:focus, .input-group select:focus {
-  border-color: var(--ochre);
-  box-shadow: 0 0 0 3px rgba(184, 121, 26, 0.1);
-  background: var(--card-solid);
-}
-
-.solver-result {
-  padding: 1.5rem;
-  background: var(--paper);
-  border-radius: var(--radius-md);
-  border-inline-start: 4px solid var(--ochre);
-  margin-top: 1rem;
-  min-height: 80px;
-  color: var(--ink);
-  overflow-x: auto;
-}
-
-.solver-result p { margin: 0.3rem 0; line-height: 1.7; }
-
-.solver-result .solution-label {
-  font-weight: 600;
-  color: var(--chalk-blue);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.solver-result .solution-label::before {
-  content: "";
-  width: 4px;
-  height: 14px;
-  background: var(--chalk-blue);
-  border-radius: 2px;
-}
-
-/* ======================================== */
-/* FUNCTION PLOTTER (NEW)                   */
-/* ======================================== */
-.plotter-container {
-  margin-top: 2rem;
-  padding: 2rem;
-  background: var(--card-solid);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-line);
-}
-
-.plotter-controls {
-  display: grid;
-  grid-template-columns: 2fr 1fr auto;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  align-items: end;
-}
-
-.plotter-canvas-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: var(--paper);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--paper-line);
-}
-
-#plotCanvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.plotter-presets {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.preset-btn {
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--paper-line);
-  border-radius: 20px;
-  background: var(--paper);
-  color: var(--ink-soft);
-  font-size: 0.8rem;
-  cursor: pointer;
-  font-family: var(--font-mono);
-  transition: var(--transition-fast);
-}
-
-.preset-btn:hover {
-  border-color: var(--ochre);
-  color: var(--ochre);
-  background: var(--card-solid);
-}
-
-/* ======================================== */
-/* QUIZ                                     */
-/* ======================================== */
-.quiz-card {
-  margin-top: 2rem;
-  padding: 2.5rem;
-  background: var(--card-solid);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--paper-line);
-  box-shadow: var(--shadow-1);
-}
-
-.quiz-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--paper-line);
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.quiz-level-selector { display: flex; gap: 0.4rem; flex-wrap: wrap; }
-
-.quiz-level-btn {
-  padding: 0.4rem 0.9rem;
-  border: 1px solid var(--paper-line);
-  border-radius: 20px;
-  background: var(--paper);
-  color: var(--ink-soft);
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 600;
-  font-family: inherit;
-  transition: var(--transition-fast);
-}
-
-.quiz-level-btn:hover { border-color: var(--chalk-blue); color: var(--chalk-blue); }
-
-.quiz-level-btn.active {
-  background: var(--chalk-blue);
-  color: white;
-  border-color: var(--chalk-blue);
-}
-
-.quiz-score {
-  background: linear-gradient(135deg, rgba(231, 169, 71, 0.2), rgba(231, 169, 71, 0.05));
-  color: var(--ochre);
-  padding: 0.4rem 1rem;
-  border-radius: 20px;
-  font-weight: 700;
-  font-size: 0.9rem;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  border: 1px solid rgba(231, 169, 71, 0.3);
-}
-
-.quiz-question {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 1.5rem;
-  min-height: 60px;
-  line-height: 1.6;
-  padding: 1rem;
-  background: var(--paper);
-  border-radius: var(--radius-md);
-  border-inline-start: 4px solid var(--chalk-blue);
-}
-
-.quiz-options {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.quiz-option {
-  padding: 1rem 1.2rem;
-  border: 2px solid var(--paper-line);
-  border-radius: var(--radius-md);
-  background: var(--paper);
-  color: var(--ink);
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 0.95rem;
-  text-align: start;
-  transition: var(--transition-fast);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
-
-.quiz-option:hover:not(:disabled) {
-  border-color: var(--ochre);
-  transform: translateY(-1px);
-  background: var(--card-solid);
-}
-
-.quiz-option .option-letter {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--card-solid);
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  flex-shrink: 0;
-  border: 1px solid var(--paper-line);
-  transition: var(--transition-fast);
-}
-
-.quiz-option.correct {
-  background: rgba(42, 157, 92, 0.1);
-  border-color: var(--success);
-  color: var(--success);
-}
-
-.quiz-option.correct .option-letter {
-  background: var(--success);
-  color: white;
-  border-color: var(--success);
-}
-
-.quiz-option.wrong {
-  background: rgba(162, 59, 59, 0.1);
-  border-color: var(--rust);
-  color: var(--rust);
-}
-
-.quiz-option.wrong .option-letter {
-  background: var(--rust);
-  color: white;
-  border-color: var(--rust);
-}
-
-.quiz-option:disabled { cursor: not-allowed; opacity: 0.7; }
-
-.quiz-explanation {
-  padding: 1.2rem;
-  background: linear-gradient(135deg, rgba(231, 169, 71, 0.1), rgba(231, 169, 71, 0.03));
-  border-inline-start: 4px solid var(--ochre);
-  border-radius: var(--radius-md);
-  margin-bottom: 1rem;
   display: none;
 }
 
-.quiz-explanation.show { display: block; animation: fadeIn 0.3s var(--ease); }
+.form-status.show { display: block; }
+.form-status.success { background: rgba(42, 157, 92, 0.1); color: #2A9D5C; }
+.form-status.error { background: rgba(162, 59, 59, 0.1); color: var(--rust); }
 
-.quiz-explanation h4 {
-  color: var(--ochre);
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+.site-footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
 
-.quiz-explanation p { color: var(--ink); font-size: 0.95rem; line-height: 1.7; margin: 0; }
-
-.quiz-footer {
+.newsletter-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
-.quiz-progress {
+.newsletter-box h4 { color: white; margin: 0 0 0.3rem; font-family: var(--font-display); font-size: 1.2rem; }
+.newsletter-box p { margin: 0; font-size: 0.85rem; }
+
+.newsletter-form { display: flex; gap: 0.5rem; flex: 1; max-width: 400px; }
+
+.newsletter-form input {
   flex: 1;
-  height: 6px;
-  background: var(--paper-line);
-  border-radius: 3px;
-  overflow: hidden;
-  min-width: 200px;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  outline: none;
 }
 
-.quiz-progress-bar {
-  height: 100%;
-  background: var(--gradient-primary);
-  width: 0%;
-  transition: width 0.4s var(--ease);
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+.newsletter-form input:focus { border-color: var(--ochre-light); }
+
+.newsletter-form button {
+  padding: 0.8rem 1.5rem;
+  background: var(--ochre);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  white-space: nowrap;
 }
 
-/* ======================================== */
-/* FOOTER                                   */
-/* ======================================== */
-.site-footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
+.newsletter-form button:hover { background: var(--ochre-light); }
 
 .footer-top {
   display: flex;
@@ -2063,18 +1089,10 @@ html[dir="rtl"] .contact-item:hover { transform: translateX(-4px); }
 .footer-brand { display: flex; align-items: center; gap: 1rem; }
 
 .footer-logo {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
-  border-radius: 50%;
+  width: 45px; height: 45px; min-width: 45px; border-radius: 50%;
   border: 1px solid var(--ochre-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-style: italic;
-  color: white;
-  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-style: italic; color: white; font-weight: 700;
 }
 
 .footer-brand h4 { color: white; margin: 0; font-family: var(--font-display); font-size: 1.2rem; }
@@ -2085,12 +1103,8 @@ html[dir="rtl"] .contact-item:hover { transform: translateX(-4px); }
 .footer-links a:hover { color: var(--ochre-light); }
 
 .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-  align-items: center;
+  display: flex; justify-content: space-between; font-size: 0.85rem;
+  flex-wrap: wrap; gap: 1rem; align-items: center;
 }
 
 .footer-bottom-links { display: flex; gap: 1.5rem; align-items: center; }
@@ -2114,7 +1128,7 @@ html[dir="rtl"] .contact-item:hover { transform: translateX(-4px); }
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: var(--gradient-primary);
+  background: var(--ochre);
   color: white;
   border: none;
   display: flex;
@@ -2130,233 +1144,75 @@ html[dir="rtl"] .contact-item:hover { transform: translateX(-4px); }
 }
 
 .back-to-top.show { opacity: 1; visibility: visible; }
-.back-to-top:hover { transform: translateY(-4px) scale(1.05); }
+.back-to-top:hover { background: var(--chalk-blue-deep); transform: translateY(-4px); }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-}
-
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-
-/* Toast */
-.toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: var(--ink);
-  color: var(--paper);
-  padding: 0.9rem 1.6rem;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-2);
-  font-size: 0.9rem;
-  font-weight: 500;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  border: 1px solid rgba(231, 169, 71, 0.3);
-}
-.toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-.toast i { color: var(--ochre-light); }
-
-.shortcut-hint {
+.toast-container {
   position: fixed;
   bottom: 2rem;
   inset-inline-start: 2rem;
-  background: var(--card-solid);
-  border: 1px solid var(--paper-line);
-  padding: 0.6rem 1rem;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.toast {
+  background: white;
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
-  color: var(--ink-soft);
-  box-shadow: var(--shadow-1);
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease);
-  z-index: 50;
-  pointer-events: none;
-}
-
-.shortcut-hint.show { opacity: 1; }
-
-kbd {
-  background: var(--paper);
-  border: 1px solid var(--paper-line);
-  border-bottom-width: 2px;
-  padding: 0.1rem 0.4rem;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--ink);
-}
-
-/* Modal */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(19, 32, 56, 0.7);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
-  padding: 1rem;
-}
-
-.modal-overlay.show { opacity: 1; visibility: visible; }
-
-.modal-content {
-  background: var(--card-solid);
-  border-radius: var(--radius-lg);
-  max-width: 800px;
-  width: 100%;
-  max-height: 85vh;
-  overflow-y: auto;
-  border: 1px solid var(--paper-line);
+  padding: 1rem 1.5rem;
   box-shadow: var(--shadow-2);
-  transform: scale(0.95);
-  transition: transform 0.3s var(--ease);
-  position: relative;
-}
-
-.modal-overlay.show .modal-content { transform: scale(1); }
-
-.modal-content::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: var(--radius-lg);
-  padding: 2px;
-  background: var(--gradient-primary);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
-
-.modal-header {
-  padding: 1.5rem 2rem;
-  border-bottom: 1px solid var(--paper-line);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  background: var(--card-solid);
-  z-index: 10;
-}
-
-.modal-header h3 {
-  font-family: var(--font-display);
-  color: var(--ochre);
-  margin: 0;
-  font-size: 1.3rem;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: var(--ink-soft);
-  cursor: pointer;
-  padding: 0.3rem;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition: var(--transition-fast);
-}
-
-.modal-close:hover { background: var(--paper); color: var(--rust); }
-
-.modal-body {
-  padding: 2rem;
-  line-height: 1.8;
-}
-
-.modal-body h4 {
-  font-family: var(--font-display);
-  color: var(--chalk-blue);
-  margin: 1.5rem 0 0.8rem;
-  font-size: 1.1rem;
-}
-
-.modal-body h4:first-child { margin-top: 0; }
-.modal-body ul { padding-inline-start: 1.5rem; margin: 0.5rem 0; }
-.modal-body li { margin-bottom: 0.4rem; }
-
-.modal-footer {
-  padding: 1rem 2rem;
-  border-top: 1px solid var(--paper-line);
-  display: flex;
-  justify-content: flex-end;
   gap: 0.8rem;
-  position: sticky;
-  bottom: 0;
-  background: var(--card-solid);
+  min-width: 280px;
+  max-width: 350px;
+  transform: translateX(-120%);
+  transition: transform 0.4s var(--ease);
+  border-inline-start: 4px solid var(--ochre);
 }
 
-@media print {
-  .main-nav, .top-banner, .back-to-top, .modal-footer, .modal-close, .shortcut-hint, .reading-progress, .custom-cursor, .custom-cursor-dot {
-    display: none !important;
-  }
-  .modal-overlay { position: static; background: none; }
-  .modal-content { max-height: none; border: none; box-shadow: none; }
+:dir(rtl) .toast { transform: translateX(120%); }
+.toast.show { transform: translateX(0); }
+.toast.error { border-inline-start-color: var(--rust); }
+
+.toast-icon {
+  width: 32px; height: 32px; min-width: 32px; border-radius: 50%;
+  background: rgba(184, 121, 26, 0.15); color: var(--ochre);
+  display: flex; align-items: center; justify-content: center;
 }
+
+.toast.error .toast-icon { background: rgba(162, 59, 59, 0.15); color: var(--rust); }
+.toast-content h5 { margin: 0 0 0.2rem; color: var(--ink); font-size: 0.9rem; }
+.toast-content p { margin: 0; color: var(--ink-soft); font-size: 0.8rem; }
+
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .header-content { flex-direction: column; text-align: center; }
   .nav-content { flex-direction: column; }
   .nav-links { justify-content: center; }
-  .resources-grid, .levels-grid, .research-grid, .contact-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
   .footer-top, .footer-bottom { flex-direction: column; text-align: center; }
   .about-content { grid-template-columns: 1fr; }
-  .solver-inputs { grid-template-columns: 1fr; }
-  .quiz-options { grid-template-columns: 1fr; }
-  .shortcut-hint { display: none; }
-  .timeline::before { left: 20px; }
-  html[dir="rtl"] .timeline::before { left: auto; right: 20px; }
-  .timeline-item, .timeline-item:nth-child(even) {
-    width: 100%;
-    padding-inline-start: 50px;
-    padding-inline-end: 1rem;
-    text-align: start !important;
-    left: 0 !important;
-  }
-  .timeline-dot, .timeline-item:nth-child(even) .timeline-dot {
-    left: 10px !important;
-    right: auto !important;
-  }
-  .plotter-controls { grid-template-columns: 1fr; }
-  body { cursor: auto !important; }
-  .custom-cursor, .custom-cursor-dot { display: none !important; }
-  a, button, input, textarea, select, .clickable { cursor: auto !important; }
+  .levels-grid { grid-template-columns: 1fr; }
+  .research-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .newsletter-box { flex-direction: column; text-align: center; }
+  .newsletter-form { max-width: 100%; }
 }
 
 @media (max-width: 600px) {
-  .top-banner { padding: 3rem 0 2.5rem; min-height: auto; }
+  .top-banner { padding: 3rem 0 2.5rem; }
   .nav-links { display: none; }
-  .nav-links.show-mobile { display: flex; flex-direction: column; width: 100%; }
-  .mobile-menu-btn { display: block; }
   .search-box { display: none; }
+  .search-toggle-btn { display: flex; }
   .back-to-top { bottom: 1rem; inset-inline-end: 1rem; width: 44px; height: 44px; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .quote-text { font-size: 1.1rem; }
-  .testimonial-card { flex: 0 0 280px; }
+  .toast-container { inset-inline-start: 1rem; inset-inline-end: 1rem; }
+  .toast { min-width: unset; max-width: 100%; }
 }
 
 body.dark-mode {
@@ -2364,188 +1220,170 @@ body.dark-mode {
   --ink-soft: #A8B0C0;
   --paper: #0B1526;
   --paper-line: #22314E;
-  --card: rgba(22, 35, 63, 0.6);
-  --card-solid: #16233F;
-  --chalk-blue: #5BA5C7;
-  --ochre-light: #F0BC62;
+  --card: #16233F;
 }
 
-body.dark-mode .resource-blue { background: linear-gradient(135deg, #172A3E, #0F1F30); }
-body.dark-mode .resource-green { background: linear-gradient(135deg, #123A26, #0C2619); }
-body.dark-mode .resource-purple { background: linear-gradient(135deg, #2A1B54, #1C1038); }
+body.dark-mode .resource-blue,
+body.dark-mode .resource-green,
+body.dark-mode .resource-purple { opacity: 0.9; }
 
-body.dark-mode .resource-blue p { color: #7DBFDF; }
-body.dark-mode .resource-green p { color: #6AD997; }
-body.dark-mode .resource-purple p { color: #A89BFF; }
+body.dark-mode .float-field input,
+body.dark-mode .float-field textarea,
+body.dark-mode .float-field label { background: var(--card); }
+
+body.dark-mode .toast,
+body.dark-mode .mobile-search-bar { background: var(--card); }
+
+body.dark-mode .toast-content h5 { color: var(--ink); }
 </style>
 </head>
 
 <body>
 
-<!-- Custom Cursor -->
-<div class="custom-cursor" id="customCursor"></div>
-<div class="custom-cursor-dot" id="customCursorDot"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<div class="reading-progress" id="readingProgress"></div>
-
-<!-- Premium Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
-  <div class="loading-logo">
-    <span class="loading-logo-text">MB</span>
-    <span class="loading-logo-sub">MATHS</span>
-  </div>
-  <div class="loading-progress">
-    <div class="loading-progress-bar" id="loadingBar"></div>
-  </div>
-  <div class="loading-text" data-i18n="loading">Initialisation...</div>
+  <div class="loading-logo">Mo Bendriss</div>
+  <div class="loading-bar-track"><div class="loading-bar-fill"></div></div>
+</div>
+
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer-menu" id="drawerMenu" role="dialog" aria-modal="true" aria-label="Menu de navigation">
+  <button class="drawer-close" id="drawerClose" aria-label="Fermer le menu"><i class="fa-solid fa-xmark"></i></button>
+  <ul class="drawer-links">
+    <li><a href="#" class="drawer-link"><i class="fa-solid fa-house"></i> Accueil</a></li>
+    <li><a href="#a-propos" class="drawer-link"><i class="fa-solid fa-user"></i> À propos</a></li>
+    <li><a href="#maths" class="drawer-link"><i class="fa-solid fa-infinity"></i> Mathématiques</a></li>
+    <li><a href="#recherche" class="drawer-link"><i class="fa-solid fa-graduation-cap"></i> Recherche</a></li>
+    <li><a href="#temoignages" class="drawer-link"><i class="fa-solid fa-star"></i> Témoignages</a></li>
+    <li><a href="#faq" class="drawer-link"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+    <li><a href="#contact" class="drawer-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+  </ul>
 </div>
 
 <header class="top-banner">
-  <canvas id="heroCanvas"></canvas>
-  <div class="mouse-gradient" id="mouseGradient"></div>
-
+  <div class="mesh-blob mesh-blob-1"></div>
+  <div class="mesh-blob mesh-blob-2"></div>
   <div class="container header-content">
     <div class="brand-section">
-      <p class="eyebrow" data-i18n="eyebrow">Enseignant de mathématiques</p>
+      <p class="eyebrow">Enseignant de mathématiques</p>
       <h1 class="brand-title">
-        <span class="brand-first" data-i18n="brand_first">Mo</span>
-        <span class="brand-last" data-i18n="brand_last">Bendriss</span>
-        <i class="fa-solid fa-check verified-badge" aria-label="Verified"></i>
+        <span class="brand-first">Mo</span>
+        <span class="brand-last">Bendriss</span>
+        <i class="fa-solid fa-check verified-badge" aria-hidden="true"></i>
       </h1>
-      <p class="brand-tagline" data-i18n="brand_tagline">Plateforme académique des mathématiques</p>
+      <p class="brand-tagline">Plateforme académique des mathématiques</p>
     </div>
-    <div class="logo-circle" aria-hidden="true">
+    <div class="logo-circle">
       <span class="logo-text">MB</span>
       <span class="logo-sub">MATHS</span>
     </div>
   </div>
 </header>
 
-<nav class="main-nav" aria-label="Primary">
+<nav class="main-nav">
   <div class="container nav-content">
     <ul class="nav-links">
-      <li><a href="#" class="active"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Accueil</span></a></li>
-      <li><a href="#a-propos"><i class="fa-solid fa-user"></i> <span data-i18n="nav_about">À propos</span></a></li>
-      <li><a href="#maths"><i class="fa-solid fa-infinity"></i> <span data-i18n="nav_math">Mathématiques</span></a></li>
-      <li><a href="#solver"><i class="fa-solid fa-square-root-variable"></i> <span data-i18n="nav_solver">Calculateur</span></a></li>
-      <li><a href="#plotter"><i class="fa-solid fa-chart-line"></i> <span data-i18n="nav_plotter">Traceur</span></a></li>
-      <li><a href="#quiz"><i class="fa-solid fa-brain"></i> <span data-i18n="nav_quiz">Quiz</span></a></li>
-      <li><a href="#recherche"><i class="fa-solid fa-graduation-cap"></i> <span data-i18n="nav_research">Recherche</span></a></li>
-      <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> <span data-i18n="nav_faq">FAQ</span></a></li>
-      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">Contact</span></a></li>
+      <li><a href="#" class="active"><i class="fa-solid fa-house" aria-hidden="true"></i> Accueil</a></li>
+      <li><a href="#a-propos"><i class="fa-solid fa-user" aria-hidden="true"></i> À propos</a></li>
+      <li><a href="#maths"><i class="fa-solid fa-infinity" aria-hidden="true"></i> Mathématiques</a></li>
+      <li><a href="#recherche"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Recherche</a></li>
+      <li><a href="#temoignages"><i class="fa-solid fa-star" aria-hidden="true"></i> Témoignages</a></li>
+      <li><a href="#faq"><i class="fa-solid fa-circle-question" aria-hidden="true"></i> FAQ</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contact</a></li>
     </ul>
     <div class="nav-tools">
       <div class="search-box">
-        <i class="fa-solid fa-search"></i>
-        <input type="text" placeholder="Rechercher..." id="searchInput" data-i18n-ph="search_ph">
+        <i class="fa-solid fa-search" aria-hidden="true"></i>
+        <input type="text" id="searchInputDesktop" placeholder="Rechercher..." aria-label="Rechercher dans le site">
       </div>
-      <button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
-        <i class="fa-solid fa-globe"></i> <span id="langLabel">AR</span>
+      <button class="icon-btn search-toggle-btn" id="searchToggleBtn" aria-label="Ouvrir la recherche">
+        <i class="fa-solid fa-search"></i>
       </button>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <button class="icon-btn theme-toggle" id="themeToggleBtn" aria-label="Changer le thème clair/sombre">
         <i class="fa-solid fa-moon"></i>
       </button>
-      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+      <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" aria-label="Ouvrir le menu de navigation">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
   </div>
 </nav>
 
+<div class="mobile-search-bar" id="mobileSearchBar">
+  <i class="fa-solid fa-search" aria-hidden="true"></i>
+  <input type="text" id="searchInputMobile" placeholder="Rechercher..." aria-label="Rechercher dans le site">
+  <button class="close-search-btn" id="closeMobileSearch" aria-label="Fermer la recherche">
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+</div>
+
 <main>
 
   <section class="hero-section">
     <div class="container hero-grid">
       <div class="hero-main">
-        <span class="badge" data-i18n="hero_badge">Plateforme académique gratuite</span>
-        <h2 class="hero-title">
-          <span data-i18n="hero_title_1">Apprenez les mathématiques avec</span>
-          <span class="highlight" data-i18n="hero_title_2">rigueur et clarté</span>.
-        </h2>
-        <p class="hero-desc" data-i18n="hero_desc">Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.</p>
+        <span class="badge">Plateforme académique gratuite</span>
+        <h2 class="hero-title">Apprenez les mathématiques avec <span class="highlight">rigueur et clarté</span>.</h2>
+        <p class="hero-desc">Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.</p>
         <div class="hero-buttons">
-          <a href="#maths" class="btn btn-primary" onclick="addRipple(event, this)">
-            <i class="fa-solid fa-book-open"></i> <span data-i18n="btn_start">Commencer</span>
-          </a>
-          <a href="#quiz" class="btn btn-secondary" onclick="addRipple(event, this)">
-            <i class="fa-solid fa-brain"></i> <span data-i18n="btn_quiz">Faire un Quiz</span>
-          </a>
+          <a href="#maths" class="btn btn-primary"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Commencer</a>
+          <a href="#recherche" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Recherche</a>
         </div>
         <div class="stats-grid">
-          <div class="stat-card">
-            <span class="stat-number" data-target="3">0</span>
-            <span class="stat-label" data-i18n="stat_cycles">Cycles éducatifs</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">50</span><span class="stat-suffix">+</span>
-            <span class="stat-label" data-i18n="stat_resources">Ressources évolutives</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number" data-target="2">0</span>
-            <span class="stat-label" data-i18n="stat_langs">Langues</span>
-          </div>
+          <div class="stat-card"><span class="stat-number" data-target="3">0</span><span class="stat-label">Cycles éducatifs</span></div>
+          <div class="stat-card"><span class="stat-number">∞</span><span class="stat-label">Ressources évolutives</span></div>
+          <div class="stat-card"><span class="stat-number" data-target="2">0</span><span class="stat-label">Langues</span></div>
         </div>
       </div>
 
       <aside class="hero-sidebar">
-        <a href="#maths" class="sidebar-btn sidebar-btn-primary" onclick="addRipple(event, this)">
-          <i class="fa-solid fa-infinity"></i> <span data-i18n="nav_math">Mathématiques</span>
-        </a>
-        <a href="#solver" class="sidebar-btn sidebar-btn-secondary" onclick="addRipple(event, this)">
-          <i class="fa-solid fa-calculator"></i> <span data-i18n="nav_solver">Calculateur</span>
-        </a>
+        <a href="#maths" class="sidebar-btn sidebar-btn-primary"><i class="fa-solid fa-infinity" aria-hidden="true"></i> Mathématiques</a>
+        <a href="#recherche" class="sidebar-btn sidebar-btn-secondary"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i> Recherche</a>
         <div class="news-card">
-          <h3><i class="fa-solid fa-bullhorn"></i> <span data-i18n="news_title">Actualités</span></h3>
+          <h3><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> Actualités</h3>
           <div class="news-item">
-            <span class="news-date"><span data-i18n="news_date_1">JUIL. 2026</span> <span class="news-tag" data-i18n="news_new">Nouveau</span></span>
-            <p data-i18n="news_1">Mise en ligne des ressources pour le cycle collégial.</p>
+            <span class="news-date">JUIL. 2026 <span class="news-tag">Nouveau</span></span>
+            <p>Mise en ligne des ressources pour le cycle collégial.</p>
           </div>
           <div class="news-item">
-            <span class="news-date" data-i18n="news_date_2">JUIN 2026</span>
-            <p data-i18n="news_2">Ajout des séries d'exercices pour la 1ère BAC.</p>
+            <span class="news-date">JUIN 2026</span>
+            <p>Ajout des séries d'exercices pour la 1ère BAC.</p>
           </div>
         </div>
         <div class="social-card">
-          <h3><i class="fa-solid fa-share-nodes"></i> <span data-i18n="social_title">Suivez-moi</span></h3>
+          <h3><i class="fa-solid fa-share-nodes" aria-hidden="true"></i> Suivez-moi</h3>
           <div class="social-icons">
-            <a href="https://github.com/mobendriss" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="mailto:MoBendriss@Hotmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/mobendriss" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="Visiter mon profil GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:mobendriss@hotmail.com" title="Email" aria-label="Envoyer un email"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
       </aside>
     </div>
   </section>
 
-  <section class="quote-section">
-    <div class="container">
-      <div class="quote-container">
-        <span class="quote-mark">"</span>
-        <p class="quote-text" id="quoteText">Les mathématiques sont la reine des sciences.</p>
-        <p class="quote-author" id="quoteAuthor">— Carl Friedrich Gauss</p>
-        <div class="quote-controls" id="quoteControls"></div>
-      </div>
-    </div>
-  </section>
-
   <section class="resources-section">
     <div class="container">
-      <h2 class="section-title"><i class="fa-solid fa-star"></i> <span data-i18n="resources_title">Ressources populaires</span></h2>
+      <h2 class="section-title"><i class="fa-solid fa-star" aria-hidden="true"></i> Ressources populaires</h2>
       <div class="resources-grid">
-        <div onclick="openCheatSheet('college')" class="resource-card resource-blue fade-in">
-          <div class="resource-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3 data-i18n="level_college">Collège</h3>
-          <p data-i18n="level_college_sub">Aide-mémoire complet</p>
-        </div>
-        <div onclick="openCheatSheet('lycee')" class="resource-card resource-green fade-in">
-          <div class="resource-icon"><i class="fa-solid fa-book"></i></div>
-          <h3 data-i18n="level_lycee">Lycée</h3>
-          <p data-i18n="level_lycee_sub">Aide-mémoire complet</p>
-        </div>
-        <div onclick="openCheatSheet('superieur')" class="resource-card resource-purple fade-in">
-          <div class="resource-icon"><i class="fa-solid fa-flask"></i></div>
-          <h3 data-i18n="level_sup">Supérieur</h3>
-          <p data-i18n="level_sup_sub">Aide-mémoire complet</p>
-        </div>
+        <a href="#college" class="resource-card resource-blue fade-in">
+          <div class="resource-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <h3>Collège</h3><p>Cours et exercices</p>
+          <div class="progress-track"><div class="progress-fill" data-width="75"></div></div>
+          <span class="progress-label">75% des chapitres disponibles</span>
+        </a>
+        <a href="#lycee" class="resource-card resource-green fade-in">
+          <div class="resource-icon"><i class="fa-solid fa-book" aria-hidden="true"></i></div>
+          <h3>Lycée</h3><p>BAC et préparation</p>
+          <div class="progress-track"><div class="progress-fill" data-width="60"></div></div>
+          <span class="progress-label">60% des chapitres disponibles</span>
+        </a>
+        <a href="#superieur" class="resource-card resource-purple fade-in">
+          <div class="resource-icon"><i class="fa-solid fa-flask" aria-hidden="true"></i></div>
+          <h3>Supérieur</h3><p>Recherche avancée</p>
+          <div class="progress-track"><div class="progress-fill" data-width="40"></div></div>
+          <span class="progress-label">40% des chapitres disponibles</span>
+        </a>
       </div>
     </div>
   </section>
@@ -2553,67 +1391,21 @@ body.dark-mode .resource-purple p { color: #A89BFF; }
   <section id="a-propos" class="page-section">
     <div class="container">
       <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="about_eyebrow">À propos</div>
-        <h2 data-i18n="about_title">Un enseignant passionné</h2>
-        <p data-i18n="about_sub">Découvrez mon parcours et ma passion pour l'enseignement des mathématiques</p>
+        <h2>À propos</h2>
+        <p>Découvrez mon parcours et ma passion pour l'enseignement des mathématiques</p>
       </div>
       <div class="about-content fade-in">
-        <div class="about-avatar" aria-hidden="true">MB</div>
+        <div class="about-avatar">MB</div>
         <div class="about-text">
-          <h3 data-i18n="about_name">Mo Bendriss</h3>
-          <p data-i18n="about_p1">Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses.</p>
-          <p data-i18n="about_p2">Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.</p>
+          <h3>Mo Bendriss</h3>
+          <p>Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses.</p>
+          <p>Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.</p>
           <div class="skills-list">
-            <span class="skill-tag" data-i18n="skill_algebra">Algèbre</span>
-            <span class="skill-tag" data-i18n="skill_analysis">Analyse</span>
-            <span class="skill-tag" data-i18n="skill_geometry">Géométrie</span>
-            <span class="skill-tag" data-i18n="skill_prob">Probabilités</span>
-            <span class="skill-tag" data-i18n="skill_bac">Préparation BAC</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Course Roadmap Timeline -->
-  <section class="timeline-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="timeline_eyebrow">Parcours</div>
-        <h2 data-i18n="timeline_title">Votre parcours mathématique</h2>
-        <p data-i18n="timeline_sub">Un cheminement progressif du collège au supérieur</p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year" data-i18n="tl_y1">COLLÈGE</span>
-            <h4 data-i18n="tl_t1">Fondations solides</h4>
-            <p data-i18n="tl_d1">Arithmétique, géométrie plane, fonctions linéaires et statistiques de base.</p>
-          </div>
-        </div>
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year" data-i18n="tl_y2">LYCÉE</span>
-            <h4 data-i18n="tl_t2">Approfondissement</h4>
-            <p data-i18n="tl_d2">Analyse, dérivées, suites, probabilités et géométrie dans l'espace.</p>
-          </div>
-        </div>
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year" data-i18n="tl_y3">BAC</span>
-            <h4 data-i18n="tl_t3">Excellence au BAC</h4>
-            <p data-i18n="tl_d3">Préparation intensive, annales corrigées et techniques de résolution avancées.</p>
-          </div>
-        </div>
-        <div class="timeline-item fade-in">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <span class="timeline-year" data-i18n="tl_y4">SUPÉRIEUR</span>
-            <h4 data-i18n="tl_t4">Maîtrise universitaire</h4>
-            <p data-i18n="tl_d4">Analyse réelle, algèbre linéaire, topologie et équations différentielles.</p>
+            <span class="skill-tag">Algèbre</span>
+            <span class="skill-tag">Analyse</span>
+            <span class="skill-tag">Géométrie</span>
+            <span class="skill-tag">Probabilités</span>
+            <span class="skill-tag">Préparation BAC</span>
           </div>
         </div>
       </div>
@@ -2623,236 +1415,121 @@ body.dark-mode .resource-purple p { color: #A89BFF; }
   <section id="maths" class="page-section">
     <div class="container">
       <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="maths_eyebrow">Programmes</div>
-        <h2 data-i18n="maths_title">Mathématiques</h2>
-        <p data-i18n="maths_sub">Cours structurés et exercices progressifs pour tous les niveaux</p>
+        <h2>Mathématiques</h2>
+        <p>Cours structurés et exercices progressifs pour tous les niveaux</p>
       </div>
       <div class="levels-grid">
         <div class="level-card fade-in">
-          <div class="level-icon" style="background: linear-gradient(135deg, #2C6E8E, #1F5670);"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3 data-i18n="level_college">Collège</h3>
-          <p style="color:var(--ink-soft); font-size:0.9rem;" data-i18n="level_college_desc">Cours et exercices fondamentaux</p>
+          <div class="level-icon" style="background:#2C6E8E;"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <h3>Collège</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">Cours et exercices fondamentaux</p>
           <ul class="chapter-list">
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_col_1">Nombres et calculs</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_col_2">Géométrie plane</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_col_3">Fonctions linéaires</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_col_4">Statistiques</span></li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Nombres et calculs</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Géométrie plane</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Fonctions linéaires</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Statistiques</li>
           </ul>
         </div>
         <div class="level-card fade-in">
-          <div class="level-icon" style="background: linear-gradient(135deg, #2A9D5C, #1D7A45);"><i class="fa-solid fa-book"></i></div>
-          <h3 data-i18n="level_lycee">Lycée</h3>
-          <p style="color:var(--ink-soft); font-size:0.9rem;" data-i18n="level_lycee_desc">BAC et préparation intensive</p>
+          <div class="level-icon" style="background:#2A9D5C;"><i class="fa-solid fa-book" aria-hidden="true"></i></div>
+          <h3>Lycée</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">BAC et préparation intensive</p>
           <ul class="chapter-list">
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_lyc_1">Fonctions et dérivées</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_lyc_2">Suites numériques</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_lyc_3">Probabilités</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_lyc_4">Géométrie dans l'espace</span></li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Fonctions et dérivées</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Suites numériques</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Probabilités</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Géométrie dans l'espace</li>
           </ul>
         </div>
         <div class="level-card fade-in">
-          <div class="level-icon" style="background: linear-gradient(135deg, #6C5CE7, #5A4BCF);"><i class="fa-solid fa-flask"></i></div>
-          <h3 data-i18n="level_sup">Supérieur</h3>
-          <p style="color:var(--ink-soft); font-size:0.9rem;" data-i18n="level_sup_desc">Analyse et algèbre avancée</p>
+          <div class="level-icon" style="background:var(--amethyst);"><i class="fa-solid fa-flask" aria-hidden="true"></i></div>
+          <h3>Supérieur</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">Analyse et algèbre avancée</p>
           <ul class="chapter-list">
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_sup_1">Analyse réelle</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_sup_2">Algèbre linéaire</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_sup_3">Topologie</span></li>
-            <li><i class="fa-solid fa-circle"></i> <span data-i18n="ch_sup_4">Équations différentielles</span></li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Analyse réelle</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Algèbre linéaire</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Topologie</li>
+            <li><i class="fa-solid fa-circle" aria-hidden="true"></i> Équations différentielles</li>
           </ul>
         </div>
       </div>
 
-      <div class="fade-in" style="margin-top: 3rem; padding: 2rem; background: var(--card-solid); border-radius: var(--radius-lg); border: 1px solid var(--paper-line);">
-        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;" data-i18n="formula_title">Exemple : Théorèmes fondamentaux</h3>
-        <p><span data-i18n="formula_disc">La formule du discriminant :</span> $\Delta = b^2 - 4ac$</p>
-        <p><span data-i18n="formula_int">L'intégrale définie :</span> $$\int_{a}^{b} f(x)\,dx = F(b) - F(a)$$</p>
+      <div class="fade-in" style="margin-top: 3rem; padding: 2rem; background: white; border-radius: var(--radius-lg); border: 1px solid var(--paper-line);">
+        <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Exemple : Théorème fondamental</h3>
+        <p>La formule du discriminant : $\Delta = b^2 - 4ac$</p>
+        <p>L'intégrale définie : $$\int_{a}^{b} f(x)\,dx = F(b) - F(a)$$</p>
       </div>
     </div>
-  </section>
-
-  <!-- Interactive Solver with Tabs -->
-  <section id="solver" class="page-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="solver_eyebrow">Outils</div>
-        <h2 data-i18n="solver_title">Calculateur Interactif</h2>
-        <p data-i18n="solver_sub">Résolvez des équations et générez des suites en temps réel.</p>
-      </div>
-
-      <div class="solver-card fade-in">
-        <div class="solver-tabs">
-          <button class="solver-tab active" onclick="switchSolverTab('quadratic', this)">
-            <i class="fa-solid fa-square-root-variable"></i> <span data-i18n="tab_quad">Équation 2nd degré</span>
-          </button>
-          <button class="solver-tab" onclick="switchSolverTab('sequence', this)">
-            <i class="fa-solid fa-arrow-trend-up"></i> <span data-i18n="tab_seq">Suites numériques</span>
-          </button>
-        </div>
-
-        <div class="solver-panel active" id="panel-quadratic">
-          <h3><i class="fa-solid fa-square-root-variable"></i> <span data-i18n="solver_h3">Équation du Second Degré</span></h3>
-          <p style="color:var(--ink-soft);" data-i18n="solver_eq">Résolution de : $ax^2 + bx + c = 0$</p>
-          <div class="solver-inputs">
-            <div class="input-group">
-              <label for="coef-a">$a$</label>
-              <input type="number" id="coef-a" value="1" step="any" oninput="solveQuadratic()">
-            </div>
-            <div class="input-group">
-              <label for="coef-b">$b$</label>
-              <input type="number" id="coef-b" value="-5" step="any" oninput="solveQuadratic()">
-            </div>
-            <div class="input-group">
-              <label for="coef-c">$c$</label>
-              <input type="number" id="coef-c" value="6" step="any" oninput="solveQuadratic()">
-            </div>
-          </div>
-          <div class="solver-result" id="solver-result"></div>
-        </div>
-
-        <div class="solver-panel" id="panel-sequence">
-          <h3><i class="fa-solid fa-arrow-trend-up"></i> <span data-i18n="seq_h3">Générateur de Suites</span></h3>
-          <p style="color:var(--ink-soft);" data-i18n="seq_eq">Calculez les termes d'une suite arithmétique ou géométrique.</p>
-          <div class="solver-inputs">
-            <div class="input-group">
-              <label for="seq-type" data-i18n="seq_type_lbl">Type</label>
-              <select id="seq-type" onchange="generateSequence()">
-                <option value="arithmetic" data-i18n="seq_arith">Arithmétique</option>
-                <option value="geometric" data-i18n="seq_geom">Géométrique</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <label for="seq-u0">$u_0$</label>
-              <input type="number" id="seq-u0" value="2" step="any" oninput="generateSequence()">
-            </div>
-            <div class="input-group">
-              <label for="seq-r" data-i18n="seq_reason">Raison (r ou q)</label>
-              <input type="number" id="seq-r" value="3" step="any" oninput="generateSequence()">
-            </div>
-          </div>
-          <div class="solver-result" id="seq-result"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Function Plotter (NEW) -->
-  <section id="plotter" class="page-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="plotter_eyebrow">Visualisation</div>
-        <h2 data-i18n="plotter_title">Traceur de Fonctions</h2>
-        <p data-i18n="plotter_sub">Visualisez n'importe quelle fonction mathématique en temps réel.</p>
-      </div>
-
-      <div class="plotter-container fade-in">
-        <div class="plotter-controls">
-          <div class="input-group">
-            <label for="func-input" data-i18n="func_label">Fonction f(x)</label>
-            <input type="text" id="func-input" value="Math.sin(x) * x" placeholder="Ex: x**2 - 2*x + 1" style="font-family: var(--font-mono);">
-          </div>
-          <div class="input-group">
-            <label data-i18n="range_label">Plage [-X, X]</label>
-            <input type="number" id="func-range" value="10" min="1" max="50">
-          </div>
-          <button class="btn btn-primary" onclick="drawPlot()" style="height:42px;">
-            <i class="fa-solid fa-play"></i> <span data-i18n="draw_btn">Tracer</span>
-          </button>
-        </div>
-        <div class="plotter-canvas-wrap">
-          <canvas id="plotCanvas"></canvas>
-        </div>
-        <div class="plotter-presets">
-          <span style="font-size:0.85rem; color:var(--ink-soft); font-weight:600; align-self:center;" data-i18n="presets">Presets :</span>
-          <button class="preset-btn" onclick="setPreset('x**2')">x²</button>
-          <button class="preset-btn" onclick="setPreset('Math.sin(x)')">sin(x)</button>
-          <button class="preset-btn" onclick="setPreset('Math.cos(x)')">cos(x)</button>
-          <button class="preset-btn" onclick="setPreset('Math.tan(x)')">tan(x)</button>
-          <button class="preset-btn" onclick="setPreset('Math.log(x)')">ln(x)</button>
-          <button class="preset-btn" onclick="setPreset('Math.exp(x)')">e^x</button>
-          <button class="preset-btn" onclick="setPreset('Math.sqrt(Math.abs(x))')">√|x|</button>
-          <button class="preset-btn" onclick="setPreset('x**3 - 3*x')">x³-3x</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Quiz -->
-  <section id="quiz" class="page-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="quiz_eyebrow">Testez-vous</div>
-        <h2 data-i18n="quiz_title">Quiz Interactif</h2>
-        <p data-i18n="quiz_sub">Testez vos connaissances avec des questions classées par niveau.</p>
-      </div>
-
-      <div class="quiz-card fade-in">
-        <div class="quiz-header">
-          <div class="quiz-level-selector">
-            <button class="quiz-level-btn active" onclick="setQuizLevel('college', this)" data-i18n="level_college">Collège</button>
-            <button class="quiz-level-btn" onclick="setQuizLevel('lycee', this)" data-i18n="level_lycee">Lycée</button>
-            <button class="quiz-level-btn" onclick="setQuizLevel('superieur', this)" data-i18n="level_sup">Supérieur</button>
-          </div>
-          <div class="quiz-score">
-            <i class="fa-solid fa-trophy"></i>
-            <span><span data-i18n="score">Score</span>: <span id="quizScore">0</span>/<span id="quizTotal">0</span></span>
-          </div>
-        </div>
-
-        <div class="quiz-question" id="quizQuestion">—</div>
-        <div class="quiz-options" id="quizOptions"></div>
-        <div class="quiz-explanation" id="quizExplanation">
-          <h4><i class="fa-solid fa-lightbulb"></i> <span data-i18n="explanation">Explication</span></h4>
-          <p id="quizExplanationText"></p>
-        </div>
-
-        <div class="quiz-footer">
-          <div class="quiz-progress">
-            <div class="quiz-progress-bar" id="quizProgressBar"></div>
-          </div>
-          <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">
-            <span data-i18n="next_q">Question suivante</span> <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials-section">
-    <div class="container">
-      <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="test_eyebrow">Témoignages</div>
-        <h2 data-i18n="test_title">Ce que disent les étudiants</h2>
-        <p data-i18n="test_sub">Retours de ceux qui ont bénéficié de cet enseignement</p>
-      </div>
-    </div>
-    <div class="testimonials-track" id="testimonialsTrack"></div>
   </section>
 
   <section id="recherche" class="page-section">
     <div class="container">
       <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="research_eyebrow">Publications</div>
-        <h2 data-i18n="research_title">Recherche</h2>
-        <p data-i18n="research_sub">Travaux et publications académiques</p>
+        <h2>Recherche</h2>
+        <p>Travaux et publications académiques</p>
       </div>
       <div class="research-grid">
         <div class="research-card fade-in">
-          <div class="research-icon"><i class="fa-solid fa-file-lines"></i></div>
-          <div><h4 data-i18n="res_t1">Méthodes pédagogiques innovantes</h4><p data-i18n="res_d1">Étude sur l'impact des outils numériques dans l'apprentissage des mathématiques.</p></div>
+          <div class="research-icon"><i class="fa-solid fa-file-lines" aria-hidden="true"></i></div>
+          <div><h4>Méthodes pédagogiques innovantes</h4><p>Étude sur l'impact des outils numériques dans l'apprentissage des mathématiques.</p></div>
         </div>
         <div class="research-card fade-in">
-          <div class="research-icon"><i class="fa-solid fa-chart-line"></i></div>
-          <div><h4 data-i18n="res_t2">Analyse des difficultés d'apprentissage</h4><p data-i18n="res_d2">Recherche sur les obstacles cognitifs rencontrés par les élèves en algèbre.</p></div>
+          <div class="research-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+          <div><h4>Analyse des difficultés d'apprentissage</h4><p>Recherche sur les obstacles cognitifs rencontrés par les élèves en algèbre.</p></div>
         </div>
         <div class="research-card fade-in">
-          <div class="research-icon"><i class="fa-solid fa-calculator"></i></div>
-          <div><h4 data-i18n="res_t3">Modélisation mathématique</h4><p data-i18n="res_d3">Applications pratiques des mathématiques dans les sciences appliquées.</p></div>
+          <div class="research-icon"><i class="fa-solid fa-calculator" aria-hidden="true"></i></div>
+          <div><h4>Modélisation mathématique</h4><p>Applications pratiques des mathématiques dans les sciences appliquées.</p></div>
         </div>
         <div class="research-card fade-in">
-          <div class="research-icon"><i class="fa-solid fa-lightbulb"></i></div>
-          <div><h4 data-i18n="res_t4">Didactique des mathématiques</h4><p data-i18n="res_d4">Réflexions sur les meilleures approches d'enseignement par niveau.</p></div>
+          <div class="research-icon"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i></div>
+          <div><h4>Didactique des mathématiques</h4><p>Réflexions sur les meilleures approches d'enseignement par niveau.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="temoignages" class="page-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Témoignages</h2>
+        <p>Ce que disent les élèves de leur expérience d'apprentissage</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon" aria-hidden="true"></i>
+          <div class="testimonial-stars" aria-label="5 étoiles sur 5">
+            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">"Grâce aux explications claires et structurées, j'ai enfin compris les dérivées ! Un vrai gain de confiance avant le BAC."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#2C6E8E;">S</div>
+            <div><h5>Sara El Amrani</h5><span>Élève en 2ème BAC</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon" aria-hidden="true"></i>
+          <div class="testimonial-stars" aria-label="5 étoiles sur 5">
+            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">"Les exercices progressifs m'ont permis de reprendre confiance en algèbre. La plateforme est simple et efficace."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#2A9D5C;">Y</div>
+            <div><h5>Youssef Idrissi</h5><span>Élève au collège</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon" aria-hidden="true"></i>
+          <div class="testimonial-stars" aria-label="4.5 étoiles sur 5">
+            <i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star-half-stroke" aria-hidden="true"></i>
+          </div>
+          <p class="testimonial-text">"Un accompagnement rigoureux et bienveillant. Les ressources pour le supérieur sont d'un excellent niveau."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:var(--amethyst);">L</div>
+            <div><h5>Lina Bennani</h5><span>Étudiante en licence</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -2861,26 +1538,45 @@ body.dark-mode .resource-purple p { color: #A89BFF; }
   <section id="faq" class="page-section">
     <div class="container">
       <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="faq_eyebrow">Aide</div>
-        <h2 data-i18n="faq_title">Questions Fréquentes</h2>
-        <p data-i18n="faq_sub">Trouvez rapidement des réponses à vos questions</p>
+        <h2>Questions Fréquentes</h2>
+        <p>Trouvez rapidement des réponses à vos questions</p>
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq_q1">Les ressources sont-elles vraiment gratuites ?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-answer"><p data-i18n="faq_a1">Oui, toutes les ressources disponibles sur cette plateforme sont entièrement gratuites et accessibles à tous les niveaux.</p></div>
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-btn-1">
+            Les ressources sont-elles vraiment gratuites ?
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-btn-1">
+            <p>Oui, toutes les ressources disponibles sur cette plateforme sont entièrement gratuites et accessibles à tous les niveaux.</p>
+          </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq_q2">Comment accéder aux cours par niveau ?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-answer"><p data-i18n="faq_a2">Rendez-vous dans la section "Mathématiques" et choisissez votre niveau (Collège, Lycée ou Supérieur) pour accéder aux cours correspondants.</p></div>
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
+            Comment accéder aux cours par niveau ?
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-btn-2">
+            <p>Rendez-vous dans la section "Mathématiques" et choisissez votre niveau (Collège, Lycée ou Supérieur) pour accéder aux cours correspondants.</p>
+          </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq_q3">Puis-je poser des questions personnalisées ?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-answer"><p data-i18n="faq_a3">Absolument ! Utilisez le formulaire de contact ou envoyez un email directement pour toute question spécifique.</p></div>
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
+            Puis-je poser des questions personnalisées ?
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-btn-3">
+            <p>Absolument ! Utilisez le formulaire de contact ou envoyez un email directement pour toute question spécifique.</p>
+          </div>
         </div>
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)"><span data-i18n="faq_q4">À quelle fréquence le contenu est-il mis à jour ?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-answer"><p data-i18n="faq_a4">De nouvelles ressources sont ajoutées régulièrement. Consultez la section "Actualités" sur la page d'accueil pour les dernières mises à jour.</p></div>
+          <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-btn-4">
+            À quelle fréquence le contenu est-il mis à jour ?
+            <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+          </button>
+          <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-btn-4">
+            <p>De nouvelles ressources sont ajoutées régulièrement. Consultez la section "Actualités" sur la page d'accueil pour les dernières mises à jour.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -2889,31 +1585,42 @@ body.dark-mode .resource-purple p { color: #A89BFF; }
   <section id="contact" class="page-section">
     <div class="container">
       <div class="section-header fade-in">
-        <div class="section-eyebrow" data-i18n="contact_eyebrow">Contact</div>
-        <h2 data-i18n="contact_title">Contactez-moi</h2>
-        <p data-i18n="contact_sub">N'hésitez pas à me contacter pour toute question</p>
+        <h2>Contact</h2>
+        <p>N'hésitez pas à me contacter pour toute question</p>
       </div>
       <div class="contact-grid fade-in">
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-            <div><h4 data-i18n="contact_email_lbl">Email</h4><p>MoBendriss@Hotmail.com</p></div>
+            <div class="contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></div>
+            <div><h4>Email</h4><p>mobendriss@hotmail.com</p></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+            <div class="contact-icon"><i class="fa-brands fa-github" aria-hidden="true"></i></div>
             <div><h4>GitHub</h4><p>github.com/mobendriss</p></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
-            <div><h4 data-i18n="contact_avail">Disponibilité</h4><p data-i18n="contact_avail_txt">Réponse sous 24-48h</p></div>
+            <div class="contact-icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></div>
+            <div><h4>Disponibilité</h4><p>Réponse sous 24-48h</p></div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="handleContact(event)">
-          <input type="text" placeholder="Votre nom" required data-i18n-ph="ph_name">
-          <input type="email" placeholder="Votre email" required data-i18n-ph="ph_email">
-          <textarea placeholder="Votre message" required data-i18n-ph="ph_msg"></textarea>
-          <button type="submit" class="btn btn-primary" onclick="addRipple(event, this)">
-            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="send_btn">Envoyer</span>
+
+        <!-- ⚠️ TODO IMPORTANT: Remplacez YOUR_FORM_ID par votre vrai ID Formspree -->
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="float-field">
+            <input type="text" id="nameField" name="name" placeholder=" " required>
+            <label for="nameField">Votre nom</label>
+          </div>
+          <div class="float-field">
+            <input type="email" id="emailField" name="email" placeholder=" " required>
+            <label for="emailField">Votre email</label>
+          </div>
+          <div class="float-field">
+            <textarea id="messageField" name="message" placeholder=" " required></textarea>
+            <label for="messageField">Votre message</label>
+          </div>
+          <div class="form-status" id="formStatus" role="alert"></div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Envoyer
           </button>
         </form>
       </div>
@@ -2923,965 +1630,348 @@ body.dark-mode .resource-purple p { color: #A89BFF; }
 </main>
 
 <footer class="site-footer">
+  <div class="container">
+    <div class="newsletter-box">
+      <div>
+        <h4><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i> Restez informé</h4>
+        <p>Recevez les dernières ressources directement par email</p>
+      </div>
+      <!-- ⚠️ TODO: Remplacez YOUR_FORM_ID par votre ID Formspree -->
+      <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="email" name="email" placeholder="Votre email" required aria-label="Adresse email pour la newsletter">
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+  </div>
+
   <div class="container footer-top">
     <div class="footer-brand">
-      <div class="footer-logo" aria-hidden="true">MB</div>
-      <div><h4>MoBendriss</h4><p data-i18n="brand_tagline">Plateforme académique des mathématiques</p></div>
+      <div class="footer-logo">MB</div>
+      <div><h4>MoBendriss</h4><p>Plateforme académique des mathématiques</p></div>
     </div>
     <ul class="footer-links">
-      <li><a href="#" data-i18n="nav_home">Accueil</a></li>
-      <li><a href="#maths" data-i18n="nav_math">Mathématiques</a></li>
-      <li><a href="#quiz" data-i18n="nav_quiz">Quiz</a></li>
-      <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#maths">Mathématiques</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
   <div class="container footer-bottom">
-    <p>© 2026 MoBendriss. <span data-i18n="rights">Tous droits réservés.</span> <span class="highlight-orange" data-i18n="designed">Conçu avec rigueur.</span></p>
+    <p>© 2026 MoBendriss. Tous droits réservés. <span class="highlight-orange">Conçu avec rigueur.</span></p>
     <div class="footer-bottom-links">
-      <a href="https://github.com/mobendriss" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-      <a href="#" data-i18n="privacy">Confidentialité</a>
+      <a href="https://github.com/mobendriss" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+      <a href="#">Confidentialité</a>
     </div>
   </div>
 </footer>
 
-<button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTop" aria-label="Back to top">
-  <i class="fa-solid fa-arrow-up"></i>
+<button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTop" aria-label="Retourner en haut de la page">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
 </button>
 
-<div class="toast" id="toast" role="status" aria-live="polite">
-  <i class="fa-solid fa-circle-check"></i>
-  <span id="toastText"></span>
-</div>
-
-<div class="shortcut-hint" id="shortcutHint">
-  <span><kbd>L</kbd> <span data-i18n="sc_lang">Langue</span></span>
-  <span><kbd>T</kbd> <span data-i18n="sc_theme">Thème</span></span>
-  <span><kbd>S</kbd> <span data-i18n="sc_search">Recherche</span></span>
-</div>
-
-<div class="modal-overlay" id="cheatModal" onclick="if(event.target===this)closeCheatSheet()">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h3 id="modalTitle">Aide-mémoire</h3>
-      <button class="modal-close" onclick="closeCheatSheet()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="window.print()">
-        <i class="fa-solid fa-print"></i> <span data-i18n="print_btn">Imprimer</span>
-      </button>
-      <button class="btn btn-primary" onclick="closeCheatSheet()">
-        <span data-i18n="close_btn">Fermer</span>
-      </button>
-    </div>
-  </div>
-</div>
+<div class="toast-container" id="toastContainer" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <script>
-/* ==========================================
-   TRANSLATIONS
-   ========================================== */
-const i18n = {
-  fr: {
-    loading: "Initialisation...",
-    eyebrow: "Enseignant de mathématiques",
-    brand_first: "Mo", brand_last: "Bendriss",
-    brand_tagline: "Plateforme académique des mathématiques",
-    nav_home: "Accueil", nav_about: "À propos", nav_math: "Mathématiques",
-    nav_solver: "Calculateur", nav_quiz: "Quiz", nav_research: "Recherche",
-    nav_faq: "FAQ", nav_contact: "Contact", nav_plotter: "Traceur",
-    search_ph: "Rechercher...",
-    hero_badge: "Plateforme académique gratuite",
-    hero_title_1: "Apprenez les mathématiques avec",
-    hero_title_2: "rigueur et clarté",
-    hero_desc: "Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.",
-    btn_start: "Commencer", btn_quiz: "Faire un Quiz",
-    stat_cycles: "Cycles éducatifs", stat_resources: "Ressources", stat_langs: "Langues",
-    news_title: "Actualités", news_new: "Nouveau",
-    news_date_1: "JUIL. 2026", news_date_2: "JUIN 2026",
-    news_1: "Mise en ligne des ressources pour le cycle collégial.",
-    news_2: "Ajout des séries d'exercices pour la 1ère BAC.",
-    social_title: "Suivez-moi",
-    resources_title: "Ressources populaires",
-    level_college: "Collège", level_college_sub: "Aide-mémoire complet", level_college_desc: "Cours et exercices fondamentaux",
-    level_lycee: "Lycée", level_lycee_sub: "Aide-mémoire complet", level_lycee_desc: "BAC et préparation intensive",
-    level_sup: "Supérieur", level_sup_sub: "Aide-mémoire complet", level_sup_desc: "Analyse et algèbre avancée",
-    ch_col_1: "Nombres et calculs", ch_col_2: "Géométrie plane", ch_col_3: "Fonctions linéaires", ch_col_4: "Statistiques",
-    ch_lyc_1: "Fonctions et dérivées", ch_lyc_2: "Suites numériques", ch_lyc_3: "Probabilités", ch_lyc_4: "Géométrie dans l'espace",
-    ch_sup_1: "Analyse réelle", ch_sup_2: "Algèbre linéaire", ch_sup_3: "Topologie", ch_sup_4: "Équations différentielles",
-    about_eyebrow: "À propos",
-    about_title: "Un enseignant passionné",
-    about_sub: "Découvrez mon parcours et ma passion pour l'enseignement des mathématiques",
-    about_name: "Mo Bendriss",
-    about_p1: "Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses.",
-    about_p2: "Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.",
-    skill_algebra: "Algèbre", skill_analysis: "Analyse", skill_geometry: "Géométrie",
-    skill_prob: "Probabilités", skill_bac: "Préparation BAC",
-    timeline_eyebrow: "Parcours",
-    timeline_title: "Votre parcours mathématique",
-    timeline_sub: "Un cheminement progressif du collège au supérieur",
-    tl_y1: "COLLÈGE", tl_t1: "Fondations solides",
-    tl_d1: "Arithmétique, géométrie plane, fonctions linéaires et statistiques de base.",
-    tl_y2: "LYCÉE", tl_t2: "Approfondissement",
-    tl_d2: "Analyse, dérivées, suites, probabilités et géométrie dans l'espace.",
-    tl_y3: "BAC", tl_t3: "Excellence au BAC",
-    tl_d3: "Préparation intensive, annales corrigées et techniques de résolution avancées.",
-    tl_y4: "SUPÉRIEUR", tl_t4: "Maîtrise universitaire",
-    tl_d4: "Analyse réelle, algèbre linéaire, topologie et équations différentielles.",
-    maths_eyebrow: "Programmes",
-    maths_title: "Mathématiques", maths_sub: "Cours structurés et exercices progressifs pour tous les niveaux",
-    formula_title: "Exemple : Théorèmes fondamentaux",
-    formula_disc: "La formule du discriminant :", formula_int: "L'intégrale définie :",
-    solver_eyebrow: "Outils",
-    solver_title: "Calculateur Interactif",
-    solver_sub: "Résolvez des équations et générez des suites en temps réel.",
-    tab_quad: "Équation 2nd degré", tab_seq: "Suites numériques",
-    solver_h3: "Équation du Second Degré",
-    solver_eq: "Résolution de : $ax^2 + bx + c = 0$",
-    seq_h3: "Générateur de Suites",
-    seq_eq: "Calculez les termes d'une suite arithmétique ou géométrique.",
-    seq_type_lbl: "Type", seq_arith: "Arithmétique", seq_geom: "Géométrique", seq_reason: "Raison (r ou q)",
-    solver_delta: "Calcul du discriminant :",
-    solver_two: "L'équation admet deux racines réelles distinctes :",
-    solver_one: "L'équation admet une racine double :",
-    solver_no: "L'équation n'admet pas de racine réelle (Δ < 0).",
-    solver_lin: "Équation du premier degré, solution unique :",
-    seq_formula: "Formule générale :", seq_terms: "Les 8 premiers termes :",
-    plotter_eyebrow: "Visualisation",
-    plotter_title: "Traceur de Fonctions",
-    plotter_sub: "Visualisez n'importe quelle fonction mathématique en temps réel.",
-    func_label: "Fonction f(x)", range_label: "Plage [-X, X]", draw_btn: "Tracer",
-    presets: "Presets :",
-    quiz_eyebrow: "Testez-vous",
-    quiz_title: "Quiz Interactif",
-    quiz_sub: "Testez vos connaissances avec des questions classées par niveau.",
-    score: "Score", explanation: "Explication", next_q: "Question suivante",
-    quiz_done: "Quiz terminé ! Bravo 🎉",
-    test_eyebrow: "Témoignages",
-    test_title: "Ce que disent les étudiants",
-    test_sub: "Retours de ceux qui ont bénéficié de cet enseignement",
-    research_eyebrow: "Publications",
-    research_title: "Recherche", research_sub: "Travaux et publications académiques",
-    res_t1: "Méthodes pédagogiques innovantes",
-    res_d1: "Étude sur l'impact des outils numériques dans l'apprentissage des mathématiques.",
-    res_t2: "Analyse des difficultés d'apprentissage",
-    res_d2: "Recherche sur les obstacles cognitifs rencontrés par les élèves en algèbre.",
-    res_t3: "Modélisation mathématique",
-    res_d3: "Applications pratiques des mathématiques dans les sciences appliquées.",
-    res_t4: "Didactique des mathématiques",
-    res_d4: "Réflexions sur les meilleures approches d'enseignement par niveau.",
-    faq_eyebrow: "Aide",
-    faq_title: "Questions Fréquentes", faq_sub: "Trouvez rapidement des réponses à vos questions",
-    faq_q1: "Les ressources sont-elles vraiment gratuites ?",
-    faq_a1: "Oui, toutes les ressources disponibles sur cette plateforme sont entièrement gratuites et accessibles à tous les niveaux.",
-    faq_q2: "Comment accéder aux cours par niveau ?",
-    faq_a2: 'Rendez-vous dans la section "Mathématiques" et choisissez votre niveau (Collège, Lycée ou Supérieur).',
-    faq_q3: "Puis-je poser des questions personnalisées ?",
-    faq_a3: "Absolument ! Utilisez le formulaire de contact ou envoyez un email directement.",
-    faq_q4: "À quelle fréquence le contenu est-il mis à jour ?",
-    faq_a4: 'De nouvelles ressources sont ajoutées régulièrement. Consultez la section "Actualités".',
-    contact_eyebrow: "Contact",
-    contact_title: "Contactez-moi", contact_sub: "N'hésitez pas à me contacter pour toute question",
-    contact_email_lbl: "Email", contact_avail: "Disponibilité", contact_avail_txt: "Réponse sous 24-48h",
-    ph_name: "Votre nom", ph_email: "Votre email", ph_msg: "Votre message",
-    send_btn: "Envoyer", rights: "Tous droits réservés.", designed: "Conçu avec rigueur.", privacy: "Confidentialité",
-    toast_sent: "Message envoyé avec succès !", toast_lang: "Langue changée en français",
-    sc_lang: "Langue", sc_theme: "Thème", sc_search: "Recherche",
-    print_btn: "Imprimer", close_btn: "Fermer"
-  },
-  ar: {
-    loading: "جارٍ التحميل...",
-    eyebrow: "مدرس مادة الرياضيات",
-    brand_first: "محمد", brand_last: "بندريس",
-    brand_tagline: "المنصة الأكاديمية للرياضيات",
-    nav_home: "الرئيسية", nav_about: "من أنا", nav_math: "الرياضيات",
-    nav_solver: "الحاسبة", nav_quiz: "اختبار", nav_research: "الأبحاث",
-    nav_faq: "أسئلة شائعة", nav_contact: "اتصل بنا", nav_plotter: "الرسم",
-    search_ph: "ابحث في الموقع...",
-    hero_badge: "منصة أكاديمية مجانية بالكامل",
-    hero_title_1: "تعلم الرياضيات بـ", hero_title_2: "دقة ووضوح",
-    hero_desc: "دروس منظمة، تمارين متدرجة، امتحانات مصححة وموارد متقدمة لمرحلتي التعليم الثانوي والعالي.",
-    btn_start: "ابدأ الآن", btn_quiz: "ابدأ الاختبار",
-    stat_cycles: "أسلاك تعليمية", stat_resources: "مورد", stat_langs: "لغتان",
-    news_title: "آخر الأخبار", news_new: "جديد",
-    news_date_1: "يوليوز 2026", news_date_2: "يونيو 2026",
-    news_1: "تم نشر موارد السلك الإعدادي كاملة.",
-    news_2: "إضافة سلاسل تمارين للسنة الأولى باكالوريا.",
-    social_title: "تابعني",
-    resources_title: "أهم الموارد",
-    level_college: "الإعدادي", level_college_sub: "ملخص كامل للقوانين", level_college_desc: "دروس وتمارين أساسية",
-    level_lycee: "الثانوي", level_lycee_sub: "ملخص كامل للقوانين", level_lycee_desc: "تحضير مكثف للبكالوريا",
-    level_sup: "العالي", level_sup_sub: "ملخص كامل للقوانين", level_sup_desc: "تحليل وجبر متقدم",
-    ch_col_1: "الأعداد والحساب", ch_col_2: "الهندسة المستوية", ch_col_3: "الدوال الخطية", ch_col_4: "الإحصاء",
-    ch_lyc_1: "الدوال والاشتقاق", ch_lyc_2: "المتتاليات العددية", ch_lyc_3: "الاحتمالات", ch_lyc_4: "الهندسة الفضائية",
-    ch_sup_1: "التحليل الحقيقي", ch_sup_2: "الجبر الخطي", ch_sup_3: "الطوبولوجيا", ch_sup_4: "المعادلات التفاضلية",
-    about_eyebrow: "من أنا",
-    about_title: "أستاذ شغوف بالرياضيات",
-    about_sub: "تعرّف على مسيرتي وشغفي بتدريس الرياضيات",
-    about_name: "محمد بندريس",
-    about_p1: "أستاذ رياضيات شغوف ذو خبرة سنوات طويلة في مرافقة التلاميذ من الإعدادي إلى التعليم العالي. هدفي جعل الرياضيات مادة واضحة ودقيقة ومتاحة للجميع.",
-    about_p2: "أومن بشدة أن كل متعلم قادر على التفوق في الرياضيات متى ما توفرت له المنهجية الصحيحة والمرافقة المناسبة.",
-    skill_algebra: "الجبر", skill_analysis: "التحليل", skill_geometry: "الهندسة",
-    skill_prob: "الاحتمالات", skill_bac: "التحضير للبكالوريا",
-    timeline_eyebrow: "المسار",
-    timeline_title: "مسارك في الرياضيات",
-    timeline_sub: "تدرج من الإعدادي إلى العالي",
-    tl_y1: "الإعدادي", tl_t1: "أسس متينة",
-    tl_d1: "الحساب، الهندسة المستوية، الدوال الخطية والإحصاء الأساسي.",
-    tl_y2: "الثانوي", tl_t2: "التعمق",
-    tl_d2: "التحليل، الاشتقاق، المتتاليات، الاحتمالات والهندسة الفضائية.",
-    tl_y3: "البكالوريا", tl_t3: "التفوق في البكالوريا",
-    tl_d3: "تحضير مكثف، امتحانات مصححة وتقنيات حل متقدمة.",
-    tl_y4: "العالي", tl_t4: "الإتقان الجامعي",
-    tl_d4: "التحليل الحقيقي، الجبر الخطي، الطوبولوجيا والمعادلات التفاضلية.",
-    maths_eyebrow: "البرامج",
-    maths_title: "الرياضيات", maths_sub: "دروس مهيكلة وتمارين لجميع المستويات",
-    formula_title: "مثال: مبرهنات أساسية",
-    formula_disc: "صيغة المميز:", formula_int: "التكامل المحدد:",
-    solver_eyebrow: "أدوات",
-    solver_title: "حاسبة تفاعلية",
-    solver_sub: "حل المعادلات وتوليد المتتاليات فوريًا.",
-    tab_quad: "معادلة الدرجة 2", tab_seq: "المتتاليات العددية",
-    solver_h3: "معادلة من الدرجة الثانية",
-    solver_eq: "حل المعادلة: $ax^2 + bx + c = 0$",
-    seq_h3: "مولد المتتاليات",
-    seq_eq: "احسب حدود متتالية حسابية أو هندسية.",
-    seq_type_lbl: "النوع", seq_arith: "حسابية", seq_geom: "هندسية", seq_reason: "الأساس (r أو q)",
-    solver_delta: "حساب المميز:",
-    solver_two: "المعادلة تقبل جذرين حقيقيين مختلفين:",
-    solver_one: "المعادلة تقبل جذرًا مزدوجًا:",
-    solver_no: "المعادلة لا تقبل جذورًا حقيقية (Δ < 0).",
-    solver_lin: "معادلة من الدرجة الأولى، حل وحيد:",
-    seq_formula: "الصيغة العامة:", seq_terms: "الحدود الثمانية الأولى:",
-    plotter_eyebrow: "تصور بصري",
-    plotter_title: "راسم الدوال",
-    plotter_sub: "تصور أي دالة رياضية في الوقت الحقيقي.",
-    func_label: "الدالة f(x)", range_label: "المجال [-X, X]", draw_btn: "ارسم",
-    presets: "جاهز:",
-    quiz_eyebrow: "اختبر نفسك",
-    quiz_title: "اختبار تفاعلي",
-    quiz_sub: "اختبر معلوماتك بأسئلة مصنفة حسب المستوى.",
-    score: "النقاط", explanation: "التفسير", next_q: "السؤال التالي",
-    quiz_done: "انتهى الاختبار! أحسنت 🎉",
-    test_eyebrow: "شهادات",
-    test_title: "ماذا يقول الطلاب",
-    test_sub: "آراء من استفادوا من هذا التعليم",
-    research_eyebrow: "منشورات",
-    research_title: "الأبحاث", research_sub: "أعمال ومنشورات أكاديمية",
-    res_t1: "الطرق البيداغوجية المبتكرة",
-    res_d1: "دراسة حول أثر الأدوات الرقمية في تعلم الرياضيات.",
-    res_t2: "تحليل صعوبات التعلم",
-    res_d2: "بحث حول العوائق الإدراكية في الجبر.",
-    res_t3: "النمذجة الرياضية",
-    res_d3: "تطبيقات عملية للرياضيات في العلوم التطبيقية.",
-    res_t4: "ديداكتيك الرياضيات",
-    res_d4: "تأملات في أفضل مقاربات التدريس حسب المستوى.",
-    faq_eyebrow: "مساعدة",
-    faq_title: "الأسئلة الشائعة", faq_sub: "اعثر على إجابات سريعة لاستفساراتك",
-    faq_q1: "هل الموارد مجانية فعلًا؟",
-    faq_a1: "نعم، جميع الموارد مجانية بالكامل ومتاحة لكل المستويات.",
-    faq_q2: "كيف أصل إلى الدروس حسب المستوى؟",
-    faq_a2: 'توجه إلى قسم "الرياضيات" واختر مستواك (إعدادي، ثانوي، أو عالي).',
-    faq_q3: "هل يمكنني طرح أسئلة خاصة؟",
-    faq_a3: "بالتأكيد! استخدم نموذج الاتصال أو راسلني مباشرة.",
-    faq_q4: "كم مرة يتم تحديث المحتوى؟",
-    faq_a4: "تُضاف موارد جديدة بانتظام. تابع قسم الأخبار.",
-    contact_eyebrow: "اتصال",
-    contact_title: "تواصل معي", contact_sub: "لا تتردد في التواصل",
-    contact_email_lbl: "البريد الإلكتروني", contact_avail: "التوفر", contact_avail_txt: "الرد خلال 24-48 ساعة",
-    ph_name: "الاسم الكامل", ph_email: "بريدك الإلكتروني", ph_msg: "رسالتك",
-    send_btn: "إرسال", rights: "جميع الحقوق محفوظة.", designed: "صُمّم بدقة علمية.", privacy: "سياسة الخصوصية",
-    toast_sent: "تم إرسال رسالتك بنجاح!", toast_lang: "تم تغيير اللغة إلى العربية",
-    sc_lang: "اللغة", sc_theme: "الثيم", sc_search: "البحث",
-    print_btn: "طباعة", close_btn: "إغلاق"
-  }
-};
-
-let currentLang = 'fr';
-
-const mathQuotes = [
-  { fr: "Les mathématiques sont la reine des sciences.", ar: "الرياضيات هي ملكة العلوم.", author: "Carl Friedrich Gauss" },
-  { fr: "La géométrie est l'art de raisonner juste sur des figures fausses.", ar: "الهندسة هي فن التفكير السليم على أشكال غير دقيقة.", author: "Henri Poincaré" },
-  { fr: "En mathématiques, on ne comprend pas les choses, on s'y habitue.", ar: "في الرياضيات، لا نفهم الأشياء، بل نعتاد عليها.", author: "John von Neumann" },
-  { fr: "Le livre de la nature est écrit dans le langage des mathématiques.", ar: "كتاب الطبيعة مكتوب بلغة الرياضيات.", author: "Galileo Galilei" },
-  { fr: "Les mathématiques sont la musique de la raison.", ar: "الرياضيات هي موسيقى العقل.", author: "James Joseph Sylvester" },
-  { fr: "Sans les mathématiques, on ne pénètre pas la profondeur de la philosophie.", ar: "بدون الرياضيات، لا يمكن الولوج إلى عمق الفلسفة.", author: "Roger Bacon" }
-];
-
-let currentQuoteIdx = 0;
-
-const testimonials = [
-  { name: "Ahmed B.", role_fr: "Étudiant en Terminale S", role_ar: "تلميذ في الثانية باكالوريا علوم", text_fr: "Grâce à cette plateforme, j'ai décroché une mention Très Bien au BAC ! Les explications sont limpides.", text_ar: "بفضل هذه المنصة، حصلت على ميزة حسن جدًا في البكالوريا! الشرح واضح جدًا.", initials: "AB" },
-  { name: "Fatima Z.", role_fr: "Étudiante en 1ère année CPGE", role_ar: "طالبة في السنة الأولى أقسام تحضيرية", text_fr: "Les ressources du supérieur m'ont beaucoup aidée dans ma transition post-BAC. Qualité exceptionnelle.", text_ar: "موارد التعليم العالي ساعدتني كثيرًا في الانتقال بعد الباك. جودة استثنائية.", initials: "FZ" },
-  { name: "Youssef M.", role_fr: "Élève de 3ème année collège", role_ar: "تلميذ في الثالثة إعدادي", text_fr: "Le calculateur interactif est génial ! Il m'aide à comprendre mes erreurs étape par étape.", text_ar: "الحاسبة التفاعلية رائعة! تساعدني على فهم أخطائي خطوة بخطوة.", initials: "YM" },
-  { name: "Sarah K.", role_fr: "Parent d'élève", role_ar: "أم لتلميذ", text_fr: "Mon fils a retrouvé confiance en maths grâce à cette plateforme. Merci infiniment !", text_ar: "ابني استعاد ثقته في الرياضيات بفضل هذه المنصة. شكرًا جزيلًا!", initials: "SK" },
-  { name: "Karim L.", role_fr: "Étudiant à la FS", role_ar: "طالب بكلية العلوم", text_fr: "Les aide-mémoire sont une mine d'or. Je les utilise pour réviser avant chaque examen.", text_ar: "ملخصات القوانين كنز. أستخدمها للمراجعة قبل كل امتحان.", initials: "KL" }
-];
-
-const quizDB = {
-  college: [
-    { q_fr: "Résoudre : $3x - 7 = 5$. Quelle est la valeur de $x$ ?", q_ar: "حل المعادلة: $3x - 7 = 5$. ما هي قيمة $x$ ؟", options: ["$x = 4$", "$x = 3$", "$x = -4$", "$x = 2$"], correct: 0, exp_fr: "On ajoute 7 des deux côtés : $3x = 12$, donc $x = 4$.", exp_ar: "نضيف 7 للطرفين: $3x = 12$، إذن $x = 4$." },
-    { q_fr: "Un triangle rectangle a des côtés $3$ et $4$. Quelle est l'hypoténuse ?", q_ar: "مثلث قائم الزاوية ضلعاه $3$ و $4$. ما طول الوتر؟", options: ["$5$", "$7$", "$6$", "$\\sqrt{7}$"], correct: 0, exp_fr: "Par Pythagore : $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$.", exp_ar: "بفيتاغورس: $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$." },
-    { q_fr: "Quelle est la valeur de $(-2)^3$ ?", q_ar: "ما قيمة $(-2)^3$ ؟", options: ["$-8$", "$8$", "$-6$", "$6$"], correct: 0, exp_fr: "$(-2)^3 = (-2) \\times (-2) \\times (-2) = -8$.", exp_ar: "$(-2)^3 = (-2) \\times (-2) \\times (-2) = -8$." }
-  ],
-  lycee: [
-    { q_fr: "Quelle est la dérivée de $f(x) = x^3 - 3x^2 + 5x$ ?", q_ar: "ما مشتقة الدالة $f(x) = x^3 - 3x^2 + 5x$ ؟", options: ["$3x^2 - 6x + 5$", "$x^2 - 6x + 5$", "$3x^2 - 3x + 5$", "$x^2 - 3x$"], correct: 0, exp_fr: "On applique $(x^n)' = nx^{n-1}$.", exp_ar: "نطبق $(x^n)' = nx^{n-1}$." },
-    { q_fr: "Suite arithmétique : $u_0 = 3$, $r = 5$. Quelle est $u_{10}$ ?", q_ar: "متتالية حسابية: $u_0 = 3$، $r = 5$. ما قيمة $u_{10}$ ؟", options: ["$53$", "$50$", "$55$", "$48$"], correct: 0, exp_fr: "$u_n = u_0 + nr$, donc $u_{10} = 3 + 10 \\times 5 = 53$.", exp_ar: "$u_n = u_0 + nr$، إذن $u_{10} = 3 + 10 \\times 5 = 53$." },
-    { q_fr: "Résoudre $x^2 - 5x + 6 = 0$ :", q_ar: "حل $x^2 - 5x + 6 = 0$:", options: ["$x = 2$ et $x = 3$", "$x = -2$ et $x = -3$", "$x = 1$ et $x = 6$", "$x = -1$ et $x = -6$"], correct: 0, exp_fr: "$\\Delta = 25 - 24 = 1$, donc $x_1 = 2$ et $x_2 = 3$.", exp_ar: "$\\Delta = 25 - 24 = 1$، إذن $x_1 = 2$ و $x_2 = 3$." }
-  ],
-  superieur: [
-    { q_fr: "Calculez $\\int_{0}^{\\pi} \\sin(x)\\,dx$.", q_ar: "احسب $\\int_{0}^{\\pi} \\sin(x)\\,dx$.", options: ["$2$", "$0$", "$1$", "$\\pi$"], correct: 0, exp_fr: "Primitive : $-\\cos(x)$. Donc $[-\\cos(x)]_0^{\\pi} = 2$.", exp_ar: "الدالة الأصلية $-\\cos(x)$. إذن النتيجة $2$." },
-    { q_fr: "Le déterminant de $\\begin{pmatrix} 2 & 3 \\\\ 1 & 5 \\end{pmatrix}$ est :", q_ar: "محدد المصفوفة هو:", options: ["$7$", "$13$", "$11$", "$10$"], correct: 0, exp_fr: "$\\det = 2 \\times 5 - 3 \\times 1 = 7$.", exp_ar: "$\\det = 2 \\times 5 - 3 \\times 1 = 7$." },
-    { q_fr: "La limite de $\\frac{\\sin(x)}{x}$ quand $x \\to 0$ est :", q_ar: "نهاية $\\frac{\\sin(x)}{x}$ عندما $x \\to 0$ هي:", options: ["$1$", "$0$", "$\\infty$", "n'existe pas"], correct: 0, exp_fr: "Limite usuelle : $\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1$.", exp_ar: "نهاية مشهورة: $1$." }
-  ]
-};
-
-let quizState = { level: 'college', currentIdx: 0, score: 0, answered: false };
-
-const cheatSheets = {
-  college: {
-    title_fr: "📚 Aide-mémoire — Collège", title_ar: "📚 ملخص القوانين — الإعدادي",
-    fr: `<h4>Identités remarquables</h4><ul><li>$(a+b)^2 = a^2 + 2ab + b^2$</li><li>$(a-b)^2 = a^2 - 2ab + b^2$</li><li>$(a-b)(a+b) = a^2 - b^2$</li></ul><h4>Théorème de Pythagore</h4><p>Si $ABC$ rectangle en $A$, alors $BC^2 = AB^2 + AC^2$.</p><h4>Théorème de Thalès</h4><p>$\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$</p>`,
-    ar: `<h4>المتطابقات الهامة</h4><ul><li>$(a+b)^2 = a^2 + 2ab + b^2$</li><li>$(a-b)^2 = a^2 - 2ab + b^2$</li><li>$(a-b)(a+b) = a^2 - b^2$</li></ul><h4>مبرهنة فيتاغورس</h4><p>إذا كان $ABC$ قائمًا في $A$، فإن $BC^2 = AB^2 + AC^2$.</p><h4>مبرهنة طاليس</h4><p>$\\frac{AM}{AB} = \\frac{AN}{AC} = \\frac{MN}{BC}$</p>`
-  },
-  lycee: {
-    title_fr: "📐 Formulaire — Lycée", title_ar: "📐 استمارة القوانين — الثانوي",
-    fr: `<h4>Dérivées usuelles</h4><ul><li>$(x^n)' = nx^{n-1}$</li><li>$(\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}$</li><li>$(\\ln x)' = \\frac{1}{x}$</li><li>$(e^x)' = e^x$</li></ul><h4>Suites numériques</h4><p>Arithmétique : $u_n = u_0 + nr$, Somme $S_n = \\frac{(n+1)(u_0+u_n)}{2}$</p><p>Géométrique : $u_n = u_0 \\cdot q^n$, Somme $S_n = u_0 \\cdot \\frac{1-q^{n+1}}{1-q}$</p>`,
-    ar: `<h4>المشتقات الاعتيادية</h4><ul><li>$(x^n)' = nx^{n-1}$</li><li>$(\\sqrt{x})' = \\frac{1}{2\\sqrt{x}}$</li><li>$(\\ln x)' = \\frac{1}{x}$</li><li>$(e^x)' = e^x$</li></ul><h4>المتتاليات العددية</h4><p>حسابية: $u_n = u_0 + nr$، المجموع $S_n = \\frac{(n+1)(u_0+u_n)}{2}$</p><p>هندسية: $u_n = u_0 \\cdot q^n$، المجموع $S_n = u_0 \\cdot \\frac{1-q^{n+1}}{1-q}$</p>`
-  },
-  superieur: {
-    title_fr: "🔬 Formulaire — Supérieur", title_ar: "🔬 استمارة القوانين — العالي",
-    fr: `<h4>Théorème du Rang</h4><p>$\\dim(E) = \\dim(\\ker f) + \\text{rg}(f)$</p><h4>Formule de Taylor-Young</h4><p>$f(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(a)}{k!}(x-a)^k + o((x-a)^n)$</p><h4>Équations différentielles</h4><p>$ay'' + by' + cy = 0$ ⟶ $ar^2 + br + c = 0$.</p>`,
-    ar: `<h4>مبرهنة الرتبة</h4><p>$\\dim(E) = \\dim(\\ker f) + \\text{rg}(f)$</p><h4>صيغة تايلور-يونغ</h4><p>$f(x) = \\sum_{k=0}^{n} \\frac{f^{(k)}(a)}{k!}(x-a)^k + o((x-a)^n)$</p><h4>المعادلات التفاضلية</h4><p>$ay'' + by' + cy = 0$ ⟶ $ar^2 + br + c = 0$.</p>`
-  }
-};
-
-/* ==========================================
-   LOADING SCREEN PROGRESS
-   ========================================== */
-let loadingProgress = 0;
-const loadingInterval = setInterval(() => {
-  loadingProgress += Math.random() * 15;
-  if (loadingProgress >= 100) {
-    loadingProgress = 100;
-    clearInterval(loadingInterval);
-  }
-  document.getElementById('loadingBar').style.width = loadingProgress + '%';
-}, 150);
-
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('loadingBar').style.width = '100%';
-    setTimeout(() => {
+  window.addEventListener('load', function() {
+    requestAnimationFrame(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
-      initAll();
-    }, 400);
-  }, 800);
-});
-
-function initAll() {
-  animateCounters();
-  initMathCanvas();
-  initMouseGradient();
-  initCustomCursor();
-  initQuote();
-  loadQuiz();
-  solveQuadratic();
-  generateSequence();
-  initTestimonials();
-  drawPlot();
-  showShortcutHint();
-}
-
-/* ==========================================
-   HERO CANVAS PARTICLES
-   ========================================== */
-function initMathCanvas() {
-  const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let mouseX = 0, mouseY = 0;
-
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  const symbols = ['∫', '∑', 'π', '∞', '√', 'Δ', 'θ', 'λ', '∂'];
-
-  for (let i = 0; i < 40; i++) {
-    particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3,
-      symbol: symbols[Math.floor(Math.random() * symbols.length)],
-      size: Math.random() * 14 + 12,
-      opacity: Math.random() * 0.3 + 0.1
     });
-  }
-
-  canvas.parentElement.addEventListener('mousemove', e => {
-    const rect = canvas.getBoundingClientRect();
-    mouseX = e.clientX - rect.left;
-    mouseY = e.clientY - rect.top;
   });
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    document.getElementById('scrollProgress').style.width = progress + '%';
+  });
 
-      const dx = mouseX - p.x;
-      const dy = mouseY - p.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 150) {
-        p.x -= dx * 0.005;
-        p.y -= dy * 0.005;
-      }
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
 
-      ctx.font = `${p.size}px Fraunces`;
-      ctx.fillStyle = `rgba(231, 169, 71, ${p.opacity})`;
-      ctx.fillText(p.symbol, p.x, p.y);
-    });
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const icon = themeToggleBtn.querySelector('i');
+    const isDark = document.body.classList.contains('dark-mode');
+    icon.classList.toggle('fa-moon', !isDark);
+    icon.classList.toggle('fa-sun', isDark);
+    themeToggleBtn.setAttribute('aria-label', isDark ? 'Passer au thème clair' : 'Passer au thème sombre');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
 
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          ctx.strokeStyle = `rgba(231, 169, 71, ${0.08 * (1 - dist / 120)})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
+  themeToggleBtn.addEventListener('click', toggleTheme);
+
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    themeToggleBtn.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+    themeToggleBtn.setAttribute('aria-label', 'Passer au thème clair');
+  }
+
+  const searchToggleBtn = document.getElementById('searchToggleBtn');
+  const mobileSearchBar = document.getElementById('mobileSearchBar');
+  const closeMobileSearch = document.getElementById('closeMobileSearch');
+  const searchInputMobile = document.getElementById('searchInputMobile');
+
+  searchToggleBtn.addEventListener('click', () => {
+    mobileSearchBar.classList.add('active');
+    searchInputMobile.focus();
+  });
+
+  closeMobileSearch.addEventListener('click', () => {
+    mobileSearchBar.classList.remove('active');
+    searchInputMobile.value = '';
+    filterCards('');
+  });
+
+  const drawerMenu = document.getElementById('drawerMenu');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const drawerClose = document.getElementById('drawerClose');
+  let lastFocusedElement = null;
+
+  function openDrawer() {
+    lastFocusedElement = document.activeElement;
+    drawerMenu.classList.add('active');
+    drawerOverlay.classList.add('active');
+    drawerClose.focus();
+    document.addEventListener('keydown', handleDrawerKeydown);
+  }
+
+  function closeDrawer() {
+    drawerMenu.classList.remove('active');
+    drawerOverlay.classList.remove('active');
+    document.removeEventListener('keydown', handleDrawerKeydown);
+    if (lastFocusedElement) lastFocusedElement.focus();
+  }
+
+  function handleDrawerKeydown(e) {
+    const focusableEls = drawerMenu.querySelectorAll('a[href], button:not([disabled])');
+    const firstEl = focusableEls[0];
+    const lastEl = focusableEls[focusableEls.length - 1];
+
+    if (e.key === 'Escape') {
+      closeDrawer();
+      return;
+    }
+
+    if (e.key === 'Tab') {
+      if (e.shiftKey && document.activeElement === firstEl) {
+        e.preventDefault();
+        lastEl.focus();
+      } else if (!e.shiftKey && document.activeElement === lastEl) {
+        e.preventDefault();
+        firstEl.focus();
       }
     }
-    requestAnimationFrame(animate);
   }
-  animate();
-}
 
-/* ==========================================
-   MOUSE-FOLLOW GRADIENT
-   ========================================== */
-function initMouseGradient() {
-  const gradient = document.getElementById('mouseGradient');
-  const banner = document.querySelector('.top-banner');
-  if (!gradient || !banner) return;
-
-  banner.addEventListener('mousemove', e => {
-    const rect = banner.getBoundingClientRect();
-    gradient.style.left = (e.clientX - rect.left) + 'px';
-    gradient.style.top = (e.clientY - rect.top) + 'px';
-    gradient.style.opacity = '1';
+  mobileMenuBtn.addEventListener('click', openDrawer);
+  drawerClose.addEventListener('click', closeDrawer);
+  drawerOverlay.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
-  banner.addEventListener('mouseleave', () => {
-    gradient.style.opacity = '0';
-  });
-}
 
-/* ==========================================
-   CUSTOM CURSOR
-   ========================================== */
-function initCustomCursor() {
-  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    const cursor = document.getElementById('customCursor');
-    const dot = document.getElementById('customCursorDot');
-    let x = 0, y = 0, tx = 0, ty = 0;
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const item = this.parentElement;
+      const wasOpen = item.classList.contains('open');
 
-    document.addEventListener('mousemove', e => {
-      tx = e.clientX;
-      ty = e.clientY;
-      dot.style.left = tx + 'px';
-      dot.style.top = ty + 'px';
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      if (!wasOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
     });
+  });
 
-    function followCursor() {
-      x += (tx - x) * 0.15;
-      y += (ty - y) * 0.15;
-      cursor.style.left = x + 'px';
-      cursor.style.top = y + 'px';
-      requestAnimationFrame(followCursor);
+  function showToast(title, message, icon = 'fa-check', type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = 'toast' + (type === 'error' ? ' error' : '');
+    toast.innerHTML = `
+      <div class="toast-icon"><i class="fa-solid ${icon}" aria-hidden="true"></i></div>
+      <div class="toast-content">
+        <h5>${title}</h5>
+        <p>${message}</p>
+      </div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 50);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 5000);
+  }
+
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formStatus = document.getElementById('formStatus');
+
+  contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Envoi en cours...';
+
+    const formData = new FormData(contactForm);
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        showToast('Message envoyé !', 'Je vous répondrai sous 24-48h. Merci !', 'fa-paper-plane', 'success');
+        contactForm.reset();
+        formStatus.className = 'form-status show success';
+        formStatus.textContent = 'Votre message a bien été envoyé.';
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch (error) {
+      showToast('Erreur d\'envoi', 'Réessayez ou contactez-moi directement par email.', 'fa-triangle-exclamation', 'error');
+      formStatus.className = 'form-status show error';
+      formStatus.textContent = 'Une erreur est survenue. Veuillez réessayer ou m\'écrire directement à mobendriss@hotmail.com';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Envoyer';
     }
-    followCursor();
+  });
 
-    document.querySelectorAll('a, button, input, textarea, select, .clickable, .resource-card, .level-card, .research-card, .faq-question').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  const newsletterForm = document.getElementById('newsletterForm');
+
+  newsletterForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const formData = new FormData(newsletterForm);
+
+    try {
+      const response = await fetch(newsletterForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        showToast('Inscription réussie !', 'Vous recevrez bientôt nos actualités.', 'fa-envelope-circle-check', 'success');
+        newsletterForm.reset();
+      } else {
+        throw new Error('Erreur serveur');
+      }
+    } catch (error) {
+      showToast('Erreur', 'Inscription impossible. Réessayez plus tard.', 'fa-triangle-exclamation', 'error');
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    const btn = document.getElementById('backToTop');
+    if (window.scrollY > 400) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
     });
-  }
-}
+  }, { threshold: 0.1 });
 
-/* ==========================================
-   RIPPLE EFFECT
-   ========================================== */
-function addRipple(e, btn) {
-  const ripple = document.createElement('span');
-  const rect = btn.getBoundingClientRect();
-  const size = Math.max(rect.width, rect.height);
-  ripple.className = 'ripple';
-  ripple.style.width = ripple.style.height = size + 'px';
-  ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-  ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
-  btn.appendChild(ripple);
-  setTimeout(() => ripple.remove(), 600);
-}
+  document.querySelectorAll('.fade-in').forEach(el => revealObserver.observe(el));
 
-/* ==========================================
-   COUNTERS with suffix
-   ========================================== */
-function animateCounters() {
-  document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+  function animateCounter(el) {
     const target = parseInt(el.getAttribute('data-target'));
-    const duration = 1500;
-    const start = performance.now();
-    function step(now) {
-      const p = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = String(Math.floor(target * eased)).padStart(2, '0');
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = String(target).padStart(2, '0');
+    let current = 0;
+    const increment = target / 30;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        el.textContent = String(target).padStart(2, '0');
+        clearInterval(timer);
+      } else {
+        el.textContent = String(Math.floor(current)).padStart(2, '0');
+      }
+    }, 40);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const width = entry.target.getAttribute('data-width');
+        entry.target.style.width = width + '%';
+        progressObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.progress-fill').forEach(el => progressObserver.observe(el));
+
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150;
+      if (window.scrollY >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+
+    if (window.scrollY < 100) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[0].classList.add('active');
     }
-    requestAnimationFrame(step);
   });
-}
 
-/* ==========================================
-   READING PROGRESS
-   ========================================== */
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-  document.getElementById('readingProgress').style.width = progress + '%';
-  const btn = document.getElementById('backToTop');
-  if (scrollTop > 400) btn.classList.add('show');
-  else btn.classList.remove('show');
-});
-
-/* ==========================================
-   QUOTE ROTATOR
-   ========================================== */
-function initQuote() {
-  const controls = document.getElementById('quoteControls');
-  controls.innerHTML = '';
-  mathQuotes.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Quote ' + (i + 1));
-    dot.onclick = () => showQuote(i);
-    controls.appendChild(dot);
-  });
-  showQuote(0);
-  setInterval(() => {
-    currentQuoteIdx = (currentQuoteIdx + 1) % mathQuotes.length;
-    showQuote(currentQuoteIdx);
-  }, 7000);
-}
-
-function showQuote(idx) {
-  currentQuoteIdx = idx;
-  const q = mathQuotes[idx];
-  const textEl = document.getElementById('quoteText');
-  const authorEl = document.getElementById('quoteAuthor');
-  textEl.style.opacity = 0;
-  setTimeout(() => {
-    textEl.textContent = currentLang === 'ar' ? q.ar : q.fr;
-    authorEl.textContent = '— ' + q.author;
-    textEl.style.opacity = 1;
-  }, 200);
-  document.querySelectorAll('.quote-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-
-/* ==========================================
-   TESTIMONIALS
-   ========================================== */
-function initTestimonials() {
-  const track = document.getElementById('testimonialsTrack');
-  const all = [...testimonials, ...testimonials]; // duplicate for infinite scroll
-  track.innerHTML = all.map(t => `
-    <div class="testimonial-card">
-      <div class="testimonial-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
-      <p class="testimonial-text" data-fr="${t.text_fr}" data-ar="${t.text_ar}">${currentLang === 'ar' ? t.text_ar : t.text_fr}</p>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">${t.initials}</div>
-        <div class="testimonial-info">
-          <h5>${t.name}</h5>
-          <span data-fr="${t.role_fr}" data-ar="${t.role_ar}">${currentLang === 'ar' ? t.role_ar : t.role_fr}</span>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-function updateTestimonialsLang() {
-  document.querySelectorAll('.testimonial-text').forEach(el => {
-    el.textContent = currentLang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-fr');
-  });
-  document.querySelectorAll('.testimonial-info span').forEach(el => {
-    el.textContent = currentLang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-fr');
-  });
-}
-
-/* ==========================================
-   FUNCTION PLOTTER
-   ========================================== */
-function drawPlot() {
-  const canvas = document.getElementById('plotCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * window.devicePixelRatio;
-  canvas.height = rect.height * window.devicePixelRatio;
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-  const w = rect.width, h = rect.height;
-
-  const funcStr = document.getElementById('func-input').value;
-  const rangeVal = parseFloat(document.getElementById('func-range').value) || 10;
-  const xMin = -rangeVal, xMax = rangeVal;
-
-  const isDark = document.body.classList.contains('dark-mode');
-  const gridColor = isDark ? 'rgba(228, 223, 207, 0.1)' : 'rgba(19, 32, 56, 0.08)';
-  const axisColor = isDark ? 'rgba(228, 223, 207, 0.4)' : 'rgba(19, 32, 56, 0.4)';
-  const textColor = isDark ? '#A8B0C0' : '#47536B';
-  const curveColor = '#E7A947';
-  const bgColor = isDark ? '#0F1F30' : '#FBF8F2';
-
-  ctx.fillStyle = bgColor;
-  ctx.fillRect(0, 0, w, h);
-
-  // Calculate y range dynamically
-  let yMin = -10, yMax = 10;
-  try {
-    const f = new Function('x', 'return ' + funcStr);
-    let samples = [];
-    for (let x = xMin; x <= xMax; x += (xMax - xMin) / 200) {
-      try {
-        const y = f(x);
-        if (isFinite(y)) samples.push(y);
-      } catch(e) {}
-    }
-    if (samples.length > 0) {
-      samples.sort((a, b) => a - b);
-      const p5 = samples[Math.floor(samples.length * 0.05)];
-      const p95 = samples[Math.floor(samples.length * 0.95)];
-      yMin = Math.min(-1, p5 - 1);
-      yMax = Math.max(1, p95 + 1);
-      if (yMax - yMin > 100) { yMin = -10; yMax = 10; }
-    }
-  } catch(e) {}
-
-  const padding = 40;
-  const plotW = w - 2 * padding;
-  const plotH = h - 2 * padding;
-  const toX = x => padding + ((x - xMin) / (xMax - xMin)) * plotW;
-  const toY = y => h - padding - ((y - yMin) / (yMax - yMin)) * plotH;
-
-  // Grid
-  ctx.strokeStyle = gridColor;
-  ctx.lineWidth = 1;
-  for (let i = 0; i <= 10; i++) {
-    const x = padding + (plotW / 10) * i;
-    const y = padding + (plotH / 10) * i;
-    ctx.beginPath(); ctx.moveTo(x, padding); ctx.lineTo(x, h - padding); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(padding, y); ctx.lineTo(w - padding, y); ctx.stroke();
-  }
-
-  // Axes
-  ctx.strokeStyle = axisColor;
-  ctx.lineWidth = 2;
-  // X axis
-  if (yMin <= 0 && yMax >= 0) {
-    const y0 = toY(0);
-    ctx.beginPath(); ctx.moveTo(padding, y0); ctx.lineTo(w - padding, y0); ctx.stroke();
-  }
-  // Y axis
-  if (xMin <= 0 && xMax >= 0) {
-    const x0 = toX(0);
-    ctx.beginPath(); ctx.moveTo(x0, padding); ctx.lineTo(x0, h - padding); ctx.stroke();
-  }
-
-  // Labels
-  ctx.fillStyle = textColor;
-  ctx.font = '11px JetBrains Mono';
-  ctx.textAlign = 'center';
-  ctx.fillText(xMin.toString(), padding, h - padding + 15);
-  ctx.fillText('0', toX(0), h - padding + 15);
-  ctx.fillText(xMax.toString(), w - padding, h - padding + 15);
-  ctx.textAlign = 'right';
-  ctx.fillText(yMax.toFixed(1), padding - 5, padding + 4);
-  ctx.fillText(yMin.toFixed(1), padding - 5, h - padding);
-
-  // Draw curve
-  try {
-    const f = new Function('x', 'return ' + funcStr);
-    ctx.strokeStyle = curveColor;
-    ctx.lineWidth = 2.5;
-    ctx.shadowColor = curveColor;
-    ctx.shadowBlur = 8;
-    ctx.beginPath();
-    let started = false;
-    const steps = plotW * 2;
-    for (let i = 0; i <= steps; i++) {
-      const x = xMin + (xMax - xMin) * (i / steps);
-      let y;
-      try { y = f(x); } catch(e) { started = false; continue; }
-      if (!isFinite(y) || Math.abs(y) > 1e6) { started = false; continue; }
-      const px = toX(x), py = toY(y);
-      if (py < padding - 10 || py > h - padding + 10) { started = false; continue; }
-      if (!started) { ctx.moveTo(px, py); started = true; }
-      else ctx.lineTo(px, py);
-    }
-    ctx.stroke();
-    ctx.shadowBlur = 0;
-  } catch(e) {
-    ctx.fillStyle = '#A23B3B';
-    ctx.font = '14px Inter';
-    ctx.textAlign = 'center';
-    ctx.fillText('Erreur de syntaxe', w / 2, h / 2);
-  }
-
-  // Title
-  ctx.fillStyle = textColor;
-  ctx.font = 'italic 13px Fraunces';
-  ctx.textAlign = 'left';
-  ctx.fillText('f(x) = ' + funcStr, padding + 10, padding + 20);
-}
-
-function setPreset(expr) {
-  document.getElementById('func-input').value = expr;
-  drawPlot();
-}
-
-window.addEventListener('resize', () => { setTimeout(drawPlot, 100); });
-
-/* ==========================================
-   LANGUAGE TOGGLE
-   ========================================== */
-function toggleLang() {
-  currentLang = currentLang === 'fr' ? 'ar' : 'fr';
-  const html = document.documentElement;
-  html.setAttribute('lang', currentLang);
-  html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-  document.body.classList.toggle('lang-ar', currentLang === 'ar');
-  document.getElementById('langLabel').textContent = currentLang === 'fr' ? 'AR' : 'FR';
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const k = el.getAttribute('data-i18n');
-    if (i18n[currentLang][k]) el.textContent = i18n[currentLang][k];
-  });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const k = el.getAttribute('data-i18n-ph');
-    if (i18n[currentLang][k]) el.placeholder = i18n[currentLang][k];
-  });
-  renderKaTeX(); solveQuadratic(); generateSequence(); loadQuiz();
-  showQuote(currentQuoteIdx); updateTestimonialsLang(); drawPlot();
-  showToast(i18n[currentLang].toast_lang);
-}
-
-function toggleTheme() {
-  document.body.classList.toggle('dark-mode');
-  const icon = document.querySelector('.theme-toggle i');
-  if (document.body.classList.contains('dark-mode')) {
-    icon.classList.replace('fa-moon', 'fa-sun');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    icon.classList.replace('fa-sun', 'fa-moon');
-    localStorage.setItem('theme', 'light');
-  }
-  drawPlot();
-}
-
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark-mode');
-  setTimeout(() => document.querySelector('.theme-toggle i')?.classList.replace('fa-moon', 'fa-sun'), 50);
-}
-
-function toggleMobileMenu() { document.querySelector('.nav-links').classList.toggle('show-mobile'); }
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const was = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(e => e.classList.remove('open'));
-  if (!was) item.classList.add('open');
-}
-function handleContact(e) { e.preventDefault(); showToast(i18n[currentLang].toast_sent); e.target.reset(); }
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toastText').textContent = msg;
-  t.classList.add('show');
-  clearTimeout(showToast._t);
-  showToast._t = setTimeout(() => t.classList.remove('show'), 3000);
-}
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-const sections = document.querySelectorAll('main section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) cur = s.id; });
-  navLinks.forEach(l => {
-    l.classList.remove('active');
-    if (l.getAttribute('href') === '#' + cur) l.classList.add('active');
-  });
-  if (window.scrollY < 100) { navLinks.forEach(l => l.classList.remove('active')); navLinks[0].classList.add('active'); }
-});
-
-document.getElementById('searchInput').addEventListener('input', e => {
-  const q = e.target.value.toLowerCase().trim();
-  document.querySelectorAll('.level-card, .resource-card, .research-card, .faq-item, .timeline-item').forEach(c => {
-    c.style.display = (c.textContent.toLowerCase().includes(q) || q === '') ? '' : 'none';
-  });
-});
-
-function renderKaTeX() {
-  if (typeof renderMathInElement !== 'undefined') {
-    renderMathInElement(document.body, {
-      delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }],
-      throwOnError: false
+  function filterCards(query) {
+    query = query.toLowerCase().trim();
+    const cards = document.querySelectorAll('.level-card, .resource-card, .research-card');
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      card.style.display = (text.includes(query) || query === '') ? '' : 'none';
     });
   }
-}
-document.addEventListener("DOMContentLoaded", () => setTimeout(renderKaTeX, 150));
 
-function switchSolverTab(id, btn) {
-  document.querySelectorAll('.solver-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.solver-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('panel-' + id).classList.add('active');
-  renderKaTeX();
-}
+  document.getElementById('searchInputDesktop').addEventListener('input', (e) => filterCards(e.target.value));
+  searchInputMobile.addEventListener('input', (e) => filterCards(e.target.value));
 
-function solveQuadratic() {
-  const a = parseFloat(document.getElementById('coef-a').value);
-  const b = parseFloat(document.getElementById('coef-b').value);
-  const c = parseFloat(document.getElementById('coef-c').value);
-  const out = document.getElementById('solver-result');
-  const L = i18n[currentLang];
-  if (isNaN(a) || isNaN(b) || isNaN(c)) { out.innerHTML = ''; return; }
-  let html = '';
-  if (a === 0) {
-    if (b === 0) html = `<p>${c === 0 ? '∀x' : '∅'}</p>`;
-    else html = `<p class="solution-label">${L.solver_lin}</p><p>$x = ${(-c / b).toFixed(3)}$</p>`;
-  } else {
-    const d = b * b - 4 * a * c;
-    html = `<p class="solution-label">${L.solver_delta}</p><p>$\\Delta = (${b})^2 - 4 \\cdot ${a} \\cdot (${c}) = ${d}$</p>`;
-    if (d > 0) {
-      const x1 = (-b - Math.sqrt(d)) / (2 * a), x2 = (-b + Math.sqrt(d)) / (2 * a);
-      html += `<p>${L.solver_two}</p><p>$x_1 = ${x1.toFixed(3)}$ , $x_2 = ${x2.toFixed(3)}$</p>`;
-    } else if (d === 0) {
-      html += `<p>${L.solver_one}</p><p>$x_0 = ${(-b / (2 * a)).toFixed(3)}$</p>`;
-    } else html += `<p>${L.solver_no}</p>`;
-  }
-  out.innerHTML = html; renderKaTeX();
-}
-
-function generateSequence() {
-  const type = document.getElementById('seq-type').value;
-  const u0 = parseFloat(document.getElementById('seq-u0').value);
-  const r = parseFloat(document.getElementById('seq-r').value);
-  const out = document.getElementById('seq-result');
-  const L = i18n[currentLang];
-  if (isNaN(u0) || isNaN(r)) { out.innerHTML = ''; return; }
-  let terms = [], formula = '';
-  if (type === 'arithmetic') { for (let n = 0; n < 8; n++) terms.push(u0 + n * r); formula = `$u_n = ${u0} + n \\times ${r}$`; }
-  else { for (let n = 0; n < 8; n++) terms.push(u0 * Math.pow(r, n)); formula = `$u_n = ${u0} \\times ${r}^n$`; }
-  const formatted = terms.map((t, i) => `$u_{${i}} = ${Number.isInteger(t) ? t : t.toFixed(2)}$`).join(', ');
-  out.innerHTML = `<p class="solution-label">${L.seq_formula}</p><p>${formula}</p><p class="solution-label" style="margin-top:1rem;">${L.seq_terms}</p><p style="word-break:break-word;">${formatted}</p>`;
-  renderKaTeX();
-}
-
-function setQuizLevel(lvl, btn) {
-  document.querySelectorAll('.quiz-level-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  quizState.level = lvl; quizState.currentIdx = 0; quizState.score = 0;
-  loadQuiz();
-}
-
-function loadQuiz() {
-  quizState.answered = false;
-  const qs = quizDB[quizState.level];
-  const q = qs[quizState.currentIdx];
-  document.getElementById('quizScore').textContent = quizState.score;
-  document.getElementById('quizTotal').textContent = qs.length;
-  document.getElementById('quizProgressBar').style.width = (quizState.currentIdx / qs.length * 100) + '%';
-  document.getElementById('quizExplanation').classList.remove('show');
-  document.getElementById('quizQuestion').innerHTML = currentLang === 'ar' ? q.q_ar : q.q_fr;
-  const opts = document.getElementById('quizOptions');
-  opts.innerHTML = '';
-  q.options.forEach((opt, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-option';
-    btn.innerHTML = `<span class="option-letter">${String.fromCharCode(65 + i)}</span> <span>${opt}</span>`;
-    btn.onclick = () => answerQuiz(i, btn);
-    opts.appendChild(btn);
+  document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(() => {
+      if (typeof renderMathInElement !== 'undefined') {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ]
+        });
+      }
+    }, 100);
   });
-  renderKaTeX();
-}
-
-function answerQuiz(idx, btn) {
-  if (quizState.answered) return;
-  quizState.answered = true;
-  const q = quizDB[quizState.level][quizState.currentIdx];
-  const opts = document.querySelectorAll('.quiz-option');
-  opts.forEach(o => o.disabled = true);
-  if (idx === q.correct) { btn.classList.add('correct'); quizState.score++; document.getElementById('quizScore').textContent = quizState.score; }
-  else { btn.classList.add('wrong'); opts[q.correct].classList.add('correct'); }
-  document.getElementById('quizExplanationText').innerHTML = currentLang === 'ar' ? q.exp_ar : q.exp_fr;
-  document.getElementById('quizExplanation').classList.add('show');
-  renderKaTeX();
-}
-
-function nextQuestion() {
-  const qs = quizDB[quizState.level];
-  quizState.currentIdx = (quizState.currentIdx + 1) % qs.length;
-  if (quizState.currentIdx === 0 && quizState.score > 0) showToast(i18n[currentLang].quiz_done);
-  loadQuiz();
-}
-
-function openCheatSheet(level) {
-  const s = cheatSheets[level];
-  document.getElementById('modalTitle').textContent = currentLang === 'ar' ? s.title_ar : s.title_fr;
-  document.getElementById('modalBody').innerHTML = currentLang === 'ar' ? s.ar : s.fr;
-  document.getElementById('cheatModal').classList.add('show');
-  document.body.style.overflow = 'hidden';
-  setTimeout(renderKaTeX, 50);
-}
-function closeCheatSheet() {
-  document.getElementById('cheatModal').classList.remove('show');
-  document.body.style.overflow = '';
-}
-
-function showShortcutHint() {
-  const hint = document.getElementById('shortcutHint');
-  setTimeout(() => hint.classList.add('show'), 3000);
-  setTimeout(() => hint.classList.remove('show'), 10000);
-}
-
-document.addEventListener('keydown', e => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-  if (e.key === 'Escape') closeCheatSheet();
-  else if (e.key.toLowerCase() === 'l') toggleLang();
-  else if (e.key.toLowerCase() === 't') toggleTheme();
-  else if (e.key.toLowerCase() === 's') { e.preventDefault(); document.getElementById('searchInput')?.focus(); }
-});
 </script>
 
 </body>
