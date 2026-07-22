@@ -6,14 +6,12 @@
 <title>Mo Bendriss | Plateforme académique des mathématiques</title>
 <meta name="description" content="Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.">
 
-<!-- SEO -->
 <meta property="og:title" content="Mo Bendriss | Plateforme académique des mathématiques">
 <meta property="og:description" content="Cours structurés, exercices progressifs et ressources avancées en mathématiques.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mobendriss.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 
-<!-- Favicon -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +19,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- KaTeX for Math equations -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -62,6 +59,20 @@
   }
 }
 
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ochre) var(--paper);
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb {
+  background: var(--ochre);
+  border-radius: 10px;
+  border: 2px solid var(--paper);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--chalk-blue-deep); }
+
 body {
   position: relative;
   font-family: var(--font-body);
@@ -86,36 +97,69 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   border-radius: 4px;
 }
 
-/* Loading Screen */
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ochre-light), var(--chalk-blue));
+  z-index: 10000;
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* ============================================
+   LOADING SCREEN (SKELETON STYLE)
+   ============================================ */
 .loading-screen {
   position: fixed;
   inset: 0;
   background: var(--ink);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   transition: opacity 0.5s var(--ease), visibility 0.5s var(--ease);
+  gap: 1.5rem;
 }
 
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
+.loading-screen.hidden { opacity: 0; visibility: hidden; }
+
+.loading-logo {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.5rem;
+  color: white;
+  letter-spacing: 0.05em;
 }
 
-.loading-spinner {
-  width: 60px;
-  height: 60px;
-  border: 3px solid rgba(231, 169, 71, 0.2);
-  border-top-color: var(--ochre-light);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+.loading-bar-track {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
+.loading-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--ochre-light);
+  border-radius: 10px;
+  animation: loadBar 1s var(--ease) forwards;
 }
 
+@keyframes loadBar {
+  to { width: 100%; }
+}
+
+/* ============================================
+   TOP BANNER
+   ============================================ */
 .top-banner {
   position: relative;
   background: 
@@ -137,6 +181,41 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   mask-image: radial-gradient(95% 100% at 50% 0%, black 55%, transparent 95%);
   inset: 0;
   pointer-events: none;
+  animation: drift 25s linear infinite;
+}
+
+@keyframes drift {
+  from { background-position: 0 0; }
+  to { background-position: 68px 68px; }
+}
+
+/* Floating mesh blobs */
+.mesh-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  pointer-events: none;
+  animation: float 12s ease-in-out infinite;
+}
+
+.mesh-blob-1 {
+  width: 300px; height: 300px;
+  background: rgba(44, 110, 142, 0.4);
+  top: -100px; right: 10%;
+  animation-delay: 0s;
+}
+
+.mesh-blob-2 {
+  width: 250px; height: 250px;
+  background: rgba(231, 169, 71, 0.25);
+  bottom: -80px; left: 5%;
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.1); }
 }
 
 header, nav, main, footer { position: relative; z-index: 1; }
@@ -158,6 +237,8 @@ header, nav, main, footer { position: relative; z-index: 1; }
   letter-spacing: 0.1em;
   margin: 0 0 0.75rem;
   text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.1s forwards;
 }
 
 .brand-title {
@@ -169,6 +250,13 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   gap: 0.6rem;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.25s forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .brand-first { font-style: italic; font-weight: 400; }
@@ -190,6 +278,8 @@ header, nav, main, footer { position: relative; z-index: 1; }
   color: rgba(255,255,255,0.75);
   font-size: 1.1rem;
   margin: 0.75rem 0 0;
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.4s forwards;
 }
 
 .logo-circle {
@@ -203,6 +293,15 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   justify-content: center;
   background: rgba(19, 32, 56, 0.4);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-fast);
+  opacity: 0;
+  animation: fadeInUp 0.6s var(--ease) 0.15s forwards;
+}
+
+.logo-circle:hover {
+  transform: rotate(8deg) scale(1.05);
+  box-shadow: 0 0 30px rgba(231, 169, 71, 0.4);
 }
 
 .logo-text {
@@ -221,6 +320,9 @@ header, nav, main, footer { position: relative; z-index: 1; }
   margin-top: 0.3rem;
 }
 
+/* ============================================
+   NAVIGATION
+   ============================================ */
 .main-nav {
   background: var(--card);
   border-bottom: 1px solid var(--paper-line);
@@ -260,6 +362,19 @@ header, nav, main, footer { position: relative; z-index: 1; }
   border-radius: var(--radius-sm);
   transition: var(--transition-fast);
   white-space: nowrap;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--ochre);
+  transition: var(--transition-fast);
+  transform: translateX(-50%);
 }
 
 .nav-links a.active {
@@ -269,6 +384,7 @@ header, nav, main, footer { position: relative; z-index: 1; }
 }
 
 .nav-links a:hover { background: var(--paper); }
+.nav-links a:hover::after { width: 60%; }
 
 .nav-tools { display: flex; align-items: center; gap: 0.6rem; }
 
@@ -280,6 +396,11 @@ header, nav, main, footer { position: relative; z-index: 1; }
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
   min-width: 180px;
+  transition: var(--transition-fast);
+}
+
+.search-box:focus-within {
+  box-shadow: 0 0 0 2px var(--ochre-light);
 }
 
 .search-box i { color: var(--ink-soft); }
@@ -305,7 +426,10 @@ header, nav, main, footer { position: relative; z-index: 1; }
   transition: var(--transition-fast);
 }
 
-.lang-toggle:hover, .theme-toggle:hover { background: var(--paper-line); }
+.lang-toggle:hover, .theme-toggle:hover {
+  background: var(--paper-line);
+  transform: translateY(-2px);
+}
 
 .mobile-menu-btn {
   display: none;
@@ -316,6 +440,81 @@ header, nav, main, footer { position: relative; z-index: 1; }
   color: var(--ink);
 }
 
+/* ============================================
+   MOBILE DRAWER MENU
+   ============================================ */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 21, 38, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+}
+
+.drawer-overlay.active { opacity: 1; visibility: visible; }
+
+.drawer-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--ink);
+  z-index: 999;
+  padding: 2rem 1.5rem;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawer-menu.active { transform: translateX(0); }
+
+.drawer-close {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+.drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.drawer-links a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: var(--transition-fast);
+  font-weight: 500;
+}
+
+.drawer-links a:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--ochre-light);
+  transform: translateX(-5px);
+}
+
+.drawer-links i { color: var(--ochre-light); width: 20px; }
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
 .hero-section { padding: 3.5rem 0; background: var(--paper); }
 
 .hero-grid {
@@ -333,6 +532,12 @@ header, nav, main, footer { position: relative; z-index: 1; }
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(231, 169, 71, 0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(231, 169, 71, 0); }
 }
 
 .hero-title {
@@ -344,7 +549,18 @@ header, nav, main, footer { position: relative; z-index: 1; }
   margin: 0 0 1.5rem;
 }
 
-.highlight { color: var(--chalk-blue); }
+.highlight { color: var(--chalk-blue); position: relative; }
+.highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: rgba(231, 169, 71, 0.25);
+  z-index: -1;
+  border-radius: 4px;
+}
 
 .hero-desc {
   font-size: 1.1rem;
@@ -374,14 +590,29 @@ header, nav, main, footer { position: relative; z-index: 1; }
   cursor: pointer;
   font-size: 1rem;
   font-family: var(--font-body);
+  position: relative;
+  overflow: hidden;
 }
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  transform: translate(-50%,-50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn:active::before { width: 300px; height: 300px; }
 
 .btn-primary { background: var(--ochre); color: white; }
 
 .btn-primary:hover {
   background: var(--chalk-blue-deep);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-1);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(31, 86, 112, 0.5);
 }
 
 .btn-secondary {
@@ -390,7 +621,7 @@ header, nav, main, footer { position: relative; z-index: 1; }
   border: 1px solid var(--paper-line);
 }
 
-.btn-secondary:hover { background: var(--paper); }
+.btn-secondary:hover { background: var(--paper); transform: translateY(-3px); }
 
 .stats-grid {
   display: grid;
@@ -407,7 +638,11 @@ header, nav, main, footer { position: relative; z-index: 1; }
   transition: var(--transition-fast);
 }
 
-.stat-card:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
+.stat-card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-5px);
+  border-color: var(--ochre-light);
+}
 
 .stat-number {
   display: block;
@@ -439,7 +674,7 @@ header, nav, main, footer { position: relative; z-index: 1; }
   box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.5);
 }
 
-.sidebar-btn-primary:hover { transform: translateY(-2px); }
+.sidebar-btn-primary:hover { transform: translateY(-3px) scale(1.02); }
 
 .sidebar-btn-secondary {
   background: white;
@@ -449,12 +684,15 @@ header, nav, main, footer { position: relative; z-index: 1; }
 
 .sidebar-btn-secondary:hover { background: var(--paper); }
 
+/* Glassmorphism cards */
 .news-card, .social-card {
-  background: white;
-  border: 1px solid var(--paper-line);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(228, 223, 207, 0.6);
   border-radius: var(--radius-md);
   padding: 1.5rem;
   margin-bottom: 1rem;
+  box-shadow: var(--shadow-1);
 }
 
 .news-card h3, .social-card h3 {
@@ -513,8 +751,15 @@ header, nav, main, footer { position: relative; z-index: 1; }
   transition: var(--transition-fast);
 }
 
-.social-icons a:hover { background: var(--ochre); color: white; }
+.social-icons a:hover {
+  background: var(--ochre);
+  color: white;
+  transform: translateY(-3px) rotate(5deg);
+}
 
+/* ============================================
+   RESOURCES SECTION
+   ============================================ */
 .resources-section { padding: 2rem 0 5rem; }
 
 .section-title {
@@ -541,9 +786,14 @@ header, nav, main, footer { position: relative; z-index: 1; }
   text-decoration: none;
   transition: var(--transition-fast);
   display: block;
+  position: relative;
+  overflow: hidden;
 }
 
-.resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
+.resource-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+}
 
 .resource-blue { background: linear-gradient(135deg, #EBF4FC, #F5F9FE); }
 .resource-green { background: linear-gradient(135deg, #E8FAF0, #F3FDF7); }
@@ -559,7 +809,10 @@ header, nav, main, footer { position: relative; z-index: 1; }
   color: white;
   font-size: 1.3rem;
   margin-bottom: 1.2rem;
+  transition: var(--transition-fast);
 }
+
+.resource-card:hover .resource-icon { transform: scale(1.1) rotate(-5deg); }
 
 .resource-blue .resource-icon { background: #2C6E8E; }
 .resource-green .resource-icon { background: #2A9D5C; }
@@ -576,6 +829,36 @@ header, nav, main, footer { position: relative; z-index: 1; }
 .resource-green p { color: #2A9D5C; margin: 0; }
 .resource-purple p { color: var(--amethyst); margin: 0; }
 
+/* Progress bar inside cards */
+.progress-track {
+  margin-top: 1rem;
+  height: 6px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 10px;
+  width: 0%;
+  transition: width 1.2s var(--ease);
+}
+
+.resource-blue .progress-fill { background: #2C6E8E; }
+.resource-green .progress-fill { background: #2A9D5C; }
+.resource-purple .progress-fill { background: var(--amethyst); }
+
+.progress-label {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* ============================================
+   PAGE SECTIONS
+   ============================================ */
 .page-section { padding: 4rem 0; scroll-margin-top: 90px; }
 .page-section:nth-child(even) { background: white; }
 
@@ -613,7 +896,10 @@ header, nav, main, footer { position: relative; z-index: 1; }
   font-family: var(--font-display);
   font-size: 4rem;
   font-style: italic;
+  transition: var(--transition-fast);
 }
+
+.about-avatar:hover { transform: scale(1.03) rotate(-2deg); }
 
 .about-text h3 { font-family: var(--font-display); color: var(--ink); margin-bottom: 1rem; }
 .about-text p { color: var(--ink-soft); margin-bottom: 1.5rem; line-height: 1.8; }
@@ -627,6 +913,13 @@ header, nav, main, footer { position: relative; z-index: 1; }
   border-radius: 20px;
   font-size: 0.85rem;
   font-weight: 600;
+  transition: var(--transition-fast);
+}
+
+.skill-tag:hover {
+  background: var(--chalk-blue);
+  color: white;
+  transform: translateY(-2px);
 }
 
 .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -639,7 +932,11 @@ header, nav, main, footer { position: relative; z-index: 1; }
   transition: var(--transition-fast);
 }
 
-.level-card:hover { box-shadow: var(--shadow-2); transform: translateY(-4px); }
+.level-card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-6px);
+  border-color: var(--ochre-light);
+}
 
 .level-icon {
   width: 60px;
@@ -670,8 +967,10 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   gap: 0.6rem;
   font-size: 0.9rem;
+  transition: var(--transition-fast);
 }
 
+.chapter-list li:hover { color: var(--ochre); padding-left: 5px; }
 .chapter-list li:last-child { border-bottom: none; }
 .chapter-list i { color: var(--ochre); font-size: 0.8rem; }
 
@@ -684,6 +983,12 @@ header, nav, main, footer { position: relative; z-index: 1; }
   padding: 1.8rem;
   display: flex;
   gap: 1.2rem;
+  transition: var(--transition-fast);
+}
+
+.research-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-1);
 }
 
 .research-icon {
@@ -702,6 +1007,84 @@ header, nav, main, footer { position: relative; z-index: 1; }
 .research-card h4 { color: var(--ink); margin: 0 0 0.5rem; font-family: var(--font-display); }
 .research-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
 
+/* ============================================
+   TESTIMONIALS SECTION
+   ============================================ */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.testimonial-card {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-2);
+}
+
+.testimonial-quote-icon {
+  color: rgba(231, 169, 71, 0.25);
+  font-size: 2.5rem;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.testimonial-stars {
+  color: var(--ochre-light);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.testimonial-text {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+.testimonial-author h5 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.testimonial-author span {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
 .faq-list { max-width: 800px; margin: 0 auto; }
 
 .faq-item {
@@ -710,7 +1093,10 @@ header, nav, main, footer { position: relative; z-index: 1; }
   border-radius: var(--radius-md);
   margin-bottom: 1rem;
   overflow: hidden;
+  transition: var(--transition-fast);
 }
+
+.faq-item:hover { border-color: var(--ochre-light); }
 
 .faq-question {
   padding: 1.3rem 1.5rem;
@@ -735,6 +1121,9 @@ header, nav, main, footer { position: relative; z-index: 1; }
 .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
 .faq-answer p { color: var(--ink-soft); margin: 0; line-height: 1.7; }
 
+/* ============================================
+   CONTACT - FLOATING LABELS
+   ============================================ */
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
 .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
 .contact-item { display: flex; align-items: center; gap: 1rem; }
@@ -750,27 +1139,128 @@ header, nav, main, footer { position: relative; z-index: 1; }
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
+  transition: var(--transition-fast);
+}
+
+.contact-item:hover .contact-icon {
+  background: var(--ochre);
+  color: white;
+  transform: rotate(-8deg);
 }
 
 .contact-item h4 { margin: 0 0 0.2rem; color: var(--ink); font-size: 0.95rem; }
 .contact-item p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
 
-.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
 
-.contact-form input, .contact-form textarea {
-  padding: 0.9rem 1.2rem;
+.float-field {
+  position: relative;
+}
+
+.float-field input,
+.float-field textarea {
+  width: 100%;
+  padding: 1rem 1.1rem 0.5rem;
   border: 1px solid var(--paper-line);
   border-radius: var(--radius-sm);
   font-family: var(--font-body);
   font-size: 0.95rem;
   outline: none;
   transition: var(--transition-fast);
+  background: white;
 }
 
-.contact-form input:focus, .contact-form textarea:focus { border-color: var(--ochre); }
-.contact-form textarea { resize: vertical; min-height: 120px; }
+.float-field textarea { min-height: 120px; resize: vertical; padding-top: 1.3rem; }
 
+.float-field label {
+  position: absolute;
+  left: 1.1rem;
+  top: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  pointer-events: none;
+  transition: var(--transition-fast);
+  background: white;
+  padding: 0 0.3rem;
+}
+
+.float-field input:focus,
+.float-field textarea:focus {
+  border-color: var(--ochre);
+  box-shadow: 0 0 0 3px rgba(231, 169, 71, 0.15);
+}
+
+.float-field input:focus + label,
+.float-field input:not(:placeholder-shown) + label,
+.float-field textarea:focus + label,
+.float-field textarea:not(:placeholder-shown) + label {
+  top: -0.6rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--ochre);
+  font-weight: 600;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
 .site-footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
+
+.newsletter-box {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.newsletter-box h4 {
+  color: white;
+  margin: 0 0 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.newsletter-box p { margin: 0; font-size: 0.85rem; }
+
+.newsletter-form {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  max-width: 400px;
+}
+
+.newsletter-form input {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.08);
+  color: white;
+  outline: none;
+}
+
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+.newsletter-form input:focus { border-color: var(--ochre-light); }
+
+.newsletter-form button {
+  padding: 0.8rem 1.5rem;
+  background: var(--ochre);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.newsletter-form button:hover { background: var(--ochre-light); }
 
 .footer-top {
   display: flex;
@@ -830,7 +1320,9 @@ header, nav, main, footer { position: relative; z-index: 1; }
 
 .footer-bottom a:hover { color: var(--ochre-light); }
 
-/* Back to Top */
+/* ============================================
+   BACK TO TOP
+   ============================================ */
 .back-to-top {
   position: fixed;
   bottom: 2rem;
@@ -856,7 +1348,63 @@ header, nav, main, footer { position: relative; z-index: 1; }
 .back-to-top.show { opacity: 1; visibility: visible; }
 .back-to-top:hover { background: var(--chalk-blue-deep); transform: translateY(-4px); }
 
-/* Scroll Reveal Animation */
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+.toast-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.toast {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  box-shadow: var(--shadow-2);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: 280px;
+  max-width: 350px;
+  transform: translateX(-120%);
+  transition: transform 0.4s var(--ease);
+  border-left: 4px solid var(--ochre);
+}
+
+.toast.show { transform: translateX(0); }
+
+.toast-icon {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: rgba(184, 121, 26, 0.15);
+  color: var(--ochre);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-content h5 {
+  margin: 0 0 0.2rem;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.toast-content p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
@@ -865,6 +1413,9 @@ header, nav, main, footer { position: relative; z-index: 1; }
 
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .header-content { flex-direction: column; text-align: center; }
@@ -877,17 +1428,24 @@ header, nav, main, footer { position: relative; z-index: 1; }
   .levels-grid { grid-template-columns: 1fr; }
   .research-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .newsletter-box { flex-direction: column; text-align: center; }
+  .newsletter-form { max-width: 100%; }
 }
 
 @media (max-width: 600px) {
   .top-banner { padding: 3rem 0 2.5rem; }
   .nav-links { display: none; }
-  .nav-links.show-mobile { display: flex; flex-direction: column; width: 100%; }
   .mobile-menu-btn { display: block; }
   .search-box { display: none; }
   .back-to-top { bottom: 1rem; right: 1rem; width: 44px; height: 44px; }
+  .toast-container { left: 1rem; right: 1rem; }
+  .toast { min-width: unset; max-width: 100%; }
 }
 
+/* ============================================
+   DARK MODE
+   ============================================ */
 body.dark-mode {
   --ink: #E4DFCF;
   --ink-soft: #A8B0C0;
@@ -899,17 +1457,45 @@ body.dark-mode {
 body.dark-mode .resource-blue,
 body.dark-mode .resource-green,
 body.dark-mode .resource-purple { opacity: 0.9; }
+
+body.dark-mode .float-field input,
+body.dark-mode .float-field textarea,
+body.dark-mode .float-field label { background: var(--card); }
+
+body.dark-mode .toast { background: var(--card); }
+body.dark-mode .toast-content h5 { color: var(--ink); }
 </style>
 </head>
 
 <body>
 
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
 <!-- Loading Screen -->
 <div class="loading-screen" id="loadingScreen">
-  <div class="loading-spinner"></div>
+  <div class="loading-logo">Mo Bendriss</div>
+  <div class="loading-bar-track"><div class="loading-bar-fill"></div></div>
+</div>
+
+<!-- Mobile Drawer -->
+<div class="drawer-overlay" id="drawerOverlay"></div>
+<div class="drawer-menu" id="drawerMenu">
+  <button class="drawer-close" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
+  <ul class="drawer-links">
+    <li><a href="#" class="drawer-link"><i class="fa-solid fa-house"></i> Accueil</a></li>
+    <li><a href="#a-propos" class="drawer-link"><i class="fa-solid fa-user"></i> À propos</a></li>
+    <li><a href="#maths" class="drawer-link"><i class="fa-solid fa-infinity"></i> Mathématiques</a></li>
+    <li><a href="#recherche" class="drawer-link"><i class="fa-solid fa-graduation-cap"></i> Recherche</a></li>
+    <li><a href="#temoignages" class="drawer-link"><i class="fa-solid fa-star"></i> Témoignages</a></li>
+    <li><a href="#faq" class="drawer-link"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+    <li><a href="#contact" class="drawer-link"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+  </ul>
 </div>
 
 <header class="top-banner">
+  <div class="mesh-blob mesh-blob-1"></div>
+  <div class="mesh-blob mesh-blob-2"></div>
   <div class="container header-content">
     <div class="brand-section">
       <p class="eyebrow">Enseignant de mathématiques</p>
@@ -934,6 +1520,7 @@ body.dark-mode .resource-purple { opacity: 0.9; }
       <li><a href="#a-propos"><i class="fa-solid fa-user"></i> À propos</a></li>
       <li><a href="#maths"><i class="fa-solid fa-infinity"></i> Mathématiques</a></li>
       <li><a href="#recherche"><i class="fa-solid fa-graduation-cap"></i> Recherche</a></li>
+      <li><a href="#temoignages"><i class="fa-solid fa-star"></i> Témoignages</a></li>
       <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
       <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
     </ul>
@@ -944,7 +1531,7 @@ body.dark-mode .resource-purple { opacity: 0.9; }
       </div>
       <button class="lang-toggle" onclick="toggleLang()">AR</button>
       <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
-      <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
+      <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
 </nav>
@@ -962,9 +1549,9 @@ body.dark-mode .resource-purple { opacity: 0.9; }
           <a href="#recherche" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Recherche</a>
         </div>
         <div class="stats-grid">
-          <div class="stat-card"><span class="stat-number">03</span><span class="stat-label">Cycles éducatifs</span></div>
+          <div class="stat-card"><span class="stat-number" data-target="3">0</span><span class="stat-label">Cycles éducatifs</span></div>
           <div class="stat-card"><span class="stat-number">∞</span><span class="stat-label">Ressources évolutives</span></div>
-          <div class="stat-card"><span class="stat-number">02</span><span class="stat-label">Langues</span></div>
+          <div class="stat-card"><span class="stat-number" data-target="2">0</span><span class="stat-label">Langues</span></div>
         </div>
       </div>
 
@@ -1000,14 +1587,20 @@ body.dark-mode .resource-purple { opacity: 0.9; }
         <a href="#college" class="resource-card resource-blue fade-in">
           <div class="resource-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Collège</h3><p>Cours et exercices</p>
+          <div class="progress-track"><div class="progress-fill" data-width="75"></div></div>
+          <span class="progress-label">75% des chapitres disponibles</span>
         </a>
         <a href="#lycee" class="resource-card resource-green fade-in">
           <div class="resource-icon"><i class="fa-solid fa-book"></i></div>
           <h3>Lycée</h3><p>BAC et préparation</p>
+          <div class="progress-track"><div class="progress-fill" data-width="60"></div></div>
+          <span class="progress-label">60% des chapitres disponibles</span>
         </a>
         <a href="#superieur" class="resource-card resource-purple fade-in">
           <div class="resource-icon"><i class="fa-solid fa-flask"></i></div>
           <h3>Supérieur</h3><p>Recherche avancée</p>
+          <div class="progress-track"><div class="progress-fill" data-width="40"></div></div>
+          <span class="progress-label">40% des chapitres disponibles</span>
         </a>
       </div>
     </div>
@@ -1078,9 +1671,8 @@ body.dark-mode .resource-purple { opacity: 0.9; }
           </ul>
         </div>
       </div>
-      
-      <!-- مثال على معادلة رياضية -->
-      <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: var(--radius-lg); border: 1px solid var(--paper-line);">
+
+      <div class="fade-in" style="margin-top: 3rem; padding: 2rem; background: white; border-radius: var(--radius-lg); border: 1px solid var(--paper-line);">
         <h3 style="font-family: var(--font-display); margin-bottom: 1rem;">Exemple : Théorème fondamental</h3>
         <p>La formule du discriminant : $\Delta = b^2 - 4ac$</p>
         <p>L'intégrale définie : $$\int_{a}^{b} f(x)\,dx = F(b) - F(a)$$</p>
@@ -1110,6 +1702,53 @@ body.dark-mode .resource-purple { opacity: 0.9; }
         <div class="research-card fade-in">
           <div class="research-icon"><i class="fa-solid fa-lightbulb"></i></div>
           <div><h4>Didactique des mathématiques</h4><p>Réflexions sur les meilleures approches d'enseignement par niveau.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section id="temoignages" class="page-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Témoignages</h2>
+        <p>Ce que disent les élèves de leur expérience d'apprentissage</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon"></i>
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Grâce aux explications claires et structurées, j'ai enfin compris les dérivées ! Un vrai gain de confiance avant le BAC."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#2C6E8E;">S</div>
+            <div><h5>Sara El Amrani</h5><span>Élève en 2ème BAC</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon"></i>
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="testimonial-text">"Les exercices progressifs m'ont permis de reprendre confiance en algèbre. La plateforme est simple et efficace."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:#2A9D5C;">Y</div>
+            <div><h5>Youssef Idrissi</h5><span>Élève au collège</span></div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in">
+          <i class="fa-solid fa-quote-right testimonial-quote-icon"></i>
+          <div class="testimonial-stars">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+          </div>
+          <p class="testimonial-text">"Un accompagnement rigoureux et bienveillant. Les ressources pour le supérieur sont d'un excellent niveau."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background:var(--amethyst);">L</div>
+            <div><h5>Lina Bennani</h5><span>Étudiante en licence</span></div>
+          </div>
         </div>
       </div>
     </div>
@@ -1163,10 +1802,19 @@ body.dark-mode .resource-purple { opacity: 0.9; }
             <div><h4>Disponibilité</h4><p>Réponse sous 24-48h</p></div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="handleContact(event)">
-          <input type="text" placeholder="Votre nom" required>
-          <input type="email" placeholder="Votre email" required>
-          <textarea placeholder="Votre message" required></textarea>
+        <form class="contact-form" id="contactForm">
+          <div class="float-field">
+            <input type="text" id="nameField" placeholder=" " required>
+            <label for="nameField">Votre nom</label>
+          </div>
+          <div class="float-field">
+            <input type="email" id="emailField" placeholder=" " required>
+            <label for="emailField">Votre email</label>
+          </div>
+          <div class="float-field">
+            <textarea id="messageField" placeholder=" " required></textarea>
+            <label for="messageField">Votre message</label>
+          </div>
           <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
         </form>
       </div>
@@ -1176,6 +1824,19 @@ body.dark-mode .resource-purple { opacity: 0.9; }
 </main>
 
 <footer class="site-footer">
+  <div class="container">
+    <div class="newsletter-box">
+      <div>
+        <h4><i class="fa-solid fa-envelope-open-text"></i> Restez informé</h4>
+        <p>Recevez les dernières ressources directement par email</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Votre email" required>
+        <button type="submit">S'abonner</button>
+      </form>
+    </div>
+  </div>
+
   <div class="container footer-top">
     <div class="footer-brand">
       <div class="footer-logo">MB</div>
@@ -1196,10 +1857,12 @@ body.dark-mode .resource-purple { opacity: 0.9; }
   </div>
 </footer>
 
-<!-- Back to Top Button -->
 <button class="back-to-top" onclick="window.scrollTo({top:0, behavior:'smooth'})" id="backToTop">
   <i class="fa-solid fa-arrow-up"></i>
 </button>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
 
 <script>
   // ==========================================
@@ -1208,7 +1871,17 @@ body.dark-mode .resource-purple { opacity: 0.9; }
   window.addEventListener('load', function() {
     setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
-    }, 300);
+    }, 900);
+  });
+
+  // ==========================================
+  // Scroll Progress Bar
+  // ==========================================
+  window.addEventListener('scroll', function() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('scrollProgress').style.width = progress + '%';
   });
 
   // ==========================================
@@ -1234,17 +1907,35 @@ body.dark-mode .resource-purple { opacity: 0.9; }
   }
 
   // ==========================================
-  // Language Toggle (placeholder)
+  // Language Toggle
   // ==========================================
   function toggleLang() {
-    alert('Fonctionnalité de traduction à venir!');
+    showToast('Traduction', 'Fonctionnalité de traduction à venir bientôt !', 'fa-language');
   }
 
   // ==========================================
-  // Mobile Menu Toggle
+  // Mobile Drawer Menu
   // ==========================================
-  document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
-    document.querySelector('.nav-links').classList.toggle('show-mobile');
+  const drawerMenu = document.getElementById('drawerMenu');
+  const drawerOverlay = document.getElementById('drawerOverlay');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const drawerClose = document.getElementById('drawerClose');
+
+  function openDrawer() {
+    drawerMenu.classList.add('active');
+    drawerOverlay.classList.add('active');
+  }
+
+  function closeDrawer() {
+    drawerMenu.classList.remove('active');
+    drawerOverlay.classList.remove('active');
+  }
+
+  mobileMenuBtn?.addEventListener('click', openDrawer);
+  drawerClose?.addEventListener('click', closeDrawer);
+  drawerOverlay?.addEventListener('click', closeDrawer);
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', closeDrawer);
   });
 
   // ==========================================
@@ -1258,16 +1949,47 @@ body.dark-mode .resource-purple { opacity: 0.9; }
   }
 
   // ==========================================
-  // Contact Form Handler
+  // Toast Notification System
   // ==========================================
-  function handleContact(event) {
-    event.preventDefault();
-    alert('Merci pour votre message ! Je vous répondrai bientôt.\n\nEn attendant, vous pouvez me contacter directement à: MoBendriss@Hotmail.com');
-    event.target.reset();
+  function showToast(title, message, icon = 'fa-check') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.innerHTML = `
+      <div class="toast-icon"><i class="fa-solid ${icon}"></i></div>
+      <div class="toast-content">
+        <h5>${title}</h5>
+        <p>${message}</p>
+      </div>
+    `;
+    container.appendChild(toast);
+    setTimeout(() => toast.classList.add('show'), 50);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 400);
+    }, 4000);
   }
 
   // ==========================================
-  // Back to Top Button Visibility
+  // Contact Form Handler
+  // ==========================================
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showToast('Message envoyé !', 'Je vous répondrai sous 24-48h. Merci !', 'fa-paper-plane');
+    this.reset();
+  });
+
+  // ==========================================
+  // Newsletter Form Handler
+  // ==========================================
+  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    showToast('Inscription réussie !', 'Vous recevrez bientôt nos actualités.', 'fa-envelope-circle-check');
+    this.reset();
+  });
+
+  // ==========================================
+  // Back to Top Button
   // ==========================================
   window.addEventListener('scroll', function() {
     const btn = document.getElementById('backToTop');
@@ -1290,6 +2012,50 @@ body.dark-mode .resource-purple { opacity: 0.9; }
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ==========================================
+  // Animated Counter
+  // ==========================================
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    let current = 0;
+    const increment = target / 30;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        el.textContent = String(target).padStart(2, '0');
+        clearInterval(timer);
+      } else {
+        el.textContent = String(Math.floor(current)).padStart(2, '0');
+      }
+    }, 40);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => counterObserver.observe(el));
+
+  // ==========================================
+  // Progress Bars Animation
+  // ==========================================
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const width = entry.target.getAttribute('data-width');
+        entry.target.style.width = width + '%';
+        progressObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  document.querySelectorAll('.progress-fill').forEach(el => progressObserver.observe(el));
 
   // ==========================================
   // Active Nav Link on Scroll
