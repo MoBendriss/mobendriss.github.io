@@ -6,21 +6,13 @@
 <title>Mo Bendriss | Plateforme académique des mathématiques</title>
 <meta name="description" content="Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.">
 
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-/* ============================================
-   RESET & VARIABLES
-   ============================================ */
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 :root {
   --ink: #132038;
@@ -71,9 +63,7 @@ body {
   padding-inline: 1.5rem;
 }
 
-a {
-  color: inherit;
-}
+a { color: inherit; }
 
 a:focus-visible, button:focus-visible, input:focus-visible {
   outline: 3px solid var(--focus);
@@ -81,9 +71,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   border-radius: 4px;
 }
 
-/* ============================================
-   TOP BANNER (HEADER)
-   ============================================ */
 .top-banner {
   position: relative;
   background: 
@@ -107,10 +94,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   pointer-events: none;
 }
 
-header, nav, main, footer {
-  position: relative;
-  z-index: 1;
-}
+header, nav, main, footer { position: relative; z-index: 1; }
 
 .header-content {
   display: flex;
@@ -120,10 +104,7 @@ header, nav, main, footer {
   flex-wrap: wrap;
 }
 
-.brand-section {
-  flex: 1;
-  min-width: 280px;
-}
+.brand-section { flex: 1; min-width: 280px; }
 
 .eyebrow {
   color: var(--ochre-light);
@@ -145,15 +126,8 @@ header, nav, main, footer {
   flex-wrap: wrap;
 }
 
-.brand-first {
-  font-style: italic;
-  font-weight: 400;
-}
-
-.brand-last {
-  font-weight: 700;
-  color: #F5E6C8;
-}
+.brand-first { font-style: italic; font-weight: 400; }
+.brand-last { font-weight: 700; color: #F5E6C8; }
 
 .verified-badge {
   color: white;
@@ -202,9 +176,6 @@ header, nav, main, footer {
   margin-top: 0.3rem;
 }
 
-/* ============================================
-   NAVIGATION
-   ============================================ */
 .main-nav {
   background: var(--card);
   border-bottom: 1px solid var(--paper-line);
@@ -252,15 +223,9 @@ header, nav, main, footer {
   font-weight: 600;
 }
 
-.nav-links a:hover {
-  background: var(--paper);
-}
+.nav-links a:hover { background: var(--paper); }
 
-.nav-tools {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
+.nav-tools { display: flex; align-items: center; gap: 0.6rem; }
 
 .search-box {
   display: flex;
@@ -272,9 +237,7 @@ header, nav, main, footer {
   min-width: 180px;
 }
 
-.search-box i {
-  color: var(--ink-soft);
-}
+.search-box i { color: var(--ink-soft); }
 
 .search-box input {
   border: none;
@@ -297,9 +260,7 @@ header, nav, main, footer {
   transition: var(--transition-fast);
 }
 
-.lang-toggle:hover, .theme-toggle:hover {
-  background: var(--paper-line);
-}
+.lang-toggle:hover, .theme-toggle:hover { background: var(--paper-line); }
 
 .mobile-menu-btn {
   display: none;
@@ -310,13 +271,7 @@ header, nav, main, footer {
   color: var(--ink);
 }
 
-/* ============================================
-   HERO SECTION
-   ============================================ */
-.hero-section {
-  padding: 3.5rem 0;
-  background: var(--paper);
-}
+.hero-section { padding: 3.5rem 0; background: var(--paper); }
 
 .hero-grid {
   display: grid;
@@ -344,9 +299,7 @@ header, nav, main, footer {
   margin: 0 0 1.5rem;
 }
 
-.highlight {
-  color: var(--chalk-blue);
-}
+.highlight { color: var(--chalk-blue); }
 
 .hero-desc {
   font-size: 1.1rem;
@@ -378,10 +331,7 @@ header, nav, main, footer {
   font-family: var(--font-body);
 }
 
-.btn-primary {
-  background: var(--ochre);
-  color: white;
-}
+.btn-primary { background: var(--ochre); color: white; }
 
 .btn-primary:hover {
   background: var(--chalk-blue-deep);
@@ -395,9 +345,7 @@ header, nav, main, footer {
   border: 1px solid var(--paper-line);
 }
 
-.btn-secondary:hover {
-  background: var(--paper);
-}
+.btn-secondary:hover { background: var(--paper); }
 
 .stats-grid {
   display: grid;
@@ -414,10 +362,7 @@ header, nav, main, footer {
   transition: var(--transition-fast);
 }
 
-.stat-card:hover {
-  box-shadow: var(--shadow-1);
-  transform: translateY(-2px);
-}
+.stat-card:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
 
 .stat-number {
   display: block;
@@ -427,16 +372,9 @@ header, nav, main, footer {
   color: var(--ochre);
 }
 
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--ink-soft);
-}
+.stat-label { font-size: 0.85rem; color: var(--ink-soft); }
 
-/* Sidebar */
-.hero-sidebar {
-  display: flex;
-  flex-direction: column;
-}
+.hero-sidebar { display: flex; flex-direction: column; }
 
 .sidebar-btn {
   display: flex;
@@ -456,9 +394,7 @@ header, nav, main, footer {
   box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.5);
 }
 
-.sidebar-btn-primary:hover {
-  transform: translateY(-2px);
-}
+.sidebar-btn-primary:hover { transform: translateY(-2px); }
 
 .sidebar-btn-secondary {
   background: white;
@@ -466,9 +402,7 @@ header, nav, main, footer {
   border: 1px solid var(--paper-line);
 }
 
-.sidebar-btn-secondary:hover {
-  background: var(--paper);
-}
+.sidebar-btn-secondary:hover { background: var(--paper); }
 
 .news-card, .social-card {
   background: white;
@@ -487,13 +421,8 @@ header, nav, main, footer {
   gap: 0.5rem;
 }
 
-.news-card h3 i {
-  color: var(--ochre);
-}
-
-.social-card h3 i {
-  color: var(--chalk-blue);
-}
+.news-card h3 i { color: var(--ochre); }
+.social-card h3 i { color: var(--chalk-blue); }
 
 .news-item {
   padding-bottom: 1rem;
@@ -501,11 +430,7 @@ header, nav, main, footer {
   border-bottom: 1px solid var(--paper-line);
 }
 
-.news-item:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
 .news-date {
   font-size: 0.8rem;
@@ -526,16 +451,9 @@ header, nav, main, footer {
   font-family: var(--font-body);
 }
 
-.news-item p {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--ink);
-}
+.news-item p { margin: 0; font-size: 0.9rem; color: var(--ink); }
 
-.social-icons {
-  display: flex;
-  gap: 0.8rem;
-}
+.social-icons { display: flex; gap: 0.8rem; }
 
 .social-icons a {
   width: 42px;
@@ -550,17 +468,9 @@ header, nav, main, footer {
   transition: var(--transition-fast);
 }
 
-.social-icons a:hover {
-  background: var(--ochre);
-  color: white;
-}
+.social-icons a:hover { background: var(--ochre); color: white; }
 
-/* ============================================
-   RESOURCES SECTION
-   ============================================ */
-.resources-section {
-  padding: 2rem 0 5rem;
-}
+.resources-section { padding: 2rem 0 5rem; }
 
 .section-title {
   font-family: var(--font-display);
@@ -572,9 +482,7 @@ header, nav, main, footer {
   gap: 0.6rem;
 }
 
-.section-title i {
-  color: var(--ochre);
-}
+.section-title i { color: var(--ochre); }
 
 .resources-grid {
   display: grid;
@@ -590,22 +498,11 @@ header, nav, main, footer {
   display: block;
 }
 
-.resource-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-2);
-}
+.resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
 
-.resource-blue {
-  background: linear-gradient(135deg, #EBF4FC, #F5F9FE);
-}
-
-.resource-green {
-  background: linear-gradient(135deg, #E8FAF0, #F3FDF7);
-}
-
-.resource-purple {
-  background: linear-gradient(135deg, #F3EFFC, #F9F7FE);
-}
+.resource-blue { background: linear-gradient(135deg, #EBF4FC, #F5F9FE); }
+.resource-green { background: linear-gradient(135deg, #E8FAF0, #F3FDF7); }
+.resource-purple { background: linear-gradient(135deg, #F3EFFC, #F9F7FE); }
 
 .resource-icon {
   width: 50px;
@@ -634,14 +531,201 @@ header, nav, main, footer {
 .resource-green p { color: #2A9D5C; margin: 0; }
 .resource-purple p { color: var(--amethyst); margin: 0; }
 
-/* ============================================
-   FOOTER
-   ============================================ */
-.site-footer {
-  background: var(--ink);
-  color: rgba(255,255,255,0.7);
-  padding: 3rem 0 1.5rem;
+.page-section { padding: 4rem 0; scroll-margin-top: 90px; }
+.page-section:nth-child(even) { background: white; }
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
 }
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.section-header p { color: var(--ink-soft); font-size: 1.1rem; }
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--chalk-blue), var(--ink));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-style: italic;
+}
+
+.about-text h3 { font-family: var(--font-display); color: var(--ink); margin-bottom: 1rem; }
+.about-text p { color: var(--ink-soft); margin-bottom: 1.5rem; line-height: 1.8; }
+
+.skills-list { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+
+.skill-tag {
+  background: rgba(44, 110, 142, 0.1);
+  color: var(--chalk-blue);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.level-card {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition-fast);
+}
+
+.level-card:hover { box-shadow: var(--shadow-2); transform: translateY(-4px); }
+
+.level-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 1.2rem;
+}
+
+.level-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--ink);
+}
+
+.chapter-list { list-style: none; padding: 0; margin: 1rem 0 0; }
+
+.chapter-list li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--paper-line);
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.chapter-list li:last-child { border-bottom: none; }
+.chapter-list i { color: var(--ochre); font-size: 0.8rem; }
+
+.research-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+.research-card {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  padding: 1.8rem;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.research-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  background: rgba(108, 92, 231, 0.1);
+  color: var(--amethyst);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.research-card h4 { color: var(--ink); margin: 0 0 0.5rem; font-family: var(--font-display); }
+.research-card p { color: var(--ink-soft); font-size: 0.9rem; margin: 0; }
+
+.faq-list { max-width: 800px; margin: 0 auto; }
+
+.faq-item {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 1.3rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.faq-question i { color: var(--ochre); transition: var(--transition-fast); }
+.faq-item.open .faq-question i { transform: rotate(180deg); }
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s var(--ease);
+  padding: 0 1.5rem;
+}
+
+.faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
+.faq-answer p { color: var(--ink-soft); margin: 0; line-height: 1.7; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item { display: flex; align-items: center; gap: 1rem; }
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  background: rgba(184, 121, 26, 0.1);
+  color: var(--ochre);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.contact-item h4 { margin: 0 0 0.2rem; color: var(--ink); font-size: 0.95rem; }
+.contact-item p { margin: 0; color: var(--ink-soft); font-size: 0.9rem; }
+
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.contact-form input, .contact-form textarea {
+  padding: 0.9rem 1.2rem;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.contact-form input:focus, .contact-form textarea:focus { border-color: var(--ochre); }
+.contact-form textarea { resize: vertical; min-height: 120px; }
+
+.site-footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
 
 .footer-top {
   display: flex;
@@ -654,11 +738,7 @@ header, nav, main, footer {
   gap: 1.5rem;
 }
 
-.footer-brand {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
+.footer-brand { display: flex; align-items: center; gap: 1rem; }
 
 .footer-logo {
   width: 45px;
@@ -675,36 +755,12 @@ header, nav, main, footer {
   font-weight: 700;
 }
 
-.footer-brand h4 {
-  color: white;
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-}
+.footer-brand h4 { color: white; margin: 0; font-family: var(--font-display); font-size: 1.2rem; }
+.footer-brand p { margin: 0.2rem 0 0; font-size: 0.85rem; }
 
-.footer-brand p {
-  margin: 0.2rem 0 0;
-  font-size: 0.85rem;
-}
-
-.footer-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  transition: var(--transition-fast);
-}
-
-.footer-links a:hover {
-  color: var(--ochre-light);
-}
+.footer-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition-fast); }
+.footer-links a:hover { color: var(--ochre-light); }
 
 .footer-bottom {
   display: flex;
@@ -715,15 +771,8 @@ header, nav, main, footer {
   align-items: center;
 }
 
-.footer-bottom-links {
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.footer-bottom .highlight-orange {
-  color: var(--ochre-light);
-}
+.footer-bottom-links { display: flex; gap: 1.5rem; align-items: center; }
+.footer-bottom .highlight-orange { color: var(--ochre-light); }
 
 .footer-bottom a {
   color: rgba(255,255,255,0.7);
@@ -734,13 +783,8 @@ header, nav, main, footer {
   transition: var(--transition-fast);
 }
 
-.footer-bottom a:hover {
-  color: var(--ochre-light);
-}
+.footer-bottom a:hover { color: var(--ochre-light); }
 
-/* ============================================
-   RESPONSIVE
-   ============================================ */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
   .header-content { flex-direction: column; text-align: center; }
@@ -749,21 +793,20 @@ header, nav, main, footer {
   .stats-grid { grid-template-columns: 1fr; }
   .resources-grid { grid-template-columns: 1fr; }
   .footer-top, .footer-bottom { flex-direction: column; text-align: center; }
+  .about-content { grid-template-columns: 1fr; }
+  .levels-grid { grid-template-columns: 1fr; }
+  .research-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
   .top-banner { padding: 3rem 0 2.5rem; }
   .nav-links { display: none; }
-  .nav-links.show-mobile { 
-    display: flex; 
-    flex-direction: column; 
-    width: 100%;
-  }
+  .nav-links.show-mobile { display: flex; flex-direction: column; width: 100%; }
   .mobile-menu-btn { display: block; }
   .search-box { display: none; }
 }
 
-/* Dark mode support */
 body.dark-mode {
   --ink: #E4DFCF;
   --ink-soft: #A8B0C0;
@@ -774,17 +817,12 @@ body.dark-mode {
 
 body.dark-mode .resource-blue,
 body.dark-mode .resource-green,
-body.dark-mode .resource-purple {
-  opacity: 0.9;
-}
+body.dark-mode .resource-purple { opacity: 0.9; }
 </style>
 </head>
 
 <body>
 
-<!-- ============================================
-     HEADER
-     ============================================ -->
 <header class="top-banner">
   <div class="container header-content">
     <div class="brand-section">
@@ -796,7 +834,6 @@ body.dark-mode .resource-purple {
       </h1>
       <p class="brand-tagline">Plateforme académique des mathématiques</p>
     </div>
-
     <div class="logo-circle">
       <span class="logo-text">MB</span>
       <span class="logo-sub">MATHS</span>
@@ -804,9 +841,6 @@ body.dark-mode .resource-purple {
   </div>
 </header>
 
-<!-- ============================================
-     NAVIGATION
-     ============================================ -->
 <nav class="main-nav">
   <div class="container nav-content">
     <ul class="nav-links">
@@ -817,76 +851,40 @@ body.dark-mode .resource-purple {
       <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
       <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
     </ul>
-
     <div class="nav-tools">
       <div class="search-box">
         <i class="fa-solid fa-search"></i>
         <input type="text" placeholder="Rechercher...">
       </div>
       <button class="lang-toggle" onclick="toggleLang()">AR</button>
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fa-solid fa-moon"></i>
-      </button>
+      <button class="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
       <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
 </nav>
 
-<!-- ============================================
-     MAIN CONTENT
-     ============================================ -->
 <main>
 
-  <!-- HERO SECTION -->
   <section class="hero-section">
     <div class="container hero-grid">
-
       <div class="hero-main">
         <span class="badge">Plateforme académique gratuite</span>
-
-        <h2 class="hero-title">
-          Apprenez les mathématiques avec
-          <span class="highlight">rigueur et clarté</span>.
-        </h2>
-
-        <p class="hero-desc">
-          Cours structurés, exercices progressifs, examens corrigés et
-          ressources avancées pour les cycles secondaire et supérieur.
-        </p>
-
+        <h2 class="hero-title">Apprenez les mathématiques avec <span class="highlight">rigueur et clarté</span>.</h2>
+        <p class="hero-desc">Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.</p>
         <div class="hero-buttons">
-          <a href="#maths" class="btn btn-primary">
-            <i class="fa-solid fa-book-open"></i> Commencer
-          </a>
-          <a href="#recherche" class="btn btn-secondary">
-            <i class="fa-solid fa-graduation-cap"></i> Recherche
-          </a>
+          <a href="#maths" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> Commencer</a>
+          <a href="#recherche" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Recherche</a>
         </div>
-
         <div class="stats-grid">
-          <div class="stat-card">
-            <span class="stat-number">03</span>
-            <span class="stat-label">Cycles éducatifs</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">∞</span>
-            <span class="stat-label">Ressources évolutives</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-number">02</span>
-            <span class="stat-label">Langues</span>
-          </div>
+          <div class="stat-card"><span class="stat-number">03</span><span class="stat-label">Cycles éducatifs</span></div>
+          <div class="stat-card"><span class="stat-number">∞</span><span class="stat-label">Ressources évolutives</span></div>
+          <div class="stat-card"><span class="stat-number">02</span><span class="stat-label">Langues</span></div>
         </div>
       </div>
 
       <aside class="hero-sidebar">
-        <a href="#maths" class="sidebar-btn sidebar-btn-primary">
-          <i class="fa-solid fa-infinity"></i> Mathématiques
-        </a>
-        <a href="#recherche" class="sidebar-btn sidebar-btn-secondary">
-          <i class="fa-solid fa-graduation-cap"></i> Recherche
-        </a>
-
+        <a href="#maths" class="sidebar-btn sidebar-btn-primary"><i class="fa-solid fa-infinity"></i> Mathématiques</a>
+        <a href="#recherche" class="sidebar-btn sidebar-btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Recherche</a>
         <div class="news-card">
           <h3><i class="fa-solid fa-bullhorn"></i> Actualités</h3>
           <div class="news-item">
@@ -898,90 +896,214 @@ body.dark-mode .resource-purple {
             <p>Ajout des séries d'exercices pour la 1ère BAC.</p>
           </div>
         </div>
-
         <div class="social-card">
           <h3><i class="fa-solid fa-share-nodes"></i> Suivez-moi</h3>
           <div class="social-icons">
-            <a href="https://github.com/mobendriss" target="_blank" rel="noopener" title="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="mailto:MoBendriss@Hotmail.com" title="Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
+            <a href="https://github.com/mobendriss" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:MoBendriss@Hotmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
       </aside>
-
     </div>
   </section>
 
-  <!-- RESOURCES SECTION -->
   <section class="resources-section">
     <div class="container">
-      <h2 class="section-title">
-        <i class="fa-solid fa-star"></i> Ressources populaires
-      </h2>
-
+      <h2 class="section-title"><i class="fa-solid fa-star"></i> Ressources populaires</h2>
       <div class="resources-grid">
         <a href="#college" class="resource-card resource-blue">
           <div class="resource-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Collège</h3>
-          <p>Cours et exercices</p>
+          <h3>Collège</h3><p>Cours et exercices</p>
         </a>
-
         <a href="#lycee" class="resource-card resource-green">
           <div class="resource-icon"><i class="fa-solid fa-book"></i></div>
-          <h3>Lycée</h3>
-          <p>BAC et préparation</p>
+          <h3>Lycée</h3><p>BAC et préparation</p>
         </a>
-
         <a href="#superieur" class="resource-card resource-purple">
           <div class="resource-icon"><i class="fa-solid fa-flask"></i></div>
-          <h3>Supérieur</h3>
-          <p>Recherche avancée</p>
+          <h3>Supérieur</h3><p>Recherche avancée</p>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="a-propos" class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>À propos</h2>
+        <p>Découvrez mon parcours et ma passion pour l'enseignement des mathématiques</p>
+      </div>
+      <div class="about-content">
+        <div class="about-avatar">MB</div>
+        <div class="about-text">
+          <h3>Mo Bendriss</h3>
+          <p>Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses.</p>
+          <p>Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.</p>
+          <div class="skills-list">
+            <span class="skill-tag">Algèbre</span>
+            <span class="skill-tag">Analyse</span>
+            <span class="skill-tag">Géométrie</span>
+            <span class="skill-tag">Probabilités</span>
+            <span class="skill-tag">Préparation BAC</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="maths" class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mathématiques</h2>
+        <p>Cours structurés et exercices progressifs pour tous les niveaux</p>
+      </div>
+      <div class="levels-grid">
+        <div class="level-card">
+          <div class="level-icon" style="background:#2C6E8E;"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Collège</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">Cours et exercices fondamentaux</p>
+          <ul class="chapter-list">
+            <li><i class="fa-solid fa-circle"></i> Nombres et calculs</li>
+            <li><i class="fa-solid fa-circle"></i> Géométrie plane</li>
+            <li><i class="fa-solid fa-circle"></i> Fonctions linéaires</li>
+            <li><i class="fa-solid fa-circle"></i> Statistiques</li>
+          </ul>
+        </div>
+        <div class="level-card">
+          <div class="level-icon" style="background:#2A9D5C;"><i class="fa-solid fa-book"></i></div>
+          <h3>Lycée</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">BAC et préparation intensive</p>
+          <ul class="chapter-list">
+            <li><i class="fa-solid fa-circle"></i> Fonctions et dérivées</li>
+            <li><i class="fa-solid fa-circle"></i> Suites numériques</li>
+            <li><i class="fa-solid fa-circle"></i> Probabilités</li>
+            <li><i class="fa-solid fa-circle"></i> Géométrie dans l'espace</li>
+          </ul>
+        </div>
+        <div class="level-card">
+          <div class="level-icon" style="background:var(--amethyst);"><i class="fa-solid fa-flask"></i></div>
+          <h3>Supérieur</h3>
+          <p style="color:var(--ink-soft); font-size:0.9rem;">Analyse et algèbre avancée</p>
+          <ul class="chapter-list">
+            <li><i class="fa-solid fa-circle"></i> Analyse réelle</li>
+            <li><i class="fa-solid fa-circle"></i> Algèbre linéaire</li>
+            <li><i class="fa-solid fa-circle"></i> Topologie</li>
+            <li><i class="fa-solid fa-circle"></i> Équations différentielles</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="recherche" class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Recherche</h2>
+        <p>Travaux et publications académiques</p>
+      </div>
+      <div class="research-grid">
+        <div class="research-card">
+          <div class="research-icon"><i class="fa-solid fa-file-lines"></i></div>
+          <div><h4>Méthodes pédagogiques innovantes</h4><p>Étude sur l'impact des outils numériques dans l'apprentissage des mathématiques.</p></div>
+        </div>
+        <div class="research-card">
+          <div class="research-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <div><h4>Analyse des difficultés d'apprentissage</h4><p>Recherche sur les obstacles cognitifs rencontrés par les élèves en algèbre.</p></div>
+        </div>
+        <div class="research-card">
+          <div class="research-icon"><i class="fa-solid fa-calculator"></i></div>
+          <div><h4>Modélisation mathématique</h4><p>Applications pratiques des mathématiques dans les sciences appliquées.</p></div>
+        </div>
+        <div class="research-card">
+          <div class="research-icon"><i class="fa-solid fa-lightbulb"></i></div>
+          <div><h4>Didactique des mathématiques</h4><p>Réflexions sur les meilleures approches d'enseignement par niveau.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Questions Fréquentes</h2>
+        <p>Trouvez rapidement des réponses à vos questions</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Les ressources sont-elles vraiment gratuites ?<i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Oui, toutes les ressources disponibles sur cette plateforme sont entièrement gratuites et accessibles à tous les niveaux.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Comment accéder aux cours par niveau ?<i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Rendez-vous dans la section "Mathématiques" et choisissez votre niveau (Collège, Lycée ou Supérieur) pour accéder aux cours correspondants.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">Puis-je poser des questions personnalisées ?<i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>Absolument ! Utilisez le formulaire de contact ou envoyez un email directement pour toute question spécifique.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">À quelle fréquence le contenu est-il mis à jour ?<i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-answer"><p>De nouvelles ressources sont ajoutées régulièrement. Consultez la section "Actualités" sur la page d'accueil pour les dernières mises à jour.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="page-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Contact</h2>
+        <p>N'hésitez pas à me contacter pour toute question</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><h4>Email</h4><p>MoBendriss@Hotmail.com</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+            <div><h4>GitHub</h4><p>github.com/mobendriss</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-clock"></i></div>
+            <div><h4>Disponibilité</h4><p>Réponse sous 24-48h</p></div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleContact(event)">
+          <input type="text" placeholder="Votre nom" required>
+          <input type="email" placeholder="Votre email" required>
+          <textarea placeholder="Votre message" required></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Envoyer</button>
+        </form>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- ============================================
-     FOOTER
-     ============================================ -->
 <footer class="site-footer">
   <div class="container footer-top">
     <div class="footer-brand">
       <div class="footer-logo">MB</div>
-      <div>
-        <h4>MoBendriss</h4>
-        <p>Plateforme académique des mathématiques</p>
-      </div>
+      <div><h4>MoBendriss</h4><p>Plateforme académique des mathématiques</p></div>
     </div>
-
     <ul class="footer-links">
       <li><a href="#">Accueil</a></li>
       <li><a href="#maths">Mathématiques</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
-
   <div class="container footer-bottom">
     <p>© 2026 MoBendriss. Tous droits réservés. <span class="highlight-orange">Conçu avec rigueur.</span></p>
     <div class="footer-bottom-links">
-      <a href="https://github.com/mobendriss" target="_blank" rel="noopener">
-        <i class="fa-brands fa-github"></i> GitHub
-      </a>
+      <a href="https://github.com/mobendriss" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
       <a href="#">Confidentialité</a>
     </div>
   </div>
 </footer>
 
-<!-- ============================================
-     JAVASCRIPT
-     ============================================ -->
 <script>
-  // Dark mode toggle
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const icon = document.querySelector('.theme-toggle i');
@@ -996,21 +1118,31 @@ body.dark-mode .resource-purple {
     }
   }
 
-  // Load saved theme
   if (localStorage.getItem('theme') === 'dark') {
     document.body.classList.add('dark-mode');
     document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
   }
 
-  // Language toggle (placeholder - يمكن تطويره لاحقاً)
   function toggleLang() {
     alert('Fonctionnalité de traduction à venir!');
   }
 
-  // Mobile menu toggle
   document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('show-mobile');
   });
+
+  function toggleFaq(element) {
+    const item = element.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function handleContact(event) {
+    event.preventDefault();
+    alert('Merci pour votre message ! Je vous répondrai bientôt.\n\nEn attendant, vous pouvez me contacter directement à: MoBendriss@Hotmail.com');
+    event.target.reset();
+  }
 </script>
 
 </body>
