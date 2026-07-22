@@ -15,7 +15,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-* { box-sizing: border-box; }
+/* ============================================
+   RESET & VARIABLES
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --ink: #132038;
@@ -35,296 +40,285 @@
   --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --shadow-1: 0 1px 2px rgba(19, 32, 56, .05), 0 6px 16px -8px rgba(19, 32, 56, .12);
   --shadow-2: 0 20px 34px -18px rgba(19, 32, 56, .28);
+  --ease: cubic-bezier(.22, 1, .36, 1);
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  --transition-fast: 0.2s ease;
+  --transition-fast: 0.2s var(--ease);
   --container-max: 1200px;
   --nav-height: 76px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after { transition-duration: 0.001ms !important; animation-duration: 0.001ms !important; }
+  *, ::before, ::after {
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+  }
 }
 
 body {
+  position: relative;
   font-family: var(--font-body);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   margin: 0;
   background: var(--paper);
   line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.container { max-width: var(--container-max); margin-inline: auto; padding-inline: 1.5rem; }
-a { color: inherit; text-decoration: none; }
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
-section { scroll-margin-top: var(--nav-height); }
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
 
-/* HEADER */
+a {
+  color: inherit;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   TOP BANNER (HEADER)
+   ============================================ */
 .top-banner {
   position: relative;
-  background: radial-gradient(60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
-              radial-gradient(50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
-              linear-gradient(160deg, rgb(22, 35, 63) 0%, rgb(16, 28, 51) 55%, rgb(11, 21, 38) 100%);
+  background: 
+    radial-gradient(60% 90% at 85% 0%, rgba(44, 110, 142, 0.35), transparent 60%),
+    radial-gradient(50% 70% at 8% 100%, rgba(231, 169, 71, 0.14), transparent 65%),
+    linear-gradient(160deg, rgb(22, 35, 63) 0%, rgb(16, 28, 51) 55%, rgb(11, 21, 38) 100%);
   padding: 4.5rem 0 3.75rem;
   overflow: hidden;
   border-bottom: 1px solid rgba(231, 169, 71, 0.4);
 }
+
 .top-banner::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none;
-  background-image: linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
+  content: "";
+  position: absolute;
+  background-image: 
+    linear-gradient(rgba(231, 169, 71, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 169, 71, 0.16) 1px, transparent 1px);
   background-size: 34px 34px;
   mask-image: radial-gradient(95% 100% at 50% 0%, black 55%, transparent 95%);
   -webkit-mask-image: radial-gradient(95% 100% at 50% 0%, black 55%, transparent 95%);
-}
-.header-content { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; position: relative; z-index: 1; }
-.brand-section { flex: 1; min-width: 280px; }
-.eyebrow { color: var(--ochre-light); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; margin: 0 0 0.75rem; text-transform: uppercase; }
-.brand-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); color: white; margin: 0; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; }
-.brand-first { font-style: italic; font-weight: 400; }
-.brand-last { font-weight: 700; color: #F5E6C8; }
-.verified-badge { color: white; background: var(--ochre-light); border-radius: 50%; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; font-size: 1rem; }
-.brand-tagline { color: rgba(255,255,255,0.75); font-size: 1.1rem; margin: 0.75rem 0 0; }
-.logo-circle { width: 110px; height: 110px; min-width: 110px; border-radius: 50%; border: 2px solid var(--ochre-light); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(19, 32, 56, 0.4); }
-.logo-text { font-family: var(--font-display); font-style: italic; font-size: 1.8rem; color: white; font-weight: 700; line-height: 1; }
-.logo-sub { font-size: 0.6rem; letter-spacing: 0.15em; color: rgba(255,255,255,0.6); margin-top: 0.3rem; }
-
-/* NAV */
-.main-nav { background: var(--card); border-bottom: 1px solid var(--paper-line); padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-1); transition: background-color 0.3s ease, border-color 0.3s ease; }
-.nav-content { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-.nav-links { list-style: none; display: flex; gap: 0.5rem; margin: 0; padding: 0; flex-wrap: wrap; }
-.nav-links a { color: var(--ink-soft); font-weight: 500; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; padding: 0.6rem 1rem; border-radius: var(--radius-sm); transition: var(--transition-fast); white-space: nowrap; cursor: pointer; }
-.nav-links a.active { background: rgba(231, 169, 71, 0.15); color: var(--ochre); font-weight: 600; }
-.nav-links a:hover { background: var(--paper); }
-.nav-tools { display: flex; align-items: center; gap: 0.6rem; }
-.search-box { display: flex; align-items: center; gap: 0.5rem; background: var(--paper); padding: 0.5rem 1rem; border-radius: var(--radius-sm); min-width: 180px; }
-.search-box i { color: var(--ink-soft); }
-.search-box input { border: none; background: transparent; outline: none; width: 100%; font-family: var(--font-body); color: var(--ink); }
-.lang-toggle, .theme-toggle { background: var(--paper); border: none; padding: 0.5rem 0.9rem; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--ink); transition: var(--transition-fast); font-family: var(--font-body); }
-.lang-toggle:hover, .theme-toggle:hover { background: var(--paper-line); }
-.mobile-menu-btn { display: none; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--ink); }
-
-/* HERO */
-.hero-section { padding: 3.5rem 0; background: var(--paper); transition: background-color 0.3s ease; }
-.hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 2.5rem; }
-.badge { display: inline-block; background: rgba(231, 169, 71, 0.15); color: var(--ochre); padding: 0.5rem 1.1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; }
-.badge-blue { background: rgba(44, 110, 142, 0.12); color: var(--chalk-blue); }
-.badge-purple { background: rgba(108, 92, 231, 0.12); color: var(--amethyst); }
-.badge-rust { background: rgba(162, 59, 59, 0.12); color: var(--rust); }
-.hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 700; color: var(--ink); line-height: 1.2; margin: 0 0 1.5rem; }
-.highlight { color: var(--chalk-blue); }
-.hero-desc { font-size: 1.1rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: 2rem; max-width: 600px; }
-.hero-buttons { display: flex; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 1.8rem; border-radius: var(--radius-sm); font-weight: 600; transition: var(--transition-fast); border: none; cursor: pointer; font-size: 1rem; font-family: var(--font-body); }
-.btn-primary { background: var(--ochre); color: white; }
-.btn-primary:hover { background: var(--chalk-blue-deep); transform: translateY(-2px); box-shadow: var(--shadow-1); }
-.btn-secondary { background: white; color: var(--ink); border: 1px solid var(--paper-line); }
-.btn-secondary:hover { background: var(--paper); }
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.stat-card { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-md); padding: 1.5rem; text-align: center; transition: var(--transition-fast); }
-.stat-card:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
-.stat-number { display: block; font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--ochre); }
-.stat-label { font-size: 0.85rem; color: var(--ink-soft); }
-.hero-sidebar { display: flex; flex-direction: column; }
-.sidebar-btn { display: flex; align-items: center; gap: 0.6rem; padding: 1.2rem; border-radius: var(--radius-md); font-weight: 600; margin-bottom: 1rem; transition: var(--transition-fast); cursor: pointer; }
-.sidebar-btn-primary { background: linear-gradient(135deg, var(--ochre-light), var(--ochre)); color: white; box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.5); }
-.sidebar-btn-primary:hover { transform: translateY(-2px); }
-.sidebar-btn-secondary { background: var(--card); color: var(--ink); border: 1px solid var(--paper-line); }
-.sidebar-btn-secondary:hover { background: var(--paper); }
-.news-card, .social-card { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1rem; }
-.news-card h3, .social-card h3 { font-size: 1rem; color: var(--ink); margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
-.news-card h3 i { color: var(--ochre); }
-.social-card h3 i { color: var(--chalk-blue); }
-.news-item { padding-bottom: 1rem; margin-bottom: 1rem; border-bottom: 1px solid var(--paper-line); }
-.news-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.news-date { font-size: 0.8rem; color: var(--ink-soft); display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.4rem; font-family: var(--font-mono); }
-.news-tag { background: var(--ochre); color: white; padding: 0.1rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-family: var(--font-body); }
-.news-item p { margin: 0; font-size: 0.9rem; color: var(--ink); }
-.social-icons { display: flex; gap: 0.8rem; }
-.social-icons a { width: 42px; height: 42px; border-radius: var(--radius-sm); background: var(--paper); display: flex; align-items: center; justify-content: center; color: var(--ink); transition: var(--transition-fast); }
-.social-icons a:hover { background: var(--ochre); color: white; }
-
-/* RESOURCES */
-.resources-section { padding: 2rem 0 5rem; }
-.section-title { font-family: var(--font-display); font-size: 1.6rem; color: var(--ink); margin-bottom: 2rem; display: flex; align-items: center; gap: 0.6rem; }
-.section-title i { color: var(--ochre); }
-.resources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.resource-card { padding: 2rem; border-radius: var(--radius-lg); transition: var(--transition-fast); display: block; cursor: pointer; }
-.resource-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
-.resource-blue { background: linear-gradient(135deg, #EBF4FC, #F5F9FE); }
-.resource-green { background: linear-gradient(135deg, #E8FAF0, #F3FDF7); }
-.resource-purple { background: linear-gradient(135deg, #F3EFFC, #F9F7FE); }
-.resource-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.3rem; margin-bottom: 1.2rem; }
-.resource-blue .resource-icon { background: #2C6E8E; }
-.resource-green .resource-icon { background: #2A9D5C; }
-.resource-purple .resource-icon { background: var(--amethyst); }
-.resource-card h3 { font-family: var(--font-display); font-size: 1.3rem; color: var(--ink); margin: 0 0 0.3rem; }
-.resource-blue p { color: #2C6E8E; margin: 0; }
-.resource-green p { color: #2A9D5C; margin: 0; }
-.resource-purple p { color: var(--amethyst); margin: 0; }
-
-/* CONTENT */
-.content-section { padding: 5rem 0; }
-.content-section.alt-bg { background: var(--card); transition: background-color 0.3s ease; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-header h2 { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin: 1rem 0; color: var(--ink); line-height: 1.2; }
-.section-header p { font-size: 1.1rem; color: var(--ink-soft); max-width: 640px; margin: 0 auto; }
-.highlight-blue { color: var(--chalk-blue); }
-.highlight-ochre { color: var(--ochre); }
-.highlight-purple { color: var(--amethyst); }
-
-/* ABOUT */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-.about-text h2 { text-align: left; }
-.about-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
-.about-feature { display: flex; gap: 0.9rem; align-items: flex-start; }
-.about-feature-icon { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; background: rgba(231, 169, 71, 0.15); color: var(--ochre); display: flex; align-items: center; justify-content: center; }
-.about-feature h4 { margin: 0 0 0.3rem; font-weight: 600; color: var(--ink); }
-.about-feature p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); }
-.about-card { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-lg); padding: 2.5rem 2rem; box-shadow: var(--shadow-1); transition: background-color 0.3s ease, border-color 0.3s ease; }
-.about-avatar { width: 96px; height: 96px; border-radius: 50%; border: 2px solid var(--ochre-light); background: rgba(19, 32, 56, 0.05); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-family: var(--font-display); font-size: 2rem; font-style: italic; font-weight: 700; color: var(--ink); }
-.about-card h3 { text-align: center; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; margin: 0 0 0.2rem; color: var(--ink); }
-.about-card .about-role { text-align: center; color: var(--ink-soft); font-size: 0.95rem; margin: 0 0 1.5rem; }
-.about-divider { height: 1px; background: var(--paper-line); margin: 1.5rem 0; }
-.about-info { display: flex; flex-direction: column; gap: 0.9rem; }
-.about-info-row { display: flex; justify-content: space-between; font-size: 0.95rem; }
-.about-info-row .label { color: var(--ink-soft); }
-.about-info-row .label i { color: var(--ochre); margin-right: 0.5rem; }
-.about-info-row .value { font-weight: 600; color: var(--ink); }
-
-/* MATHS */
-.maths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.math-card { padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--paper-line); transition: var(--transition-fast); }
-.math-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
-.math-card.blue { background: linear-gradient(135deg, #EBF4FC, #F5F9FE); }
-.math-card.green { background: linear-gradient(135deg, #E8FAF0, #F3FDF7); }
-.math-card.purple { background: linear-gradient(135deg, #F3EFFC, #F9F7FE); }
-.math-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.4rem; margin-bottom: 1.2rem; }
-.math-card.blue .math-icon { background: #2C6E8E; }
-.math-card.green .math-icon { background: #2A9D5C; }
-.math-card.purple .math-icon { background: var(--amethyst); }
-.math-card h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin: 0 0 0.3rem; }
-.math-card .math-sub { font-weight: 600; font-size: 0.9rem; margin: 0 0 0.8rem; }
-.math-card.blue .math-sub { color: var(--chalk-blue); }
-.math-card.green .math-sub { color: #2A9D5C; }
-.math-card.purple .math-sub { color: var(--amethyst); }
-.math-card p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; margin: 0 0 1.2rem; }
-.math-topics { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
-.math-topic { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.8rem; border-radius: 12px; }
-.math-card.blue .math-topic { background: rgba(44, 110, 142, 0.12); color: var(--chalk-blue); }
-.math-card.green .math-topic { background: rgba(42, 157, 92, 0.12); color: #2A9D5C; }
-.math-card.purple .math-topic { background: rgba(108, 92, 231, 0.12); color: var(--amethyst); }
-.math-link { font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem; transition: transform 0.2s; cursor: pointer; }
-.math-link:hover { transform: translateX(4px); }
-.math-card.blue .math-link { color: var(--chalk-blue); }
-.math-card.green .math-link { color: #2A9D5C; }
-.math-card.purple .math-link { color: var(--amethyst); }
-.maths-stats { margin-top: 4rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; background: var(--paper); padding: 2rem; border-radius: var(--radius-lg); border: 1px solid var(--paper-line); transition: background-color 0.3s ease; }
-.maths-stat { text-align: center; }
-.maths-stat-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--ochre); display: block; }
-.maths-stat-label { font-size: 0.9rem; color: var(--ink-soft); }
-
-/* RESEARCH */
-.research-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.research-areas { display: flex; flex-direction: column; gap: 1rem; }
-.research-area { display: flex; gap: 1rem; background: var(--card); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--paper-line); align-items: flex-start; transition: var(--transition-fast); }
-.research-area:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
-.research-area-icon { flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; }
-.research-area h4 { margin: 0 0 0.3rem; font-weight: 600; color: var(--ink); }
-.research-area p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
-.research-publications h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin: 0 0 1.5rem; color: var(--ink); }
-.publication { display: flex; gap: 1.2rem; align-items: center; background: var(--card); padding: 1.2rem; border-radius: var(--radius-md); border: 1px solid var(--paper-line); margin-bottom: 1rem; transition: var(--transition-fast); cursor: pointer; }
-.publication:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
-.publication-year { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--ochre); min-width: 60px; }
-.publication-body { flex: 1; }
-.publication-type { display: inline-block; background: rgba(231, 169, 71, 0.15); color: var(--ochre); padding: 0.15rem 0.7rem; border-radius: 10px; font-size: 0.72rem; font-weight: 600; margin-bottom: 0.4rem; }
-.publication h4 { margin: 0; font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--ink); }
-.publication .pub-arrow { color: var(--ink-soft); transition: transform 0.2s, color 0.2s; }
-.publication:hover .pub-arrow { transform: translateX(4px); color: var(--ochre); }
-
-/* FAQ */
-.faq-container { max-width: 800px; margin: 0 auto; }
-.faq-item { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-md); margin-bottom: 0.8rem; overflow: hidden; transition: var(--transition-fast); }
-.faq-item.open { border-color: var(--ochre); background: rgba(231, 169, 71, 0.04); box-shadow: var(--shadow-1); }
-.faq-question { display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%; background: none; border: none; padding: 1.3rem 1.5rem; text-align: left; cursor: pointer; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--ink); }
-.faq-toggle { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--paper); color: var(--ink-soft); display: flex; align-items: center; justify-content: center; transition: var(--transition-fast); font-size: 0.85rem; }
-.faq-item.open .faq-toggle { background: var(--ochre); color: white; transform: rotate(180deg); }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease; }
-.faq-item.open .faq-answer { max-height: 300px; padding: 0 1.5rem 1.3rem; }
-.faq-answer p { margin: 0; color: var(--ink-soft); line-height: 1.7; }
-
-/* CONTACT */
-.contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
-.contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
-.contact-card { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-md); padding: 1.5rem; transition: var(--transition-fast); }
-.contact-card:hover { box-shadow: var(--shadow-1); transform: translateY(-2px); }
-.contact-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.1rem; margin-bottom: 0.8rem; }
-.contact-card h4 { margin: 0 0 0.4rem; font-weight: 600; color: var(--ink); }
-.contact-card a, .contact-card p { margin: 0; font-size: 0.92rem; color: var(--ink-soft); transition: color 0.2s; }
-.contact-card a:hover { color: var(--ochre); }
-.contact-form { background: var(--card); border: 1px solid var(--paper-line); border-radius: var(--radius-lg); padding: 2rem; transition: background-color 0.3s ease, border-color 0.3s ease; }
-.form-group { margin-bottom: 1.2rem; }
-.form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.92rem; font-weight: 600; color: var(--ink); }
-.form-group input, .form-group textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--paper-line); border-radius: var(--radius-sm); background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 0.95rem; outline: none; transition: var(--transition-fast); }
-.form-group input:focus, .form-group textarea:focus { border-color: var(--ochre); background: var(--card); }
-.form-group textarea { resize: vertical; min-height: 130px; }
-.form-success { display: flex; align-items: center; gap: 0.6rem; background: rgba(42, 157, 92, 0.1); border: 1px solid rgba(42, 157, 92, 0.3); color: #2A9D5C; padding: 0.9rem 1rem; border-radius: var(--radius-sm); font-size: 0.92rem; font-weight: 600; margin-top: 1rem; }
-
-/* FOOTER */
-.site-footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 3rem 0 1.5rem; }
-.footer-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
-.footer-brand { display: flex; align-items: center; gap: 1rem; }
-.footer-logo { width: 45px; height: 45px; min-width: 45px; border-radius: 50%; border: 1px solid var(--ochre-light); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-style: italic; color: white; font-weight: 700; }
-.footer-brand h4 { color: white; margin: 0; font-family: var(--font-display); font-size: 1.2rem; }
-.footer-brand p { margin: 0.2rem 0 0; font-size: 0.85rem; }
-.footer-links { list-style: none; display: flex; gap: 2rem; margin: 0; padding: 0; flex-wrap: wrap; }
-.footer-links a { color: rgba(255,255,255,0.7); transition: var(--transition-fast); cursor: pointer; }
-.footer-links a:hover { color: var(--ochre-light); }
-.footer-bottom { display: flex; justify-content: space-between; font-size: 0.85rem; flex-wrap: wrap; gap: 1rem; align-items: center; }
-.footer-bottom-links { display: flex; gap: 1.5rem; align-items: center; }
-.footer-bottom .highlight-orange { color: var(--ochre-light); }
-.footer-bottom a { color: rgba(255,255,255,0.7); display: flex; align-items: center; gap: 0.4rem; transition: var(--transition-fast); }
-.footer-bottom a:hover { color: var(--ochre-light); }
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .hero-grid, .about-grid, .research-grid, .contact-grid { grid-template-columns: 1fr; }
-  .header-content { flex-direction: column; text-align: center; }
-  .nav-content { flex-direction: column; }
-  .nav-links { justify-content: center; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .resources-grid, .maths-grid { grid-template-columns: 1fr; }
-  .maths-stats { grid-template-columns: repeat(2, 1fr); }
-  .footer-top, .footer-bottom { flex-direction: column; text-align: center; }
-  .about-text h2 { text-align: center; }
-}
-@media (max-width: 600px) {
-  .top-banner { padding: 3rem 0 2.5rem; }
-  .nav-links { display: none; width: 100%; flex-direction: column; }
-  .nav-links.show-mobile { display: flex; }
-  .mobile-menu-btn { display: block; }
-  .search-box { display: none; }
+  inset: 0;
+  pointer-events: none;
 }
 
-/* DARK MODE */
-body.dark-mode {
-  --ink: #E4DFCF;
-  --ink-soft: #A8B0C0;
-  --paper: #0B1526;
-  --paper-line: #22314E;
-  --card: #16233F;
+header, nav, main, footer {
+  position: relative;
+  z-index: 1;
 }
-body.dark-mode .btn-secondary { background: var(--card); color: var(--ink); }
-body.dark-mode .resource-blue, body.dark-mode .resource-green, body.dark-mode .resource-purple, body.dark-mode .math-card.blue, body.dark-mode .math-card.green, body.dark-mode .math-card.purple { opacity: 0.9; }
-body.dark-mode .about-avatar { background: rgba(255,255,255,0.05); }
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.brand-section {
+  flex: 1;
+  min-width: 280px;
+}
+
+.eyebrow {
+  color: var(--ochre-light);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.brand-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: white;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.brand-first {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.brand-last {
+  font-weight: 700;
+  color: #F5E6C8;
+}
+
+.verified-badge {
+  color: white;
+  background: var(--ochre-light);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.brand-tagline {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.1rem;
+  margin: 0.75rem 0 0;
+}
+
+.logo-circle {
+  width: 110px;
+  height: 110px;
+  min-width: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--ochre-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(19, 32, 56, 0.4);
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logo-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.6);
+  margin-top: 0.3rem;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.main-nav {
+  background: var(--card);
+  border-bottom: 1px solid var(--paper-line);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-1);
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-links a.active {
+  background: rgba(231, 169, 71, 0.15);
+  color: var(--ochre);
+  font-weight: 600;
+}
+
+.nav-links a:hover {
+  background: var(--paper);
+}
+
+.nav-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--paper);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  min-width: 180px;
+}
+
+.search-box i {
+  color: var(--ink-soft);
+}
+
+.search-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  width: 100%;
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.lang-toggle, .theme-toggle {
+  background: var(--paper);
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ink);
+  transition: var(--transition-fast);
+}
+
+.lang-toggle:hover, .theme-toggle:hover {
+  background: var(--paper-line);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--ink);
+}
 </style>
 </head>
 
 <body>
 
+<!-- ============================================
+     HEADER
+     ============================================ -->
 <header class="top-banner">
   <div class="container header-content">
     <div class="brand-section">
@@ -336,6 +330,7 @@ body.dark-mode .about-avatar { background: rgba(255,255,255,0.05); }
       </h1>
       <p class="brand-tagline">Plateforme académique des mathématiques</p>
     </div>
+
     <div class="logo-circle">
       <span class="logo-text">MB</span>
       <span class="logo-sub">MATHS</span>
@@ -343,52 +338,88 @@ body.dark-mode .about-avatar { background: rgba(255,255,255,0.05); }
   </div>
 </header>
 
+<!-- ============================================
+     NAVIGATION
+     ============================================ -->
 <nav class="main-nav">
   <div class="container nav-content">
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-nav="home" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
-      <li><a href="#about" data-nav="about"><i class="fa-solid fa-user"></i> À propos</a></li>
-      <li><a href="#maths" data-nav="maths"><i class="fa-solid fa-infinity"></i> Mathématiques</a></li>
-      <li><a href="#research" data-nav="research"><i class="fa-solid fa-graduation-cap"></i> Recherche</a></li>
-      <li><a href="#faq" data-nav="faq"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
-      <li><a href="#contact" data-nav="contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+    <ul class="nav-links">
+      <li><a href="#" class="active"><i class="fa-solid fa-house"></i> Accueil</a></li>
+      <li><a href="#a-propos"><i class="fa-solid fa-user"></i> À propos</a></li>
+      <li><a href="#maths"><i class="fa-solid fa-infinity"></i> Mathématiques</a></li>
+      <li><a href="#recherche"><i class="fa-solid fa-graduation-cap"></i> Recherche</a></li>
+      <li><a href="#faq"><i class="fa-solid fa-circle-question"></i> FAQ</a></li>
+      <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
     </ul>
+
     <div class="nav-tools">
       <div class="search-box">
         <i class="fa-solid fa-search"></i>
         <input type="text" placeholder="Rechercher...">
       </div>
-      <button class="lang-toggle" id="langToggle">AR</button>
-      <button class="theme-toggle" id="themeToggle" aria-label="Thème">
+      <button class="lang-toggle" onclick="toggleLang()">AR</button>
+      <button class="theme-toggle" onclick="toggleTheme()">
         <i class="fa-solid fa-moon"></i>
       </button>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-        <i class="fa-solid fa-bars"></i>
-      </button>
+      <button class="mobile-menu-btn"><i class="fa-solid fa-bars"></i></button>
     </div>
   </div>
-</nav>
-
+</nav> 
+  <!-- ============================================
+     MAIN CONTENT
+     ============================================ -->
 <main>
-  <section id="home" class="hero-section">
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
     <div class="container hero-grid">
+
       <div class="hero-main">
         <span class="badge">Plateforme académique gratuite</span>
-        <h2 class="hero-title">Apprenez les mathématiques avec <span class="highlight">rigueur et clarté</span>.</h2>
-        <p class="hero-desc">Cours structurés, exercices progressifs, examens corrigés et ressources avancées pour les cycles secondaire et supérieur.</p>
+
+        <h2 class="hero-title">
+          Apprenez les mathématiques avec
+          <span class="highlight">rigueur et clarté</span>.
+        </h2>
+
+        <p class="hero-desc">
+          Cours structurés, exercices progressifs, examens corrigés et
+          ressources avancées pour les cycles secondaire et supérieur.
+        </p>
+
         <div class="hero-buttons">
-          <a href="#maths" class="btn btn-primary"><i class="fa-solid fa-book-open"></i> Commencer</a>
-          <a href="#research" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Recherche</a>
+          <a href="#maths" class="btn btn-primary">
+            <i class="fa-solid fa-book-open"></i> Commencer
+          </a>
+          <a href="#recherche" class="btn btn-secondary">
+            <i class="fa-solid fa-graduation-cap"></i> Recherche
+          </a>
         </div>
+
         <div class="stats-grid">
-          <div class="stat-card"><span class="stat-number">03</span><span class="stat-label">Cycles éducatifs</span></div>
-          <div class="stat-card"><span class="stat-number">∞</span><span class="stat-label">Ressources évolutives</span></div>
-          <div class="stat-card"><span class="stat-number">02</span><span class="stat-label">Langues</span></div>
+          <div class="stat-card">
+            <span class="stat-number">03</span>
+            <span class="stat-label">Cycles éducatifs</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Ressources évolutives</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">02</span>
+            <span class="stat-label">Langues</span>
+          </div>
         </div>
       </div>
+
       <aside class="hero-sidebar">
-        <a href="#maths" class="sidebar-btn sidebar-btn-primary"><i class="fa-solid fa-infinity"></i> Mathématiques</a>
-        <a href="#research" class="sidebar-btn sidebar-btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Recherche</a>
+        <a href="#maths" class="sidebar-btn sidebar-btn-primary">
+          <i class="fa-solid fa-infinity"></i> Mathématiques
+        </a>
+        <a href="#recherche" class="sidebar-btn sidebar-btn-secondary">
+          <i class="fa-solid fa-graduation-cap"></i> Recherche
+        </a>
+
         <div class="news-card">
           <h3><i class="fa-solid fa-bullhorn"></i> Actualités</h3>
           <div class="news-item">
@@ -400,348 +431,591 @@ body.dark-mode .about-avatar { background: rgba(255,255,255,0.05); }
             <p>Ajout des séries d'exercices pour la 1ère BAC.</p>
           </div>
         </div>
+
         <div class="social-card">
           <h3><i class="fa-solid fa-share-nodes"></i> Suivez-moi</h3>
           <div class="social-icons">
-            <a href="https://github.com/mobendriss" target="_blank" rel="noopener" title="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="mailto:MoBendriss@Hotmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://github.com/mobendriss" target="_blank" rel="noopener" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:MoBendriss@Hotmail.com" title="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
           </div>
         </div>
       </aside>
-    </div>
 
-    <div class="container resources-section">
-      <h2 class="section-title"><i class="fa-solid fa-star"></i> Ressources populaires</h2>
+    </div>
+  </section>
+
+  <!-- RESOURCES SECTION -->
+  <section class="resources-section">
+    <div class="container">
+      <h2 class="section-title">
+        <i class="fa-solid fa-star"></i> Ressources populaires
+      </h2>
+
       <div class="resources-grid">
-        <a href="#maths" class="resource-card resource-blue">
+        <a href="#college" class="resource-card resource-blue">
           <div class="resource-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Collège</h3><p>Cours et exercices</p>
-        </a>
-        <a href="#maths" class="resource-card resource-green">
-          <div class="resource-icon"><i class="fa-solid fa-book"></i></div>
-          <h3>Lycée</h3><p>BAC et préparation</p>
-        </a>
-        <a href="#maths" class="resource-card resource-purple">
-          <div class="resource-icon"><i class="fa-solid fa-flask"></i></div>
-          <h3>Supérieur</h3><p>Recherche avancée</p>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="content-section">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <span class="badge badge-blue">À propos</span>
-          <h2 class="hero-title">Une passion pour l'enseignement des <span class="highlight">mathématiques</span></h2>
-          <p class="hero-desc">Enseignant passionné, je mets à disposition des ressources pédagogiques rigoureuses et accessibles à tous les niveaux : du collège à l'enseignement supérieur, en passant par le lycée.</p>
-          <p class="hero-desc">Mon objectif est de rendre les mathématiques claires, progressives et concrètes grâce à des cours structurés, des exercices corrigés et des examens blancs.</p>
-          <div class="about-features">
-            <div class="about-feature">
-              <span class="about-feature-icon"><i class="fa-solid fa-check"></i></span>
-              <div><h4>Cours structurés</h4><p>Des leçons progressives avec exemples détaillés.</p></div>
-            </div>
-            <div class="about-feature">
-              <span class="about-feature-icon"><i class="fa-solid fa-check"></i></span>
-              <div><h4>Exercices progressifs</h4><p>Du niveau débutant aux problèmes avancés.</p></div>
-            </div>
-            <div class="about-feature">
-              <span class="about-feature-icon"><i class="fa-solid fa-check"></i></span>
-              <div><h4>Examens corrigés</h4><p>Préparez-vous efficacement aux évaluations.</p></div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="about-card">
-            <div class="about-avatar">MB</div>
-            <h3>Mo Bendriss</h3>
-            <p class="about-role">Enseignant de mathématiques</p>
-            <div class="about-divider"></div>
-            <div class="about-info">
-              <div class="about-info-row"><span class="label"><i class="fa-solid fa-graduation-cap"></i>Diplôme</span><span class="value">Master en Mathématiques</span></div>
-              <div class="about-info-row"><span class="label"><i class="fa-solid fa-briefcase"></i>Expérience</span><span class="value">10+ années</span></div>
-              <div class="about-info-row"><span class="label"><i class="fa-solid fa-language"></i>Langues</span><span class="value">FR · AR · EN</span></div>
-              <div class="about-info-row"><span class="label"><i class="fa-solid fa-globe"></i>Plateforme</span><span class="value">En ligne & gratuite</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="maths" class="content-section alt-bg">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge">Mathématiques</span>
-        <h2>Des ressources pour <span class="highlight-blue">tous les niveaux</span></h2>
-        <p>Choisissez votre niveau et accédez à des cours, exercices et examens conçus par un enseignant expérimenté.</p>
-      </div>
-      <div class="maths-grid">
-        <div class="math-card blue">
-          <div class="math-icon"><i class="fa-solid fa-graduation-cap"></i></div>
           <h3>Collège</h3>
-          <p class="math-sub">De la 6ème à la 3ème</p>
-          <p>Fondamentaux, arithmétique, géométrie et introduction à l'algèbre.</p>
-          <div class="math-topics">
-            <span class="math-topic">Nombres et calculs</span>
-            <span class="math-topic">Géométrie plane</span>
-            <span class="math-topic">Proportionnalité</span>
-            <span class="math-topic">Statistiques</span>
-          </div>
-          <a href="#" class="math-link">Voir les ressources <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="math-card green">
-          <div class="math-icon"><i class="fa-solid fa-book"></i></div>
+          <p>Cours et exercices</p>
+        </a>
+
+        <a href="#lycee" class="resource-card resource-green">
+          <div class="resource-icon"><i class="fa-solid fa-book"></i></div>
           <h3>Lycée</h3>
-          <p class="math-sub">De la 2nde à la Terminale</p>
-          <p>Préparation complète au BAC, avec séries d'exercices et annales corrigées.</p>
-          <div class="math-topics">
-            <span class="math-topic">Fonctions</span>
-            <span class="math-topic">Dérivation</span>
-            <span class="math-topic">Probabilités</span>
-            <span class="math-topic">Suites numériques</span>
-          </div>
-          <a href="#" class="math-link">Voir les ressources <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="math-card purple">
-          <div class="math-icon"><i class="fa-solid fa-flask"></i></div>
+          <p>BAC et préparation</p>
+        </a>
+
+        <a href="#superieur" class="resource-card resource-purple">
+          <div class="resource-icon"><i class="fa-solid fa-flask"></i></div>
           <h3>Supérieur</h3>
-          <p class="math-sub">Licence & classes prépa</p>
-          <p>Cours avancés, recherche opérationnelle et mathématiques appliquées.</p>
-          <div class="math-topics">
-            <span class="math-topic">Analyse réelle</span>
-            <span class="math-topic">Algèbre linéaire</span>
-            <span class="math-topic">Topologie</span>
-            <span class="math-topic">Probabilités avancées</span>
-          </div>
-          <a href="#" class="math-link">Voir les ressources <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="maths-stats">
-        <div class="maths-stat"><span class="maths-stat-num">250+</span><span class="maths-stat-label">Cours complets</span></div>
-        <div class="maths-stat"><span class="maths-stat-num">1000+</span><span class="maths-stat-label">Exercices corrigés</span></div>
-        <div class="maths-stat"><span class="maths-stat-num">50+</span><span class="maths-stat-label">Examens blancs</span></div>
-        <div class="maths-stat"><span class="maths-stat-num">100%</span><span class="maths-stat-label">Gratuit</span></div>
+          <p>Recherche avancée</p>
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="research" class="content-section">
-    <div class="container">
-      <div class="research-grid">
-        <div>
-          <span class="badge badge-purple">Recherche</span>
-          <h2 class="hero-title">Recherche & <span class="highlight-purple">publications</span></h2>
-          <p class="hero-desc">Au-delà de l'enseignement, je participe à des travaux de recherche en mathématiques pures et appliquées, avec un intérêt particulier pour la pédagogie et la transmission du savoir.</p>
-          <div class="research-areas">
-            <div class="research-area">
-              <div class="research-area-icon" style="background: var(--chalk-blue);"><i class="fa-solid fa-microscope"></i></div>
-              <div><h4>Mathématiques appliquées</h4><p>Modélisation, optimisation et analyse numérique.</p></div>
-            </div>
-            <div class="research-area">
-              <div class="research-area-icon" style="background: var(--ochre);"><i class="fa-solid fa-chalkboard-user"></i></div>
-              <div><h4>Didactique des mathématiques</h4><p>Méthodes d'enseignement et nouvelles approches pédagogiques.</p></div>
-            </div>
-            <div class="research-area">
-              <div class="research-area-icon" style="background: var(--amethyst);"><i class="fa-solid fa-diagram-project"></i></div>
-              <div><h4>Théorie des graphes</h4><p>Applications en algorithmique et réseaux.</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="research-publications">
-          <h3>Publications récentes</h3>
-          <div class="publication">
-            <span class="publication-year">2025</span>
-            <div class="publication-body"><span class="publication-type">Article</span><h4>Méthodes innovantes pour l'enseignement de l'analyse</h4></div>
-            <i class="fa-solid fa-arrow-right pub-arrow"></i>
-          </div>
-          <div class="publication">
-            <span class="publication-year">2024</span>
-            <div class="publication-body"><span class="publication-type">Conférence</span><h4>Applications des graphes en informatique théorique</h4></div>
-            <i class="fa-solid fa-arrow-right pub-arrow"></i>
-          </div>
-          <div class="publication">
-            <span class="publication-year">2023</span>
-            <div class="publication-body"><span class="publication-type">Mémoire</span><h4>Approche pédagogique des probabilités au lycée</h4></div>
-            <i class="fa-solid fa-arrow-right pub-arrow"></i>
-          </div>
-          <div class="publication">
-            <span class="publication-year">2022</span>
-            <div class="publication-body"><span class="publication-type">Article</span><h4>Optimisation et recherche opérationnelle</h4></div>
-            <i class="fa-solid fa-arrow-right pub-arrow"></i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="content-section alt-bg">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-rust">FAQ</span>
-        <h2>Questions <span class="highlight-ochre">fréquentes</span></h2>
-        <p>Trouvez rapidement des réponses aux questions les plus posées.</p>
-      </div>
-      <div class="faq-container" id="faqContainer">
-        <div class="faq-item open">
-          <button class="faq-question"><span>La plateforme est-elle vraiment gratuite ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Oui, l'ensemble des ressources (cours, exercices, examens corrigés) est entièrement gratuit et accessible à tous.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question"><span>Pour quels niveaux sont les ressources ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Les ressources couvrent le collège, le lycée (2nde, 1ère, Terminale) et l'enseignement supérieur (licence, classes préparatoires).</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question"><span>Comment suivre ma progression ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Chaque série d'exercices est accompagnée d'un corrigé détaillé. Vous pouvez ainsi travailler en autonomie à votre rythme.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question"><span>Les contenus sont-ils mis à jour ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Oui, de nouveaux contenus et séries d'exercices sont ajoutés régulièrement tout au long de l'année scolaire.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question"><span>Comment poser une question sur un exercice ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Vous pouvez me contacter directement par email à l'adresse indiquée dans la section Contact.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-question"><span>Y a-t-il une version en arabe ?</span><span class="faq-toggle"><i class="fa-solid fa-chevron-down"></i></span></button>
-          <div class="faq-answer"><p>Une traduction des principales ressources est en cours de développement et sera disponible prochainement.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="content-section">
-    <div class="container">
-      <div class="section-header">
-        <span class="badge badge-blue">Contact</span>
-        <h2>Restons en <span class="highlight-blue">contact</span></h2>
-        <p>Une question, une suggestion ou un projet ? N'hésitez pas à m'écrire, je vous répondrai dans les meilleurs délais.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-card">
-            <div class="contact-icon" style="background: var(--ochre);"><i class="fa-solid fa-envelope"></i></div>
-            <h4>Email</h4>
-            <a href="mailto:MoBendriss@Hotmail.com">MoBendriss@Hotmail.com</a>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon" style="background: var(--chalk-blue);"><i class="fa-brands fa-github"></i></div>
-            <h4>GitHub</h4>
-            <a href="https://github.com/mobendriss" target="_blank" rel="noopener noreferrer">github.com/mobendriss</a>
-          </div>
-          <div class="contact-card">
-            <div class="contact-icon" style="background: var(--amethyst);"><i class="fa-solid fa-clock"></i></div>
-            <h4>Délai de réponse</h4>
-            <p>Sous 24 à 48 heures</p>
-          </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <label for="name">Nom complet</label>
-            <input type="text" id="name" required placeholder="Votre nom">
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" required placeholder="votre@email.com">
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" required placeholder="Votre message..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            <i class="fa-solid fa-paper-plane"></i> Envoyer le message
-          </button>
-          <div class="form-success" id="formSuccess" style="display: none;">
-            <i class="fa-solid fa-check-circle"></i> Merci ! Votre message a bien été envoyé.
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
 </main>
 
+<!-- ============================================
+     FOOTER
+     ============================================ -->
 <footer class="site-footer">
   <div class="container footer-top">
     <div class="footer-brand">
       <div class="footer-logo">MB</div>
-      <div><h4>MoBendriss</h4><p>Plateforme académique des mathématiques</p></div>
+      <div>
+        <h4>MoBendriss</h4>
+        <p>Plateforme académique des mathématiques</p>
+      </div>
     </div>
+
     <ul class="footer-links">
-      <li><a href="#home" data-nav="home">Accueil</a></li>
-      <li><a href="#maths" data-nav="maths">Mathématiques</a></li>
-      <li><a href="#contact" data-nav="contact">Contact</a></li>
+      <li><a href="#">Accueil</a></li>
+      <li><a href="#maths">Mathématiques</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
+
   <div class="container footer-bottom">
     <p>© 2026 MoBendriss. Tous droits réservés. <span class="highlight-orange">Conçu avec rigueur.</span></p>
     <div class="footer-bottom-links">
-      <a href="https://github.com/mobendriss" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://github.com/mobendriss" target="_blank" rel="noopener">
+        <i class="fa-brands fa-github"></i> GitHub
+      </a>
       <a href="#">Confidentialité</a>
     </div>
   </div>
 </footer>
 
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
 <script>
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = themeToggle.querySelector('i');
-  function applyTheme(dark) {
-    if (dark) { document.body.classList.add('dark-mode'); themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); localStorage.setItem('theme', 'dark'); }
-    else { document.body.classList.remove('dark-mode'); themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); localStorage.setItem('theme', 'light'); }
-  }
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) applyTheme(true);
-  themeToggle.addEventListener('click', () => applyTheme(!document.body.classList.contains('dark-mode')));
-
-  document.getElementById('langToggle').addEventListener('click', () => alert('Fonctionnalité de traduction à venir!'));
-  document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('show-mobile'));
-
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-question').addEventListener('click', () => {
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-
-  const contactForm = document.getElementById('contactForm');
-  const formSuccess = document.getElementById('formSuccess');
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formSuccess.style.display = 'flex';
-    contactForm.reset();
-    setTimeout(() => { formSuccess.style.display = 'none'; }, 4000);
-  });
-
-  const navAnchors = document.querySelectorAll('[data-nav]');
-  const sectionIds = ['home', 'about', 'maths', 'research', 'faq', 'contact'];
-  navAnchors.forEach(anchor => {
-    anchor.addEventListener('click', (e) => {
-      e.preventDefault();
-      const id = anchor.getAttribute('data-nav');
-      const target = document.getElementById(id);
-      if (target) {
-        const y = target.getBoundingClientRect().top + window.scrollY - 80;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        document.getElementById('navLinks').classList.remove('show-mobile');
-      }
-    });
-  });
-
-  function setActiveSection(id) {
-    navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('data-nav') === id));
-  }
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY + 150;
-    let current = 'home';
-    for (const id of sectionIds) {
-      const el = document.getElementById(id);
-      if (el && el.offsetTop <= scrollY) current = id;
+  // Dark mode toggle
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const icon = document.querySelector('.theme-toggle i');
+    if (document.body.classList.contains('dark-mode')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      localStorage.setItem('theme', 'light');
     }
-    setActiveSection(current);
-  }, { passive: true });
-  setActiveSection('home');
+  }
+
+  // Load saved theme
+  if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark-mode');
+    document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+  }
+
+  // Language toggle (placeholder - يمكن تطويره لاحقاً)
+  function toggleLang() {
+    alert('Fonctionnalité de traduction à venir!');
+  }
+
+  // Mobile menu toggle
+  document.querySelector('.mobile-menu-btn')?.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('show-mobile');
+  });
 </script>
+
+<style>
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+  padding: 3.5rem 0;
+  background: var(--paper);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2.5rem;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(231, 169, 71, 0.15);
+  color: var(--ochre);
+  padding: 0.5rem 1.1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
+}
+
+.highlight {
+  color: var(--chalk-blue);
+}
+
+.hero-desc {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-fast);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.btn-primary {
+  background: var(--ochre);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--chalk-blue-deep);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-1);
+}
+
+.btn-secondary {
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--paper-line);
+}
+
+.btn-secondary:hover {
+  background: var(--paper);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  transition: var(--transition-fast);
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-1);
+  transform: translateY(-2px);
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--ochre);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Sidebar */
+.hero-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: var(--transition-fast);
+}
+
+.sidebar-btn-primary {
+  background: linear-gradient(135deg, var(--ochre-light), var(--ochre));
+  color: white;
+  box-shadow: 0 8px 20px -8px rgba(184, 121, 26, 0.5);
+}
+
+.sidebar-btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+.sidebar-btn-secondary {
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--paper-line);
+}
+
+.sidebar-btn-secondary:hover {
+  background: var(--paper);
+}
+
+.news-card, .social-card {
+  background: white;
+  border: 1px solid var(--paper-line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.news-card h3, .social-card h3 {
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.news-card h3 i {
+  color: var(--ochre);
+}
+
+.social-card h3 i {
+  color: var(--chalk-blue);
+}
+
+.news-item {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--paper-line);
+}
+
+.news-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-mono);
+}
+
+.news-tag {
+  background: var(--ochre);
+  color: white;
+  padding: 0.1rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-family: var(--font-body);
+}
+
+.news-item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.social-icons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.social-icons a {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.social-icons a:hover {
+  background: var(--ochre);
+  color: white;
+}
+
+/* ============================================
+   RESOURCES SECTION
+   ============================================ */
+.resources-section {
+  padding: 2rem 0 5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-title i {
+  color: var(--ochre);
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.resource-card {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  display: block;
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+}
+
+.resource-blue {
+  background: linear-gradient(135deg, #EBF4FC, #F5F9FE);
+}
+
+.resource-green {
+  background: linear-gradient(135deg, #E8FAF0, #F3FDF7);
+}
+
+.resource-purple {
+  background: linear-gradient(135deg, #F3EFFC, #F9F7FE);
+}
+
+.resource-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+
+.resource-blue .resource-icon { background: #2C6E8E; }
+.resource-green .resource-icon { background: #2A9D5C; }
+.resource-purple .resource-icon { background: var(--amethyst); }
+
+.resource-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 0.3rem;
+}
+
+.resource-blue p { color: #2C6E8E; margin: 0; }
+.resource-green p { color: #2A9D5C; margin: 0; }
+.resource-purple p { color: var(--amethyst); margin: 0; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.7);
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 50%;
+  border: 1px solid var(--ochre-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  color: white;
+  font-weight: 700;
+}
+
+.footer-brand h4 {
+  color: white;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+}
+
+.footer-brand p {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--ochre-light);
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.footer-bottom .highlight-orange {
+  color: var(--ochre-light);
+}
+
+.footer-bottom a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: var(--ochre-light);
+}
+</style>
+<style>
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .header-content { flex-direction: column; text-align: center; }
+  .nav-content { flex-direction: column; }
+  .nav-links { justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .resources-grid { grid-template-columns: 1fr; }
+  .footer-top, .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 600px) {
+  .top-banner { padding: 3rem 0 2.5rem; }
+  .nav-links { display: none; }
+  .nav-links.show-mobile { 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+  }
+  .mobile-menu-btn { display: block; }
+  .search-box { display: none; }
+}
+
+/* Dark mode support */
+body.dark-mode {
+  --ink: #E4DFCF;
+  --ink-soft: #A8B0C0;
+  --paper: #0B1526;
+  --paper-line: #22314E;
+  --card: #16233F;
+}
+
+body.dark-mode .resource-blue,
+body.dark-mode .resource-green,
+body.dark-mode .resource-purple {
+  opacity: 0.9;
+}
+</style>
+
 </body>
 </html>
