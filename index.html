@@ -2812,28 +2812,6 @@ function printWorksheet() {
       </style>
     </head>
     <body>
-      <h1>${translations[currentLang].worksheet_title}</h1>
-      ${worksheet.map((ex, idx) => `
-        <div class="exercise">
-          <h2 class="exercise-title">${idx + 1}. ${currentLang === 'fr' ? ex.title_fr : ex.title_ar}</h2>
-          <div class="exercise-statement">${currentLang === 'fr' ? ex.statement_fr : ex.statement_ar}</div>
-          <div class="exercise-solution">
-            <div class="solution-title">${translations[currentLang].exercise_detail}:</div>
-            <div>${currentLang === 'fr' ? ex.solution_fr : ex.solution_ar}</div>
-          </div>
-        </div>
-      `).join('')}
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          renderMathInElement(document.body, {
-            delimiters: [
-              {left: "$$", right: "$$", display: true},
-              {left: "$", right: "$", display: false}
-            ]
-          });
-        });
-      </script>
-    </body>
-    </html>
+ 
  
 
