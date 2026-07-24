@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mo Bendriss | Plateforme académique des mathématiques</title>
 <meta name="description" content="Base de données complète d'exercices corrigés, cours structurés et ressources pédagogiques en mathématiques pour tous les niveaux.">
-
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +97,7 @@ a { color: inherit; text-decoration: none; }
 .brand-text h1 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; }
 .brand-text p { font-size: 0.875rem; color: var(--text-light); }
 
-.nav-links { display: flex; gap: 0.5rem; list-style: none; }
+.nav-links { display: flex; gap: 0.5rem; list-style: none; flex-wrap: wrap; }
 .nav-links a {
   display: flex; align-items: center; gap: 0.5rem;
   padding: 0.5rem 1rem; border-radius: var(--radius);
@@ -190,7 +189,7 @@ a { color: inherit; text-decoration: none; }
 }
 .section-subtitle { font-size: 1.125rem; color: var(--text-light); max-width: 700px; margin: 0 auto; }
 
-/* ============ EXERCISE DATABASE ============ */
+/* ============ DB / GRID (partagé Cours + Exercices) ============ */
 .exercise-db {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -251,7 +250,7 @@ a { color: inherit; text-decoration: none; }
 .exercise-card:hover::after { opacity: 1; }
 
 .exercise-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
-.exercise-id { font-size: 0.75rem; color: var(--text-lighter); font-family: var(--font-mono); }
+.exercise-id { font-size: 0.75rem; color: var(--text-lighter); font-family: var(--font-mono); display:flex; align-items:center; gap:0.35rem; }
 .exercise-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .tag { padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 500; }
 .tag.level-college { background: #dbeafe; color: #1e40af; }
@@ -260,6 +259,7 @@ a { color: inherit; text-decoration: none; }
 .tag.diff-easy { background: #d1fae5; color: #065f46; }
 .tag.diff-medium { background: #fef3c7; color: #92400e; }
 .tag.diff-hard { background: #fee2e2; color: #991b1b; }
+.tag.topic-tag { background: #f3e8ff; color: #7c3aed; }
 
 .exercise-title { font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; }
 .exercise-preview {
@@ -268,6 +268,17 @@ a { color: inherit; text-decoration: none; }
 }
 
 .db-footer { text-align: center; padding: 2rem; color: var(--text-lighter); }
+
+/* Lien vers exercices/cours */
+.related-link-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius);
+  margin-bottom: 0.75rem; background: var(--bg); cursor: pointer; transition: var(--transition);
+}
+.related-link-item:hover { border-color: var(--primary); background: var(--bg-card); }
+.related-link-item h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+.related-link-item p { font-size: 0.75rem; color: var(--text-light); }
+.related-link-item i { color: var(--primary); }
 
 /* ============ WORKSHEET PANEL ============ */
 .worksheet-panel {
@@ -363,7 +374,14 @@ a { color: inherit; text-decoration: none; }
   color: var(--secondary); margin-bottom: 1rem;
   display: flex; align-items: center; gap: 0.5rem;
 }
-.exercise-solution { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+.exercise-solution { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem; }
+
+.lesson-content h4 { margin: 1rem 0 0.5rem; color: var(--primary); font-family: var(--font-serif); }
+.lesson-content p { margin-bottom: 0.75rem; }
+.lesson-content .formula-box {
+  background: rgba(37,99,235,0.06); padding: 1rem; border-radius: var(--radius);
+  margin: 0.75rem 0; border-left: 3px solid var(--primary);
+}
 
 .modal-footer {
   display: flex; justify-content: flex-end; gap: 0.75rem;
@@ -407,7 +425,12 @@ a { color: inherit; text-decoration: none; }
 .level-card h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
 .level-card p { color: var(--text-light); margin-bottom: 1.5rem; }
 .chapter-list { list-style: none; }
-.chapter-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-light); font-size: 0.9375rem; }
+.chapter-list li {
+  display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.5rem;
+  color: var(--text-light); font-size: 0.9375rem; cursor: pointer; border-radius: var(--radius);
+  transition: var(--transition);
+}
+.chapter-list li:hover { background: var(--bg); color: var(--primary); padding-left: 0.75rem; }
 .chapter-list li::before { content: '•'; color: var(--primary); font-size: 1.25rem; }
 
 /* ============ RESOURCES ============ */
@@ -587,6 +610,7 @@ a { color: inherit; text-decoration: none; }
     </div>
     <nav class="nav-links" id="navLinks">
       <a href="#"><i class="fa-solid fa-house"></i> Accueil</a>
+      <a href="#cours"><i class="fa-solid fa-chalkboard"></i> Cours</a>
       <a href="#exercices"><i class="fa-solid fa-book-open"></i> Exercices</a>
       <a href="#niveaux"><i class="fa-solid fa-layer-group"></i> Niveaux</a>
       <a href="#ressources"><i class="fa-solid fa-folder-open"></i> Ressources</a>
@@ -623,10 +647,10 @@ a { color: inherit; text-decoration: none; }
     </div>
     <div class="hero-text">
       <h1>Maîtrisez les <span class="highlight">mathématiques</span> avec Mo Bendriss</h1>
-      <p>Base de données complète d'exercices corrigés, cours structurés et outils pédagogiques pour réussir dans tous les niveaux scolaires et universitaires.</p>
+      <p>Cours structurés et exercices corrigés, entièrement liés entre eux pour un apprentissage cohérent du collège au supérieur.</p>
       <div class="hero-buttons">
-        <a href="#exercices" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass-chart"></i> Parcourir les exercices</a>
-        <a href="#niveaux" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Explorer par niveau</a>
+        <a href="#cours" class="btn btn-primary"><i class="fa-solid fa-chalkboard"></i> Voir les cours</a>
+        <a href="#exercices" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass-chart"></i> Parcourir les exercices</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><span class="stat-number" data-target="5000">0</span><span class="stat-label">Exercices corrigés</span></div>
@@ -640,7 +664,47 @@ a { color: inherit; text-decoration: none; }
 <!-- ============ MAIN ============ -->
 <main class="main">
 
-  <!-- Exercise Database -->
+  <!-- ============ COURS (LESSONS) ============ -->
+  <section class="section" id="cours">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Cours structurés</h2>
+        <p class="section-subtitle">Consultez la théorie puis accédez directement aux exercices liés à chaque cours</p>
+      </div>
+
+      <div class="exercise-db">
+        <div class="db-header">
+          <h3 class="db-title">Bibliothèque de cours</h3>
+        </div>
+
+        <div class="db-filters">
+          <div class="filter-group">
+            <label for="lesson-filter-level">Niveau:</label>
+            <select id="lesson-filter-level" onchange="filterLessons()">
+              <option value="">Tous les niveaux</option>
+              <option value="college">Collège</option>
+              <option value="lycee">Lycée</option>
+              <option value="superieur">Supérieur</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="lesson-filter-topic">Chapitre:</label>
+            <select id="lesson-filter-topic" onchange="filterLessons()">
+              <option value="">Tous les chapitres</option>
+              <option value="algebra">Algèbre</option>
+              <option value="analysis">Analyse</option>
+              <option value="geometry">Géométrie</option>
+              <option value="probability">Probabilités</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="exercise-grid" id="lessonGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXERCICES ============ -->
   <section class="section" id="exercices">
     <div class="container">
       <div class="section-header">
@@ -708,9 +772,9 @@ a { color: inherit; text-decoration: none; }
       </div>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon blue"><i class="fa-solid fa-database"></i></div>
-          <h3>Base d'exercices complète</h3>
-          <p>Des milliers d'exercices corrigés classés par niveau, chapitre et difficulté.</p>
+          <div class="feature-icon blue"><i class="fa-solid fa-link"></i></div>
+          <h3>Cours et exercices liés</h3>
+          <p>Chaque cours renvoie vers ses exercices d'application, et chaque exercice renvoie vers son cours.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon green"><i class="fa-solid fa-file-lines"></i></div>
@@ -736,7 +800,7 @@ a { color: inherit; text-decoration: none; }
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">Programmes par niveau</h2>
-        <p class="section-subtitle">Explorez nos ressources organisées selon les niveaux éducatifs</p>
+        <p class="section-subtitle">Cliquez sur un chapitre pour accéder directement aux cours correspondants</p>
       </div>
       <div class="levels-grid">
         <div class="level-card">
@@ -746,11 +810,11 @@ a { color: inherit; text-decoration: none; }
           </div>
           <p>Fondations en arithmétique, géométrie, algèbre et statistiques.</p>
           <ul class="chapter-list">
-            <li>Nombres et calculs</li>
-            <li>Géométrie plane</li>
-            <li>Équations et inéquations</li>
-            <li>Fonctions linéaires</li>
-            <li>Statistiques et probabilités</li>
+            <li onclick="goToChapter('college','algebra')">Nombres et calculs</li>
+            <li onclick="goToChapter('college','geometry')">Géométrie plane</li>
+            <li onclick="goToChapter('college','algebra')">Équations et inéquations</li>
+            <li onclick="goToChapter('college','algebra')">Fonctions linéaires</li>
+            <li onclick="goToChapter('college','probability')">Statistiques et probabilités</li>
           </ul>
         </div>
         <div class="level-card">
@@ -760,11 +824,11 @@ a { color: inherit; text-decoration: none; }
           </div>
           <p>Approfondissement en analyse, suites, probabilités et géométrie dans l'espace.</p>
           <ul class="chapter-list">
-            <li>Fonctions et dérivées</li>
-            <li>Suites numériques</li>
-            <li>Probabilités conditionnelles</li>
-            <li>Géométrie dans l'espace</li>
-            <li>Nombres complexes</li>
+            <li onclick="goToChapter('lycee','analysis')">Fonctions et dérivées</li>
+            <li onclick="goToChapter('lycee','algebra')">Suites numériques</li>
+            <li onclick="goToChapter('lycee','probability')">Probabilités conditionnelles</li>
+            <li onclick="goToChapter('lycee','geometry')">Géométrie dans l'espace</li>
+            <li onclick="goToChapter('lycee','algebra')">Nombres complexes</li>
           </ul>
         </div>
         <div class="level-card">
@@ -774,11 +838,11 @@ a { color: inherit; text-decoration: none; }
           </div>
           <p>Analyse approfondie, algèbre linéaire et équations différentielles.</p>
           <ul class="chapter-list">
-            <li>Analyse réelle</li>
-            <li>Algèbre linéaire</li>
-            <li>Topologie</li>
-            <li>Équations différentielles</li>
-            <li>Fonctions de plusieurs variables</li>
+            <li onclick="goToChapter('superieur','analysis')">Analyse réelle</li>
+            <li onclick="goToChapter('superieur','algebra')">Algèbre linéaire</li>
+            <li onclick="goToChapter('superieur','analysis')">Topologie</li>
+            <li onclick="goToChapter('superieur','analysis')">Équations différentielles</li>
+            <li onclick="goToChapter('superieur','analysis')">Fonctions de plusieurs variables</li>
           </ul>
         </div>
       </div>
@@ -793,10 +857,10 @@ a { color: inherit; text-decoration: none; }
         <p class="section-subtitle">Accédez à nos supports de cours, fiches mémo et outils supplémentaires</p>
       </div>
       <div class="resources-grid">
-        <div class="resource-card" onclick="openResource('cours')">
+        <div class="resource-card" onclick="document.getElementById('cours').scrollIntoView({behavior:'smooth'})">
           <div class="resource-icon blue"><i class="fa-solid fa-book"></i></div>
           <h4>Cours complets</h4>
-          <p>Téléchargez nos cours structurés</p>
+          <p>Accédez à la bibliothèque de cours</p>
         </div>
         <div class="resource-card" onclick="openResource('fiches')">
           <div class="resource-icon green"><i class="fa-solid fa-file-alt"></i></div>
@@ -830,7 +894,7 @@ a { color: inherit; text-decoration: none; }
           <h3>Mo Bendriss</h3>
           <p>Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses pour tous les étudiants.</p>
           <p>Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.</p>
-          <p>Cette plateforme est le fruit de mon engagement à fournir des ressources pédagogiques de qualité pour soutenir les étudiants dans leur parcours académique.</p>
+          <p>Cette plateforme relie chaque cours à ses exercices d'application pour un apprentissage progressif et cohérent.</p>
           <div class="skills-list">
             <span class="skill-tag">Algèbre</span>
             <span class="skill-tag">Analyse</span>
@@ -854,6 +918,13 @@ a { color: inherit; text-decoration: none; }
       <div class="faq-list">
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Comment les cours et les exercices sont-ils liés ?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer"><p>Chaque cours possède une liste d'exercices d'application directement accessibles depuis sa fiche. De même, chaque exercice affiche un bouton "Voir le cours" qui renvoie à la théorie correspondante.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
             <span>Les ressources sont-elles gratuites ?</span>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
@@ -872,13 +943,6 @@ a { color: inherit; text-decoration: none; }
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <div class="faq-answer"><p>Oui, chaque exercice est accompagné d'une solution détaillée étape par étape, avec des explications claires pour chaque étape du raisonnement.</p></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
-            <span>Puis-je contribuer à la plateforme ?</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="faq-answer"><p>Actuellement, la plateforme est en développement actif. Les contributions seront possibles dans une prochaine version. N'hésitez pas à nous contacter pour toute suggestion.</p></div>
         </div>
       </div>
     </div>
@@ -928,6 +992,7 @@ a { color: inherit; text-decoration: none; }
       <p style="margin-top:1rem;color:var(--text-lighter);font-size:0.875rem;">Ressources pédagogiques gratuites pour tous les niveaux</p>
     </div>
     <ul class="footer-links">
+      <li><a href="#cours">Cours</a></li>
       <li><a href="#exercices">Exercices</a></li>
       <li><a href="#niveaux">Niveaux</a></li>
       <li><a href="#ressources">Ressources</a></li>
@@ -962,16 +1027,15 @@ a { color: inherit; text-decoration: none; }
   </div>
 </div>
 
-<!-- ============ MODAL ============ -->
+<!-- ============ MODAL (partagé Cours + Exercices) ============ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <div class="modal-header">
-      <h2 id="modalTitle">Détails de l'exercice</h2>
+      <h2 id="modalTitle">Détails</h2>
       <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-times"></i></button>
     </div>
     <div class="modal-body" id="modalBody"></div>
-    <div class="modal-footer">
-      <button class="btn btn-secondary" onclick="addToWorksheetFromModal()">Ajouter à la feuille</button>
+    <div class="modal-footer" id="modalFooter">
       <button class="btn btn-primary" onclick="closeModal()">Fermer</button>
     </div>
   </div>
@@ -992,7 +1056,110 @@ a { color: inherit; text-decoration: none; }
 
 <script>
 // ==========================================
-// EXERCISE DATABASE
+// LABELS
+// ==========================================
+const levelLabels = { college: "Collège", lycee: "Lycée", superieur: "Supérieur" };
+const diffLabels = { easy: "Facile", medium: "Moyenne", hard: "Difficile" };
+const topicLabels = { algebra: "Algèbre", analysis: "Analyse", geometry: "Géométrie", probability: "Probabilités" };
+
+// ==========================================
+// LESSONS DATABASE (Cours)
+// ==========================================
+const lessons = [
+  {
+    id: 1, level: "college", topic: "algebra",
+    title: "Fractions et équations du premier degré",
+    summary: "Apprendre à calculer avec des fractions et résoudre des équations simples.",
+    content: `
+      <p>Une fraction représente une division entre deux nombres entiers. Pour additionner ou soustraire des fractions, il faut les mettre au même dénominateur.</p>
+      <div class="formula-box">$$\\frac{a}{b} + \\frac{c}{d} = \\frac{ad + bc}{bd}$$</div>
+      <h4>Résolution d'équations</h4>
+      <p>Une équation du premier degré est de la forme $ax + b = c$. Pour la résoudre, on isole $x$ :</p>
+      <div class="formula-box">$$x = \\frac{c - b}{a}$$</div>
+      <p><strong>Exemple :</strong> $3x - 7 = 2x + 5$ se résout en regroupant les termes en $x$ d'un côté.</p>
+    `
+  },
+  {
+    id: 2, level: "college", topic: "geometry",
+    title: "Théorème de Pythagore et aires",
+    summary: "Le théorème de Pythagore et le calcul des périmètres et aires des figures planes.",
+    content: `
+      <p>Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés :</p>
+      <div class="formula-box">$$BC^2 = AB^2 + AC^2$$</div>
+      <h4>Aires usuelles</h4>
+      <p>Rectangle : $A = L \\times l$ — Carré : $A = c^2$ — Triangle : $A = \\frac{b \\times h}{2}$</p>
+      <p>Le périmètre d'un rectangle est donné par : $P = 2(L + l)$</p>
+    `
+  },
+  {
+    id: 3, level: "lycee", topic: "analysis",
+    title: "Dérivation des fonctions",
+    summary: "Les règles de dérivation des fonctions polynômiales et leurs applications.",
+    content: `
+      <p>La dérivée d'une fonction $f$ en un point mesure la pente de la tangente à la courbe en ce point.</p>
+      <div class="formula-box">$$(x^n)' = nx^{n-1}$$</div>
+      <p>Règles usuelles :</p>
+      <div class="formula-box">$$(u+v)' = u' + v' \\qquad (ku)' = ku'$$</div>
+      <p><strong>Exemple :</strong> pour $f(x) = 2x^3 - 5x^2 + 3x - 7$, on dérive terme à terme.</p>
+    `
+  },
+  {
+    id: 4, level: "lycee", topic: "algebra",
+    title: "Suites numériques",
+    summary: "Suites arithmétiques et géométriques : définitions et formules du terme général.",
+    content: `
+      <p>Une suite arithmétique vérifie $u_{n+1} = u_n + r$, où $r$ est la raison.</p>
+      <div class="formula-box">$$u_n = u_1 + (n-1)\\,r$$</div>
+      <p>Une suite géométrique vérifie $u_{n+1} = q \\times u_n$ :</p>
+      <div class="formula-box">$$u_n = u_1 \\times q^{n-1}$$</div>
+    `
+  },
+  {
+    id: 5, level: "lycee", topic: "probability",
+    title: "Introduction aux probabilités",
+    summary: "Notion d'expérience aléatoire, d'événement et calcul de probabilités simples.",
+    content: `
+      <p>La probabilité d'un événement $A$ dans une expérience équiprobable se calcule par :</p>
+      <div class="formula-box">$$P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$$</div>
+      <p><strong>Exemple :</strong> pour un dé à 6 faces, obtenir un nombre pair correspond à 3 cas favorables sur 6.</p>
+    `
+  },
+  {
+    id: 6, level: "lycee", topic: "geometry",
+    title: "Géométrie dans l'espace",
+    summary: "Volumes des solides usuels : cube, pavé, cylindre et sphère.",
+    content: `
+      <p>Le volume d'un cube d'arête $c$ est :</p>
+      <div class="formula-box">$$V = c^3$$</div>
+      <p>Le volume d'un pavé droit de dimensions $L$, $l$, $h$ :</p>
+      <div class="formula-box">$$V = L \\times l \\times h$$</div>
+    `
+  },
+  {
+    id: 7, level: "superieur", topic: "analysis",
+    title: "Limites et calcul intégral",
+    summary: "Calcul de limites à l'infini et primitives des fonctions usuelles.",
+    content: `
+      <p>Pour calculer une limite d'une fraction rationnelle en $+\\infty$, on factorise par le terme de plus haut degré au numérateur et au dénominateur.</p>
+      <div class="formula-box">$$\\lim_{x \\to +\\infty} \\frac{3x^2+2x-1}{2x^2-5} = \\frac{3}{2}$$</div>
+      <h4>Primitives usuelles</h4>
+      <div class="formula-box">$$\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C$$</div>
+    `
+  },
+  {
+    id: 8, level: "superieur", topic: "algebra",
+    title: "Systèmes linéaires",
+    summary: "Résolution de systèmes d'équations linéaires par substitution et combinaison.",
+    content: `
+      <p>Un système de deux équations à deux inconnues peut se résoudre par substitution :</p>
+      <div class="formula-box">$$\\begin{cases} ax+by=c \\\\ dx+ey=f \\end{cases}$$</div>
+      <p>On exprime une variable en fonction de l'autre dans une équation, puis on substitue dans la seconde.</p>
+    `
+  }
+];
+
+// ==========================================
+// EXERCISES DATABASE
 // ==========================================
 const exercises = [
   { id: 1, title: "Calcul de fractions", statement: "Calculer : $\\frac{3}{4} + \\frac{1}{6} - \\frac{2}{3}$",
@@ -1050,9 +1217,6 @@ const exercises = [
 let worksheet = [];
 let currentExerciseId = null;
 
-const levelLabels = { college: "Collège", lycee: "Lycée", superieur: "Supérieur" };
-const diffLabels = { easy: "Facile", medium: "Moyenne", hard: "Difficile" };
-
 // ==========================================
 // INIT
 // ==========================================
@@ -1061,10 +1225,10 @@ window.addEventListener('DOMContentLoaded', () => {
     document.documentElement.setAttribute('data-theme', 'dark');
     document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
   }
+  renderLessons();
   renderExercises();
   updateWorksheetUI();
   animateCounters();
-  renderMath();
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -1135,7 +1299,39 @@ function toggleMobileMenu() {
 }
 
 // ==========================================
-// EXERCISE FILTER & RENDER
+// LESSONS: FILTER & RENDER
+// ==========================================
+function filterLessons() {
+  const level = document.getElementById('lesson-filter-level').value;
+  const topic = document.getElementById('lesson-filter-topic').value;
+  const filtered = lessons.filter(l => {
+    if (level && l.level !== level) return false;
+    if (topic && l.topic !== topic) return false;
+    return true;
+  });
+  renderLessons(filtered);
+}
+
+function renderLessons(list = lessons) {
+  const grid = document.getElementById('lessonGrid');
+  grid.innerHTML = list.map(l => `
+    <div class="exercise-card" onclick="showLessonDetail(${l.id})">
+      <div class="exercise-meta">
+        <span class="exercise-id"><i class="fa-solid fa-chalkboard"></i> Cours #${l.id}</span>
+        <div class="exercise-tags">
+          <span class="tag level-${l.level}">${levelLabels[l.level]}</span>
+          <span class="tag topic-tag">${topicLabels[l.topic]}</span>
+        </div>
+      </div>
+      <h3 class="exercise-title">${l.title}</h3>
+      <div class="exercise-preview">${l.summary}</div>
+    </div>
+  `).join('');
+  renderMath(grid);
+}
+
+// ==========================================
+// EXERCISES: FILTER & RENDER
 // ==========================================
 function filterExercises() {
   const level = document.getElementById('filter-level').value;
@@ -1183,12 +1379,25 @@ function renderExercises(list = exercises) {
 }
 
 // ==========================================
-// MODAL
+// CHAPTER LINK (Niveaux → Cours)
+// ==========================================
+function goToChapter(level, topic) {
+  document.getElementById('lesson-filter-level').value = level;
+  document.getElementById('lesson-filter-topic').value = topic;
+  filterLessons();
+  document.getElementById('cours').scrollIntoView({ behavior: 'smooth' });
+  showToast(`Cours filtrés : ${levelLabels[level]} — ${topicLabels[topic]}`);
+}
+
+// ==========================================
+// MODAL: EXERCICE
 // ==========================================
 function showExerciseDetail(id) {
   const ex = exercises.find(e => e.id === id);
   if (!ex) return;
   currentExerciseId = id;
+
+  const relatedLesson = lessons.find(l => l.topic === ex.topic && l.level === ex.level);
 
   document.getElementById('modalTitle').textContent = ex.title;
   document.getElementById('modalBody').innerHTML = `
@@ -1196,6 +1405,7 @@ function showExerciseDetail(id) {
       <span><i class="fa-solid fa-tag"></i> #${ex.id}</span>
       <span><i class="fa-solid fa-layer-group"></i> ${levelLabels[ex.level]}</span>
       <span><i class="fa-solid fa-signal"></i> ${diffLabels[ex.difficulty]}</span>
+      <span><i class="fa-solid fa-book"></i> ${topicLabels[ex.topic]}</span>
     </div>
     <div class="exercise-statement">
       <h3><i class="fa-solid fa-pen"></i> Énoncé</h3>
@@ -1205,7 +1415,69 @@ function showExerciseDetail(id) {
       <h3><i class="fa-solid fa-lightbulb"></i> Solution détaillée</h3>
       <div>${ex.solution}</div>
     </div>
+    ${relatedLesson ? `
+    <div class="related-link-item" onclick="showLessonDetail(${relatedLesson.id})">
+      <div>
+        <h4><i class="fa-solid fa-chalkboard" style="margin-inline-end:0.4rem;color:var(--primary)"></i>Revoir le cours : ${relatedLesson.title}</h4>
+        <p>Cliquez pour consulter la théorie associée</p>
+      </div>
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>` : ''}
   `;
+
+  let footerHtml = '';
+  if (relatedLesson) {
+    footerHtml += `<button class="btn btn-secondary" onclick="showLessonDetail(${relatedLesson.id})"><i class="fa-solid fa-book"></i> Voir le cours</button>`;
+  }
+  footerHtml += `<button class="btn btn-secondary" onclick="addToWorksheetFromModal()">Ajouter à la feuille</button>`;
+  footerHtml += `<button class="btn btn-primary" onclick="closeModal()">Fermer</button>`;
+  document.getElementById('modalFooter').innerHTML = footerHtml;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  renderMath(document.getElementById('modalBody'));
+}
+
+// ==========================================
+// MODAL: COURS (LESSON)
+// ==========================================
+function showLessonDetail(id) {
+  const lesson = lessons.find(l => l.id === id);
+  if (!lesson) return;
+  currentExerciseId = null;
+
+  const relatedExercises = exercises.filter(e => e.topic === lesson.topic && e.level === lesson.level);
+
+  document.getElementById('modalTitle').textContent = lesson.title;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="exercise-detail-meta">
+      <span><i class="fa-solid fa-layer-group"></i> ${levelLabels[lesson.level]}</span>
+      <span><i class="fa-solid fa-book"></i> ${topicLabels[lesson.topic]}</span>
+    </div>
+    <div class="exercise-statement">
+      <h3><i class="fa-solid fa-chalkboard"></i> Contenu du cours</h3>
+      <div class="lesson-content">${lesson.content}</div>
+    </div>
+    ${relatedExercises.length > 0 ? `
+    <div class="exercise-solution">
+      <h3 style="color:var(--primary)"><i class="fa-solid fa-pen-to-square"></i> Exercices liés (${relatedExercises.length})</h3>
+      <div>
+        ${relatedExercises.map(ex => `
+          <div class="related-link-item" onclick="showExerciseDetail(${ex.id})">
+            <div>
+              <h4>#${ex.id} — ${ex.title}</h4>
+              <p>${diffLabels[ex.difficulty]}</p>
+            </div>
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        `).join('')}
+      </div>
+    </div>` : `
+    <div class="exercise-solution">
+      <p style="color:var(--text-lighter);text-align:center">Aucun exercice lié disponible pour l'instant.</p>
+    </div>`}
+  `;
+
+  document.getElementById('modalFooter').innerHTML = `<button class="btn btn-primary" onclick="closeModal()">Fermer</button>`;
   document.getElementById('modalOverlay').classList.add('open');
   renderMath(document.getElementById('modalBody'));
 }
@@ -1287,7 +1559,7 @@ function exportWorksheet() {
   if (worksheet.length === 0) { showToast('La feuille est vide'); return; }
   const data = worksheet.map(ex => ({
     id: ex.id, titre: ex.title, enonce: ex.statement, solution: ex.solution,
-    niveau: levelLabels[ex.level], chapitre: ex.topic, difficulte: diffLabels[ex.difficulty]
+    niveau: levelLabels[ex.level], chapitre: topicLabels[ex.topic], difficulte: diffLabels[ex.difficulty]
   }));
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
