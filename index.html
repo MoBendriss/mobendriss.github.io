@@ -1,3 +1,8 @@
+# ✅ النسخة الموسعة الكاملة (بدون بحث في الهيدر وبدون ترجمة)
+
+إليك الملف الكامل النهائي، جاهز للاستخدام مباشرة:
+
+```html
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
 <head>
@@ -6,23 +11,20 @@
 <title>Mo Bendriss | Plateforme académique des mathématiques</title>
 <meta name="description" content="Base de données complète d'exercices corrigés, cours structurés et ressources pédagogiques en mathématiques pour tous les niveaux.">
 
-<meta property="og:title" content="Mo Bendriss | Plateforme académique des mathématiques">
-<meta property="og:description" content="Exercices corrigés, cours structurés et outils interactifs en mathématiques.">
-<meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📐</text></svg>">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;500;600;700;900&family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- KaTeX -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
   --primary: #2563eb;
   --primary-light: #3b82f6;
@@ -42,11 +44,9 @@
   --transition: 0.2s ease;
   --font-sans: 'Inter', sans-serif;
   --font-serif: 'Fraunces', serif;
-  --font-arabic: 'Cairo', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Dark Mode */
 :root[data-theme="dark"] {
   --primary: #3b82f6;
   --primary-light: #60a5fa;
@@ -63,6 +63,8 @@
   --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
 }
 
+html { scroll-behavior: smooth; }
+
 body {
   font-family: var(--font-sans);
   color: var(--text);
@@ -72,203 +74,597 @@ body {
 }
 
 .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; }
+a { color: inherit; text-decoration: none; }
 
-/* باقي الـ CSS الأصلي (مختصر لتوفير المساحة) */
-.header { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
-.hero { padding: 3rem 0; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; }
-.exercise-card { position: relative; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; transition: var(--transition); cursor: pointer; }
-.exercise-card:hover { border-color: var(--primary); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+/* ============ HEADER ============ */
+.header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 1rem; }
+.brand-logo {
+  width: 40px; height: 40px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 700; font-family: var(--font-serif);
+}
+.brand-text h1 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; }
+.brand-text p { font-size: 0.875rem; color: var(--text-light); }
+
+.nav-links { display: flex; gap: 0.5rem; list-style: none; }
+.nav-links a {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 1rem; border-radius: var(--radius);
+  font-size: 0.9375rem; font-weight: 500; color: var(--text-light);
+  transition: var(--transition);
+}
+.nav-links a:hover { background: var(--bg); color: var(--text); }
+
+.nav-actions { display: flex; align-items: center; gap: 1rem; }
+
+.theme-toggle {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text-light);
+  cursor: pointer;
+  transition: var(--transition);
+  font-size: 1rem;
+}
+.theme-toggle:hover { color: var(--text); background: var(--bg-card); }
+
+.mobile-menu-btn {
+  display: none;
+  background: none; border: none;
+  font-size: 1.25rem; color: var(--text-light); cursor: pointer;
+}
+
+/* ============ HERO ============ */
+.hero {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+}
+.hero-content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: center;
+}
+.hero-text h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+}
+.hero-text .highlight { color: #fbbf24; }
+.hero-text p { font-size: 1.125rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; }
+.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: var(--radius);
+  font-weight: 600; font-size: 0.9375rem;
+  transition: var(--transition); border: none; cursor: pointer;
+}
+.btn-primary { background: white; color: var(--primary-dark); }
+.btn-primary:hover { background: #f0f9ff; transform: translateY(-1px); }
+.btn-secondary { background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); }
+.btn-secondary:hover { background: rgba(255,255,255,0.25); }
+
+.hero-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; margin-top: 2rem;
+}
+.stat { text-align: center; }
+.stat-number { display: block; font-family: var(--font-serif); font-size: 2.25rem; font-weight: 700; }
+.stat-label { font-size: 0.875rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.hero-image { position: relative; }
+.hero-image::before {
+  content: '';
+  position: absolute; inset: -1rem;
+  border-radius: calc(var(--radius-lg) + 0.5rem);
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50% { transform: rotate(2deg) translateY(-10px); }
+}
+
+/* ============ MAIN & SECTIONS ============ */
+.main { padding: 3rem 0; }
+.section { padding: 3rem 0; }
+.section-header { text-align: center; margin-bottom: 2.5rem; }
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  font-weight: 700; margin-bottom: 0.75rem;
+}
+.section-subtitle { font-size: 1.125rem; color: var(--text-light); max-width: 700px; margin: 0 auto; }
+
+/* ============ EXERCISE DATABASE ============ */
+.exercise-db {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+.db-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;
+}
+.db-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; }
+.db-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.db-filters {
+  display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;
+}
+.filter-group { display: flex; align-items: center; gap: 0.5rem; }
+.filter-group label { font-size: 0.875rem; font-weight: 600; }
+.filter-group select, .filter-group input {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+}
+.filter-group select:focus, .filter-group input:focus {
+  outline: none; border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.exercise-card {
+  position: relative;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.exercise-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
 .exercise-card::after {
   content: '↗';
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  font-size: 1.4rem;
-  color: var(--primary);
-  opacity: 0;
-  transition: var(--transition);
+  position: absolute; top: 1.25rem; right: 1.25rem;
+  font-size: 1.25rem; color: var(--primary);
+  opacity: 0; transition: var(--transition);
 }
 .exercise-card:hover::after { opacity: 1; }
 
+.exercise-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.exercise-id { font-size: 0.75rem; color: var(--text-lighter); font-family: var(--font-mono); }
+.exercise-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag { padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 500; }
+.tag.level-college { background: #dbeafe; color: #1e40af; }
+.tag.level-lycee { background: #d1fae5; color: #065f46; }
+.tag.level-superieur { background: #fef3c7; color: #92400e; }
+.tag.diff-easy { background: #d1fae5; color: #065f46; }
+.tag.diff-medium { background: #fef3c7; color: #92400e; }
+.tag.diff-hard { background: #fee2e2; color: #991b1b; }
+
+.exercise-title { font-weight: 600; margin-bottom: 0.75rem; line-height: 1.4; }
+.exercise-preview {
+  font-size: 0.875rem; color: var(--text-light); margin-bottom: 1rem;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.db-footer { text-align: center; padding: 2rem; color: var(--text-lighter); }
+
+/* ============ WORKSHEET PANEL ============ */
 .worksheet-panel {
-  position: fixed;
-  inset-inline-end: 0;
-  top: 50%;
+  position: fixed; right: 0; top: 50%;
   transform: translateY(-50%) translateX(100%);
-  width: 420px;
-  height: 85vh;
+  width: 420px; max-width: 100%; height: 80vh;
   background: var(--bg-card);
-  border-inline-start: 1px solid var(--border);
+  border-left: 1px solid var(--border);
   border-radius: var(--radius-lg) 0 0 var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  z-index: 60;
-  transition: var(--transition);
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
+  z-index: 60; transition: var(--transition);
 }
 .worksheet-panel.open { transform: translateY(-50%) translateX(0); }
 
+.worksheet-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 1.5rem; border-bottom: 1px solid var(--border);
+}
+.worksheet-header h3 { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 700; }
+.worksheet-close { background: none; border: none; font-size: 1.25rem; color: var(--text-light); cursor: pointer; }
+.worksheet-close:hover { color: var(--text); }
+
+.worksheet-content { flex: 1; overflow-y: auto; padding: 1.5rem; }
+.worksheet-empty { text-align: center; padding: 3rem 1rem; color: var(--text-lighter); }
+.worksheet-empty i { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+
+.worksheet-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius);
+  margin-bottom: 0.75rem; background: var(--bg);
+}
+.worksheet-item-info h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
+.worksheet-item-info p { font-size: 0.75rem; color: var(--text-light); }
+.worksheet-item-remove {
+  background: none; border: none; color: var(--text-lighter);
+  cursor: pointer; padding: 0.25rem; border-radius: var(--radius); font-size: 1.1rem;
+  transition: var(--transition);
+}
+.worksheet-item-remove:hover { color: #ef4444; background: #fee2e2; }
+
+.worksheet-footer { padding: 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.worksheet-counter {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem;
+  background: var(--bg); border-radius: var(--radius); font-size: 0.875rem; flex: 1;
+}
+.worksheet-counter span { font-weight: 700; color: var(--primary); }
+.worksheet-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.worksheet-actions .btn { padding: 0.5rem 1rem; font-size: 0.875rem; }
+
+/* ============ MODAL ============ */
 .modal-overlay {
-  position: fixed;
-  inset: 0;
+  position: fixed; inset: 0;
   background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(5px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 70;
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.3s;
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 70; opacity: 0; visibility: hidden; transition: var(--transition);
 }
-.modal-overlay.open {
-  opacity: 1;
-  visibility: visible;
-}
+.modal-overlay.open { opacity: 1; visibility: visible; }
 .modal {
-  background: var(--bg-card);
-  border-radius: var(--radius-lg);
-  width: 90%;
-  max-width: 900px;
-  max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: var(--shadow-lg);
-  transform: scale(0.95);
-  transition: 0.3s;
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  width: 90%; max-width: 900px; max-height: 90vh; overflow-y: auto;
+  box-shadow: var(--shadow-lg); transform: scale(0.95); transition: var(--transition);
 }
 .modal-overlay.open .modal { transform: scale(1); }
 
+.modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem; border-bottom: 1px solid var(--border);
+}
+.modal-header h2 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; }
+.modal-close { background: none; border: none; font-size: 1.25rem; color: var(--text-light); cursor: pointer; }
+.modal-body { padding: 2rem; }
+
+.exercise-detail-meta { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.exercise-detail-meta span {
+  display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--text-light);
+}
+.exercise-detail-meta i { color: var(--primary); }
+
+.exercise-statement {
+  background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 1.5rem; margin-bottom: 2rem;
+}
+.exercise-statement h3 {
+  font-size: 1rem; font-weight: 600; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.exercise-statement h3 i { color: var(--primary); }
+
+.exercise-solution h3 {
+  font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700;
+  color: var(--secondary); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.exercise-solution { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; }
+
+.modal-footer {
+  display: flex; justify-content: flex-end; gap: 0.75rem;
+  padding: 1.5rem; border-top: 1px solid var(--border); flex-wrap: wrap;
+}
+
+/* ============ FEATURES ============ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.feature-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem; transition: var(--transition);
+}
+.feature-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--primary); }
+.feature-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; margin-bottom: 1.5rem;
+}
+.feature-icon.blue { background: #dbeafe; color: #1e40af; }
+.feature-icon.green { background: #d1fae5; color: #065f46; }
+.feature-icon.orange { background: #fef3c7; color: #92400e; }
+.feature-icon.purple { background: #f3e8ff; color: #7c3aed; }
+.feature-card h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.75rem; }
+.feature-card p { color: var(--text-light); }
+
+/* ============ LEVELS ============ */
+.levels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.level-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 2rem; transition: var(--transition);
+}
+.level-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.level-card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.level-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+}
+.level-icon.blue { background: #dbeafe; color: #1e40af; }
+.level-icon.green { background: #d1fae5; color: #065f46; }
+.level-icon.purple { background: #f3e8ff; color: #7c3aed; }
+.level-card h3 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+.level-card p { color: var(--text-light); margin-bottom: 1.5rem; }
+.chapter-list { list-style: none; }
+.chapter-list li { display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 0; color: var(--text-light); font-size: 0.9375rem; }
+.chapter-list li::before { content: '•'; color: var(--primary); font-size: 1.25rem; }
+
+/* ============ RESOURCES ============ */
+.resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.resource-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem; transition: var(--transition);
+  text-align: center; cursor: pointer;
+}
+.resource-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.resource-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; margin: 0 auto 1rem;
+}
+.resource-icon.blue { background: #dbeafe; color: #1e40af; }
+.resource-icon.green { background: #d1fae5; color: #065f46; }
+.resource-icon.orange { background: #fef3c7; color: #92400e; }
+.resource-icon.purple { background: #f3e8ff; color: #7c3aed; }
+.resource-card h4 { font-weight: 600; margin-bottom: 0.5rem; }
+.resource-card p { color: var(--text-light); font-size: 0.875rem; }
+
+/* ============ ABOUT ============ */
+.about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.about-avatar {
+  width: 100%; aspect-ratio: 1; border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-family: var(--font-serif); font-size: 3rem; font-style: italic; font-weight: 700;
+}
+.about-text h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; }
+.about-text p { color: var(--text-light); margin-bottom: 1rem; line-height: 1.7; }
+.skills-list { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.skill-tag {
+  padding: 0.5rem 1rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;
+  background: var(--bg); border: 1px solid var(--border); color: var(--text-light); transition: var(--transition);
+}
+.skill-tag:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* ============ FAQ ============ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1rem; overflow: hidden; }
+.faq-question {
+  padding: 1.25rem 1.5rem; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; font-weight: 600; transition: var(--transition);
+}
+.faq-question:hover { background: var(--bg); }
+.faq-question i { color: var(--primary); transition: var(--transition); }
+.faq-item.open .faq-question i { transform: rotate(180deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 1.5rem; }
+.faq-item.open .faq-answer { max-height: 500px; padding: 0 1.5rem 1.25rem; }
+.faq-answer p { color: var(--text-light); }
+
+/* ============ CONTACT ============ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-item {
+  display: flex; align-items: center; gap: 1rem; padding: 1rem;
+  background: var(--bg); border-radius: var(--radius); border: 1px solid var(--border); transition: var(--transition);
+}
+.contact-item:hover { border-color: var(--primary); background: var(--bg-card); }
+.contact-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; background: #dbeafe; color: #1e40af; flex-shrink: 0;
+}
+.contact-item-info h4 { font-weight: 600; margin-bottom: 0.25rem; }
+.contact-item-info p { color: var(--text-light); font-size: 0.875rem; }
+
+.contact-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 2rem; }
+.contact-form input, .contact-form textarea {
+  width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border);
+  border-radius: var(--radius); background: var(--bg); color: var(--text);
+  font-size: 0.9375rem; margin-bottom: 1rem; transition: var(--transition); font-family: inherit;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+  outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+.contact-form textarea { min-height: 150px; resize: vertical; }
+
+/* ============ FOOTER ============ */
+.footer { background: var(--bg-card); border-top: 1px solid var(--border); padding: 3rem 0 1.5rem; color: var(--text-light); }
+.footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 2rem; }
+.footer-brand h4 { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.75rem; }
+.footer-links a { color: var(--text-light); transition: var(--transition); }
+.footer-links a:hover { color: var(--primary); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 1.5rem; border-top: 1px solid var(--border); font-size: 0.875rem; flex-wrap: wrap; gap: 1rem;
+}
+.footer-social { display: flex; gap: 1rem; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: var(--radius);
+  background: var(--bg); display: flex; align-items: center; justify-content: center;
+  color: var(--text-light); transition: var(--transition);
+}
+.footer-social a:hover { background: var(--primary); color: white; }
+
+/* ============ TOAST ============ */
 .toast {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
+  position: fixed; bottom: 2rem; left: 50%;
   transform: translateX(-50%) translateY(100px);
-  background: var(--text);
-  color: var(--bg-card);
-  padding: 1rem 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  font-weight: 500;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  background: var(--text); color: var(--bg-card);
+  padding: 1rem 2rem; border-radius: var(--radius);
+  box-shadow: var(--shadow-lg); font-weight: 500;
+  opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 100;
+  display: flex; align-items: center; gap: 0.75rem;
 }
-.toast.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
+.toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
 
+/* ============ WORKSHEET BUTTON ============ */
 .worksheet-btn {
-  position: fixed;
-  bottom: 2rem;
-  inset-inline-end: 2rem;
-  background: var(--primary);
-  color: white;
-  padding: 0.75rem 1.25rem;
-  border-radius: var(--radius);
-  border: none;
-  cursor: pointer;
-  box-shadow: var(--shadow-lg);
-  font-weight: 600;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--primary); color: white; padding: 0.75rem 1.25rem;
+  border-radius: var(--radius); border: none; cursor: pointer;
+  box-shadow: var(--shadow-lg); font-weight: 600; font-size: 0.875rem;
+  transition: var(--transition); z-index: 50; display: flex; align-items: center; gap: 0.5rem;
+}
+.worksheet-btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+.worksheet-btn .count {
+  background: white; color: var(--primary); padding: 0.125rem 0.5rem;
+  border-radius: 9999px; font-size: 0.75rem; font-weight: 700; margin-left: 0.25rem;
 }
 
-/* Responsive */
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; text-align: center; }
+  .hero-text { order: 2; }
+  .hero-image { order: 1; max-width: 400px; margin: 0 auto; }
+  .about-content { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-content { grid-template-columns: 1fr; text-align: center; }
+  .footer-social { justify-content: center; }
+  .worksheet-panel { width: 90%; max-width: 500px; }
+}
+
 @media (max-width: 768px) {
-  .worksheet-panel { width: 100%; height: 100%; top: 0; border-radius: 0; transform: translateX(100%); }
+  .nav-links { display: none; }
+  .nav-links.mobile-open {
+    display: flex; flex-direction: column; width: 100%;
+    position: absolute; top: 100%; left: 0;
+    background: var(--bg-card); padding: 1rem; box-shadow: var(--shadow-lg);
+  }
+  .mobile-menu-btn { display: block; }
+  .about-avatar { max-width: 300px; margin: 0 auto; }
+  .worksheet-btn { bottom: 1rem; right: 1rem; padding: 0.625rem 1rem; font-size: 0.8125rem; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats { grid-template-columns: 1fr; gap: 1rem; }
+  .stat-number { font-size: 1.75rem; }
+  .section-title { font-size: 1.5rem; }
+  .features-grid, .levels-grid, .exercise-grid { grid-template-columns: 1fr; }
+  .worksheet-panel { width: 100%; height: 100%; border-radius: 0; top: 0; transform: translateX(100%); }
   .worksheet-panel.open { transform: translateX(0); }
+  .modal { width: 95%; max-height: 95vh; }
+}
+
+@media print {
+  .header, .worksheet-btn, .worksheet-panel, .modal-overlay, .footer { display: none !important; }
 }
 </style>
 </head>
 <body>
 
-<!-- Header, Hero, Sections, Footer... (نفس المحتوى الأصلي مع بعض التحسينات) -->
+<!-- ============ HEADER ============ -->
 <header class="header">
   <div class="container header-content">
     <div class="brand">
       <div class="brand-logo">MB</div>
       <div class="brand-text">
         <h1>Mo Bendriss</h1>
-        <p data-i18n="footer_tagline">Plateforme académique des mathématiques</p>
+        <p>Plateforme académique des mathématiques</p>
       </div>
     </div>
     <nav class="nav-links" id="navLinks">
-      <a href="#"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Accueil</span></a>
-      <a href="#exercices"><i class="fa-solid fa-book-open"></i> <span data-i18n="nav_exercices">Exercices</span></a>
-      <a href="#niveaux"><i class="fa-solid fa-layer-group"></i> <span data-i18n="nav_niveaux">Niveaux</span></a>
-      <a href="#ressources"><i class="fa-solid fa-folder-open"></i> <span data-i18n="nav_ressources">Ressources</span></a>
-      <a href="#apropos"><i class="fa-solid fa-user"></i> <span data-i18n="nav_apropos">À propos</span></a>
-      <a href="#contact"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">Contact</span></a>
+      <a href="#"><i class="fa-solid fa-house"></i> Accueil</a>
+      <a href="#exercices"><i class="fa-solid fa-book-open"></i> Exercices</a>
+      <a href="#niveaux"><i class="fa-solid fa-layer-group"></i> Niveaux</a>
+      <a href="#ressources"><i class="fa-solid fa-folder-open"></i> Ressources</a>
+      <a href="#apropos"><i class="fa-solid fa-user"></i> À propos</a>
+      <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
     </nav>
     <div class="nav-actions">
-      <div class="search-box">
-        <i class="fa-solid fa-search"></i>
-        <input type="text" placeholder="Rechercher..." id="searchInput">
-      </div>
       <button class="theme-toggle" onclick="toggleTheme()" title="Changer le thème">
         <i class="fa-solid fa-moon"></i>
       </button>
-      <button class="lang-toggle" onclick="toggleLang()" title="Changer la langue">
-        <i class="fa-solid fa-globe"></i> <span id="langText">AR</span>
-      </button>
-      <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()" title="Menu">
         <i class="fa-solid fa-bars"></i>
       </button>
     </div>
   </div>
 </header>
 
-<!-- Hero Section -->
+<!-- ============ HERO ============ -->
 <section class="hero">
   <div class="container hero-content">
     <div class="hero-image">
       <svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:rgba(255,255,255,0.8)" />
+            <stop offset="100%" style="stop-color:rgba(255,255,255,0.2)" />
+          </linearGradient>
+        </defs>
         <circle cx="200" cy="200" r="150" fill="url(#grad1)" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
         <path d="M120 200 L180 140 L280 200 L180 260 Z" fill="none" stroke="white" stroke-width="3"/>
         <circle cx="200" cy="200" r="30" fill="white" fill-opacity="0.3"/>
-        <text x="200" y="205" text-anchor="middle" fill="white" font-size="28" font-family="Fraunces">∫</text>
+        <text x="200" y="205" text-anchor="middle" fill="white" font-size="24" font-family="Fraunces">∫</text>
       </svg>
     </div>
     <div class="hero-text">
       <h1>Maîtrisez les <span class="highlight">mathématiques</span> avec Mo Bendriss</h1>
-      <p id="heroDesc">Base de données complète d'exercices corrigés, cours structurés et outils pédagogiques.</p>
+      <p>Base de données complète d'exercices corrigés, cours structurés et outils pédagogiques pour réussir dans tous les niveaux scolaires et universitaires.</p>
       <div class="hero-buttons">
-        <a href="#exercices" class="btn btn-primary">Parcourir les exercices</a>
-        <a href="#niveaux" class="btn btn-secondary">Explorer par niveau</a>
+        <a href="#exercices" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass-chart"></i> Parcourir les exercices</a>
+        <a href="#niveaux" class="btn btn-secondary"><i class="fa-solid fa-graduation-cap"></i> Explorer par niveau</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-number" data-target="5000">0</span><span class="stat-label">Exercices corrigés</span></div>
+        <div class="stat"><span class="stat-number" data-target="3">0</span><span class="stat-label">Niveaux éducatifs</span></div>
+        <div class="stat"><span class="stat-number" data-target="20">0</span><span class="stat-label">Chapitres complets</span></div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============ MAIN ============ -->
 <main class="main">
-  <!-- Exercise Database Section -->
+
+  <!-- Exercise Database -->
   <section class="section" id="exercices">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-i18n="exercices_title">Base de données d'exercices</h2>
-        <p class="section-subtitle" data-i18n="exercices_subtitle">Trouvez et sélectionnez des exercices par niveau, difficulté et chapitre</p>
+        <h2 class="section-title">Base de données d'exercices</h2>
+        <p class="section-subtitle">Trouvez et sélectionnez des exercices par niveau, difficulté et chapitre</p>
       </div>
-      
+
       <div class="exercise-db">
         <div class="db-header">
-          <h3 class="db-title" data-i18n="db_title">Base d'exercices</h3>
+          <h3 class="db-title">Base d'exercices</h3>
           <div class="db-actions">
-            <button class="btn btn-secondary" onclick="clearWorksheet()"><i class="fa-solid fa-trash"></i> Vider</button>
+            <button class="btn btn-secondary" onclick="clearWorksheet()"><i class="fa-solid fa-trash"></i> Vider la feuille</button>
             <button class="btn btn-primary" onclick="exportWorksheet()"><i class="fa-solid fa-file-export"></i> Exporter</button>
           </div>
         </div>
-        
+
         <div class="db-filters">
           <div class="filter-group">
-            <label>Niveau:</label>
+            <label for="filter-level">Niveau:</label>
             <select id="filter-level" onchange="filterExercises()">
               <option value="">Tous les niveaux</option>
               <option value="college">Collège</option>
@@ -277,18 +673,18 @@ body {
             </select>
           </div>
           <div class="filter-group">
-            <label>Difficulté:</label>
+            <label for="filter-difficulty">Difficulté:</label>
             <select id="filter-difficulty" onchange="filterExercises()">
-              <option value="">Toutes</option>
+              <option value="">Toutes les difficultés</option>
               <option value="easy">Facile</option>
               <option value="medium">Moyenne</option>
               <option value="hard">Difficile</option>
             </select>
           </div>
           <div class="filter-group">
-            <label>Chapitre:</label>
+            <label for="filter-topic">Chapitre:</label>
             <select id="filter-topic" onchange="filterExercises()">
-              <option value="">Tous</option>
+              <option value="">Tous les chapitres</option>
               <option value="algebra">Algèbre</option>
               <option value="analysis">Analyse</option>
               <option value="geometry">Géométrie</option>
@@ -296,24 +692,268 @@ body {
             </select>
           </div>
           <div class="filter-group">
-            <input type="text" placeholder="Rechercher..." id="filter-search" oninput="filterExercises()">
+            <input type="text" placeholder="Rechercher un exercice..." id="filter-search" oninput="filterExercises()" style="min-width:220px">
           </div>
         </div>
-        
+
         <div class="exercise-grid" id="exerciseGrid"></div>
+        <div class="db-footer" id="dbFooter" style="display:none;">
+          <p>Aucun exercice trouvé correspondant à vos critères.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- باقي الأقسام (Features, Niveaux, Ressources, À propos, FAQ, Contact) يمكنك إضافتها من الكود الأصلي -->
-  <!-- ... (تم اختصارها هنا لتوفير المساحة، لكن في الملف الكامل موجودة كاملة) ... -->
+  <!-- Features -->
+  <section class="section" id="fonctionnalites">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Fonctionnalités de la plateforme</h2>
+        <p class="section-subtitle">Des outils conçus pour optimiser votre apprentissage des mathématiques</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon blue"><i class="fa-solid fa-database"></i></div>
+          <h3>Base d'exercices complète</h3>
+          <p>Des milliers d'exercices corrigés classés par niveau, chapitre et difficulté.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon green"><i class="fa-solid fa-file-lines"></i></div>
+          <h3>Feuilles d'exercices personnalisées</h3>
+          <p>Créez, sauvegardez et exportez vos propres feuilles d'exercices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon orange"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3>Cours structurés</h3>
+          <p>Des cours détaillés avec des exemples et des démonstrations complètes.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon purple"><i class="fa-solid fa-lightbulb"></i></div>
+          <h3>Solutions détaillées</h3>
+          <p>Chaque exercice est accompagné d'une solution détaillée étape par étape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Levels -->
+  <section class="section" id="niveaux">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Programmes par niveau</h2>
+        <p class="section-subtitle">Explorez nos ressources organisées selon les niveaux éducatifs</p>
+      </div>
+      <div class="levels-grid">
+        <div class="level-card">
+          <div class="level-card-header">
+            <div class="level-icon blue"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3>Collège</h3>
+          </div>
+          <p>Fondations en arithmétique, géométrie, algèbre et statistiques.</p>
+          <ul class="chapter-list">
+            <li>Nombres et calculs</li>
+            <li>Géométrie plane</li>
+            <li>Équations et inéquations</li>
+            <li>Fonctions linéaires</li>
+            <li>Statistiques et probabilités</li>
+          </ul>
+        </div>
+        <div class="level-card">
+          <div class="level-card-header">
+            <div class="level-icon green"><i class="fa-solid fa-book-open"></i></div>
+            <h3>Lycée</h3>
+          </div>
+          <p>Approfondissement en analyse, suites, probabilités et géométrie dans l'espace.</p>
+          <ul class="chapter-list">
+            <li>Fonctions et dérivées</li>
+            <li>Suites numériques</li>
+            <li>Probabilités conditionnelles</li>
+            <li>Géométrie dans l'espace</li>
+            <li>Nombres complexes</li>
+          </ul>
+        </div>
+        <div class="level-card">
+          <div class="level-card-header">
+            <div class="level-icon purple"><i class="fa-solid fa-university"></i></div>
+            <h3>Supérieur</h3>
+          </div>
+          <p>Analyse approfondie, algèbre linéaire et équations différentielles.</p>
+          <ul class="chapter-list">
+            <li>Analyse réelle</li>
+            <li>Algèbre linéaire</li>
+            <li>Topologie</li>
+            <li>Équations différentielles</li>
+            <li>Fonctions de plusieurs variables</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="section" id="ressources">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Ressources pédagogiques</h2>
+        <p class="section-subtitle">Accédez à nos supports de cours, fiches mémo et outils supplémentaires</p>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card" onclick="openResource('cours')">
+          <div class="resource-icon blue"><i class="fa-solid fa-book"></i></div>
+          <h4>Cours complets</h4>
+          <p>Téléchargez nos cours structurés</p>
+        </div>
+        <div class="resource-card" onclick="openResource('fiches')">
+          <div class="resource-icon green"><i class="fa-solid fa-file-alt"></i></div>
+          <h4>Fiches mémo</h4>
+          <p>Aide-mémoire et formules</p>
+        </div>
+        <div class="resource-card" onclick="openResource('annales')">
+          <div class="resource-icon orange"><i class="fa-solid fa-file-pdf"></i></div>
+          <h4>Annales corrigées</h4>
+          <p>Sujets d'examens avec corrigés</p>
+        </div>
+        <div class="resource-card" onclick="openResource('videos')">
+          <div class="resource-icon purple"><i class="fa-solid fa-video"></i></div>
+          <h4>Vidéos explicatives</h4>
+          <p>Tutoriels et démonstrations</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="apropos">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">À propos de Mo Bendriss</h2>
+        <p class="section-subtitle">Enseignant passionné de mathématiques</p>
+      </div>
+      <div class="about-content">
+        <div class="about-avatar">MB</div>
+        <div class="about-text">
+          <h3>Mo Bendriss</h3>
+          <p>Enseignant de mathématiques passionné avec plusieurs années d'expérience dans l'accompagnement des élèves du collège au supérieur. Mon objectif est de rendre les mathématiques accessibles, claires et rigoureuses pour tous les étudiants.</p>
+          <p>Je crois fermement que chaque élève peut exceller en mathématiques avec la bonne méthode et un accompagnement adapté à son rythme d'apprentissage.</p>
+          <p>Cette plateforme est le fruit de mon engagement à fournir des ressources pédagogiques de qualité pour soutenir les étudiants dans leur parcours académique.</p>
+          <div class="skills-list">
+            <span class="skill-tag">Algèbre</span>
+            <span class="skill-tag">Analyse</span>
+            <span class="skill-tag">Géométrie</span>
+            <span class="skill-tag">Probabilités</span>
+            <span class="skill-tag">Statistiques</span>
+            <span class="skill-tag">Pédagogie</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Questions fréquemment posées</h2>
+        <p class="section-subtitle">Trouvez des réponses à vos questions sur la plateforme</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Les ressources sont-elles gratuites ?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer"><p>Oui, toutes les ressources disponibles sur cette plateforme sont entièrement gratuites et accessibles à tous les niveaux.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Comment puis-je utiliser les exercices ?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer"><p>Vous pouvez parcourir les exercices par niveau, chapitre ou difficulté. Ajoutez ceux qui vous intéressent à votre feuille d'exercices personnelle, puis exportez-la ou imprimez-la.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Les solutions sont-elles détaillées ?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer"><p>Oui, chaque exercice est accompagné d'une solution détaillée étape par étape, avec des explications claires pour chaque étape du raisonnement.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Puis-je contribuer à la plateforme ?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer"><p>Actuellement, la plateforme est en développement actif. Les contributions seront possibles dans une prochaine version. N'hésitez pas à nous contacter pour toute suggestion.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">N'hésitez pas à me contacter pour toute question ou suggestion</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-item-info"><h4>Email</h4><p>MoBendriss@Hotmail.com</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-globe"></i></div>
+            <div class="contact-item-info"><h4>Site web</h4><p>mobendriss.github.io</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="contact-item-info"><h4>GitHub</h4><p>github.com/mobendriss</p></div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleContact(event)">
+          <input type="text" placeholder="Votre nom" required>
+          <input type="email" placeholder="Votre email" required>
+          <textarea placeholder="Votre message" required></textarea>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Envoyer le message</button>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
 
-<!-- Worksheet Panel -->
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer-content">
+    <div class="footer-brand">
+      <div class="brand">
+        <div class="brand-logo">MB</div>
+        <div class="brand-text"><h4>Mo Bendriss</h4><p>Plateforme académique des mathématiques</p></div>
+      </div>
+      <p style="margin-top:1rem;color:var(--text-lighter);font-size:0.875rem;">Ressources pédagogiques gratuites pour tous les niveaux</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#exercices">Exercices</a></li>
+      <li><a href="#niveaux">Niveaux</a></li>
+      <li><a href="#ressources">Ressources</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div></div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2026 Mo Bendriss. Tous droits réservés.</p>
+    <div class="footer-social">
+      <a href="https://github.com/mobendriss" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="mailto:MoBendriss@Hotmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ WORKSHEET PANEL ============ -->
 <div class="worksheet-panel" id="worksheetPanel">
   <div class="worksheet-header">
-    <h3 data-i18n="worksheet_title">Ma feuille d'exercices</h3>
+    <h3>Ma feuille d'exercices</h3>
     <button class="worksheet-close" onclick="closeWorksheet()"><i class="fa-solid fa-times"></i></button>
   </div>
   <div class="worksheet-content" id="worksheetContent"></div>
@@ -327,11 +967,11 @@ body {
   </div>
 </div>
 
-<!-- Modal -->
+<!-- ============ MODAL ============ -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <div class="modal-header">
-      <h2 id="modalTitle"></h2>
+      <h2 id="modalTitle">Détails de l'exercice</h2>
       <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-times"></i></button>
     </div>
     <div class="modal-body" id="modalBody"></div>
@@ -342,167 +982,166 @@ body {
   </div>
 </div>
 
-<!-- Toast -->
+<!-- ============ TOAST ============ -->
 <div class="toast" id="toast">
   <i class="fa-solid fa-check-circle"></i>
   <span id="toastMessage"></span>
 </div>
 
-<!-- Worksheet Button -->
+<!-- ============ WORKSHEET BUTTON ============ -->
 <button class="worksheet-btn" onclick="toggleWorksheet()">
   <i class="fa-solid fa-clipboard-list"></i>
-  Ma feuille <span class="count" id="worksheetBtnCount">0</span>
+  <span>Ma feuille</span>
+  <span class="count" id="worksheetBtnCount">0</span>
 </button>
 
 <script>
-// ====================== TRANSLATIONS ======================
-const translations = {
-  fr: { /* ... جميع الترجمات الفرنسية (كما في الكود الأصلي) ... */ },
-  ar: { /* ... جميع الترجمات العربية (كما في الكود الأصلي) ... */ }
-};
+// ==========================================
+// EXERCISE DATABASE
+// ==========================================
+const exercises = [
+  { id: 1, title: "Calcul de fractions", statement: "Calculer : $\\frac{3}{4} + \\frac{1}{6} - \\frac{2}{3}$",
+    solution: `<p>Trouvons le dénominateur commun, qui est 12 :</p><p>$\\frac{3}{4} = \\frac{9}{12}$, $\\frac{1}{6} = \\frac{2}{12}$, $\\frac{2}{3} = \\frac{8}{12}$</p><p>Donc : $\\frac{9}{12} + \\frac{2}{12} - \\frac{8}{12} = \\frac{3}{12} = \\frac{1}{4}$</p>`,
+    level: "college", topic: "algebra", difficulty: "easy" },
 
-// ====================== EXERCISES DATABASE ======================
-const exercises = [ /* ... نفس قاعدة البيانات التي أرسلتها سابقاً (12 تمرين) ... */ ];
+  { id: 2, title: "Théorème de Pythagore", statement: "Un triangle ABC est rectangle en A avec AB = 6 cm et AC = 8 cm. Calculer BC.",
+    solution: `<p>D'après le théorème de Pythagore : $BC^2 = AB^2 + AC^2$</p><p>$BC^2 = 6^2 + 8^2 = 36 + 64 = 100$</p><p>Donc $BC = \\sqrt{100} = 10$ cm</p>`,
+    level: "college", topic: "geometry", difficulty: "easy" },
 
-// ====================== STATE ======================
-let currentLang = 'fr';
+  { id: 3, title: "Équations du premier degré", statement: "Résoudre l'équation : $3x - 7 = 2x + 5$",
+    solution: `<p>$3x - 2x = 5 + 7$</p><p>$x = 12$</p>`,
+    level: "college", topic: "algebra", difficulty: "medium" },
+
+  { id: 4, title: "Périmètre et aire", statement: "Un rectangle a une longueur de 8 cm et une largeur de 5 cm. Calculer son périmètre et son aire.",
+    solution: `<p><b>Périmètre :</b> $P = 2 \\times (8 + 5) = 26$ cm</p><p><b>Aire :</b> $A = 8 \\times 5 = 40$ cm²</p>`,
+    level: "college", topic: "geometry", difficulty: "easy" },
+
+  { id: 5, title: "Dérivée d'une fonction", statement: "Calculer la dérivée de $f(x) = 2x^3 - 5x^2 + 3x - 7$",
+    solution: `<p>$f'(x) = 2 \\times 3x^2 - 5 \\times 2x + 3 \\times 1 - 0$</p><p>$f'(x) = 6x^2 - 10x + 3$</p>`,
+    level: "lycee", topic: "analysis", difficulty: "medium" },
+
+  { id: 6, title: "Suites arithmétiques", statement: "Soit une suite arithmétique de premier terme $u_1 = 5$ et de raison $r = 3$. Calculer $u_{10}$.",
+    solution: `<p>$u_n = u_1 + (n-1) \\times r$</p><p>$u_{10} = 5 + (10-1) \\times 3 = 5 + 27 = 32$</p>`,
+    level: "lycee", topic: "algebra", difficulty: "easy" },
+
+  { id: 7, title: "Probabilités", statement: "On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre pair ?",
+    solution: `<p>Nombres pairs possibles : 2, 4, 6 → 3 issues favorables</p><p>Total des issues : 6</p><p>Probabilité : $\\frac{3}{6} = \\frac{1}{2}$</p>`,
+    level: "lycee", topic: "probability", difficulty: "medium" },
+
+  { id: 8, title: "Géométrie dans l'espace", statement: "Un cube a une arête de 5 cm. Calculer son volume.",
+    solution: `<p>$V = c^3 = 5^3 = 125$ cm³</p>`,
+    level: "lycee", topic: "geometry", difficulty: "easy" },
+
+  { id: 9, title: "Limites de fonctions", statement: "Calculer $\\lim_{x \\to +\\infty} \\frac{3x^2 + 2x - 1}{2x^2 - 5}$",
+    solution: `<p>On factorise par le terme de plus haut degré :</p><p>$\\frac{3x^2(1 + \\frac{2}{3x} - \\frac{1}{3x^2})}{2x^2(1 - \\frac{5}{2x^2})} = \\frac{3(1 + 0 - 0)}{2(1 - 0)} = \\frac{3}{2}$</p>`,
+    level: "superieur", topic: "analysis", difficulty: "hard" },
+
+  { id: 10, title: "Algèbre linéaire", statement: "Résoudre le système : $\\begin{cases} 2x + y = 5 \\\\ x - 3y = -1 \\end{cases}$",
+    solution: `<p>De la première équation : $y = 5 - 2x$</p><p>Substituons dans la deuxième : $x - 3(5 - 2x) = -1$</p><p>$x - 15 + 6x = -1$ → $7x = 14$ → $x = 2$</p><p>Puis $y = 5 - 4 = 1$</p><p>Solution : $(2, 1)$</p>`,
+    level: "superieur", topic: "algebra", difficulty: "medium" },
+
+  { id: 11, title: "Intégrales", statement: "Calculer $\\int (3x^2 - 2x + 5)\\,dx$",
+    solution: `<p>$\\int 3x^2\\,dx = x^3$</p><p>$\\int -2x\\,dx = -x^2$</p><p>$\\int 5\\,dx = 5x$</p><p>Donc : $\\int (3x^2 - 2x + 5)\\,dx = x^3 - x^2 + 5x + C$</p>`,
+    level: "superieur", topic: "analysis", difficulty: "medium" },
+
+  { id: 12, title: "Équations différentielles", statement: "Résoudre l'équation différentielle $y' + 2y = e^{-x}$",
+    solution: `<p>C'est une équation différentielle linéaire du premier ordre.</p><p>La solution générale est : $y = (x + C)e^{-2x}$ où C est une constante.</p>`,
+    level: "superieur", topic: "analysis", difficulty: "hard" }
+];
+
+// ==========================================
+// STATE
+// ==========================================
 let worksheet = [];
 let currentExerciseId = null;
 
-// ====================== CORE FUNCTIONS ======================
-function showToast(msg) {
-  const toast = document.getElementById('toast');
-  document.getElementById('toastMessage').innerHTML = msg;
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 3000);
-}
+const levelLabels = { college: "Collège", lycee: "Lycée", superieur: "Supérieur" };
+const diffLabels = { easy: "Facile", medium: "Moyenne", hard: "Difficile" };
 
-function updateWorksheetUI() {
-  const content = document.getElementById('worksheetContent');
-  const countEl = document.getElementById('worksheetCount');
-  const btnCount = document.getElementById('worksheetBtnCount');
-  
-  countEl.textContent = worksheet.length;
-  btnCount.textContent = worksheet.length;
-
-  if (worksheet.length === 0) {
-    content.innerHTML = `<div class="worksheet-empty"><i class="fa-solid fa-clipboard-list"></i><p>Votre feuille d'exercices est vide.</p></div>`;
-  } else {
-    content.innerHTML = worksheet.map(ex => `
-      <div class="worksheet-item">
-        <div><strong>#${ex.id}</strong> ${currentLang === 'fr' ? ex.title_fr : ex.title_ar}</div>
-        <button onclick="removeFromWorksheet(${ex.id})" style="color:#ef4444;background:none;border:none;cursor:pointer;font-size:1.1rem">×</button>
-      </div>
-    `).join('');
+// ==========================================
+// INIT
+// ==========================================
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
   }
-}
-
-function addToWorksheet(id) {
-  const ex = exercises.find(e => e.id === id);
-  if (!ex || worksheet.find(e => e.id === id)) return;
-  worksheet.push(ex);
-  updateWorksheetUI();
-  showToast(currentLang === 'fr' ? 'Exercice ajouté à la feuille' : 'تم إضافة التمرين إلى الورقة');
-}
-
-function removeFromWorksheet(id) {
-  worksheet = worksheet.filter(e => e.id !== id);
-  updateWorksheetUI();
-  showToast(currentLang === 'fr' ? 'Exercice retiré' : 'تمت إزالة التمرين');
-}
-
-function clearWorksheet() {
-  if (confirm(currentLang === 'fr' ? 'Vider la feuille ?' : 'مسح الورقة؟')) {
-    worksheet = [];
-    updateWorksheetUI();
-  }
-}
-
-function exportWorksheet() {
-  if (worksheet.length === 0) return showToast('الورقة فارغة');
-  const data = JSON.stringify(worksheet, null, 2);
-  const blob = new Blob([data], {type: 'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `feuille-exercices-${new Date().toISOString().slice(0,10)}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function printWorksheet() {
-  if (worksheet.length === 0) return showToast('الورقة فارغة');
-  const win = window.open('', '_blank');
-  let html = `<html dir="${currentLang==='ar'?'rtl':'ltr'}"><head><meta charset="UTF-8"><title>Feuille d'exercices</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <style>body{font-family:Arial;padding:30px} .exercise{margin-bottom:40px;page-break-inside:avoid}</style></head><body>`;
-  html += `<h1 style="text-align:center">Ma Feuille d'Exercices</h1>`;
-  worksheet.forEach(ex => {
-    html += `<div class="exercise"><h2>#${ex.id} - ${currentLang==='fr'?ex.title_fr:ex.title_ar}</h2>`;
-    html += `<p><strong>Énoncé :</strong></p><div>${currentLang==='fr'?ex.statement_fr:ex.statement_ar}</div>`;
-    html += `<p><strong>Solution :</strong></p><div>${currentLang==='fr'?ex.solution_fr:ex.solution_ar}</div></div><hr>`;
-  });
-  html += `</body></html>`;
-  win.document.write(html);
-  win.document.close();
-  setTimeout(() => win.print(), 600);
-}
-
-// Modal Functions
-function showExerciseDetail(id) {
-  const ex = exercises.find(e => e.id === id);
-  if (!ex) return;
-  currentExerciseId = id;
-  
-  const title = currentLang === 'fr' ? ex.title_fr : ex.title_ar;
-  const statement = currentLang === 'fr' ? ex.statement_fr : ex.statement_ar;
-  const solution = currentLang === 'fr' ? ex.solution_fr : ex.solution_ar;
-
-  document.getElementById('modalTitle').textContent = title;
-  document.getElementById('modalBody').innerHTML = `
-    <h3>Énoncé</h3>
-    <div style="background:var(--bg);padding:1.5rem;border-radius:8px;margin-bottom:2rem">${statement}</div>
-    <h3 style="color:var(--secondary)">Solution détaillée</h3>
-    <div style="background:var(--bg);padding:1.5rem;border-radius:8px">${solution}</div>
-  `;
-  document.getElementById('modalOverlay').classList.add('open');
-  
-  if (typeof renderMathInElement !== 'undefined') {
-    renderMathInElement(document.getElementById('modalBody'), {
-      delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}]
-    });
-  }
-}
-
-function closeModal(e) {
-  if (!e || e.target.id === 'modalOverlay' || e.target.classList.contains('modal-close')) {
-    document.getElementById('modalOverlay').classList.remove('open');
-  }
-}
-
-function addToWorksheetFromModal() {
-  if (currentExerciseId) addToWorksheet(currentExerciseId);
-  closeModal();
-}
-
-// Language & Theme
-function toggleLang() {
-  currentLang = currentLang === 'fr' ? 'ar' : 'fr';
-  document.documentElement.setAttribute('lang', currentLang);
-  document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-  document.getElementById('langText').textContent = currentLang === 'fr' ? 'AR' : 'FR';
   renderExercises();
   updateWorksheetUI();
-  showToast(currentLang === 'fr' ? 'Langue changée en français' : 'تم تغيير اللغة إلى العربية');
+  animateCounters();
+  renderMath();
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById('worksheetPanel').classList.remove('open');
+    }
+  });
+});
+
+function renderMath(container = document.body) {
+  if (typeof renderMathInElement !== 'undefined') {
+    setTimeout(() => {
+      renderMathInElement(container, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ]
+      });
+    }, 50);
+  }
 }
 
+// ==========================================
+// COUNTER ANIMATION
+// ==========================================
+function animateCounters() {
+  document.querySelectorAll('.stat-number[data-target]').forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    const duration = 2000;
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      counter.textContent = Math.floor(target * easeOut).toLocaleString();
+      if (progress < 1) requestAnimationFrame(update);
+      else counter.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// ==========================================
+// THEME
+// ==========================================
 function toggleTheme() {
+  const icon = document.querySelector('.theme-toggle i');
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  if (isDark) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+    icon.classList.replace('fa-sun', 'fa-moon');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+    icon.classList.replace('fa-moon', 'fa-sun');
+  }
 }
 
-// Filter & Render
+// ==========================================
+// MOBILE MENU
+// ==========================================
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navLinks');
+  navLinks.classList.toggle('mobile-open');
+  const icon = document.querySelector('.mobile-menu-btn i');
+  icon.classList.toggle('fa-bars');
+  icon.classList.toggle('fa-times');
+}
+
+// ==========================================
+// EXERCISE FILTER & RENDER
+// ==========================================
 function filterExercises() {
   const level = document.getElementById('filter-level').value;
   const difficulty = document.getElementById('filter-difficulty').value;
@@ -513,10 +1152,7 @@ function filterExercises() {
     if (level && ex.level !== level) return false;
     if (difficulty && ex.difficulty !== difficulty) return false;
     if (topic && ex.topic !== topic) return false;
-    if (search) {
-      const title = (currentLang === 'fr' ? ex.title_fr : ex.title_ar).toLowerCase();
-      return title.includes(search);
-    }
+    if (search && !ex.title.toLowerCase().includes(search)) return false;
     return true;
   });
 
@@ -525,57 +1161,235 @@ function filterExercises() {
 
 function renderExercises(list = exercises) {
   const grid = document.getElementById('exerciseGrid');
-  grid.innerHTML = list.map(ex => {
-    const title = currentLang === 'fr' ? ex.title_fr : ex.title_ar;
-    return `
-      <div class="exercise-card" onclick="showExerciseDetail(${ex.id})">
-        <div class="exercise-meta">
-          <span class="exercise-id">#${ex.id}</span>
-          <div class="exercise-tags">
-            <span class="tag level-${ex.level}">${ex.level}</span>
-            <span class="tag diff-${ex.difficulty}">${ex.difficulty}</span>
-          </div>
-        </div>
-        <h3 class="exercise-title">${title}</h3>
-        <div class="exercise-preview">${currentLang === 'fr' ? ex.statement_fr : ex.statement_ar}</div>
-      </div>`;
-  }).join('');
+  const footer = document.getElementById('dbFooter');
 
-  if (typeof renderMathInElement !== 'undefined') {
-    renderMathInElement(grid, {
-      delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}]
-    });
+  if (list.length === 0) {
+    grid.innerHTML = '';
+    footer.style.display = 'block';
+    return;
+  }
+  footer.style.display = 'none';
+
+  grid.innerHTML = list.map(ex => `
+    <div class="exercise-card" onclick="showExerciseDetail(${ex.id})">
+      <div class="exercise-meta">
+        <span class="exercise-id">#${ex.id}</span>
+        <div class="exercise-tags">
+          <span class="tag level-${ex.level}">${levelLabels[ex.level]}</span>
+          <span class="tag diff-${ex.difficulty}">${diffLabels[ex.difficulty]}</span>
+        </div>
+      </div>
+      <h3 class="exercise-title">${ex.title}</h3>
+      <div class="exercise-preview">${ex.statement}</div>
+    </div>
+  `).join('');
+
+  renderMath(grid);
+}
+
+// ==========================================
+// MODAL
+// ==========================================
+function showExerciseDetail(id) {
+  const ex = exercises.find(e => e.id === id);
+  if (!ex) return;
+  currentExerciseId = id;
+
+  document.getElementById('modalTitle').textContent = ex.title;
+  document.getElementById('modalBody').innerHTML = `
+    <div class="exercise-detail-meta">
+      <span><i class="fa-solid fa-tag"></i> #${ex.id}</span>
+      <span><i class="fa-solid fa-layer-group"></i> ${levelLabels[ex.level]}</span>
+      <span><i class="fa-solid fa-signal"></i> ${diffLabels[ex.difficulty]}</span>
+    </div>
+    <div class="exercise-statement">
+      <h3><i class="fa-solid fa-pen"></i> Énoncé</h3>
+      <div>${ex.statement}</div>
+    </div>
+    <div class="exercise-solution">
+      <h3><i class="fa-solid fa-lightbulb"></i> Solution détaillée</h3>
+      <div>${ex.solution}</div>
+    </div>
+  `;
+  document.getElementById('modalOverlay').classList.add('open');
+  renderMath(document.getElementById('modalBody'));
+}
+
+function closeModal(e) {
+  if (!e || e.target.id === 'modalOverlay' || e.target.closest('.modal-close')) {
+    document.getElementById('modalOverlay').classList.remove('open');
   }
 }
 
-// Init
-window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
+function addToWorksheetFromModal() {
+  if (currentExerciseId != null) {
+    addToWorksheet(currentExerciseId);
+    closeModal();
   }
-  renderExercises();
-  updateWorksheetUI();
-  
-  // ربط حقل البحث العلوي
-  document.getElementById('searchInput').addEventListener('input', (e) => {
-    document.getElementById('filter-search').value = e.target.value;
-    filterExercises();
-  });
+}
 
-  document.addEventListener('keydown', e => {
-    if (e.key === "Escape") {
-      document.getElementById('modalOverlay').classList.remove('open');
-      document.getElementById('worksheetPanel').classList.remove('open');
-    }
-  });
-});
+// ==========================================
+// WORKSHEET
+// ==========================================
+function addToWorksheet(id) {
+  const ex = exercises.find(e => e.id === id);
+  if (!ex) return;
+  if (!worksheet.find(e => e.id === id)) {
+    worksheet.push(ex);
+    updateWorksheetUI();
+    showToast('Exercice ajouté à la feuille');
+  } else {
+    showToast('Cet exercice est déjà dans la feuille');
+  }
+}
+
+function removeFromWorksheet(id) {
+  worksheet = worksheet.filter(e => e.id !== id);
+  updateWorksheetUI();
+  showToast('Exercice retiré de la feuille');
+}
+
+function clearWorksheet() {
+  if (worksheet.length === 0) return;
+  if (confirm('Voulez-vous vraiment vider la feuille ?')) {
+    worksheet = [];
+    updateWorksheetUI();
+  }
+}
+
+function updateWorksheetUI() {
+  const content = document.getElementById('worksheetContent');
+  document.getElementById('worksheetCount').textContent = worksheet.length;
+  document.getElementById('worksheetBtnCount').textContent = worksheet.length;
+
+  if (worksheet.length === 0) {
+    content.innerHTML = `
+      <div class="worksheet-empty">
+        <i class="fa-solid fa-clipboard-list"></i>
+        <p>Votre feuille d'exercices est vide.</p>
+        <p style="font-size:0.875rem;color:var(--text-lighter);margin-top:0.5rem;">Ajoutez des exercices en cliquant sur les cartes.</p>
+      </div>`;
+  } else {
+    content.innerHTML = worksheet.map(ex => `
+      <div class="worksheet-item">
+        <div class="worksheet-item-info">
+          <h4>#${ex.id} — ${ex.title}</h4>
+          <p>${levelLabels[ex.level]} · ${diffLabels[ex.difficulty]}</p>
+        </div>
+        <button class="worksheet-item-remove" onclick="removeFromWorksheet(${ex.id})"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    `).join('');
+  }
+}
 
 function toggleWorksheet() { document.getElementById('worksheetPanel').classList.toggle('open'); }
 function closeWorksheet() { document.getElementById('worksheetPanel').classList.remove('open'); }
-function toggleMobileMenu() { document.getElementById('navLinks').classList.toggle('mobile-open'); }
-function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
-function openResource() { showToast('Cette ressource sera disponible bientôt'); }
-function handleContact(e) { e.preventDefault(); showToast('Message envoyé avec succès !'); e.target.reset(); }
+
+// ==========================================
+// EXPORT / PRINT
+// ==========================================
+function exportWorksheet() {
+  if (worksheet.length === 0) { showToast('La feuille est vide'); return; }
+  const data = worksheet.map(ex => ({
+    id: ex.id, titre: ex.title, enonce: ex.statement, solution: ex.solution,
+    niveau: levelLabels[ex.level], chapitre: ex.topic, difficulte: diffLabels[ex.difficulty]
+  }));
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `feuille-exercices-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Feuille exportée avec succès');
+}
+
+function printWorksheet() {
+  if (worksheet.length === 0) { showToast('La feuille est vide'); return; }
+  const win = window.open('', '_blank');
+  const items = worksheet.map((ex, i) => `
+    <div class="exercise">
+      <div class="exercise-title">Exercice ${i + 1} — ${ex.title} (#${ex.id})</div>
+      <div class="exercise-statement">${ex.statement}</div>
+      <div class="exercise-solution"><strong>Solution :</strong>${ex.solution}</div>
+    </div>
+  `).join('<hr style="margin:2rem 0;border:none;border-top:1px solid #ddd">');
+
+  win.document.write(`
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+      <meta charset="UTF-8">
+      <title>Feuille d'exercices - Mo Bendriss</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"><\/script>
+      <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"><\/script>
+      <style>
+        body { font-family: Arial, sans-serif; padding: 2rem; color: #1f2937; }
+        h1 { text-align: center; margin-bottom: 0.5rem; }
+        .subtitle { text-align: center; color: #6b7280; margin-bottom: 2rem; }
+        .exercise { margin-bottom: 1.5rem; page-break-inside: avoid; }
+        .exercise-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.75rem; color: #1e40af; }
+        .exercise-statement { margin-bottom: 1rem; padding: 1rem; background: #f9fafb; border-radius: 6px; }
+        .exercise-solution { margin-top: 1rem; padding: 1rem; background: #f0fdf4; border-radius: 6px; }
+      </style>
+    </head>
+    <body>
+      <h1>Ma Feuille d'Exercices</h1>
+      <p class="subtitle">Mo Bendriss — Plateforme académique des mathématiques</p>
+      ${items}
+      <script>
+        window.onload = function() {
+          if (typeof renderMathInElement !== 'undefined') {
+            renderMathInElement(document.body, {
+              delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+              ]
+            });
+          }
+          setTimeout(() => window.print(), 500);
+        };
+      <\/script>
+    </body>
+    </html>
+  `);
+  win.document.close();
+}
+
+// ==========================================
+// FAQ
+// ==========================================
+function toggleFaq(el) {
+  el.parentElement.classList.toggle('open');
+}
+
+// ==========================================
+// RESOURCES
+// ==========================================
+function openResource(type) {
+  showToast('Cette ressource sera disponible prochainement');
+}
+
+// ==========================================
+// CONTACT FORM
+// ==========================================
+function handleContact(e) {
+  e.preventDefault();
+  showToast('Message envoyé avec succès !');
+  e.target.reset();
+}
+
+// ==========================================
+// TOAST
+// ==========================================
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMessage').textContent = message;
+  toast.classList.add('show');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
+}
 </script>
 </body>
 </html>
